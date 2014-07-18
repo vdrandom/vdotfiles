@@ -1,0 +1,26 @@
+#term xterm
+termcapinfo urxvt* ti@:te@
+terminfo urxvt* ti@:te@
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+terminfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+#termcapinfo xterm* ks@:ke@
+#terminfo xterm* ks@:ke@
+startup_message off
+hardstatus off
+defscrollback 10000
+vbell on
+vbell_msg "vbell on %n"
+vbellwait 900
+bell_msg "bell on %n"
+autodetach on
+defbce on
+altscreen on
+activity "activity on %n"
+#hardstatus alwayslastline
+caption always '%{= kw}[ %{kw}%-w%{bW}%n %t%{kw}%+w%{kW} %-=][ %{kr}%l%{kw} ]'
+#shelltitle "$ |zsh"
+#bindkey ^[q prev
+#bindkey ^[w next
+#bindkey ^[a screen
+#bindkey ^[[1;3D prev
+#bindkey ^[[1;3C next
