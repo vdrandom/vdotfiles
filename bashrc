@@ -67,11 +67,14 @@ alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
 alias rscreen='command screen -Dr'
 alias atmux='command tmux attach'
-alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
-alias iconvuk='command iconv -c -f utf-8 -t koi8-r'
 alias hist='fc -l 1'
 alias beep='echo -en "\007"'
 alias fixterm='echo "^[c"'
+# iconv:
+alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
+alias iconvuk='command iconv -c -f utf-8 -t koi8-r'
+alias iconvku='command iconv -c -f koi8-r -t utf-8'
+alias iconvwu='command iconv -c -f cp1251 -t utf-8'
 # grc:
 if [[ -x /usr/bin/grc ]]; then
 	alias ping='command grc --colour=auto ping'
