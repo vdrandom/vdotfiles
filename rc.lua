@@ -347,7 +347,7 @@ globalkeys = awful.util.table.join(
     -- Glbal commands
     awful.key({ modkey,           }, 'x',     function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, 'q',     function () awful.util.spawn('/home/von/.local/bin/ticket_watch') end),
-    awful.key({ modkey,           }, 'z',     function () awful.util.spawn('dm-tool lock') end),
+    awful.key({ modkey,           }, 'z',     function () awful.util.spawn('slock') end),
     awful.key({ modkey,           }, 'F6',    function () awful.util.spawn('/home/von/touchpad_hotkey.sh') end),
     awful.key({                   }, 'Print', function () awful.util.spawn('xfce4-screenshooter -ws /home/von/screenshots') end),
     awful.key({ modkey,           }, 'Print', function () awful.util.spawn('xfce4-screenshooter -fs /home/von/screenshots') end)
