@@ -30,7 +30,7 @@ autocmd FileType ruby setlocal sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal sts=2 sw=2 expandtab
 autocmd FileType puppet setlocal sts=2 sw=2 expandtab
 autocmd FileType python setlocal sts=4 sw=4 expandtab
-autocmd FileType lua setlocal sts=4 sw=4 expandtab
+"autocmd FileType lua setlocal sts=4 sw=4 expandtab
 
 " next line in wrapped lines
 nmap j gj
