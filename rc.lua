@@ -14,7 +14,12 @@ local menubar = require('menubar')
 -- enable testing if file exists
 function ifexists(name)
 	local f=io.open(name,'r')
-	if f ~= nil then io.close(f) return true else return false end
+	if f ~= nil then
+		io.close(f)
+		return true
+	else
+		return false
+	end
 end
 
 -- {{{ Error handling
