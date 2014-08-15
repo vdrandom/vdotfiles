@@ -63,7 +63,7 @@ theme.border_width = 1
 theme.font = 'Terminus 9'
 
 -- set wallpaper
-local wallpaper = '/home/von/Pictures/wallpaper.png' 
+local wallpaper = '/home/von/Pictures/wallpaper.png'
 if ifexists(wallpaper) then
 	theme.wallpaper = wallpaper
 end
@@ -176,9 +176,14 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock('%a %d %H:%M')
 mytextclock:set_font('Terminus Bold 11')
+-- Create a mail notification widget
 mytextbox = wibox.widget.textbox()
 mytextbox:set_text('')
 mytextbox:set_font('Terminus 9')
+-- Create keyboard layout indicator widget
+--mykblayout = wibox.widget.textbox()
+--mykblayout:set_text('US')
+--mykblayout:set_font('Terminus Bold 11')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -387,13 +392,27 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'p',     function () menubar.show() end),
 	-- Glbal commands
 	awful.key({ modkey,           }, 'x',     function () awful.util.spawn(terminal) end),
-	awful.key({ modkey,           }, 'q',     function () awful.util.spawn('/home/von/.local/bin/ticket_watch') end),
+	awful.key({ modkey,           }, 'q',     function () awful.util.spawn('/home/von/.local/bin/ticket_watch', false) end),
 	awful.key({ modkey,           }, 'z',     function () awful.util.spawn('bash -c "until slock; do :; done"') end),
-	awful.key({ modkey,           }, 'F6',    function () awful.util.spawn('/home/von/touchpad_hotkey.sh') end),
+	awful.key({ modkey,           }, 'F6',    function () awful.util.spawn('/home/von/touchpad_hotkey.sh', false) end),
 	awful.key({                   }, 'Print', function () awful.util.spawn('xfce4-screenshooter -ws /home/von/screenshots') end),
 	awful.key({ modkey,           }, 'Print', function () awful.util.spawn('xfce4-screenshooter -fs /home/von/screenshots') end)
 	-- screenshot via scrot (might be useful at some point
 	-- awful.key({        }, 'Print',  function() awful.util.spawn('scrot /home/von/screenshots/%Y-%m-%d_%H-%M_all.png') end),
+
+	-- switching keyboard layout
+	-- awful.key({ modkey,           }, 'space',
+	-- 	function ()
+	-- 		if not switched then
+	-- 			awful.util.spawn('setxkbmap -layout ru,us -variant typewriter -option compose:menu,caps:backspace', false)
+	-- 			mykblayout:set_text('RU')
+	-- 			switched = true
+	-- 		else
+	-- 			awful.util.spawn('setxkbmap -layout us -variant altgr-intl -option compose:menu,caps:backspace', false)
+	-- 			mykblayout:set_text('US')
+	-- 			switched = false
+	-- 		end
+	-- 	end)
 )
 
 clientkeys = awful.util.table.join(
@@ -606,7 +625,7 @@ client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_n
 -- {{{ Autostart
 -- don't forget you sync this file
 -- this shit runs every time you restart your wm, dumbass.
-awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:win_space_toggle,compose:menu,grp_led:scroll')
+awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:win_space_toggle,caps:backspace,compose:menu,grp_led:scroll')
 awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
 if ifexists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
