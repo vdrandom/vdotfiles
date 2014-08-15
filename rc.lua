@@ -85,8 +85,16 @@ local layouts = {
 	awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.bottom,
-	awful.layout.suit.max,
-	awful.layout.suit.magnifier
+	-- Also possible:
+	-- awful.layout.suit.tile.left,
+	-- awful.layout.suit.tile.top,
+	-- awful.layout.suit.fair,
+	-- awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.spiral,
+	-- awful.layout.suit.spiral.dwindle,
+	-- awful.layout.suit.max,
+	-- awful.layout.suit.max.fullscreen,
+	-- awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -357,8 +365,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)      end),
 	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol( 1)         end),
 	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)         end),
-	awful.key({ modkey,           }, 'space', function () awful.layout.inc(layouts,  1) end),
-	awful.key({ modkey, 'Shift'   }, 'space', function () awful.layout.inc(layouts, -1) end),
+	awful.key({ 'Mod1',           }, 'space', function () awful.layout.inc(layouts,  1) end),
+	awful.key({ 'Mod1', 'Shift'   }, 'space', function () awful.layout.inc(layouts, -1) end),
 
 	awful.key({ modkey, 'Control' }, 'n',     awful.client.restore),
 
@@ -598,7 +606,7 @@ client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_n
 -- {{{ Autostart
 -- don't forget you sync this file
 -- this shit runs every time you restart your wm, dumbass.
-awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:caps_toggle,compose:menu,grp_led:scroll')
+awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:win_space_toggle,compose:menu,grp_led:scroll')
 awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
 if ifexists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
