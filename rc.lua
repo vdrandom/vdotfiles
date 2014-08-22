@@ -510,14 +510,14 @@ awful.rules.rules = {
 	{
 		rule_any = {
 			class = {
-				'pinentry',
-				'Skype',
 				'Deadbeef',
+				'mpv',
 				'Pavucontrol',
-				'Qmmp',
-				'Vncviewer',
+				'pinentry',
 				'plugin-container',
-				'mpv'
+				'Qmmp',
+				'Skype',
+				'Vncviewer'
 			},
 			instance = {
 				'sun-awt-X11-XFramePeer'
@@ -549,28 +549,33 @@ awful.rules.rules = {
 	-- Specific desktops rules: place windows only on specific tags by default
 	-- steam
 	{
-		rule_any = { class = { 'Steam' },
-		instance = { 'Steam.exe' } },
+		rule_any = {
+			class = { 'Steam' },
+			instance = { 'Steam.exe' }
+		},
 		properties = { tag = tags[1][4] }
 	},
 	-- games = float / fullscreen
 	{
 		rule_any = {
 			class = {
-				'dota_linux',
-				'hl2_linux',
-				'Strife',
-				'ck2',
-				'Pandora',
-				'witcher2',
-				'Symphony.bin.x86_64',
 				'Civ5XP',
+				'ck2',
+				'deponia_tcj',
+				'dota_linux',
 				'game.x86_64',
-				'deponia_tcj'
+				'hl2_linux',
+				'Pandora',
+				'Strife',
+				'Symphony.bin.x86_64',
+				'witcher2'
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
 				'KB.exe'
+			},
+			name = {
+				'Hand of Fate'
 			}
 		},
 		properties = {
