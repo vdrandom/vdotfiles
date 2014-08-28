@@ -560,7 +560,8 @@ awful.rules.rules = {
 				'Pandora',
 				'Strife',
 				'Symphony.bin.x86_64',
-				'witcher2'
+				'witcher2',
+				'Awesomenauts.bin.x86'
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
