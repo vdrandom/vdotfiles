@@ -408,9 +408,9 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-	awful.key({ modkey,           }, 'f',      function (c) c.fullscreen = not c.fullscreen  end),
+	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, 'Shift'   }, 'c',      function (c) c:kill()                         end),
-	awful.key({ modkey, 'Control' }, 'space',  awful.client.floating.toggle                     ),
+	awful.key({ modkey,           }, 'f',      awful.client.floating.toggle                     ),
 	awful.key({ modkey,           }, 'Return', function (c) c:swap(awful.client.getmaster()) end),
 	awful.key({ modkey,           }, 'o',      awful.client.movetoscreen                        ),
 	awful.key({ modkey,           }, 't',      function (c) c.ontop = not c.ontop            end),
@@ -427,6 +427,7 @@ clientkeys = awful.util.table.join(
 			c.maximized_vertical   = not c.maximized_vertical
 			if c.maximized_horizontal == true and c.maximized_vertical == true then
 				c.border_width = 0
+				client.focus:raise()
 			else
 				c.border_width = beautiful.border_width
 			end
