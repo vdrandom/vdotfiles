@@ -85,6 +85,7 @@ local layouts = {
 	awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.bottom,
+	awful.layout.suit.max
 	-- Also possible:
 	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.top,
@@ -92,7 +93,6 @@ local layouts = {
 	-- awful.layout.suit.fair.horizontal,
 	-- awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max,
 	-- awful.layout.suit.max.fullscreen,
 	-- awful.layout.suit.magnifier
 }
@@ -317,8 +317,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'Escape', awful.tag.history.restore),
 
 	-- Switch between windows
-	awful.key({ modkey,           }, 'j', function () awful.client.focus.byidx(1) end),
-	awful.key({ modkey,           }, 'k', function () awful.client.focus.byidx(-1) end),
+	awful.key({ modkey,           }, 'j', function () awful.client.focus.byidx(1) client.focus:raise() end),
+	awful.key({ modkey,           }, 'k', function () awful.client.focus.byidx(-1) client.focus:raise() end),
 	awful.key({ modkey,           }, 'i', function () client.focus:raise() end),
 	awful.key({ modkey,           }, 'w', function () mymainmenu:show() end),
 
@@ -352,18 +352,15 @@ globalkeys = awful.util.table.join(
 			end
 		end),
 
-	-- Standard program
-	--awful.key({ modkey, 'Control' }, 'r', awesome.restart),
-	--awful.key({ modkey, 'Shift'   }, 'q', awesome.quit),
-
-	awful.key({ modkey,           }, 'l',     function () awful.tag.incmwfact( 0.05)    end),
-	awful.key({ modkey,           }, 'h',     function () awful.tag.incmwfact(-0.05)    end),
-	awful.key({ modkey, 'Shift'   }, 'h',     function () awful.tag.incnmaster( 1)      end),
-	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)      end),
-	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol( 1)         end),
-	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)         end),
-	awful.key({ 'Mod1',           }, 'space', function () awful.layout.inc(layouts,  1) end),
-	awful.key({ 'Mod1', 'Shift'   }, 'space', function () awful.layout.inc(layouts, -1) end),
+	awful.key({ modkey,           }, 'l',     function () awful.tag.incmwfact(0.05)                       end),
+	awful.key({ modkey,           }, 'h',     function () awful.tag.incmwfact(-0.05)                      end),
+	awful.key({ modkey, 'Shift'   }, 'h',     function () awful.tag.incnmaster(1)                         end),
+	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)                        end),
+	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol(1)                            end),
+	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)                           end),
+	awful.key({ modkey,           }, 'f',     function () awful.layout.set(awful.layout.suit.float)       end),
+	awful.key({ modkey,           }, 'm',     function () awful.layout.set(awful.layout.suit.max)         end),
+	awful.key({ modkey,           }, 't',     function () awful.layout.set(awful.layout.suit.tile.bottom) end),
 
 	awful.key({ modkey, 'Control' }, 'n',     awful.client.restore),
 
@@ -389,39 +386,18 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'F6',    function () awful.util.spawn('/home/von/touchpad_hotkey.sh', false) end),
 	awful.key({                   }, 'Print', function () awful.util.spawn('xfce4-screenshooter -ws /home/von/screenshots') end),
 	awful.key({ modkey,           }, 'Print', function () awful.util.spawn('xfce4-screenshooter -fs /home/von/screenshots') end)
-	-- screenshot via scrot (might be useful at some point
-	-- awful.key({        }, 'Print',  function() awful.util.spawn('scrot /home/von/screenshots/%Y-%m-%d_%H-%M_all.png') end),
-
-	-- switching keyboard layout
-	-- awful.key({ modkey,           }, 'space',
-	-- 	function ()
-	-- 		if not switched then
-	-- 			awful.util.spawn('setxkbmap -layout ru,us -variant typewriter -option compose:menu,caps:backspace', false)
-	-- 			mykblayout:set_text('RU')
-	-- 			switched = true
-	-- 		else
-	-- 			awful.util.spawn('setxkbmap -layout us -variant altgr-intl -option compose:menu,caps:backspace', false)
-	-- 			mykblayout:set_text('US')
-	-- 			switched = false
-	-- 		end
-	-- 	end)
 )
 
 clientkeys = awful.util.table.join(
 	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, 'Shift'   }, 'c',      function (c) c:kill()                         end),
-	awful.key({ modkey,           }, 'f',      awful.client.floating.toggle                     ),
+	awful.key({ modkey, 'Shift'   }, 'f',      awful.client.floating.toggle                     ),
 	awful.key({ modkey,           }, 'Return', function (c) c:swap(awful.client.getmaster()) end),
 	awful.key({ modkey,           }, 'o',      awful.client.movetoscreen                        ),
-	awful.key({ modkey,           }, 't',      function (c) c.ontop = not c.ontop            end),
-	awful.key({ modkey,           }, 's',      function (c) c.sticky = not c.sticky          end),
-	awful.key({ modkey,           }, 'n',
-		function (c)
-			-- The client currently has the input focus, so it cannot be
-			-- minimized, since minimized clients can't have the focus.
-			c.minimized = true
-		end),
-	awful.key({ modkey,           }, 'm',
+	awful.key({ modkey, 'Shift'   }, 't',      function (c) c.ontop = not c.ontop            end),
+	awful.key({ modkey, 'Shift'   }, 's',      function (c) c.sticky = not c.sticky          end),
+	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
+	awful.key({ modkey, 'Shift'   }, 'm',
 		function (c)
 			c.maximized_horizontal = not c.maximized_horizontal
 			c.maximized_vertical   = not c.maximized_vertical
@@ -569,7 +545,8 @@ awful.rules.rules = {
 				'KB.exe'
 			},
 			name = {
-				'Hand of Fate'
+				'Hand of Fate',
+				'Serious Sam 3 - Linux'
 			}
 		},
 		properties = {
