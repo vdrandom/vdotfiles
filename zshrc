@@ -162,13 +162,6 @@ if [[ $OSTYPE != cygwin ]]; then
 fi
 
 # ---> alias functions
-function wine {
-	if $(pwd|grep "$HOME/.wine"); then
-		WINEPREFIX="$(pwd|awk -F'/' '{print "/"$2"/"$3"/"$4}')" command wine $@
-	else
-		command wine $@
-	fi
-}
 
 # ---> other functions
 function screenoffdisable {
@@ -182,7 +175,7 @@ function screenoffenable {
 function zshrc {
 	vim "$HOME/.zshrc"
 }
-autoload wine screenoffdisable screenoffenable
+autoload screenoffdisable screenoffenable
 
 # command line syntax highlight from https://github.com/zsh-users/zsh-syntax-highlighting
 hl_script="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
