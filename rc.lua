@@ -360,7 +360,14 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)                           end),
 	awful.key({ modkey,           }, 'f',     function () awful.layout.set(awful.layout.suit.float)       end),
 	awful.key({ modkey,           }, 'm',     function () awful.layout.set(awful.layout.suit.max)         end),
-	awful.key({ modkey,           }, 't',     function () awful.layout.set(awful.layout.suit.tile.bottom) end),
+	awful.key({ modkey,           }, 't',
+		function ()
+			if awful.layout.get(mouse.screen) == awful.layout.suit.tile.bottom then
+				awful.layout.set(awful.layout.suit.tile)
+			else
+				awful.layout.set(awful.layout.suit.tile.bottom)
+			end
+		end),
 
 	awful.key({ modkey, 'Control' }, 'n',     awful.client.restore),
 
