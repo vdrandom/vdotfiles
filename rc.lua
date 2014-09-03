@@ -613,7 +613,7 @@ client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_n
 -- {{{ Autostart
 -- don't forget you sync this file
 -- this shit runs every time you restart your wm, dumbass.
-awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:win_space_toggle,caps:ctrl_modifier,compose:menu,grp_led:scroll')
+awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:caps_toggle,grp:win_space_toggle,compose:menu,grp_led:scroll')
 awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
 if ifexists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
