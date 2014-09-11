@@ -487,8 +487,10 @@ awful.rules.rules = {
 		rule_any = {
 			class = {
 				'Deadbeef',
+				'Google-musicmanager',
 				'mpv',
 				'Pavucontrol',
+				'Pidgin',
 				'pinentry',
 				'plugin-container',
 				'Qmmp',
