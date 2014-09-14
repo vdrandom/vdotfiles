@@ -551,7 +551,8 @@ awful.rules.rules = {
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
-				'KB.exe'
+				'KB.exe',
+				'nwn2main.exe'
 			},
 			name = {
 				'Hand of Fate',
