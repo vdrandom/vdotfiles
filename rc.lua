@@ -202,9 +202,7 @@ mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
 	awful.button({ }, 1,
 		function (c)
-			if c == client.focus then
-				c.minimized = true
-			else
+			if c ~= client.focus then
 				-- Without this, the following
 				-- :isvisible() makes no sense
 				c.minimized = false
