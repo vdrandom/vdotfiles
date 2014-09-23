@@ -52,10 +52,10 @@ if filereadable(expand("$HOME/.vim/plugins/svndiff.vim"))
 endif
 
 " set color scheme depending on the terminal capabilities
-if &t_Co < 88
-	colorscheme elflord
+if &t_Co > 255 || has("gui_running")
+	colorscheme molokai
 else
-	colorscheme solarized
+	colorscheme elflord
 endif
 
 " still have to deal with old vim versions :<
