@@ -535,8 +535,10 @@ awful.rules.rules = {
 	{
 		rule_any = {
 			class = {
+				'Awesomenauts.bin.x86',
 				'Civ5XP',
 				'ck2',
+				'csgo_linux',
 				'deponia_tcj',
 				'dota_linux',
 				'game.x86_64',
@@ -544,8 +546,7 @@ awful.rules.rules = {
 				'Pandora',
 				'Strife',
 				'Symphony.bin.x86_64',
-				'witcher2',
-				'Awesomenauts.bin.x86'
+				'witcher2'
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
