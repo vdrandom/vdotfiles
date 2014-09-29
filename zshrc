@@ -178,7 +178,8 @@ function zshrc {
 autoload screenoffdisable screenoffenable
 
 # command line syntax highlight from https://github.com/zsh-users/zsh-syntax-highlighting
-hl_script="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+#hl_script="$HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+hl_script="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 if [[ -r $hl_script ]]; then
 	source $hl_script
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
