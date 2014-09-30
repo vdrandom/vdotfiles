@@ -114,7 +114,7 @@ alias mountnrg='sudo mount -o loop,offset=307200'
 # git
 alias gss='command git status -s'
 alias gdf='command git diff'
-alias gci='command git commit -a'
+alias gci='command git commit'
 alias gup='command git pull'
 # svn
 alias sss='command svn status'
@@ -123,7 +123,7 @@ alias sci='command svn commit'
 alias sup='command svn up'
 
 # ---> global aliases
-alias -g L='| less'
+alias -g L='| less -R'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
