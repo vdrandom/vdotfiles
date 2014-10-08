@@ -52,8 +52,10 @@ if filereadable(expand("$HOME/.vim/plugins/svndiff.vim"))
 endif
 
 " set color scheme depending on the terminal capabilities
-if &t_Co > 255 || has("gui_running")
-	colorscheme molokai
+if &t_Co > 88 || has("gui_running")
+	colorscheme solarized
+	let g:solarized_termtrans=1
+	let g:solarized_italic=0
 else
 	colorscheme elflord
 endif
