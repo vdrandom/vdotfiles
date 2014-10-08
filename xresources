@@ -8,14 +8,18 @@ Xft.dpi:		96
 
 ! urxvt config, but I barely use it
 URxvt.scrollBar:	false
-URxvt.font:		-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
-URxvt.boldFont:		-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
-URxvt.boldItalicFont:	-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
-URxvt.italicFont:	-*-terminus-bold-*-*-*-14-*-*-*-*-*-*-*
+URxvt.font:		-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt.boldFont:		-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt.boldItalicFont:	-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt.italicFont:	-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 URxvt.saveLines:	1000
 URxvt.iso14755:		false
 URxvt.visualBell:	true
 URxvt.urgentOnBell:	true
+URxvt.cursorUnderline:	true
+URxvt.transparent:	true
+URxvt.shading:		50
+URxvt.blurRadius:	5x5
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:	default,matcher,clipboard
