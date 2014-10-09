@@ -48,9 +48,11 @@ PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %~ %(1j.+%F{red}%j%f.)%(!.%F{
 # ---> bindings
 bindkey -e
 # home
+bindkey "^[OH" beginning-of-line # xfce4-terminal
 bindkey "^[[H" beginning-of-line # generic
 bindkey "^[[1~" beginning-of-line # screen
 # end
+bindkey "^[OF" end-of-line # xfce4-terminal
 bindkey "^[[F" end-of-line # generic
 bindkey "^[[4~" end-of-line # screen
 # pgup / pgdown

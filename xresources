@@ -17,9 +17,6 @@ URxvt.iso14755:		false
 URxvt.visualBell:	true
 URxvt.urgentOnBell:	true
 URxvt.cursorUnderline:	true
-URxvt.transparent:	true
-URxvt.shading:		50
-URxvt.blurRadius:	5x5
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:	default,matcher,clipboard
