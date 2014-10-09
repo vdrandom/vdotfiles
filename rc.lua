@@ -517,9 +517,13 @@ awful.rules.rules = {
 		properties = { floating = true }
 	},
 	-- Remove gaps between terminal windows:
-	-- roxterm
 	{
-		rule = { class = 'Roxterm' },
+		rule_any = {
+			class = {
+				'Roxterm',
+				'Xfce4-terminal'
+			}
+		},
 		properties = { size_hints_honor = false }
 	},
 	-- Specific desktops rules: place windows only on specific tags by default
