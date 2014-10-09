@@ -43,7 +43,7 @@ if [[ $OSTYPE == linux-gnu ]] && [[ $TERM == screen || $TERM == xterm ]]; then
 fi
 
 # ---> prompt
-PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %~ %(1j.+%F{red}%j%f.)%(!.%F{red}.%F{green})%#%f%b "
+PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %F{white}%~%f %(1j.+%F{red}%j%f.)%(!.%F{red}.%F{green})%#%f%b "
 
 # ---> bindings
 bindkey -e
