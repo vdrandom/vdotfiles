@@ -18,6 +18,9 @@ URxvt.visualBell:	true
 URxvt.urgentOnBell:	true
 URxvt.cursorUnderline:	true
 
+! icon (needs pixbuf support compiled)
+URxvt.iconFile:		/usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
+
 ! urxvt perl extensions
 URxvt.perl-ext-common:	default,matcher,clipboard
 URxvt.url-launcher:	/usr/bin/firefox
