@@ -18,6 +18,9 @@ URxvt.visualBell:	true
 URxvt.urgentOnBell:	true
 URxvt.cursorUnderline:	true
 
+! some weird shit to make less behave as usual
+URxvt.termName:		xterm-256color
+
 ! icon (needs pixbuf support compiled)
 URxvt.iconFile:		/usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 
@@ -26,7 +29,7 @@ URxvt.perl-ext-common:	default,matcher,clipboard
 URxvt.url-launcher:	/usr/bin/firefox
 URxvt.matcher.button:	3
 URxvt.keysym.C-C:	perl:clipboard:copy
-URxvt.keysym.S-V:	perl:clipboard:paste
+URxvt.keysym.C-V:	perl:clipboard:paste
 
 !! drop in Solarized colorscheme for Xresources/Xdefaults
 
