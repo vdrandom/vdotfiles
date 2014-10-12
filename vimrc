@@ -43,18 +43,9 @@ if has("gui_running")
 	set guifont=Terminus\ 11
 endif
 
-" svndiff plugin
-if filereadable(expand("$HOME/.vim/plugins/svndiff.vim"))
-	source $HOME/.vim/plugins/svndiff.vim
-	noremap <F3> :call Svndiff("prev")<CR>
-	noremap <F4> :call Svndiff("next")<CR>
-	noremap <F5> :call Svndiff("clear")<CR>
-endif
-
 " set color scheme depending on the terminal capabilities
 if &t_Co > 88 || has("gui_running")
 	colorscheme solarized
-	let g:solarized_termtrans=1
 	let g:solarized_italic=0
 else
 	colorscheme elflord
@@ -70,23 +61,31 @@ if v:version >= 703
 		filetype off
 		set rtp+=~/.vim/bundle/Vundle.vim/
 		call vundle#begin()
-		Plugin 'gmarik/Vundle.vim'
+		Plugin 'gmarik/Vundle.vim'	"plugin manager
 
 		" general plugins
-		Plugin 'scrooloose/nerdtree'
-		Plugin 'scrooloose/syntastic'
-		Plugin 'msanders/snipmate.vim'
-		Plugin 'bling/vim-airline'
-		Plugin 'bling/vim-bufferline'
-		Plugin 'tpope/vim-surround'
-		Plugin 'mbbill/undotree'
-		Plugin 'jiangmiao/auto-pairs'
+		Plugin 'scrooloose/nerdtree'		"file manager
+		Plugin 'scrooloose/syntastic'		"syntax checker
+		Plugin 'msanders/snipmate.vim'		"snippets support
+		Plugin 'bling/vim-airline'		"stylish info display
+		Plugin 'bling/vim-bufferline'		"stylish buffer display
+		Plugin 'tpope/vim-surround'		"quotes replacement made easy
+		Plugin 'mbbill/undotree'		"undo buffer manager
+		Plugin 'jiangmiao/auto-pairs'		"auto add closing brackets and quotes
+		Plugin 'mhinz/vim-signify'		"version control system gutter info
 
 		" syntax highlight plugins
-		Plugin 'puppetlabs/puppet-syntax-vim'
-		Plugin 'vim-scripts/nagios-syntax'
+		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
+		Plugin 'nagios-syntax'			"nagios / icinga
 		call vundle#end()
+
+		" airline options
 		let g:airline_powerline_fonts = 1
+
+		" signify options
+		let g:signify_vcs_list = [ 'svn', 'git' ]
+		let g:signify_sign_change = '~'
+
 	elseif filereadable(expand("$HOME/.vim/autoload/pathogen.vim"))
 		execute pathogen#infect()
 	endif

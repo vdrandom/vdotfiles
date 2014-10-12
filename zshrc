@@ -51,10 +51,12 @@ bindkey -e
 bindkey "^[OH" beginning-of-line # xfce4-terminal
 bindkey "^[[H" beginning-of-line # generic
 bindkey "^[[1~" beginning-of-line # screen
+bindkey "^[[7~" beginning-of-line # rxvt
 # end
 bindkey "^[OF" end-of-line # xfce4-terminal
 bindkey "^[[F" end-of-line # generic
 bindkey "^[[4~" end-of-line # screen
+bindkey "^[[8~" end-of-line # rxvt
 # pgup / pgdown
 bindkey "^[[5~" backward-word
 bindkey "^[[6~" forward-word
@@ -185,6 +187,8 @@ hl_script="/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlightin
 if [[ -r $hl_script ]]; then
 	source $hl_script
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+	ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
+	ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=white,bold'
 fi
 
 # history substring search à la fish from https://github.com/zsh-users/zsh-history-substring-search

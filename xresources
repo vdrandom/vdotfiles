@@ -6,12 +6,12 @@ Xft.hinting:		true
 Xft.hintstyle:		hintslight
 Xft.dpi:		96
 
-! urxvt config, but I barely use it
+! urxvt
 URxvt.scrollBar:	false
-URxvt.font:		-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-URxvt.boldFont:		-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-URxvt.boldItalicFont:	-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
-URxvt.italicFont:	-*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
+URxvt.font:		xft:Terminus:size=11
+URxvt.boldFont:		xft:Terminus:size=11
+URxvt.boldItalicFont:	xft:Terminus:size=11
+URxvt.italicFont:	xft:Terminus:size=11
 URxvt.saveLines:	1000
 URxvt.iso14755:		false
 URxvt.visualBell:	true
@@ -82,7 +82,7 @@ URxvt.keysym.S-V:	perl:clipboard:paste
 *fading:		40
 *colorBD:		S_base3
 *fadeColor:		S_base03
-*cursorColor:		S_base1
+*cursorColor:		S_base3
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
 

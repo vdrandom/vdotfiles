@@ -69,7 +69,7 @@ if ifexists(wallpaper) then
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = 'xfce4-terminal'
+terminal = 'urxvt'
 editor = os.getenv('EDITOR') or 'vim'
 editor_cmd = terminal .. ' -e ' .. editor
 
@@ -521,6 +521,7 @@ awful.rules.rules = {
 		rule_any = {
 			class = {
 				'Roxterm',
+				'URxvt',
 				'Xfce4-terminal'
 			}
 		},
