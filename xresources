@@ -8,10 +8,10 @@ Xft.dpi:		96
 
 ! urxvt
 URxvt.scrollBar:	false
-URxvt.font:		xft:Terminus:size=11
-URxvt.boldFont:		xft:Terminus:size=11
-URxvt.boldItalicFont:	xft:Terminus:size=11
-URxvt.italicFont:	xft:Terminus:size=11
+URxvt.font:		xft:Terminus:size=11:antialias=false
+URxvt.boldFont:		xft:Terminus:size=11:antialias=false
+URxvt.boldItalicFont:	xft:Terminus:size=11:antialias=false
+URxvt.italicFont:	xft:Terminus:size=11:antialias=false
 URxvt.saveLines:	1000
 URxvt.iso14755:		false
 URxvt.visualBell:	true

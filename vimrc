@@ -25,6 +25,9 @@ set smartcase
 set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
+set list
+set listchars=tab:→\ ,trail:•,nbsp:×
+
 " set indentation options for specific file types
 autocmd FileType ruby setlocal sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal sts=2 sw=2 expandtab
@@ -61,18 +64,18 @@ if v:version >= 703
 		filetype off
 		set rtp+=~/.vim/bundle/Vundle.vim/
 		call vundle#begin()
-		Plugin 'gmarik/Vundle.vim'	"plugin manager
+		Plugin 'gmarik/Vundle.vim'		"plugin manager
 
 		" general plugins
-		Plugin 'scrooloose/nerdtree'		"file manager
-		Plugin 'scrooloose/syntastic'		"syntax checker
-		Plugin 'msanders/snipmate.vim'		"snippets support
 		Plugin 'bling/vim-airline'		"stylish info display
 		Plugin 'bling/vim-bufferline'		"stylish buffer display
-		Plugin 'tpope/vim-surround'		"quotes replacement made easy
-		Plugin 'mbbill/undotree'		"undo buffer manager
 		Plugin 'jiangmiao/auto-pairs'		"auto add closing brackets and quotes
+		Plugin 'mbbill/undotree'		"undo buffer manager
 		Plugin 'mhinz/vim-signify'		"version control system gutter info
+		Plugin 'msanders/snipmate.vim'		"snippets support
+		Plugin 'scrooloose/nerdtree'		"file manager
+		Plugin 'scrooloose/syntastic'		"syntax checker
+		Plugin 'tpope/vim-surround'		"quotes replacement made easy
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
@@ -81,6 +84,8 @@ if v:version >= 703
 
 		" airline options
 		let g:airline_powerline_fonts = 1
+		let g:airline_symbols = {}
+		let g:airline_symbols.whitespace = '!'
 
 		" signify options
 		let g:signify_vcs_list = [ 'svn', 'git' ]
