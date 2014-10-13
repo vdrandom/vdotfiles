@@ -488,7 +488,6 @@ awful.rules.rules = {
 				'Google-musicmanager',
 				'mpv',
 				'Pavucontrol',
-				'Pidgin',
 				'pinentry',
 				'plugin-container',
 				'Qmmp',
