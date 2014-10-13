@@ -38,7 +38,7 @@ export PAGER='less'
 export EDITOR='vim'
 
 # ---> colors
-if [[ $OSTYPE == linux-gnu ]] && [[ $TERM == screen || $TERM == xterm ]]; then
+if [[ $OSTYPE == linux-gnu ]] && [[ $TERM == screen || $TERM == xterm || $TERM == rxvt-unicode ]]; then
 	export TERM="$TERM-256color"
 fi
 
@@ -47,30 +47,29 @@ PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %F{white}%~%f %(1j.+%F{red}%j
 
 # ---> bindings
 bindkey -e
-# home
-bindkey "^[OH" beginning-of-line # xfce4-terminal
-bindkey "^[[H" beginning-of-line # generic
-bindkey "^[[1~" beginning-of-line # screen
-bindkey "^[[7~" beginning-of-line # rxvt
-# end
-bindkey "^[OF" end-of-line # xfce4-terminal
-bindkey "^[[F" end-of-line # generic
-bindkey "^[[4~" end-of-line # screen
-bindkey "^[[8~" end-of-line # rxvt
-# pgup / pgdown
-bindkey "^[[5~" backward-word
-bindkey "^[[6~" forward-word
-# del
-bindkey "^[[3~" delete-char
-# ctrl + del
-bindkey '^[[3;5~' delete-word
-# ctrl + right / ctrl + left
-bindkey "^[[1;5C" forward-word # generic
-bindkey "^[[1;5D" backward-word # generic
-# other
-bindkey "^R" history-incremental-search-backward
-# file rename magic
-bindkey "^[m" copy-prev-shell-word
+# urxvt
+bindkey	'^[[7~'		beginning-of-line			# home
+bindkey	'^[[8~'		end-of-line				# end
+bindkey	'^[Oc'		forward-word				# ctrl + right
+bindkey	'^[Od'		backward-word				# ctrl + left
+bindkey	'^[[3^'		delete-word				# ctrl + del
+bindkey	'^H'		backward-delete-word			# ctrl + backspace
+# screen
+bindkey	'^[[1~'		beginning-of-line			# home
+bindkey	'^[[4~'		end-of-line				# end
+# xterm
+bindkey	'^[[H'		beginning-of-line			# home
+bindkey	'^[[F'		end-of-line				# end
+# most of them (but not urxvt)
+bindkey	'^[[1;5C'	forward-word				# ctrl + right
+bindkey	'^[[1;5D'	backward-word				# ctrl + left
+bindkey	'^[[3;5~'	delete-word				# ctrl + del
+# all of them
+bindkey	'^[[5~'		backward-word				# page up
+bindkey	'^[[6~'		forward-word				# page down
+bindkey	'^[[3~'		delete-char				# del
+bindkey	'^R'		history-incremental-search-backward	# ctrl + R
+bindkey	'^[m'		copy-prev-shell-word			# alt + m
 
 # ---> aliases:
 alias vi='command vim'
