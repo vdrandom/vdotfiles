@@ -39,21 +39,6 @@ autocmd FileType python setlocal sts=4 sw=4 expandtab
 nmap j gj
 nmap k gk
 
-" gvim stuff
-if has("gui_running")
-	set guioptions=aegimLl
-	set mouse=a
-	set guifont=Terminus\ 11
-endif
-
-" set color scheme depending on the terminal capabilities
-if &t_Co > 88 || has("gui_running")
-	colorscheme solarized
-	let g:solarized_italic=0
-else
-	colorscheme elflord
-endif
-
 " still have to deal with old vim versions :<
 if v:version >= 703
 	" enable case indentation
@@ -77,6 +62,11 @@ if v:version >= 703
 		Plugin 'scrooloose/syntastic'		"syntax checker
 		Plugin 'tpope/vim-surround'		"quotes replacement made easy
 
+		" colorscheme ...
+		Plugin 'vdrandom/forked-solarized.vim'	"solarized
+		Plugin 'nanotech/jellybeans.vim'	"jellybeans
+		Plugin 'tomasr/molokai'			"molokai
+
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
 		Plugin 'nagios-syntax'			"nagios / icinga
@@ -96,6 +86,22 @@ if v:version >= 703
 	elseif filereadable(expand("$HOME/.vim/autoload/pathogen.vim"))
 		execute pathogen#infect()
 	endif
+endif
+
+" set color scheme depending on the terminal capabilities
+if &t_Co > 88 || has("gui_running")
+	colorscheme solarized
+else
+	colorscheme elflord
+endif
+
+" gvim stuff
+if has("gui_running")
+	let g:solarized_italic=0
+	let g:solarized_bold=0
+	set guioptions=aegimLl
+	set mouse=a
+	set guifont=Terminus\ 11
 endif
 
 syntax on
