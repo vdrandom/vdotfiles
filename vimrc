@@ -26,6 +26,7 @@ set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 set list
+set listchars=tab:→\ ,trail:•,nbsp:×
 
 " set indentation options for specific file types
 autocmd FileType ruby setlocal sts=2 sw=2 expandtab
@@ -47,11 +48,9 @@ endif
 
 " set color scheme depending on the terminal capabilities
 if &t_Co > 88 || has("gui_running")
-	set listchars=tab:→\ ,trail:•,nbsp:×
 	colorscheme solarized
 	let g:solarized_italic=0
 else
-	set listchars=tab:|\ ,trail:*,nbsp:x
 	colorscheme elflord
 endif
 
