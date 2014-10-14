@@ -83,7 +83,9 @@ if v:version >= 703
 		call vundle#end()
 
 		" airline options
-		let g:airline_powerline_fonts = 1
+		if &t_Co > 88 || has("gui_running")
+			let g:airline_powerline_fonts = 1
+		endif
 		let g:airline_symbols = {}
 		let g:airline_symbols.whitespace = '!'
 

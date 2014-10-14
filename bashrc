@@ -16,7 +16,6 @@ COMP_ENABLE=true
 
 # Other useful vars
 #export LC_CTYPE= <- for system messages locale
-[[ $TERM == screen || $TERM == xterm ]] && export TERM=$TERM-256color
 export LC_ALL='en_GB.UTF-8'
 export LANG=$LC_ALL
 export PAGER='less -R'

@@ -37,11 +37,6 @@ export LANG="$LC_ALL"
 export PAGER='less'
 export EDITOR='vim'
 
-# ---> colors
-if [[ $OSTYPE == linux-gnu ]] && [[ $TERM == screen || $TERM == xterm || $TERM == rxvt-unicode ]]; then
-	export TERM="$TERM-256color"
-fi
-
 # ---> prompt
 PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %F{white}%~%f %(1j.+%F{red}%j%f.)%(!.%F{red}.%F{green})%#%f%b "
 
