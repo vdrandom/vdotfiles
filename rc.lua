@@ -114,22 +114,17 @@ for s = 1, screen.count() do
 end
 -- screen 1
 --tags[1].name = {
---	[1] = '1:browser',
---	[2] = '2:terminal',
---	[3] = '3:terminal',
---	[4] = '4:float',
---	[9] = '9:mail'
+--	[1] = 'example',
+--	[9] = 'example2'
 --}
 tags[1].layout = {
 	[1] = layouts[2],
+	[2] = layouts[4],
 	[4] = layouts[1],
 	[5] = layouts[1]
 }
 -- screens 2+
 if screen.count() >= 2 then
-	--tags[2].name = {
-	--	[3] = '3:float',
-	--}
 	tags[2].layout = {
 		[3] = layouts[1]
 	}
@@ -191,12 +186,12 @@ mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
-	awful.button({ }, 1, awful.tag.viewonly),
+	awful.button({        }, 1, awful.tag.viewonly),
 	awful.button({ modkey }, 1, awful.client.movetotag),
-	awful.button({ }, 3, awful.tag.viewtoggle),
+	awful.button({        }, 3, awful.tag.viewtoggle),
 	awful.button({ modkey }, 3, awful.client.toggletag),
-	awful.button({ }, 5, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-	awful.button({ }, 4, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+	awful.button({        }, 5, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
+	awful.button({        }, 4, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
 )
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -320,11 +315,12 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'i', function () client.focus:raise() end),
 	awful.key({ modkey,           }, 'w', function () mymainmenu:show() end),
 
+	-- Switch between screens
+	awful.key({ modkey,           }, 'o', function () awful.screen.focus_relative(1) end),
+
 	-- Layout manipulation
 	awful.key({ modkey, 'Shift'   }, 'j', function () awful.client.swap.byidx(1) end),
 	awful.key({ modkey, 'Shift'   }, 'k', function () awful.client.swap.byidx(-1) end),
-	awful.key({ modkey, 'Control' }, 'j', function () awful.screen.focus_relative(1) end),
-	awful.key({ modkey, 'Control' }, 'k', function () awful.screen.focus_relative(-1) end),
 	awful.key({ modkey,           }, 'u', awful.client.urgent.jumpto),
 
 	-- Mod#+Tab hotkeys
@@ -394,14 +390,16 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, 'Shift'   }, 'c',      function (c) c:kill()                         end),
-	awful.key({ modkey, 'Shift'   }, 'f',      awful.client.floating.toggle                     ),
 	awful.key({ modkey,           }, 'Return', function (c) c:swap(awful.client.getmaster()) end),
-	awful.key({ modkey,           }, 'o',      awful.client.movetoscreen                        ),
+	awful.key({ modkey, 'Shift'   }, 'o',      awful.client.movetoscreen                        ),
+	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
+
+	-- Window properties
+	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey, 'Shift'   }, 't',      function (c) c.ontop = not c.ontop            end),
 	awful.key({ modkey, 'Shift'   }, 's',      function (c) c.sticky = not c.sticky          end),
-	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
+	awful.key({ modkey, 'Shift'   }, 'f',      awful.client.floating.toggle                     ),
 	awful.key({ modkey, 'Shift'   }, 'm',
 		function (c)
 			c.maximized_horizontal = not c.maximized_horizontal

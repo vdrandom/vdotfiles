@@ -90,15 +90,16 @@ endif
 
 " set color scheme depending on the terminal capabilities
 if &t_Co > 88 || has("gui_running")
-	colorscheme solarized
+	"colorscheme solarized
+	colorscheme jellybeans
 else
 	colorscheme elflord
 endif
 
 " gvim stuff
 if has("gui_running")
-	let g:solarized_italic=0
-	let g:solarized_bold=0
+	"let g:solarized_italic=0
+	"let g:solarized_bold=0
 	set guioptions=aegimLl
 	set mouse=a
 	set guifont=Terminus\ 11
