@@ -12,7 +12,7 @@ local naughty = require('naughty')
 local menubar = require('menubar')
 
 -- enable testing if file exists
-function ifexists(name)
+function exists(name)
 	local f=io.open(name,'r')
 	if f ~= nil then
 		io.close(f)
@@ -20,6 +20,16 @@ function ifexists(name)
 	else
 		return false
 	end
+end
+
+-- allows for intelligent check of the current layout
+function enters(element, table)
+	for key, value in pairs(table) do
+		if value == element then
+			return true
+		end
+	end
+	return false
 end
 
 -- {{{ Error handling
@@ -64,7 +74,7 @@ theme.font = 'Terminus 9'
 
 -- set wallpaper
 local wallpaper = '/home/von/Pictures/wallpaper.png'
-if ifexists(wallpaper) then
+if exists(wallpaper) then
 	theme.wallpaper = wallpaper
 end
 
@@ -80,21 +90,35 @@ editor_cmd = terminal .. ' -e ' .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = 'Mod4'
 
--- Table of layouts to cover with awful.layout.inc, order matters.
+-- Tables of layouts to cover with awful.layout.inc, order matters.
 local layouts = {
-	awful.layout.suit.floating,
-	awful.layout.suit.tile,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.max
-	-- Also possible:
-	-- awful.layout.suit.tile.left,
-	-- awful.layout.suit.tile.top,
-	-- awful.layout.suit.fair,
-	-- awful.layout.suit.fair.horizontal,
-	-- awful.layout.suit.spiral,
-	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max.fullscreen,
-	-- awful.layout.suit.magnifier
+	tiled = {
+		awful.layout.suit.tile,
+		awful.layout.suit.tile.bottom,
+		awful.layout.suit.tile.left,
+		awful.layout.suit.tile.top
+	},
+	max = {
+		awful.layout.suit.max,
+		awful.layout.suit.max.fullscreen
+	},
+	float = {
+		awful.layout.suit.floating
+	},
+
+	-- Some weird shit I don't use, but it still exists:
+
+	fair = {
+		awful.layout.suit.fair,
+		awful.layout.suit.fair.horizontal
+	},
+	spiral = {
+		awful.layout.suit.spiral,
+		awful.layout.suit.spiral.dwindle
+	},
+	magnifier = {
+		awful.layout.suit.magnifier
+	}
 }
 -- }}}
 
@@ -118,22 +142,22 @@ end
 --	[9] = 'example2'
 --}
 tags[1].layout = {
-	[1] = layouts[2],
-	[2] = layouts[4],
-	[4] = layouts[1],
-	[5] = layouts[1]
+	[1] = layouts.tiled[1],
+	[2] = layouts.max[1],
+	[4] = layouts.float[1],
+	[5] = layouts.float[1]
 }
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
-		[3] = layouts[1]
+		[3] = layouts.float[1]
 	}
 end
 -- Fill the missing values with defaults
 for s = 1, screen.count() do
 	for tag = 1, 9 do
 		tags[s].name[tag] = tags[s].name[tag] or tag
-		tags[s].layout[tag] = tags[s].layout[tag] or layouts[3]
+		tags[s].layout[tag] = tags[s].layout[tag] or layouts.tiled[2]
 	end
 end
 -- Set tags instances in wm
@@ -144,27 +168,32 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-restartmenu = {
+mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
-quitmenu = {
+mymainmenu_quit = {
 	{ 'quit', awesome.quit }
 }
 
 mymainmenu = awful.menu({
 	items = {
-		{ 'restart', restartmenu, beautiful.awesome_icon },
-		{ 'quit', quitmenu, beautiful.awesome_icon }
+		{ 'restart',	mymainmenu_restart,	beautiful.awesome_icon },
+		{ 'quit',	mymainmenu_quit,	beautiful.awesome_icon }
 	}
-})
-
-mylauncher = awful.widget.launcher({
-	image = beautiful.awesome_icon,
-	menu = mymainmenu
 })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+-- }}}
+
+-- {{{ Menu for layoutbox
+mylbmenu = awful.menu({
+	items = {
+		{ 'Tiled',	function () awful.layout.set(layouts.tiled[1]) end },
+		{ 'Maximized',	function () awful.layout.set(layouts.max[1]) end },
+		{ 'Floating',	function () awful.layout.set(layouts.float[1]) end }
+	}
+})
 -- }}}
 
 -- {{{ Wibox
@@ -243,10 +272,14 @@ for s = 1, screen.count() do
 	mylayoutbox[s] = awful.widget.layoutbox(s)
 	mylayoutbox[s]:buttons(
 		awful.util.table.join(
-			awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-			awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-			awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-			awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)
+			awful.button({ }, 1,
+				function ()
+					local current_layout = awful.layout.get(mouse.screen)
+					if enters(current_layout, layouts.tiled) then
+						awful.layout.inc(layouts.tiled, 1)
+					end
+				end),
+			awful.button({ }, 3, function () mylbmenu:toggle() end)
 		)
 	)
 	-- Create a taglist widget
@@ -294,9 +327,7 @@ end
 -- {{{ Mouse bindings
 root.buttons(
 	awful.util.table.join(
-		awful.button({ }, 3, function () mymainmenu:toggle() end),
-		awful.button({ }, 5, awful.tag.viewnext),
-		awful.button({ }, 4, awful.tag.viewprev)
+		awful.button({ }, 3, function () mymainmenu:toggle() end)
 	)
 )
 -- }}}
@@ -352,14 +383,23 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)                        end),
 	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol(1)                            end),
 	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)                           end),
-	awful.key({ modkey,           }, 'f',     function () awful.layout.set(awful.layout.suit.float)       end),
-	awful.key({ modkey,           }, 'm',     function () awful.layout.set(awful.layout.suit.max)         end),
+	awful.key({ modkey,           }, 'f',     function () awful.layout.set(layouts.float[1])    end),
+	awful.key({ modkey,           }, 'm',
+		function ()
+			local current_layout = awful.layout.get(mouse.screen)
+			if not enters(current_layout, layouts.max) then
+				awful.layout.set(layouts.max[1])
+			else
+				awful.layout.inc(layouts.max, 1)
+			end
+		end),
 	awful.key({ modkey,           }, 't',
 		function ()
-			if awful.layout.get(mouse.screen) == awful.layout.suit.tile.bottom then
-				awful.layout.set(awful.layout.suit.tile)
+			local current_layout = awful.layout.get(mouse.screen)
+			if not enters(current_layout, layouts.tiled) then
+				awful.layout.set(layouts.tiled[1])
 			else
-				awful.layout.set(awful.layout.suit.tile.bottom)
+				awful.layout.inc(layouts.tiled, 1)
 			end
 		end),
 
@@ -556,6 +596,7 @@ awful.rules.rules = {
 				'nwn2main.exe'
 			},
 			name = {
+				'GunsOfIcarusOnline',
 				'Hand of Fate',
 				'Serious Sam 3 - Linux'
 			}
@@ -591,7 +632,7 @@ client.connect_signal(
 		c:connect_signal(
 			'mouse::enter',
 			function(c)
-				if (awful.layout.get(c.screen) ~= awful.layout.suit.magnifier and awful.layout.get(c.screen) ~= awful.layout.suit.floating) and awful.client.focus.filter(c) then
+				if awful.layout.get(c.screen) ~= layouts.float[1] and awful.client.focus.filter(c) then
 					client.focus = c
 				end
 			end
@@ -619,7 +660,7 @@ client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_n
 -- this shit runs every time you restart your wm, dumbass.
 awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option grp:caps_toggle,grp:win_space_toggle,compose:menu,grp_led:scroll')
 awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
-if ifexists('/home/von/.autostart') then
+if exists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
 end
 -- }}}
