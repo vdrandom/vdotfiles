@@ -17,7 +17,8 @@ comp_enable=true
 
 # Other useful vars
 #export LC_CTYPE= <- for system messages locale
-export LC_ALL='en_GB.UTF-8'
+export TIME_STYLE='long-iso'
+export LC_ALL='en_US.UTF-8'
 export LANG=${LC_ALL}
 export PAGER='less -R'
 export EDITOR='vim'
