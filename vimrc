@@ -26,7 +26,7 @@ set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 set list
-set listchars=tab:→\ ,trail:•,nbsp:×
+set listchars=tab:\|\ ,trail:*,nbsp:x
 
 " set indentation options for specific file types
 autocmd FileType ruby setlocal sts=2 sw=2 expandtab
@@ -68,6 +68,7 @@ if v:version >= 703
 		Plugin 'tomasr/molokai'			"molokai
 
 		" syntax highlight plugins
+		Plugin 'dag/vim-fish'			"fish
 		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
 		Plugin 'nagios-syntax'			"nagios / icinga
 		call vundle#end()
@@ -102,7 +103,7 @@ if has("gui_running")
 	"let g:solarized_bold=0
 	set guioptions=aegimLl
 	set mouse=a
-	set guifont=Terminus\ 11
+	set guifont=Monofur\ 11
 endif
 
 syntax on

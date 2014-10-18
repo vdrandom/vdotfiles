@@ -6,12 +6,14 @@ Xft.hinting:		true
 Xft.hintstyle:		hintslight
 Xft.dpi:		96
 
+#define urxvt_font xft:Monofur:size=11,xft:Terminus:bold:size=11:antialias=false
+
 ! urxvt
 URxvt.scrollBar:	false
-URxvt.font:		xft:Terminus:size=11:antialias=false
-URxvt.boldFont:		xft:Terminus:size=11:antialias=false
-URxvt.boldItalicFont:	xft:Terminus:size=11:antialias=false
-URxvt.italicFont:	xft:Terminus:size=11:antialias=false
+URxvt.font:		urxvt_font
+URxvt.boldFont:		urxvt_font
+URxvt.boldItalicFont:	urxvt_font
+URxvt.italicFont:	urxvt_font
 URxvt.saveLines:	1000
 URxvt.iso14755:		false
 URxvt.visualBell:	true
