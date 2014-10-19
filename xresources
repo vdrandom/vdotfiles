@@ -6,7 +6,7 @@ Xft.hinting:		true
 Xft.hintstyle:		hintslight
 Xft.dpi:		96
 
-#define urxvt_font xft:Monofur:size=11,xft:Terminus:bold:size=11:antialias=false
+#define urxvt_font xft:Terminus:bold:size=11:antialias=false
 
 ! urxvt
 URxvt.scrollBar:	false
