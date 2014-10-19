@@ -1,3 +1,4 @@
+-- {{{ Includes
 -- Standard awesome library
 local gears = require('gears')
 local awful = require('awful')
@@ -10,7 +11,8 @@ local beautiful = require('beautiful')
 -- Notification library
 local naughty = require('naughty')
 local menubar = require('menubar')
-
+-- }}}
+-- {{{ Custom functions
 -- enable testing if file exists
 function exists(name)
 	local f=io.open(name,'r')
@@ -31,7 +33,7 @@ function enters(element, table)
 	end
 	return false
 end
-
+-- }}}
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -65,7 +67,6 @@ do
 	)
 end
 -- }}}
-
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init('/home/von/vdotfiles/theme.lua')
@@ -121,7 +122,6 @@ local layouts = {
 	}
 }
 -- }}}
-
 -- {{{ Wallpaper
 if beautiful.wallpaper then
 	for s = 1, screen.count() do
@@ -129,7 +129,6 @@ if beautiful.wallpaper then
 	end
 end
 -- }}}
-
 -- {{{ Tags
 -- Provide tag names and layout settings if we wish to define them
 tags = {}
@@ -165,7 +164,6 @@ for s = 1, screen.count() do
 	tags[s] = awful.tag(tags[s].name, s, tags[s].layout)
 end
 -- }}}
-
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 mymainmenu_restart = {
@@ -185,7 +183,6 @@ mymainmenu = awful.menu({
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
-
 -- {{{ Menu for layoutbox
 mylbmenu = awful.menu({
 	items = {
@@ -195,7 +192,6 @@ mylbmenu = awful.menu({
 	}
 })
 -- }}}
-
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock('%a %d %H:%M')
@@ -218,9 +214,7 @@ mytaglist.buttons = awful.util.table.join(
 	awful.button({        }, 1, awful.tag.viewonly),
 	awful.button({ modkey }, 1, awful.client.movetotag),
 	awful.button({        }, 3, awful.tag.viewtoggle),
-	awful.button({ modkey }, 3, awful.client.toggletag),
-	awful.button({        }, 5, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-	awful.button({        }, 4, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+	awful.button({ modkey }, 3, awful.client.toggletag)
 )
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -323,7 +317,6 @@ for s = 1, screen.count() do
 	mywibox[s]:set_widget(layout)
 end
 -- }}}
-
 -- {{{ Mouse bindings
 root.buttons(
 	awful.util.table.join(
@@ -331,7 +324,6 @@ root.buttons(
 	)
 )
 -- }}}
-
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'Up',     function () awful.screen.focus_relative( 1) end),
@@ -504,7 +496,6 @@ clientbuttons = awful.util.table.join(
 -- Set keys
 root.keys(globalkeys)
 -- }}}
-
 -- {{{ Rules
 awful.rules.rules = {
 	-- All clients will match this rule.
@@ -622,7 +613,6 @@ awful.rules.rules = {
 	}
 }
 -- }}}
-
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal(

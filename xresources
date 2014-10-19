@@ -1,14 +1,14 @@
-! Xresources file
+! {{{ xft and cursor configuration
 Xcursor.theme:		Vanilla-DMZ-AA
 Xft.antialias:		true
 Xft.rgba:		rgb
 Xft.hinting:		true
 Xft.hintstyle:		hintslight
 Xft.dpi:		96
-
+! }}}
+! {{{ urxvt
 #define urxvt_font xft:Terminus:bold:size=11:antialias=false
 
-! urxvt
 URxvt.scrollBar:	false
 URxvt.font:		urxvt_font
 URxvt.boldFont:		urxvt_font
@@ -31,8 +31,8 @@ URxvt.url-launcher:	/usr/bin/firefox
 URxvt.matcher.button:	3
 URxvt.keysym.C-C:	perl:clipboard:copy
 URxvt.keysym.C-V:	perl:clipboard:paste
-
-!! drop in Solarized colorscheme for Xresources/Xdefaults
+! }}}
+! {{{ drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
 !!--------- ------- ---- -------  ----------- ---------- ----------- -----------
@@ -124,3 +124,4 @@ URxvt.keysym.C-V:	perl:clipboard:paste
 !! white dark/light
 *color7:		S_base2
 *color15:		S_base3
+! }}}
