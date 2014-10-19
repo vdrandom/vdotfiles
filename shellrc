@@ -19,6 +19,9 @@ unset local_bin
 # ---> completion
 comp_enabled=true
 
+# ---> dotfiles dir
+dotfiles="${HOME}/vdotfiles"
+
 # ---> environment
 export TIME_STYLE='long-iso'
 export LC_ALL='en_US.UTF-8'
@@ -194,8 +197,12 @@ screenoffenable() {
 	xset +dpms
 	xset s on
 }
+dotfiles_update() {
+	git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull
+	return 0
+}
 # enable autoload feature for zsh
-is_zsh && autoload screenoffdisable screenoffenable
+is_zsh && autoload screenoffdisable screenoffenable dotfiles_update
 
 # ---> other shell specific settings and sourcing of external files
 if is_zsh; then
