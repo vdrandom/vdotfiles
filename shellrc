@@ -3,13 +3,12 @@
 [[ $- != *i* ]] && return
 
 # Simplify further configuration by is_zsh() function instead of using [[]] every time
-if [[ -n ${ZSH_VERSION} ]]; then
-	is_zsh() { return 0 }
-	is_exec() { [[ -x $(whence ${1}) ]] }
+is_zsh() { [[ -n ${ZSH_VERSION} ]]; }
+if is_zsh; then
+	is_exec() { [[ -x $(whence ${1}) ]]; }
 	export HOSTNAME=${HOST}
 else
-	is_zsh() { return 1 }
-	is_exec() { [[ -x $(type -P ${1}) ]] }
+	is_exec() { [[ -x $(type -P ${1}) ]]; }
 fi
 
 # ---> $PATH
@@ -132,7 +131,7 @@ alias mountnrg='sudo mount -o loop,offset=307200'
 # git
 alias gss='command git status -s'
 alias gdf='command git diff'
-alias gci='command git commit'
+alias gci='command git commit -a'
 alias gup='command git pull'
 # svn
 alias sss='command svn status'
