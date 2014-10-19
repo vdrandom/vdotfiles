@@ -13,7 +13,7 @@ local naughty = require('naughty')
 local menubar = require('menubar')
 -- }}}
 -- {{{ Custom functions
--- enable testing if file exists
+-- test if file exists
 function exists(name)
 	local f=io.open(name,'r')
 	if f ~= nil then
@@ -24,7 +24,7 @@ function exists(name)
 	end
 end
 
--- allows for intelligent check of the current layout
+-- verify if element is part of the table
 function enters(element, table)
 	for key, value in pairs(table) do
 		if value == element then
