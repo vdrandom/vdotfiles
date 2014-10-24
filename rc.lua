@@ -69,9 +69,11 @@ end
 -- }}}
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init('/home/von/vdotfiles/theme.lua')
+beautiful.init('/usr/share/awesome/themes/default/theme.lua')
 theme.border_width = 1
 theme.font = 'Terminus 9'
+theme.taglist_squares_sel = nil
+theme.taglist_squares_unsel = nil
 
 -- set wallpaper
 local wallpaper = '/home/von/Pictures/wallpaper.png'
@@ -194,7 +196,7 @@ mylbmenu = awful.menu({
 -- }}}
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock('%a %d %H:%M')
+mytextclock = awful.widget.textclock(' %a %d %H:%M ')
 mytextclock:set_font('Terminus Bold 11')
 -- Create a mail notification widget
 mytextbox = wibox.widget.textbox()
@@ -283,7 +285,7 @@ for s = 1, screen.count() do
 	mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
 	-- Create the wibox
-	mywibox[s] = awful.wibox({ position = 'top', height = '16', screen = s })
+	mywibox[s] = awful.wibox({ position = 'top', height = '18', screen = s })
 
 	local left_layout = wibox.layout.fixed.horizontal()
 	local right_layout = wibox.layout.fixed.horizontal()
