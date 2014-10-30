@@ -25,6 +25,7 @@ set smartcase
 set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set foldmethod=marker
+set noerrorbells visualbell t_vb=
 
 set list
 set listchars=tab:\|\ ,trail:*,nbsp:x
@@ -104,6 +105,7 @@ if has("gui_running")
 	set guioptions=aegimLl
 	set mouse=a
 	set guifont=Monofur\ 11
+	set novb
 endif
 
 syntax on
