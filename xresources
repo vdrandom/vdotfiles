@@ -1,5 +1,5 @@
 ! {{{ xft and cursor configuration
-Xcursor.theme:		Vanilla-DMZ-AA
+Xcursor.theme:		Ardoise_opaque
 Xft.antialias:		true
 Xft.rgba:		rgb
 Xft.hinting:		true
