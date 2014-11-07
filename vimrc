@@ -56,7 +56,6 @@ if v:version >= 703
 		" general plugins
 		Plugin 'bling/vim-airline'		"stylish info display
 		Plugin 'bling/vim-bufferline'		"stylish buffer display
-		Plugin 'jiangmiao/auto-pairs'		"auto add closing brackets and quotes
 		Plugin 'mbbill/undotree'		"undo buffer manager
 		Plugin 'mhinz/vim-signify'		"version control system gutter info
 		Plugin 'msanders/snipmate.vim'		"snippets support
