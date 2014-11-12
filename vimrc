@@ -1,7 +1,6 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-map <S-Insert> <MiddleMouse>
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set nocompatible
@@ -25,6 +24,7 @@ set smartcase
 set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set foldmethod=marker
+" disable bell
 set noerrorbells visualbell t_vb=
 
 set list
@@ -35,8 +35,16 @@ autocmd FileType ruby setlocal sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal sts=2 sw=2 expandtab
 autocmd FileType puppet setlocal sts=2 sw=2 expandtab
 autocmd FileType python setlocal sts=4 sw=4 expandtab
-"autocmd FileType lua setlocal sts=4 sw=4 expandtab
 
+" maps
+map <S-Insert> <MiddleMouse>
+" map buffers to leader buffer number
+for i in range(1,9)
+	execute 'nmap <C-W>' . i . ' :buffer ' . i . '<cr>'
+endfor
+
+" nmaps
+nmap <Space> <C-W>
 " next line in wrapped lines
 nmap j gj
 nmap k gk
@@ -85,8 +93,10 @@ if v:version >= 703
 		let g:signify_vcs_list = [ 'svn', 'git' ]
 		let g:signify_sign_change = '~'
 
-	elseif filereadable(expand("$HOME/.vim/autoload/pathogen.vim"))
-		execute pathogen#infect()
+		" nerdtree options
+		map <C-W>k :NERDTreeToggle<cr>
+		autocmd StdinReadPre * let s:std_in=1
+		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 	endif
 endif
 
