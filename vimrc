@@ -61,7 +61,8 @@ if v:version >= 703
 		Plugin 'mbbill/undotree'		"undo buffer manager
 		Plugin 'mhinz/vim-signify'		"version control system gutter info
 		Plugin 'msanders/snipmate.vim'		"snippets support
-		Plugin 'scrooloose/nerdcommenter'	"comment manager Plugin 'scrooloose/nerdtree'		"file manager
+		Plugin 'scrooloose/nerdcommenter'	"comment manager
+		Plugin 'scrooloose/nerdtree'		"file manager
 		Plugin 'scrooloose/syntastic'		"syntax checker
 		Plugin 'tpope/vim-fugitive'		"git awesomeness
 		Plugin 'tpope/vim-surround'		"quotes replacement made easy
