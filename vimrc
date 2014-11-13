@@ -54,6 +54,7 @@ if v:version >= 703
 		Plugin 'gmarik/Vundle.vim'		"plugin manager
 
 		" general plugins
+		" from github.com
 		Plugin 'bling/vim-airline'		"stylish info display
 		Plugin 'bling/vim-bufferline'		"stylish buffer display
 		Plugin 'jeetsukumaran/vim-buffergator'	"buffer management
@@ -67,6 +68,8 @@ if v:version >= 703
 		Plugin 'tpope/vim-fugitive'		"git awesomeness
 		Plugin 'tpope/vim-surround'		"quotes replacement made easy
 		Plugin 'tpope/vim-tbone'		"tmux support
+		" from vim.sf.net
+		Plugin 'directionalWindowResizer'	"resize windows with simple hotkeys
 		Plugin 'vcscommand.vim'			"shortcuts for vcs
 
 		" colorscheme ...
