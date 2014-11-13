@@ -37,17 +37,7 @@ autocmd FileType puppet setlocal sts=2 sw=2 expandtab
 autocmd FileType python setlocal sts=4 sw=4 expandtab
 
 " maps
-map <S-Insert> <MiddleMouse>
-" map buffers to leader buffer number
-for i in range(1,9)
-	execute 'nmap <C-W>'.i.' :b'.i.'<cr>'
-	execute 'nmap <C-W>s'.i. ' :sb'.i.'<cr>'
-	execute 'nmap <C-W>v'.i.' :vert sb'.i.'<cr>'
-endfor
-
-" nmaps
 nmap <Space> <C-W>
-" next line in wrapped lines
 nmap j gj
 nmap k gk
 
@@ -66,17 +56,17 @@ if v:version >= 703
 		" general plugins
 		Plugin 'bling/vim-airline'		"stylish info display
 		Plugin 'bling/vim-bufferline'		"stylish buffer display
+		Plugin 'jeetsukumaran/vim-buffergator'	"buffer management
 		Plugin 'kien/ctrlp.vim'			"some quick file accessiong goodness
 		Plugin 'mbbill/undotree'		"undo buffer manager
 		Plugin 'mhinz/vim-signify'		"version control system gutter info
 		Plugin 'msanders/snipmate.vim'		"snippets support
-		Plugin 'scrooloose/nerdcommenter'	"comment manager
-		Plugin 'scrooloose/nerdtree'		"file manager
+		Plugin 'scrooloose/nerdcommenter'	"comment manager Plugin 'scrooloose/nerdtree'		"file manager
 		Plugin 'scrooloose/syntastic'		"syntax checker
+		Plugin 'tpope/vim-fugitive'		"git awesomeness
 		Plugin 'tpope/vim-surround'		"quotes replacement made easy
-
-		" experimenting
-		Plugin 'buffet.vim' "horribly outdated, replace with version from bitbucket
+		Plugin 'tpope/vim-tbone'		"tmux support
+		Plugin 'vcscommand.vim'			"shortcuts for vcs
 
 		" colorscheme ...
 		Plugin 'vdrandom/forked-solarized.vim'	"solarized
@@ -96,6 +86,9 @@ if v:version >= 703
 		let g:airline_symbols = {}
 		let g:airline_symbols.whitespace = '!'
 
+		" bufferline options
+		let g:bufferline_show_bufnr = 0
+
 		" signify options
 		let g:signify_vcs_list = [ 'svn', 'git' ]
 		let g:signify_sign_change = '~'
@@ -103,8 +96,6 @@ if v:version >= 703
 		" nerdtree options
 		let NERDTreeDirArrows=0
 		map <C-W>. :NERDTreeToggle<cr>
-		autocmd StdinReadPre * let s:std_in=1
-		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 	endif
 endif
 
@@ -119,10 +110,13 @@ endif
 if has("gui_running")
 	let g:solarized_italic=0
 	let g:solarized_bold=0
+	let NERDTreeDirArrows=1
 	set guioptions=aegimLl
 	set mouse=a
-	set guifont=Monofur\ 11
+	set guifont=Terminus\ 11
 	set novb
+	map <S-Insert> <MiddleMouse>
+	map! <S-Insert> <MiddleMouse>
 endif
 
 syntax on
