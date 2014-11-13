@@ -1,3 +1,4 @@
+! vim: ft=xdefaults
 ! {{{ xft and cursor configuration
 Xcursor.theme:		Ardoise_opaque
 Xft.antialias:		true

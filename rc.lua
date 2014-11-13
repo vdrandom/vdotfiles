@@ -511,7 +511,7 @@ awful.rules.rules = {
 			buttons = clientbuttons
 		}
 	},
-	-- Floating only rules class based rules
+	-- Floating only rules:
 	{
 		rule_any = {
 			class = {
@@ -533,7 +533,7 @@ awful.rules.rules = {
 			floating = true
 		}
 	},
-	-- Mostly floating rules, we want to keep them separately since it's easier to manage
+	-- Per app rules
 	-- firefox
 	{
 		rule = { class = 'Firefox' },
@@ -558,7 +558,20 @@ awful.rules.rules = {
 		properties = { size_hints_honor = false }
 	},
 	-- Specific desktops rules: place windows only on specific tags by default
-	-- steam
+	-- tag 2: games = maximized
+	{
+		rule_any = {
+			instance = {
+				'BaldursGate',
+				'IcewindDale'
+			}
+		},
+		properties = {
+			border_width = 0,
+			tag = tags[1][2]
+		}
+	},
+	-- tag 4: steam
 	{
 		rule_any = {
 			class = { 'Steam' },
@@ -566,7 +579,7 @@ awful.rules.rules = {
 		},
 		properties = { tag = tags[1][4] }
 	},
-	-- games = float / fullscreen
+	-- tag 5: mostly games, float / fullscreen
 	{
 		rule_any = {
 			class = {
@@ -599,19 +612,6 @@ awful.rules.rules = {
 			floating = true,
 			tag = tags[1][5]
 		}
-	},
-	-- games = maximized
-	{
-		rule_any = {
-			instance = {
-				'BGEE.exe',
-				'Baldur.exe'
-			}
-		},
-		properties = {
-			border_width = 0,
-			tag = tags[1][2]
-		}
 	}
 }
 -- }}}
@@ -624,7 +624,7 @@ client.connect_signal(
 		c:connect_signal(
 			'mouse::enter',
 			function(c)
-				if awful.layout.get(c.screen) ~= layouts.float[1] and awful.client.focus.filter(c) then
+				if awful.layout.get(c.screen) ~= layouts.magnifier[1] and awful.client.focus.filter(c) then
 					client.focus = c
 				end
 			end
