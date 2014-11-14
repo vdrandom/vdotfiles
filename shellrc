@@ -4,6 +4,8 @@
 
 # {{{ common
 # {{{ environment
+newline="
+"
 local_bin="${HOME}/.local/bin"
 dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
@@ -137,17 +139,35 @@ if is_zsh; then
 	fi
 	# }}}
 	# {{{ prompt
-	PROMPT="%B%(!..%(1000#..%F{red}%n%f@))%F{blue}%m%f %F{white}%~%f %(1j.+%F{red}%j%f.)%(!.%F{red}.%F{green})%#%f%b "
+	prompt() {
+		case ${KEYMAP} in
+			'main')
+				mode='>'
+				;;
+			'vicmd')
+				mode='|'
+				;;
+			*)
+				mode=''
+				;;
+		esac
+		PROMPT="%(?.%F{green}✓%f.%F{red}✗%f) %(!.%F{red}.%F{blue})%n%f@%B%F{green}%m%f%b %B%d%b:${newline}%(!.%F{red}.)%#%f${mode} "
+		zle reset-prompt
+	}
+	zle-line-init() { prompt; }
+	zle-keymap-select() { prompt; }
+	zle -N zle-line-init
+	zle -N zle-keymap-select
 	# }}}
 	# {{{ key bindings
-	bindkey -e
+	bindkey -v
 	# urxvt
 	bindkey	'^[[7~'		beginning-of-line			# home
 	bindkey	'^[[8~'		end-of-line				# end
 	bindkey	'^[Oc'		forward-word				# ctrl + right
 	bindkey	'^[Od'		backward-word				# ctrl + left
 	bindkey	'^[[3^'		delete-word				# ctrl + del
-	bindkey	'^H'		backward-delete-word			# ctrl + backspace
+	#bindkey	'^H'		backward-delete-word			# ctrl + backspace
 	# screen
 	bindkey	'^[[1~'		beginning-of-line			# home
 	bindkey	'^[[4~'		end-of-line				# end
