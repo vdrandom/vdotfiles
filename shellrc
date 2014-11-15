@@ -167,7 +167,7 @@ if is_zsh; then
 	precmd() {
 		[[ -n ${vcs_enabled} ]] && vcs_info
 		if [[ -z ${hide_info} ]]; then
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_} zsh${newline}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_}${newline}"
 		else
 			prompt_info=''
 		fi
@@ -301,7 +301,7 @@ else
 			else
 				prompt_user='\[\e[1;31m\]\u\[\e[1;33m\]@\[\e[0m\]'
 			fi
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb} bash-\v${newline}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${lb}bash-\v${rb}${newline}"
 		else
 			prompt_info=''
 		fi
