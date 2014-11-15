@@ -2,13 +2,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# {{{ common
+# common
 # {{{ environment
 newline="
 "
 local_bin="${HOME}/.local/bin"
 dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
+vcs_enabled=true
 
 export TIME_STYLE='long-iso'
 export LC_ALL='en_US.UTF-8'
@@ -28,7 +29,7 @@ else
 	is_exec() { [[ -x $(type -P ${1}) ]]; }
 fi
 # }}}
-# {{{ aliases
+# {{{ common aliases
 alias vi='command vim'
 alias less='command less -R'
 alias cower='command cower -c'
@@ -87,25 +88,32 @@ alias sdf='command svn diff'
 alias sci='command svn commit'
 alias sup='command svn up'
 # }}}
-# {{{ functions
-screenoffdisable() {
+# {{{ common functions
+screenoff-disable() {
 	xset -dpms
 	xset s off
 }
 
-screenoffenable() {
+screenoff-enable() {
 	xset +dpms
 	xset s on
 }
 
-dotfiles_update() {
+dotfiles-update() {
 	git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull
 	return 0
 }
-# }}}
+
+hide-info() {
+	hide_info=true
+}
+
+unhide-info() {
+	unset hide_info
+}
 # }}}
 if is_zsh; then
-	# {{{ zsh
+# zsh
 	# {{{ options
 	setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 	unsetopt BEEP NO_MATCH NOTIFY
@@ -137,53 +145,65 @@ if is_zsh; then
 		zstyle ':completion:*:processes-names' command 'ps axho command'
 		zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 	fi
+	if [[ -n ${vcs_enabled} ]]; then
+		autoload -Uz vcs_info
+		zstyle ':vcs_info:*' enable git svn
+		zstyle ':vcs_info:*' check-for-changes true
+		zstyle ':vcs_info:*' stagedstr " %F{green}✓%f"
+		zstyle ':vcs_info:*' unstagedstr " %B%F{red}✗%f%b"
+		zstyle ':vcs_info:svn*' branchformat '%r'
+		zstyle ':vcs_info:*' formats "%B%F{yellow}[%f%%b%s%B%F{yellow}: %F{magenta}%r%f %F{yellow}%f%%b %F{yellow}%b%f%u%c%B%F{yellow}]%f%%b"
+	fi
 	# }}}
 	# {{{ prompt
-	prompt() {
-		case ${KEYMAP} in
-			'main')
-				mode='>'
-				;;
-			'vicmd')
-				mode='|'
-				;;
-			*)
-				mode=''
-				;;
-		esac
-		PROMPT="%(?.%F{green}✓%f.%F{red}✗%f) %(!.%F{red}.%F{blue})%n%f@%B%F{green}%m%f%b %B%d%b:${newline}%(!.%F{red}.)%#%f${mode} "
-		zle reset-prompt
+	lb='%B%F{yellow}[%f%b'
+	rb='%B%F{yellow}]%f%b'
+	bb='%B%F{yellow} %f%b'
+	prompt_status='%(?.%F{green}✓%f.%F{red}✗%f)'
+	prompt_cwd='%B%d%b'
+	prompt_user='%(1000#..%(1205#..%B%F{red}%n%F{yellow}@%f%b))'
+	prompt_host='%m'
+	prompt_bang='%B%(!.%F{red}.%F{green})%#%f%b'
+	precmd() {
+		[[ -n ${vcs_enabled} ]] && vcs_info
+		if [[ -z ${hide_info} ]]; then
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_} zsh${newline}"
+		else
+			prompt_info=''
+		fi
+		PROMPT="${prompt_info}${prompt_bang} "
 	}
-	zle-line-init() { prompt; }
-	zle-keymap-select() { prompt; }
-	zle -N zle-line-init
-	zle -N zle-keymap-select
+	PROMPT2='%b%f%_%B%F{green}>%f%b '
+	PROMPT3='%b%f?%B%F{green}#%f%b '
+	PROMPT4='%b%f+%N:%i%B%F{green}>%f%b '
+	#PROMPT="${lb}${prompt_status}${rb}${lb}${prompt_user}${prompt_host}${rb}${lb}${prompt_cwd}${rb}${newline}%B%(!.%F{red}.%F{green})%#%f%b "
 	# }}}
 	# {{{ key bindings
-	bindkey -v
+	bindkey -e
 	# urxvt
-	bindkey	'^[[7~'		beginning-of-line			# home
-	bindkey	'^[[8~'		end-of-line				# end
-	bindkey	'^[Oc'		forward-word				# ctrl + right
-	bindkey	'^[Od'		backward-word				# ctrl + left
-	bindkey	'^[[3^'		delete-word				# ctrl + del
-	#bindkey	'^H'		backward-delete-word			# ctrl + backspace
+	bindkey '^[[7~'		beginning-of-line			# home
+	bindkey '^[[8~'		end-of-line				# end
+	bindkey '^[Oc'		forward-word				# ctrl + right
+	bindkey '^[Od'		backward-word				# ctrl + left
+	bindkey '^[[3^'		delete-word				# ctrl + del
+	#bindkey '^H'		backward-delete-word			# ctrl + backspace
 	# screen
-	bindkey	'^[[1~'		beginning-of-line			# home
-	bindkey	'^[[4~'		end-of-line				# end
+	bindkey '^[[1~'		beginning-of-line			# home
+	bindkey '^[[4~'		end-of-line				# end
 	# xterm
-	bindkey	'^[[H'		beginning-of-line			# home
-	bindkey	'^[[F'		end-of-line				# end
+	bindkey '^[[H'		beginning-of-line			# home
+	bindkey '^[[F'		end-of-line				# end
 	# most of them (but not urxvt)
-	bindkey	'^[[1;5C'	forward-word				# ctrl + right
-	bindkey	'^[[1;5D'	backward-word				# ctrl + left
-	bindkey	'^[[3;5~'	delete-word				# ctrl + del
+	bindkey '^[[1;5C'	forward-word				# ctrl + right
+	bindkey '^[[1;5D'	backward-word				# ctrl + left
+	bindkey '^[[3;5~'	delete-word				# ctrl + del
 	# all of them
-	bindkey	'^[[5~'		backward-word				# page up
-	bindkey	'^[[6~'		forward-word				# page down
-	bindkey	'^[[3~'		delete-char				# del
-	bindkey	'^R'		history-incremental-search-backward	# ctrl + R
-	bindkey	'^[m'		copy-prev-shell-word			# alt + m
+	bindkey '^[[5~'		backward-word				# page up
+	bindkey '^[[6~'		forward-word				# page down
+	bindkey '^[[3~'		delete-char				# del
+	bindkey '^R'		history-incremental-search-backward	# ctrl + r
+	bindkey '^[m'		copy-prev-shell-word			# alt + m
+	bindkey -s '^j'		'^atime ^m'				# ctrl + j
 	# }}}
 	# {{{ global aliases
 	alias -g L='| less -R'
@@ -248,9 +268,8 @@ if is_zsh; then
 		bindkey '^[[B' history-substring-search-down
 	fi
 	# }}}
-	# }}}
 else
-	# {{{ bash
+# bash
 	# {{{ options
 	HISTSIZE=1000
 	HISTCONTROL=ignoredups:ignorespace
@@ -269,23 +288,38 @@ else
 	# y is color:
 	# 0 - Black, 1 - Red, 2 - Green, 3 - Yellow
 	# 4 - Blue, 5 - Magenta, 6 - Cyan, 7 - White
-	if [[ ${UID} -eq 1000 || ${UID} -eq 1205 || ${UID} -eq 0 || ${USER} == 'Von Random' ]]; then
-		user_ps=""
-	else
-		user_ps="\[\e[1;31m\]\u\[\e[0m\]@"
-	fi
-	if [[ $UID -eq 0 ]]; then
-		bang_ps='\[\e[1;31m\]\$\[\e[0m\]'
-	else
-		bang_ps='\[\e[1;32m\]\$\[\e[0m\]'
-	fi
-	PS1="${user_ps}\[\e[1;34m\]\h\[\e[0m\] \[\e[1;33m\]\v\[\e[0m\] \[\e[37m\]\w\[\e[0m\] ${bang_ps} "
-	unset user_ps bang_ps
+	lb='\[\e[1;33m\][\[\e[0m\]'
+	rb='\[\e[1;33m\]]\[\e[0m\]'
+	bb='\[\e[1;33m\] \[\e[0m\]'
+	prompt_host='\h'
+	prompt_bang='\$\[\e[0m\]'
+	precmd() {
+		if [[ -z ${hide_info} ]]; then
+			prompt_cwd="\[\e[1;37m\]${PWD}\[\e[0m\]"
+			if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
+				prompt_user=''
+			else
+				prompt_user='\[\e[1;31m\]\u\[\e[1;33m\]@\[\e[0m\]'
+			fi
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb} bash-\v${newline}"
+		else
+			prompt_info=''
+		fi
+		if [[ $UID -eq 0 ]]; then
+			prompt_bang_color='\[\e[1;31m\]'
+		else
+			prompt_bang_color='\[\e[1;32m\]'
+		fi
+		PS1="${prompt_info}${prompt_bang_color}${prompt_bang} "
+	}
+	PROMPT_COMMAND='precmd'
 	# }}}
 	# {{{ key bindings
+	# time $command bind
+	bind '"\C-j":"\C-atime \C-m"'
 	# PgUp/PgDown and ctrl-arrows for skip word
-	bind '"[5~"':backward-word
-	bind '"[6~"':forward-word
+	bind '"\e[5~"':backward-word
+	bind '"\e[6~"':forward-word
 	# }}}
 	# {{{ plugins
 	completion_path='/usr/share/bash-completion/bash_completion'
@@ -297,7 +331,6 @@ else
 	# {{{ traps
 	# we want to see exit code on error (it also has to be the last entry here)
 	trap 'echo -e "\e[0mbash: exit \e[1;37m$?\e[0m"' ERR
-	# }}}
 	# }}}
 fi
 # {{{ source specific and common extras
