@@ -279,36 +279,33 @@ else
 	extras=( "${HOME}/.bashrc.extras" )
 	# }}}
 	# {{{ prompt
-	# Color escapes description
-	# color escape looks like \[\e[x;3ym\]
-	# background escape looks like \[\e[4ym\]
-	# style reset escape is \[\e[0m\]
-	# x is style:
-	# 0 - regular, 1 - bold, 4 - underlined
-	# y is color:
-	# 0 - Black, 1 - Red, 2 - Green, 3 - Yellow
-	# 4 - Blue, 5 - Magenta, 6 - Cyan, 7 - White
-	lb='\[\e[1;33m\][\[\e[0m\]'
-	rb='\[\e[1;33m\]]\[\e[0m\]'
-	bb='\[\e[1;33m\] \[\e[0m\]'
+	colors=('black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white')
+	for i in {0..7}; do
+		eval "n${colors[$i]}='\[\e[0;3${i}m\]'"
+		eval "b${colors[$i]}='\[\e[1;3${i}m\]'"
+	done
+	reset='\[\e[0m\]'
+	lb="${byellow}[${reset}"
+	rb="${byellow}]${reset}"
+	bb="${byellow} ${reset}"
 	prompt_host='\h'
-	prompt_bang='\$\[\e[0m\]'
+	prompt_bang="\$${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
-			prompt_cwd="\[\e[1;37m\]${PWD}\[\e[0m\]"
+			prompt_cwd="${bwhite}${PWD}${reset}"
 			if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
 				prompt_user=''
 			else
-				prompt_user='\[\e[1;31m\]\u\[\e[1;33m\]@\[\e[0m\]'
+				prompt_user="${bred}\u${byellow}@${reset}"
 			fi
 			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${lb}bash-\v${rb}${newline}"
 		else
 			prompt_info=''
 		fi
 		if [[ $UID -eq 0 ]]; then
-			prompt_bang_color='\[\e[1;31m\]'
+			prompt_bang_color="${bred}"
 		else
-			prompt_bang_color='\[\e[1;32m\]'
+			prompt_bang_color="${bgreen}"
 		fi
 		PS1="${prompt_info}${prompt_bang_color}${prompt_bang} "
 	}
