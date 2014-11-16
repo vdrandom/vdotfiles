@@ -167,11 +167,11 @@ if is_zsh; then
 	precmd() {
 		[[ -n ${vcs_enabled} ]] && vcs_info
 		if [[ -z ${hide_info} ]]; then
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_}${newline}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_}"
 		else
 			prompt_info=''
 		fi
-		PROMPT="${prompt_info}${prompt_bang} "
+		PROMPT="${prompt_info}${newline}${prompt_bang} "
 	}
 	PROMPT2='%b%f%_%B%F{green}>%f%b '
 	PROMPT3='%b%f?%B%F{green}#%f%b '
@@ -280,7 +280,7 @@ else
 	# }}}
 	# {{{ prompt
 	colors=('black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white')
-	for i in {0..7}; do
+	for i in 0 1 2 3 4 5 6 7; do
 		eval "n${colors[$i]}='\[\e[0;3${i}m\]'"
 		eval "b${colors[$i]}='\[\e[1;3${i}m\]'"
 	done
@@ -298,7 +298,7 @@ else
 			else
 				prompt_user="${bred}\u${byellow}@${reset}"
 			fi
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${lb}bash-\v${rb}${newline}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${lb}bash-\v${rb}"
 		else
 			prompt_info=''
 		fi
@@ -307,7 +307,7 @@ else
 		else
 			prompt_bang_color="${bgreen}"
 		fi
-		PS1="${prompt_info}${prompt_bang_color}${prompt_bang} "
+		PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
 	}
 	PROMPT_COMMAND='precmd'
 	# }}}
