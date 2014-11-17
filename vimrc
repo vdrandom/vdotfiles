@@ -13,7 +13,6 @@ set incsearch
 set background=dark
 set noexpandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
-set helplang=en
 set hlsearch
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
@@ -26,9 +25,6 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [L
 set foldmethod=marker
 " disable bell
 set noerrorbells visualbell t_vb=
-
-set list
-set listchars=tab:\|\ ,trail:*,nbsp:x
 
 " set indentation options for specific file types
 autocmd FileType ruby setlocal sts=2 sw=2 expandtab
@@ -43,6 +39,11 @@ nmap k gk
 
 " still have to deal with old vim versions :<
 if v:version >= 703
+	set helplang=en
+
+	set list
+	set listchars=tab:\|\ ,trail:*,nbsp:x
+
 	" enable case indentation
 	let g:sh_indent_case_labels=1
 
@@ -50,7 +51,7 @@ if v:version >= 703
 	if filereadable(expand("$HOME/.vim/bundle/Vundle.vim/autoload/vundle.vim"))
 		filetype off
 		set rtp+=~/.vim/bundle/Vundle.vim/
-		call vundle#begin()
+		silent! call vundle#begin()
 		Plugin 'gmarik/Vundle.vim'		"plugin manager
 
 		" general plugins
@@ -81,7 +82,7 @@ if v:version >= 703
 		Plugin 'dag/vim-fish'			"fish
 		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
 		Plugin 'nagios-syntax'			"nagios / icinga
-		call vundle#end()
+		silent! call vundle#end()
 
 		" airline options
 		if &t_Co > 88 || has("gui_running")
