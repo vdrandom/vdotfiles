@@ -289,7 +289,7 @@ else
 	rb="${byellow}]${reset}"
 	bb="${byellow} ${reset}"
 	prompt_host='\h'
-	prompt_bang="\$${reset}"
+	prompt_bang="\\\${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
 			prompt_cwd="${bwhite}${PWD}${reset}"
