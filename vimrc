@@ -107,6 +107,9 @@ if v:version >= 703
 		" nerdtree options
 		let NERDTreeDirArrows=0
 		map <C-W>. :NERDTreeToggle<cr>
+
+		" buffergator options
+		map <C-W>, :BuffergatorToggle<cr>
 	endif
 endif
 
