@@ -193,6 +193,6 @@ for_window [title="^Hand of Fate$"] floating enable
 for_window [title="^Serious Sam 3 - Linux$"] floating enable
 
 # execs
-exec -no-startup-id /home/von/.autostart
-exec_always -no-startup-id setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,compose:menu,grp_led:scroll
-exec_always -no-startup-id xrdb /home/von/.Xresources
+exec --no-startup-id /home/von/.autostart
+exec --no-startup-id setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,compose:menu,grp_led:scroll
+exec --no-startup-id xrdb /home/von/.Xresources
