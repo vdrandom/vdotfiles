@@ -34,14 +34,10 @@ autocmd FileType python setlocal sts=4 sw=4 expandtab
 
 " maps
 nmap <Space> <C-W>
-nnoremap h <BS>
 nnoremap j gj
 nnoremap k gk
-nnoremap l <Space>
-vnoremap h <BS>
 vnoremap j gj
 vnoremap k gk
-vnoremap l <Space>
 
 " still have to deal with old vim versions :<
 if v:version >= 703

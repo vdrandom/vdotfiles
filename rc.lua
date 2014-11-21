@@ -143,22 +143,20 @@ end
 --	[9] = 'example2'
 --}
 tags[1].layout = {
-	[1] = layouts.tiled[1],
 	[2] = layouts.max[1],
-	[4] = layouts.float[1],
-	[5] = layouts.float[1]
+	[4] = layouts.float[1]
 }
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
-		[3] = layouts.float[1]
+		[4] = layouts.float[1]
 	}
 end
 -- Fill the missing values with defaults
 for s = 1, screen.count() do
 	for tag = 1, 9 do
 		tags[s].name[tag] = tags[s].name[tag] or tag
-		tags[s].layout[tag] = tags[s].layout[tag] or layouts.tiled[2]
+		tags[s].layout[tag] = tags[s].layout[tag] or layouts.tiled[1]
 	end
 end
 -- Set tags instances in wm
@@ -571,7 +569,7 @@ awful.rules.rules = {
 			tag = tags[1][2]
 		}
 	},
-	-- tag 4: steam
+	-- tag 4: steam and games
 	{
 		rule_any = {
 			class = { 'Steam' },
@@ -579,7 +577,6 @@ awful.rules.rules = {
 		},
 		properties = { tag = tags[1][4] }
 	},
-	-- tag 5: mostly games, float / fullscreen
 	{
 		rule_any = {
 			class = {
@@ -610,7 +607,7 @@ awful.rules.rules = {
 		properties = {
 			border_width = 0,
 			floating = true,
-			tag = tags[1][5]
+			tag = tags[1][4]
 		}
 	}
 }
