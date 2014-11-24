@@ -45,7 +45,7 @@ vnoremap j gj
 vnoremap k gk
 
 " still have to deal with old vim versions :<
-if v:version >= 703
+if v:version >= 700
 	set helplang=en
 
 	set list
@@ -110,23 +110,23 @@ if v:version >= 703
 		" buffergator options
 		map <C-W>, :BuffergatorToggle<cr>
 	endif
-endif
 
-" gvim stuff
-if has("gui_running")
-	let g:solarized_italic=0
-	let g:solarized_bold=0
-	let NERDTreeDirArrows=1
-	set guioptions=aegimLl
-	set mouse=a
-	set guifont=Monofur\ 11
-	set novb
-	map <S-Insert> <MiddleMouse>
-	map! <S-Insert> <MiddleMouse>
-	colorscheme jellybeans
-elseif &t_Co > 88
-	let g:airline_powerline_fonts = 1
-	colorscheme solarized
+	" gvim and colorschemes related stuff
+	if has("gui_running")
+		let g:solarized_italic=0
+		let g:solarized_bold=0
+		let NERDTreeDirArrows=1
+		set guioptions=aegimLl
+		set mouse=a
+		set guifont=Monofur\ 11
+		set novb
+		map <S-Insert> <MiddleMouse>
+		map! <S-Insert> <MiddleMouse>
+		colorscheme jellybeans
+	elseif &t_Co > 88
+		let g:airline_powerline_fonts = 1
+		colorscheme solarized
+	endif
 else
 	colorscheme elflord
 endif
