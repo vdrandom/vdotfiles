@@ -120,6 +120,7 @@ if v:version >= 700
 		set mouse=a
 		set guifont=Monofur\ 11
 		set novb
+		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 		colorscheme jellybeans
