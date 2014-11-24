@@ -109,13 +109,9 @@ if v:version >= 703
 
 		" buffergator options
 		map <C-W>, :BuffergatorToggle<cr>
-
-		" check before setting
-		if &t_Co > 88
-			let g:airline_powerline_fonts = 1
-			colorscheme solarized
-		endif
 	endif
+elseif if filereadable(expand("$HOME/.vim/bundle/forked-solarized.vim/colors/solarized.vim"))
+	set rtp+=~/.vim/bundle/forked-solarized.vim
 endif
 
 " gvim stuff
@@ -130,7 +126,10 @@ if has("gui_running")
 	map <S-Insert> <MiddleMouse>
 	map! <S-Insert> <MiddleMouse>
 	colorscheme jellybeans
-elseif &t_Co < 88
+elseif &t_Co > 88
+	let g:airline_powerline_fonts = 1
+	colorscheme solarized
+else
 	colorscheme elflord
 endif
 
