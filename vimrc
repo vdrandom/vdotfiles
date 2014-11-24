@@ -26,6 +26,11 @@ set foldmethod=marker
 " disable bell
 set noerrorbells visualbell t_vb=
 
+" enforce 256 colours for ssh connections and VTE
+if $TERM == 'xterm' || exists("$SSH_CLIENT")
+	let &t_Co=256
+endif
+
 " set indentation options for specific file types
 autocmd FileType ruby setlocal sts=2 sw=2 expandtab
 autocmd FileType eruby setlocal sts=2 sw=2 expandtab
@@ -54,42 +59,40 @@ if v:version >= 703
 		filetype off
 		set rtp+=~/.vim/bundle/Vundle.vim/
 		silent! call vundle#begin()
-		Plugin 'gmarik/Vundle.vim'		"plugin manager
+		Plugin 'gmarik/Vundle.vim'              "plugin manager
 
 		" general plugins
 		" from github.com
-		Plugin 'bling/vim-airline'		"stylish info display
-		Plugin 'bling/vim-bufferline'		"stylish buffer display
-		Plugin 'jeetsukumaran/vim-buffergator'	"buffer management
-		Plugin 'kien/ctrlp.vim'			"some quick file accessiong goodness
-		Plugin 'mbbill/undotree'		"undo buffer manager
-		Plugin 'mhinz/vim-signify'		"version control system gutter info
-		Plugin 'msanders/snipmate.vim'		"snippets support
-		Plugin 'scrooloose/nerdcommenter'	"comment manager
-		Plugin 'scrooloose/nerdtree'		"file manager
-		Plugin 'scrooloose/syntastic'		"syntax checker
-		Plugin 'tpope/vim-fugitive'		"git awesomeness
-		Plugin 'tpope/vim-surround'		"quotes replacement made easy
-		Plugin 'tpope/vim-tbone'		"tmux support
+		Plugin 'bling/vim-airline'              "stylish info display
+		Plugin 'bling/vim-bufferline'           "stylish buffer display
+		Plugin 'bhiestand/vcscommand'           "shortcuts for vcs
+		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
+		Plugin 'kien/ctrlp.vim'                 "some quick file accessiong goodness
+		Plugin 'mbbill/undotree'                "undo buffer manager
+		Plugin 'mhinz/vim-signify'              "version control system gutter info
+		Plugin 'msanders/snipmate.vim'          "snippets support
+		Plugin 'scrooloose/nerdcommenter'       "comment manager
+		Plugin 'scrooloose/nerdtree'            "file manager
+		Plugin 'scrooloose/syntastic'           "syntax checker
+		Plugin 'tpope/vim-fugitive'             "git awesomeness
+		Plugin 'tpope/vim-surround'             "quotes replacement made easy
+		Plugin 'tpope/vim-tbone'                "tmux support
+
 		" from vim.sf.net
-		Plugin 'directionalWindowResizer'	"resize windows with simple hotkeys
-		Plugin 'vcscommand.vim'			"shortcuts for vcs
+		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
 
 		" colorscheme ...
-		Plugin 'vdrandom/forked-solarized.vim'	"solarized
-		Plugin 'nanotech/jellybeans.vim'	"jellybeans
-		Plugin 'tomasr/molokai'			"molokai
+		Plugin 'vdrandom/forked-solarized.vim'  "solarized
+		Plugin 'nanotech/jellybeans.vim'        "jellybeans
+		Plugin 'tomasr/molokai'                 "molokai
 
 		" syntax highlight plugins
-		Plugin 'dag/vim-fish'			"fish
-		Plugin 'puppetlabs/puppet-syntax-vim'	"puppet
-		Plugin 'nagios-syntax'			"nagios / icinga
+		Plugin 'dag/vim-fish'                   "fish
+		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
+		Plugin 'nagios-syntax'                  "nagios / icinga
 		silent! call vundle#end()
 
 		" airline options
-		if &t_Co > 88 || has("gui_running")
-			let g:airline_powerline_fonts = 1
-		endif
 		let g:airline_symbols = {}
 		let g:airline_symbols.whitespace = '!'
 
@@ -106,14 +109,13 @@ if v:version >= 703
 
 		" buffergator options
 		map <C-W>, :BuffergatorToggle<cr>
-	endif
-endif
 
-" set color scheme depending on the terminal capabilities
-if &t_Co > 88 || has("gui_running")
-	colorscheme solarized
-else
-	colorscheme elflord
+		" check before setting
+		if &t_Co > 88
+			let g:airline_powerline_fonts = 1
+			colorscheme solarized
+		endif
+	endif
 endif
 
 " gvim stuff
@@ -123,10 +125,13 @@ if has("gui_running")
 	let NERDTreeDirArrows=1
 	set guioptions=aegimLl
 	set mouse=a
-	set guifont=Terminus\ 11
+	set guifont=Monofur\ 11
 	set novb
 	map <S-Insert> <MiddleMouse>
 	map! <S-Insert> <MiddleMouse>
+	colorscheme jellybeans
+elseif &t_Co < 88
+	colorscheme elflord
 endif
 
 syntax on
