@@ -110,7 +110,7 @@ if v:version >= 703
 		" buffergator options
 		map <C-W>, :BuffergatorToggle<cr>
 	endif
-elseif if filereadable(expand("$HOME/.vim/bundle/forked-solarized.vim/colors/solarized.vim"))
+elseif filereadable(expand("$HOME/.vim/bundle/forked-solarized.vim/colors/solarized.vim"))
 	set rtp+=~/.vim/bundle/forked-solarized.vim
 endif
 
