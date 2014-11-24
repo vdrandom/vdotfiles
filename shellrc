@@ -181,29 +181,28 @@ if is_zsh; then
 	# {{{ key bindings
 	bindkey -e
 	# urxvt
-	bindkey '^[[7~'		beginning-of-line			# home
-	bindkey '^[[8~'		end-of-line				# end
-	bindkey '^[Oc'		forward-word				# ctrl + right
-	bindkey '^[Od'		backward-word				# ctrl + left
-	bindkey '^[[3^'		delete-word				# ctrl + del
-	#bindkey '^H'		backward-delete-word			# ctrl + backspace
+	bindkey '^[[7~'   beginning-of-line                   # home
+	bindkey '^[[8~'   end-of-line                         # end
+	bindkey '^[Oc'    forward-word                        # ctrl + right
+	bindkey '^[Od'    backward-word                       # ctrl + left
+	bindkey '^[[3^'   delete-word                         # ctrl + del
 	# screen
-	bindkey '^[[1~'		beginning-of-line			# home
-	bindkey '^[[4~'		end-of-line				# end
+	bindkey '^[[1~'   beginning-of-line                   # home
+	bindkey '^[[4~'   end-of-line                         # end
 	# xterm
-	bindkey '^[[H'		beginning-of-line			# home
-	bindkey '^[[F'		end-of-line				# end
+	bindkey '^[[H'    beginning-of-line                   # home
+	bindkey '^[[F'    end-of-line                         # end
 	# most of them (but not urxvt)
-	bindkey '^[[1;5C'	forward-word				# ctrl + right
-	bindkey '^[[1;5D'	backward-word				# ctrl + left
-	bindkey '^[[3;5~'	delete-word				# ctrl + del
+	bindkey '^[[1;5C' forward-word                        # ctrl + right
+	bindkey '^[[1;5D' backward-word                       # ctrl + left
+	bindkey '^[[3;5~' delete-word                         # ctrl + del
 	# all of them
-	bindkey '^[[5~'		backward-word				# page up
-	bindkey '^[[6~'		forward-word				# page down
-	bindkey '^[[3~'		delete-char				# del
-	bindkey '^R'		history-incremental-search-backward	# ctrl + r
-	bindkey '^[m'		copy-prev-shell-word			# alt + m
-	bindkey -s '^j'		'^atime ^m'				# ctrl + j
+	bindkey '^[[5~'   backward-word                       # page up
+	bindkey '^[[6~'   forward-word                        # page down
+	bindkey '^[[3~'   delete-char                         # del
+	bindkey '^R'      history-incremental-search-backward # ctrl + r
+	bindkey '^[m'     copy-prev-shell-word                # alt + m
+	bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 	# }}}
 	# {{{ global aliases
 	alias -g L='| less -R'

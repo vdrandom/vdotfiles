@@ -1,37 +1,37 @@
 ! vim: ft=xdefaults
 ! {{{ xft and cursor configuration
-Xcursor.theme:		Neutral
-Xft.antialias:		true
-Xft.rgba:		rgb
-Xft.hinting:		true
-Xft.hintstyle:		hintslight
-Xft.dpi:		96
+Xcursor.theme:          Neutral
+Xft.antialias:          true
+Xft.rgba:               rgb
+Xft.hinting:            true
+Xft.hintstyle:          hintslight
+Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
-#define urxvt_font xft:Terminus:bold:size=11:antialias=false
+#define urxvt_font      xft:Terminus:bold:size=11:antialias=false
 
-URxvt.scrollBar:	false
-URxvt.font:		urxvt_font
-URxvt.boldFont:		urxvt_font
-URxvt.boldItalicFont:	urxvt_font
-URxvt.italicFont:	urxvt_font
-URxvt.saveLines:	1000
-URxvt.iso14755:		false
-URxvt.visualBell:	false
-URxvt.urgentOnBell:	true
-URxvt.cursorUnderline:	true
-URxvt.termName:		rxvt-unicode-256color
-URxvt.fading:		0
+URxvt.scrollBar:        false
+URxvt.font:             urxvt_font
+URxvt.boldFont:         urxvt_font
+URxvt.boldItalicFont:   urxvt_font
+URxvt.italicFont:       urxvt_font
+URxvt.saveLines:        1000
+URxvt.iso14755:         false
+URxvt.visualBell:       false
+URxvt.urgentOnBell:     true
+URxvt.cursorUnderline:  true
+URxvt.termName:         rxvt-unicode-256color
+URxvt.fading:           0
 
 ! icon (needs pixbuf support compiled)
-URxvt.iconFile:		/usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
+URxvt.iconFile:         /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
 
 ! urxvt perl extensions
-URxvt.perl-ext-common:	default,matcher,clipboard
-URxvt.url-launcher:	/usr/bin/firefox
-URxvt.matcher.button:	3
-URxvt.keysym.C-C:	perl:clipboard:copy
-URxvt.keysym.C-V:	perl:clipboard:paste
+URxvt.perl-ext-common:  default,matcher,clipboard
+URxvt.url-launcher:     /usr/bin/firefox
+URxvt.matcher.button:   3
+URxvt.keysym.C-C:       perl:clipboard:copy
+URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ drop in Solarized colorscheme for Xresources/Xdefaults
 
@@ -55,74 +55,74 @@ URxvt.keysym.C-V:	perl:clipboard:paste
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 !! common
-#define S_yellow	#b58900
-#define S_orange	#cb4b16
-#define S_red		#dc322f
-#define S_magenta	#d33682
-#define S_violet	#6c71c4
-#define S_blue		#268bd2
-#define S_cyan		#2aa198
-#define S_green		#859900
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
 
 !! dark
-#define S_base03	#002b36
-#define S_base02	#073642
-#define S_base01	#586e75
-#define S_base00	#657b83
-#define S_base0		#839496
-#define S_base1		#93a1a1
-#define S_base2		#eee8d5
-#define S_base3		#fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
 !! light
 
-!#define S_base03	#fdf6e3
-!#define S_base02	#eee8d5
-!#define S_base01	#93a1a1
-!#define S_base00	#839496
-!#define S_base0	#657b83
-!#define S_base1	#586e75
-!#define S_base2	#073642
-!#define S_base3	#002b36
+!#define S_base03       #fdf6e3
+!#define S_base02       #eee8d5
+!#define S_base01       #93a1a1
+!#define S_base00       #839496
+!#define S_base0        #657b83
+!#define S_base1        #586e75
+!#define S_base2        #073642
+!#define S_base3        #002b36
 
-*background:		S_base03
-*foreground:		S_base0
-*fading:		40
-*colorBD:		S_base3
-*fadeColor:		S_base03
-*cursorColor:		S_base3
+*background:            S_base03
+*foreground:            S_base0
+*fading:                40
+*colorBD:               S_base3
+*fadeColor:             S_base03
+*cursorColor:           S_base3
 *pointerColorBackground:S_base01
 *pointerColorForeground:S_base1
 
 !! black dark/light
-*color0:		S_base02
-*color8:		S_base03
+*color0:                S_base02
+*color8:                S_base03
 
 !! red dark/light
-*color1:		S_red
-*color9:		S_orange
+*color1:                S_red
+*color9:                S_orange
 
 !! green dark/light
-*color2:		S_green
-*color10:		S_base01
+*color2:                S_green
+*color10:               S_base01
 
 !! yellow dark/light
-*color3:		S_yellow
-*color11:		S_base00
+*color3:                S_yellow
+*color11:               S_base00
 
 !! blue dark/light
-*color4:		S_blue
-*color12:		S_base0
+*color4:                S_blue
+*color12:               S_base0
 
 !! magenta dark/light
-*color5:		S_magenta
-*color13:		S_violet
+*color5:                S_magenta
+*color13:               S_violet
 
 !! cyan dark/light
-*color6:		S_cyan
-*color14:		S_base1
+*color6:                S_cyan
+*color14:               S_base1
 
 !! white dark/light
-*color7:		S_base2
-*color15:		S_base3
+*color7:                S_base2
+*color15:               S_base3
 ! }}}
