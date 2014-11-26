@@ -95,6 +95,7 @@ if v:version >= 700
 		" airline options
 		let g:airline_symbols = {}
 		let g:airline_symbols.whitespace = '!'
+		let g:airline_powerline_fonts = 1
 
 		" bufferline options
 		let g:bufferline_show_bufnr = 0
@@ -118,14 +119,13 @@ if v:version >= 700
 		let NERDTreeDirArrows=1
 		set guioptions=aegimLl
 		set mouse=a
-		set guifont=Monofur\ 11
+		set guifont=Terminus\ 11
 		set novb
 		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 		colorscheme jellybeans
-	elseif &t_Co > 88
-		let g:airline_powerline_fonts = 1
+	elseif &t_Co > 87
 		colorscheme solarized
 	endif
 else
