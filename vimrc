@@ -32,10 +32,13 @@ if $TERM == 'xterm' || exists("$SSH_CLIENT")
 endif
 
 " set indentation options for specific file types
-autocmd FileType ruby setlocal sts=2 sw=2 expandtab
-autocmd FileType eruby setlocal sts=2 sw=2 expandtab
-autocmd FileType puppet setlocal sts=2 sw=2 expandtab
-autocmd FileType python setlocal sts=4 sw=4 expandtab
+autocmd FileType python setlocal ts=4 sw=4 sts=4 noexpandtab
+autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
+autocmd BufNewFile *.lua 0put =\"#!/usr/bin/env lua\<nl>\"|$
+autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
+autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
+autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
+autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
 " maps
 nmap <Space> <C-W>

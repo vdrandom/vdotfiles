@@ -595,6 +595,7 @@ awful.rules.rules = {
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
+				'GameApp.exe',
 				'KB.exe',
 				'nwn2main.exe'
 			},
