@@ -25,6 +25,7 @@ vcs_enabled=true
 
 if is_exec vimless; then
 	export PAGER='vimless'
+	alias man='man -Pless'
 elif is_exec less; then
 	export PAGER='less -R'
 else
