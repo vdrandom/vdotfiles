@@ -165,10 +165,11 @@ if is_zsh; then
 	prompt_user='%(1000#..%(1205#..%B%F{red}%n%F{yellow}@%f%b))'
 	prompt_host='%m'
 	prompt_bang='%B%(!.%F{red}.%F{green})%#%f%b'
+	prompt_jobs='%(1j.%B%F{yellow}[%f%bjobs: %B%F{red}%j%F{yellow}]%f%b.)'
 	precmd() {
 		[[ -n ${vcs_enabled} ]] && vcs_info
 		if [[ -z ${hide_info} ]]; then
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${vcs_info_msg_0_}${prompt_jobs}"
 		else
 			prompt_info=''
 		fi
