@@ -330,7 +330,7 @@ else
 	trap 'echo -e "\e[0mbash: exit \e[1;37m$?\e[0m"' ERR
 	# }}}
 fi
-# {{{ source specific and common extras
+# {{{ source extras
 for i in ${extras[@]}; do
 	if [[ -r ${i} ]]; then
 		source ${i}
