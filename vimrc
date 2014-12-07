@@ -50,6 +50,7 @@ vnoremap k gk
 " still have to deal with old vim versions :<
 if v:version >= 700
 	set helplang=en
+	set modeline
 
 	set list
 	set listchars=tab:\|\ ,trail:*,nbsp:x
