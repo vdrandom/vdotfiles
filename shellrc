@@ -23,6 +23,7 @@ dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
 vcs_enabled=true
 
+export QT_STYLE_OVERRIDE='gtk'
 export TIME_STYLE='long-iso'
 export LC_ALL='en_US.UTF-8'
 export LANG=${LC_ALL}
