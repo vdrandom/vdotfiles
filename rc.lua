@@ -582,6 +582,8 @@ awful.rules.rules = {
 			class = {
 				'Awesomenauts.bin.x86',
 				'Civ5XP',
+				'CivBE',
+				'Cities In Motion.bin',
 				'ck2',
 				'csgo_linux',
 				'deponia_tcj',
@@ -591,6 +593,7 @@ awful.rules.rules = {
 				'Pandora',
 				'Strife',
 				'Symphony.bin.x86_64',
+				'eu4',
 				'witcher2'
 			},
 			instance = {
@@ -600,6 +603,7 @@ awful.rules.rules = {
 				'nwn2main.exe'
 			},
 			name = {
+				'Cities in Motion 2',
 				'GunsOfIcarusOnline',
 				'Hand of Fate',
 				'Serious Sam 3 - Linux'
