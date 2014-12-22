@@ -54,6 +54,8 @@ if v:version >= 700
 
 	set list
 	set listchars=tab:\|\ ,trail:*,nbsp:x
+	nnoremap <leader>l :setlocal list!<cr>
+	nnoremap <leader>r :setlocal number!<cr>
 
 	" enable case indentation
 	let g:sh_indent_case_labels=1
