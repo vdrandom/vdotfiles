@@ -333,7 +333,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'Escape', awful.tag.history.restore),
 
 	-- Switch between windows
-	awful.key({ modkey,           }, 'j', function () awful.client.focus.byidx(1) client.focus:raise() end),
+	awful.key({ modkey,           }, 'j', function () awful.client.focus.byidx( 1) client.focus:raise() end),
 	awful.key({ modkey,           }, 'k', function () awful.client.focus.byidx(-1) client.focus:raise() end),
 	awful.key({ modkey,           }, 'i', function () client.focus:raise() end),
 	awful.key({ modkey,           }, 'w', function () mymainmenu:show() end),
@@ -342,7 +342,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'o', function () awful.screen.focus_relative(1) end),
 
 	-- Layout manipulation
-	awful.key({ modkey, 'Shift'   }, 'j', function () awful.client.swap.byidx(1) end),
+	awful.key({ modkey, 'Shift'   }, 'j', function () awful.client.swap.byidx( 1) end),
 	awful.key({ modkey, 'Shift'   }, 'k', function () awful.client.swap.byidx(-1) end),
 	awful.key({ modkey,           }, 'u', awful.client.urgent.jumpto),
 
@@ -369,11 +369,11 @@ globalkeys = awful.util.table.join(
 			end
 		end),
 
-	awful.key({ modkey,           }, 'l',     function () awful.tag.incmwfact(0.05)                       end),
+	awful.key({ modkey,           }, 'l',     function () awful.tag.incmwfact( 0.05)                      end),
 	awful.key({ modkey,           }, 'h',     function () awful.tag.incmwfact(-0.05)                      end),
-	awful.key({ modkey, 'Shift'   }, 'h',     function () awful.tag.incnmaster(1)                         end),
+	awful.key({ modkey, 'Shift'   }, 'h',     function () awful.tag.incnmaster( 1)                        end),
 	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)                        end),
-	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol(1)                            end),
+	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol( 1)                           end),
 	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)                           end),
 	awful.key({ modkey,           }, 'f',     function () awful.layout.set(layouts.float[1])    end),
 	awful.key({ modkey,           }, 'm',
@@ -429,6 +429,14 @@ clientkeys = awful.util.table.join(
 
 	-- Window properties
 	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
+	awful.key({ modkey,           }, 'b',
+		function (c)
+			if c.border_width ~= 0 then
+				c.border_width = 0
+			else
+				c.border_width = beautiful.border_width
+			end
+		end),
 	awful.key({ modkey, 'Shift'   }, 't',      function (c) c.ontop = not c.ontop            end),
 	awful.key({ modkey, 'Shift'   }, 's',      function (c) c.sticky = not c.sticky          end),
 	awful.key({ modkey, 'Shift'   }, 'f',      awful.client.floating.toggle                     ),
@@ -556,7 +564,7 @@ awful.rules.rules = {
 		properties = { size_hints_honor = false }
 	},
 	-- Specific desktops rules: place windows only on specific tags by default
-	-- tag 2: games = maximized
+	-- tag 4: games = maximized
 	{
 		rule_any = {
 			instance = {
@@ -566,7 +574,8 @@ awful.rules.rules = {
 		},
 		properties = {
 			border_width = 0,
-			tag = tags[1][2]
+			maximized = true,
+			tag = tags[1][4]
 		}
 	},
 	-- tag 4: steam and games
@@ -586,6 +595,7 @@ awful.rules.rules = {
 				'Cities In Motion.bin',
 				'ck2',
 				'csgo_linux',
+				'DefenseGrid2',
 				'deponia_tcj',
 				'dota_linux',
 				'game.x86_64',
