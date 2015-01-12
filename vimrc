@@ -27,7 +27,7 @@ set foldmethod=marker
 set noerrorbells visualbell t_vb=
 
 " enforce 256 colours for ssh connections and VTE
-if $TERM == 'xterm' || exists("$SSH_CLIENT")
+if $TERM == 'xterm' || $TERM == 'screen' || exists("$SSH_CLIENT")
 	let &t_Co=256
 endif
 
