@@ -92,6 +92,11 @@ if v:version >= 700
 		Plugin 'nanotech/jellybeans.vim'        "jellybeans
 		Plugin 'tomasr/molokai'                 "molokai
 
+		" colorschemes to try out
+		Plugin 'abra/vim-abra'
+		Plugin 'freeo/vim-kalisi'
+		Plugin 'john2x/flatui.vim'
+
 		" syntax highlight plugins
 		Plugin 'dag/vim-fish'                   "fish
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
