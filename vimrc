@@ -53,7 +53,7 @@ if v:version >= 700
 	set modeline
 
 	set list
-	set listchars=tab:\|\ ,trail:*,nbsp:x
+	set listchars=tab:>-,trail:*,nbsp:x
 	nnoremap <leader>l :setlocal list!<cr>
 	nnoremap <leader>r :setlocal number!<cr>
 
@@ -89,13 +89,11 @@ if v:version >= 700
 
 		" colorscheme ...
 		Plugin 'vdrandom/forked-solarized.vim'  "solarized
+		Plugin 'cocopon/iceberg.vim'            "iceberg
+		Plugin 'morhetz/gruvbox'                "gruvbox
 		Plugin 'nanotech/jellybeans.vim'        "jellybeans
-		Plugin 'tomasr/molokai'                 "molokai
-
-		" colorschemes to try out
-		Plugin 'abra/vim-abra'
-		Plugin 'freeo/vim-kalisi'
-		Plugin 'john2x/flatui.vim'
+		Plugin 'whatyouhide/vim-gotham'         "gotham
+		Plugin 'vim-scripts/strange'            "strange
 
 		" syntax highlight plugins
 		Plugin 'dag/vim-fish'                   "fish
@@ -121,12 +119,15 @@ if v:version >= 700
 
 		" buffergator options
 		map <C-W>, :BuffergatorToggle<cr>
+
+		" solarized options
+		let g:solarized_italic=0
+		let g:solarized_bold=0
+		let g:solarized_visibility='low'
 	endif
 
 	" gvim and colorschemes related stuff
 	if has("gui_running")
-		let g:solarized_italic=0
-		let g:solarized_bold=0
 		let NERDTreeDirArrows=1
 		set guioptions=aegimLl
 		set mouse=a
@@ -135,7 +136,7 @@ if v:version >= 700
 		set guicursor=a:blinkon0
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-		colorscheme jellybeans
+		colorscheme gotham
 	elseif &t_Co > 87
 		colorscheme solarized
 	endif
