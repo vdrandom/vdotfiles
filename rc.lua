@@ -662,8 +662,13 @@ client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_n
 -- {{{ Autostart
 -- don't forget you sync this file
 -- this shit runs every time you restart your wm, dumbass.
+---- set keyboard layouts
 awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,compose:menu,grp_led:scroll')
+---- apply the workaround to make mouse work outside en-us keyboard layout
+awful.util.spawn_with_shell('xkbcomp $DISPLAY - | egrep -v "group . = AltGr;" | xkbcomp - $DISPLAY')
+---- populate xrdb with .Xresources config
 awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
+---- execute all the other shit, installation specific
 if exists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
 end
