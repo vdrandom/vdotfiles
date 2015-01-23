@@ -53,7 +53,7 @@ if v:version >= 700
 	set modeline
 
 	set list
-	set listchars=tab:>-,trail:*,nbsp:x
+	set listchars=tab:\|.,trail:*,nbsp:x
 	nnoremap <leader>l :setlocal list!<cr>
 	nnoremap <leader>r :setlocal number!<cr>
 
@@ -73,8 +73,7 @@ if v:version >= 700
 		Plugin 'bling/vim-bufferline'           "stylish buffer display
 		Plugin 'bhiestand/vcscommand'           "shortcuts for vcs
 		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
-		Plugin 'kien/ctrlp.vim'                 "some quick file accessiong goodness
-		Plugin 'mbbill/undotree'                "undo buffer manager
+		Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
 		Plugin 'mhinz/vim-signify'              "version control system gutter info
 		Plugin 'msanders/snipmate.vim'          "snippets support
 		Plugin 'scrooloose/nerdcommenter'       "comment manager
@@ -83,6 +82,8 @@ if v:version >= 700
 		Plugin 'tpope/vim-fugitive'             "git awesomeness
 		Plugin 'tpope/vim-surround'             "quotes replacement made easy
 		Plugin 'tpope/vim-tbone'                "tmux support
+		"Plugin 'xolox/vim-misc'                 "deps for lua-ftplugin
+		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff
 
 		" from vim.sf.net
 		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
