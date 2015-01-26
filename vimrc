@@ -16,7 +16,6 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 set hlsearch
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
-set number
 set laststatus=2
 set ignorecase
 set smartcase
@@ -32,7 +31,6 @@ if $TERM == 'xterm' || $TERM == 'screen' || exists("$SSH_CLIENT")
 endif
 
 " set indentation options for specific file types
-autocmd FileType python setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
 autocmd BufNewFile *.lua 0put =\"#!/usr/bin/env lua\<nl>\"|$
 autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
@@ -55,7 +53,7 @@ if v:version >= 700
 	set list
 	set listchars=tab:\|.,trail:*,nbsp:x
 	nnoremap <leader>l :setlocal list!<cr>
-	nnoremap <leader>r :setlocal number!<cr>
+	nnoremap <leader>n :setlocal number!<cr>
 
 	" enable case indentation
 	let g:sh_indent_case_labels=1
