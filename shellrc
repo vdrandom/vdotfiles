@@ -121,6 +121,7 @@ if is_zsh; then
 	unsetopt BEEP NO_MATCH NOTIFY
 
 	SAVEHIST=1000
+	HISTSIZE=1000
 	HISTFILE="${HOME}/.histfile"
 
 	extras=( "${HOME}/.zshrc.extras" )
