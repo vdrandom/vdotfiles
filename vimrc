@@ -22,6 +22,11 @@ set smartcase
 set clipboard=exclude:.*
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set foldmethod=marker
+set cursorline
+" scroll before reaching the first / final line
+set scrolloff=8
+set sidescrolloff=15
+set sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
 
@@ -30,7 +35,7 @@ if $TERM == 'xterm' || $TERM == 'screen' || exists("$SSH_CLIENT")
 	let &t_Co=256
 endif
 
-" set indentation options for specific file types
+" insert shebang in the beginning of the file based on its name extension
 autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
 autocmd BufNewFile *.lua 0put =\"#!/usr/bin/env lua\<nl>\"|$
 autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
@@ -39,11 +44,21 @@ autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
 " maps
+let mapleader = ","
 nmap <Space> <C-W>
+noremap <F1> <Esc>
+"make it easier to exit insert mode
+inoremap jk <Esc>
+"clear search highlight
+nnoremap <Leader>/ :nohls<CR>
+"make wrapped lines navigation easier
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+"home / end
+nnoremap H ^
+nnoremap L $
 
 " still have to deal with old vim versions :<
 if v:version >= 700
@@ -52,8 +67,8 @@ if v:version >= 700
 
 	set list
 	set listchars=tab:\|.,trail:*,nbsp:x
-	nnoremap <leader>l :setlocal list!<cr>
-	nnoremap <leader>n :setlocal number!<cr>
+	nnoremap <Leader>l :setlocal list!<CR>
+	nnoremap <Leader>n :setlocal number!<CR>
 
 	" enable case indentation
 	let g:sh_indent_case_labels=1
@@ -72,6 +87,7 @@ if v:version >= 700
 		Plugin 'bhiestand/vcscommand'           "shortcuts for vcs
 		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
 		Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
+		Plugin 'klen/python-mode'               "python IDE stuff
 		Plugin 'mhinz/vim-signify'              "version control system gutter info
 		Plugin 'msanders/snipmate.vim'          "snippets support
 		Plugin 'scrooloose/nerdcommenter'       "comment manager
@@ -88,14 +104,11 @@ if v:version >= 700
 
 		" colorscheme ...
 		Plugin 'vdrandom/forked-solarized.vim'  "solarized
-		Plugin 'cocopon/iceberg.vim'            "iceberg
 		Plugin 'morhetz/gruvbox'                "gruvbox
-		Plugin 'nanotech/jellybeans.vim'        "jellybeans
 		Plugin 'whatyouhide/vim-gotham'         "gotham
 		Plugin 'vim-scripts/strange'            "strange
 
 		" syntax highlight plugins
-		Plugin 'dag/vim-fish'                   "fish
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
 		Plugin 'nagios-syntax'                  "nagios / icinga
 		silent! call vundle#end()
@@ -114,10 +127,10 @@ if v:version >= 700
 
 		" nerdtree options
 		let NERDTreeDirArrows=0
-		map <C-W>. :NERDTreeToggle<cr>
+		map <C-W>. :NERDTreeToggle<CR>
 
 		" buffergator options
-		map <C-W>, :BuffergatorToggle<cr>
+		map <C-W>, :BuffergatorOpen<CR>
 	endif
 
 	" gvim and colorschemes related stuff
