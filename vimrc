@@ -86,8 +86,10 @@ if v:version >= 700
 		Plugin 'bling/vim-bufferline'           "stylish buffer display
 		Plugin 'bhiestand/vcscommand'           "shortcuts for vcs
 		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
+		Plugin 'jiangmiao/auto-pairs'           "automatically place closing bracket / quote
 		Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
 		Plugin 'klen/python-mode'               "python IDE stuff
+		Plugin 'majutsushi/tagbar'              "class / module browser
 		Plugin 'mhinz/vim-signify'              "version control system gutter info
 		Plugin 'msanders/snipmate.vim'          "snippets support
 		Plugin 'scrooloose/nerdcommenter'       "comment manager
@@ -127,10 +129,13 @@ if v:version >= 700
 
 		" nerdtree options
 		let NERDTreeDirArrows=0
-		map <C-W>. :NERDTreeToggle<CR>
+		map <Leader>, :NERDTreeToggle<CR>
 
 		" buffergator options
-		map <C-W>, :BuffergatorOpen<CR>
+		map <Leader><Tab> :BuffergatorToggle<CR>
+
+		" tagbar options
+		map <Leader>. :TagbarToggle<CR>
 	endif
 
 	" gvim and colorschemes related stuff
@@ -141,6 +146,7 @@ if v:version >= 700
 		set guifont=Terminus\ 11
 		set novb
 		set guicursor=a:blinkon0
+		set guicursor+=a:hor1-Cursor/lCursor
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 		colorscheme gotham
