@@ -149,7 +149,9 @@ if v:version >= 700
 		set guicursor+=a:hor1-Cursor/lCursor
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-		colorscheme gotham
+		let g:gruvbox_italic=0
+		let g:gruvbox_underline=0
+		colorscheme gruvbox
 	elseif &t_Co > 87
 		let g:solarized_bold=0
 		let g:solarized_italic=0
