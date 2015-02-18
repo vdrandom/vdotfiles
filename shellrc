@@ -289,7 +289,7 @@ else
 	lb="${byellow}[${reset}"
 	rb="${byellow}]${reset}"
 	bb="${byellow} ${reset}"
-	prompt_host='\h'
+	prompt_host="$HOSTNAME"
 	prompt_bang="\\\$${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
