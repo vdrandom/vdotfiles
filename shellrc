@@ -39,8 +39,8 @@ alias pacman='command pacman --color=auto'
 alias rscreen='command screen -Dr'
 alias atmux='command tmux attach'
 alias hist='fc -l 1'
-alias beep='echo -en "\007"'
-alias fixterm='echo "c"'
+alias beep='printf "\007"'
+alias fixterm='printf "c"'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
@@ -328,7 +328,7 @@ else
 	# }}}
 	# {{{ traps
 	# we want to see exit code on error (it also has to be the last entry here)
-	trap 'echo -e "\e[0mbash: exit \e[1;37m$?\e[0m"' ERR
+	trap 'printf "\e[0m>> exit \e[1;37m%s\e[0m\n" $?' ERR
 	# }}}
 fi
 # {{{ source extras
