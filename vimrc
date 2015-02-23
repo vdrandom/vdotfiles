@@ -145,8 +145,10 @@ if v:version >= 700
 		set mouse=a
 		set guifont=Terminus\ 11
 		set novb
-		set guicursor=a:blinkon0
-		set guicursor+=a:hor1-Cursor/lCursor
+		set guicursor=a:hor1-Cursor/lCursor     "underline cursor by default
+		set guicursor+=i:ver1-Cursor/lCursor    "vertical cursor for insert mode
+		set guicursor+=r:block                  "block for replace
+		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 		let g:gruvbox_italic=0
