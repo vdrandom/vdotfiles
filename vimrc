@@ -1,9 +1,8 @@
-if &cp | set nocp | endif
+set nocompatible
 let s:cpo_save=&cpo
 set cpo&vim
 let &cpo=s:cpo_save
 unlet s:cpo_save
-set nocompatible
 set backspace=indent,eol,start
 set nobackup
 set history=50
@@ -109,6 +108,8 @@ if v:version >= 700
 		Plugin 'morhetz/gruvbox'                "gruvbox
 		Plugin 'whatyouhide/vim-gotham'         "gotham
 		Plugin 'vim-scripts/strange'            "strange
+		Plugin 'chriskempson/base16-vim'        "base16 variety
+		Plugin 'tomasr/molokai'                 "molokai
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
@@ -159,6 +160,7 @@ if v:version >= 700
 		let g:solarized_italic=0
 		let g:solarized_underline=0
 		let g:solarized_visibility='low'
+		let g:solarized_termtrans=1
 		colorscheme solarized
 	endif
 else
