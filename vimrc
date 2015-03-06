@@ -39,15 +39,13 @@ autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
 autocmd BufNewFile *.lua 0put =\"#!/usr/bin/env lua\<nl>\"|$
 autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
-autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
+autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
 " maps
 let mapleader = ","
 nmap <Space> <C-W>
 noremap <F1> <Esc>
-"make it easier to exit insert mode
-inoremap jk <Esc>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
 "make wrapped lines navigation easier
@@ -99,6 +97,7 @@ if v:version >= 700
 		Plugin 'tpope/vim-tbone'                "tmux support
 		"Plugin 'xolox/vim-misc'                 "deps for lua-ftplugin
 		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff
+		"Plugin 'vimacs'
 
 		" from vim.sf.net
 		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
@@ -106,10 +105,10 @@ if v:version >= 700
 		" colorscheme ...
 		Plugin 'vdrandom/forked-solarized.vim'  "solarized
 		Plugin 'morhetz/gruvbox'                "gruvbox
-		Plugin 'whatyouhide/vim-gotham'         "gotham
-		Plugin 'vim-scripts/strange'            "strange
-		Plugin 'chriskempson/base16-vim'        "base16 variety
-		Plugin 'tomasr/molokai'                 "molokai
+		"Plugin 'whatyouhide/vim-gotham'         "gotham
+		"Plugin 'vim-scripts/strange'            "strange
+		"Plugin 'chriskempson/base16-vim'        "base16 variety
+		"Plugin 'tomasr/molokai'                 "molokai
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
