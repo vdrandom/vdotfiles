@@ -1,27 +1,22 @@
 set nocompatible
-let s:cpo_save=&cpo
-set cpo&vim
-let &cpo=s:cpo_save
-unlet s:cpo_save
+set background=dark
 set backspace=indent,eol,start
-set nobackup
+set clipboard=exclude:.*
+set cursorline
+set foldmethod=marker
 set history=50
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set nobackup
+set noexpandtab
 set ruler
 set showcmd
-set incsearch
-set background=dark
-set noexpandtab
-set fileencodings=ucs-bom,utf-8,default,latin1
-set hlsearch
+set smartcase
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set termencoding=utf-8
-set laststatus=2
-set ignorecase
-set smartcase
-set clipboard=exclude:.*
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set foldmethod=marker
-set cursorline
 " scroll before reaching the first / final line
 set scrolloff=8
 set sidescrolloff=15
@@ -62,10 +57,11 @@ if v:version >= 700
 	set helplang=en
 	set modeline
 
+	set number
 	set list
 	set listchars=tab:\|.,trail:*,nbsp:x
-	nnoremap <Leader>l :setlocal list!<CR>
 	nnoremap <Leader>n :setlocal number!<CR>
+	nnoremap <Leader>l :setlocal list!<CR>
 
 	" enable case indentation
 	let g:sh_indent_case_labels=1
@@ -78,26 +74,29 @@ if v:version >= 700
 		Plugin 'gmarik/Vundle.vim'              "plugin manager
 
 		" general plugins
-		" from github.com
 		Plugin 'bling/vim-airline'              "stylish info display
 		Plugin 'bling/vim-bufferline'           "stylish buffer display
-		Plugin 'bhiestand/vcscommand'           "shortcuts for vcs
 		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
-		Plugin 'jiangmiao/auto-pairs'           "automatically place closing bracket / quote
-		Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
-		Plugin 'klen/python-mode'               "python IDE stuff
-		Plugin 'majutsushi/tagbar'              "class / module browser
 		Plugin 'mhinz/vim-signify'              "version control system gutter info
-		Plugin 'msanders/snipmate.vim'          "snippets support
 		Plugin 'scrooloose/nerdcommenter'       "comment manager
 		Plugin 'scrooloose/nerdtree'            "file manager
-		Plugin 'scrooloose/syntastic'           "syntax checker
+		Plugin 'Shougo/unite.vim'               "fuzzy file open
 		Plugin 'tpope/vim-fugitive'             "git awesomeness
 		Plugin 'tpope/vim-surround'             "quotes replacement made easy
 		Plugin 'tpope/vim-tbone'                "tmux support
+		"Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
+
+		" IDE like features
+		Plugin 'davidhalter/jedi-vim'           "python autocompletion
+		Plugin 'jiangmiao/auto-pairs'           "automatically place closing bracket / quote
+		Plugin 'majutsushi/tagbar'              "class / module browser
+		Plugin 'msanders/snipmate.vim'          "snippets support
+		Plugin 'nvie/vim-flake8'                "python checking with flake8
+		Plugin 'scrooloose/syntastic'           "syntax checker
+		"Plugin 'klen/python-mode'               "python IDE stuff
 		"Plugin 'xolox/vim-misc'                 "deps for lua-ftplugin
-		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff
-		"Plugin 'vimacs'
+		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff (very slow)
+		"Plugin 'vimacs'                         "it's emacs, in vim insert mode
 
 		" from vim.sf.net
 		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
@@ -116,16 +115,16 @@ if v:version >= 700
 		silent! call vundle#end()
 
 		" airline options
-		let g:airline_symbols = {}
-		let g:airline_symbols.whitespace = '!'
-		let g:airline_powerline_fonts = 1
+		let g:airline_symbols={}
+		let g:airline_symbols.whitespace='!'
+		let g:airline_powerline_fonts=1
 
 		" bufferline options
-		let g:bufferline_show_bufnr = 0
+		let g:bufferline_show_bufnr=0
 
 		" signify options
-		let g:signify_vcs_list = [ 'svn', 'git' ]
-		let g:signify_sign_change = '~'
+		let g:signify_vcs_list=[ 'svn', 'git' ]
+		let g:signify_sign_change='~'
 
 		" nerdtree options
 		let NERDTreeDirArrows=0
