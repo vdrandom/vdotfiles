@@ -37,6 +37,9 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
+" some filetype prefrences
+autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
+
 " maps
 let mapleader = ","
 nmap <Space> <C-W>
@@ -93,6 +96,7 @@ if v:version >= 700
 		Plugin 'msanders/snipmate.vim'          "snippets support
 		Plugin 'nvie/vim-flake8'                "python checking with flake8
 		Plugin 'scrooloose/syntastic'           "syntax checker
+		Plugin 'indentpython'                   "smarter python indentation
 		"Plugin 'klen/python-mode'               "python IDE stuff
 		"Plugin 'xolox/vim-misc'                 "deps for lua-ftplugin
 		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff (very slow)
