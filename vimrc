@@ -72,6 +72,7 @@ if v:version >= 700
 	" plugins
 	if filereadable(expand("$HOME/.vim/bundle/Vundle.vim/autoload/vundle.vim"))
 		filetype off
+		set noshowmode
 		set rtp+=~/.vim/bundle/Vundle.vim/
 		silent! call vundle#begin()
 		Plugin 'gmarik/Vundle.vim'              "plugin manager
@@ -107,11 +108,9 @@ if v:version >= 700
 
 		" colorscheme ...
 		Plugin 'vdrandom/forked-solarized.vim'  "solarized
+		Plugin 'chriskempson/vim-tomorrow-theme' "Tomorrow-*
+		Plugin 'junegunn/seoul256.vim'          "seoul256
 		Plugin 'morhetz/gruvbox'                "gruvbox
-		"Plugin 'whatyouhide/vim-gotham'         "gotham
-		"Plugin 'vim-scripts/strange'            "strange
-		"Plugin 'chriskempson/base16-vim'        "base16 variety
-		"Plugin 'tomasr/molokai'                 "molokai
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
@@ -123,19 +122,24 @@ if v:version >= 700
 		let g:airline_symbols.whitespace='!'
 		let g:airline_powerline_fonts=1
 
+		" buffergator options
+		map <Leader><Tab> :BuffergatorToggle<CR>
+
 		" bufferline options
 		let g:bufferline_show_bufnr=0
 
-		" signify options
-		let g:signify_vcs_list=[ 'svn', 'git' ]
-		let g:signify_sign_change='~'
+		" jedi-vim options
+		let g:jedi#popup_on_dot=0
+		let g:jedi#show_call_signatures=0
+		let g:jedi#force_py_version=3
 
 		" nerdtree options
 		let NERDTreeDirArrows=0
 		map <Leader>, :NERDTreeToggle<CR>
 
-		" buffergator options
-		map <Leader><Tab> :BuffergatorToggle<CR>
+		" signify options
+		let g:signify_vcs_list=[ 'svn', 'git' ]
+		let g:signify_sign_change='~'
 
 		" tagbar options
 		map <Leader>. :TagbarToggle<CR>
@@ -154,17 +158,19 @@ if v:version >= 700
 		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-		let g:gruvbox_italic=0
-		let g:gruvbox_underline=0
-		colorscheme gruvbox
-	elseif &t_Co > 87
-		let g:solarized_bold=0
-		let g:solarized_italic=0
-		let g:solarized_underline=0
-		let g:solarized_visibility='low'
-		let g:solarized_termtrans=1
-		colorscheme solarized
+		"let g:gruvbox_italic=0
+		"let g:gruvbox_underline=0
+		"colorscheme gruvbox
+	"elseif &t_Co > 87
+		"let g:solarized_bold=0
+		"let g:solarized_italic=0
+		"let g:solarized_underline=0
+		"let g:solarized_visibility='low'
+		"let g:solarized_termtrans=1
+		"colorscheme solarized
+		"let g:airline_theme='powerlineish'
 	endif
+	colorscheme Tomorrow-Night
 else
 	colorscheme elflord
 endif
