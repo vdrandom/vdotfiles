@@ -111,6 +111,7 @@ if v:version >= 700
 		Plugin 'chriskempson/vim-tomorrow-theme' "Tomorrow-*
 		Plugin 'junegunn/seoul256.vim'          "seoul256
 		Plugin 'morhetz/gruvbox'                "gruvbox
+		Plugin 'nanotech/jellybeans.vim'        "jellybeans
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
@@ -158,18 +159,23 @@ if v:version >= 700
 		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-		"let g:gruvbox_italic=0
-		"let g:gruvbox_underline=0
-		"colorscheme gruvbox
-	"elseif &t_Co > 87
-		"let g:solarized_bold=0
-		"let g:solarized_italic=0
-		"let g:solarized_underline=0
-		"let g:solarized_visibility='low'
-		"let g:solarized_termtrans=1
-		"colorscheme solarized
-		"let g:airline_theme='powerlineish'
 	endif
+	"------- gruvbox -------
+	"let g:gruvbox_italic=0
+	"let g:gruvbox_underline=0
+	"colorscheme gruvbox
+	"------ solarized ------
+	"let g:solarized_bold=0
+	"let g:solarized_italic=0
+	"let g:solarized_underline=0
+	"let g:solarized_visibility='low'
+	"let g:solarized_termtrans=1
+	"colorscheme solarized
+	"------- seoul256 ------
+	"let g:seoul256_background=233
+	"colorscheme seoul256
+	"let g:airline_theme='powerlineish'
+	"-----------------------
 	colorscheme Tomorrow-Night
 else
 	colorscheme elflord
