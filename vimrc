@@ -37,9 +37,6 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
-" some filetype prefrences
-autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
-
 " maps
 let mapleader = ","
 nmap <Space> <C-W>
@@ -176,9 +173,40 @@ if v:version >= 700
 	"colorscheme seoul256
 	"let g:airline_theme='powerlineish'
 	"-----------------------
+	syntax on
+
+	" Filetype specific stuff
+	function PythonHighlights()
+		" Declare new highlight groups
+		" self keyword
+		syn keyword pythonSelf self
+		" dots
+		syn match pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
+		syn match pythonDot "\." display containedin=pythonDottedName
+		" colons and commas
+		syn match pythonColon ":"
+		syn match pythonComma ","
+		" parenthesis
+		syn match pythonParens /[(){}\[\]]/
+
+		" Apply highlights
+		hi link pythonSelf Identifier
+		hi link pythonDottedName Function
+		hi link pythonDot Normal
+		hi link pythonColon Structure
+		hi link pythonComma Structure
+		hi link pythonParens Special
+
+		" Some preferences
+		setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
+	endfunction
+
+	autocmd FileType python call PythonHighlights()
 else
 	colorscheme elflord
+	syntax on
 endif
 
-syntax on
+
+" Enable autoindent
 filetype plugin indent on
