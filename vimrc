@@ -161,9 +161,9 @@ if v:version >= 700
 		map! <S-Insert> <MiddleMouse>
 	endif
 	"------- gruvbox -------
-	"let g:gruvbox_italic=0
-	"let g:gruvbox_underline=0
-	"colorscheme gruvbox
+	let g:gruvbox_italic=0
+	let g:gruvbox_underline=0
+	colorscheme gruvbox
 	"------ solarized ------
 	"let g:solarized_bold=0
 	"let g:solarized_italic=0
@@ -176,7 +176,6 @@ if v:version >= 700
 	"colorscheme seoul256
 	"let g:airline_theme='powerlineish'
 	"-----------------------
-	colorscheme Tomorrow-Night
 else
 	colorscheme elflord
 endif
