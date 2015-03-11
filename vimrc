@@ -195,7 +195,7 @@ if v:version >= 700
 		hi link pythonDot Normal
 		hi link pythonColon Structure
 		hi link pythonComma Structure
-		hi link pythonParens Special
+		hi link pythonParens Keyword
 
 		" Some preferences
 		setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
