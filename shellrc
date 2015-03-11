@@ -113,6 +113,20 @@ hide-info() {
 unhide-info() {
 	unset hide_info
 }
+
+seconds-to-hr() {
+	local seconds d h m s
+	seconds=$1
+	if ((seconds)); then
+		((
+		d=seconds/86400,
+		h=seconds/3600%24,
+		m=seconds/60%60,
+		s=seconds%60
+		))
+		printf '%sd %sh %sm %ss\n' $d $h $m $s
+	fi
+}
 # }}}
 if is_zsh; then
 # zsh
