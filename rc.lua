@@ -604,7 +604,9 @@ awful.rules.rules = {
 				'Strife',
 				'Symphony.bin.x86_64',
 				'eu4',
-				'witcher2'
+				'witcher2',
+				-- non-games
+				'Qmmp'
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
