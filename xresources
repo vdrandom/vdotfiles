@@ -1,6 +1,6 @@
 ! vim: ft=xdefaults
 ! {{{ xft and cursor configuration
-Xcursor.theme:          Neutral
+Xcursor.theme:          Vanilla-DMZ-AA
 Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
