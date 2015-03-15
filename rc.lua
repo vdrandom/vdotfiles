@@ -123,6 +123,7 @@ local layouts = {
 		awful.layout.suit.magnifier
 	}
 }
+layouts.tiled['default'] = layouts.tiled[3]
 -- }}}
 -- {{{ Wallpaper
 if beautiful.wallpaper then
@@ -134,8 +135,10 @@ end
 -- {{{ Tags
 -- Provide tag names and layout settings if we wish to define them
 tags = {}
+saved_layouts = {}
 for s = 1, screen.count() do
 	tags[s] = { name = {}, layout = {} }
+	saved_layouts[s] = { tiled = {} }
 end
 -- screen 1
 --tags[1].name = {
@@ -143,7 +146,6 @@ end
 --	[9] = 'example2'
 --}
 tags[1].layout = {
-	[2] = layouts.max[1],
 	[4] = layouts.float[1]
 }
 -- screens 2+
@@ -155,8 +157,15 @@ end
 -- Fill the missing values with defaults
 for s = 1, screen.count() do
 	for tag = 1, 9 do
-		tags[s].name[tag] = tags[s].name[tag] or tag
-		tags[s].layout[tag] = tags[s].layout[tag] or layouts.tiled[1]
+		local name = tags[s].name[tag] or tag
+		local layout = tags[s].layout[tag] or layouts.tiled['default']
+		tags[s].name[tag] = name
+		tags[s].layout[tag] = layout
+		if enters(layout, layouts.tiled) then
+			saved_layouts[s].tiled[name] = layout
+		else
+			saved_layouts[s].tiled[name] = layouts.tiled['default']
+		end
 	end
 end
 -- Set tags instances in wm
@@ -186,7 +195,13 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Menu for layoutbox
 mylbmenu = awful.menu({
 	items = {
-		{ 'Tiled',	function () awful.layout.set(layouts.tiled[1]) end },
+		{ 'Tiled',
+			function ()
+				local screen = mouse.screen
+				local tag = awful.tag.selected(screen).name
+				awful.layout.set(saved_layouts[screen].tiled[tag])
+			end
+		},
 		{ 'Maximized',	function () awful.layout.set(layouts.max[1]) end },
 		{ 'Floating',	function () awful.layout.set(layouts.float[1]) end }
 	}
@@ -268,9 +283,12 @@ for s = 1, screen.count() do
 		awful.util.table.join(
 			awful.button({ }, 1,
 				function ()
-					local current_layout = awful.layout.get(mouse.screen)
+					local screen = mouse.screen
+					local current_layout = awful.layout.get(screen)
 					if enters(current_layout, layouts.tiled) then
+						local tag = awful.tag.selected(screen).name
 						awful.layout.inc(layouts.tiled, 1)
+						saved_layouts[screen].tiled[tag] = awful.layout.get(screen)
 					end
 				end),
 			awful.button({ }, 3, function () mylbmenu:toggle() end)
@@ -387,11 +405,14 @@ globalkeys = awful.util.table.join(
 		end),
 	awful.key({ modkey,           }, 't',
 		function ()
-			local current_layout = awful.layout.get(mouse.screen)
+			local screen = mouse.screen
+			local current_layout = awful.layout.get(screen)
+			local tag = awful.tag.selected(screen).name
 			if not enters(current_layout, layouts.tiled) then
-				awful.layout.set(layouts.tiled[1])
+				awful.layout.set(saved_layouts[screen].tiled[tag])
 			else
 				awful.layout.inc(layouts.tiled, 1)
+				saved_layouts[screen].tiled[tag] = awful.layout.get(screen)
 			end
 		end),
 
@@ -521,6 +542,7 @@ awful.rules.rules = {
 	{
 		rule_any = {
 			class = {
+				'Audacious',
 				'Deadbeef',
 				'Google-musicmanager',
 				'mpv',
@@ -606,6 +628,7 @@ awful.rules.rules = {
 				'eu4',
 				'witcher2',
 				-- non-games
+				'Audacious',
 				'Qmmp'
 			},
 			instance = {
