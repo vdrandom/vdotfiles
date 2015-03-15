@@ -75,6 +75,9 @@ theme.font = 'Terminus 9'
 theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
 
+-- amount of pixels to snap windows from
+snap = 0
+
 -- set wallpaper
 local wallpaper = '/home/von/Pictures/wallpaper.png'
 if exists(wallpaper) then
@@ -524,8 +527,8 @@ for i = 1, 9 do
 end
 
 clientbuttons = awful.util.table.join(
-	awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-	awful.button({ modkey }, 1, awful.mouse.client.move),
+	awful.button({        }, 1, function (c) client.focus = c; c:raise() end),
+	awful.button({ modkey }, 1, function (c) client.focus = c; awful.mouse.client.move(c, snap) end),
 	awful.button({ modkey }, 3, awful.mouse.client.resize)
 )
 
@@ -542,8 +545,7 @@ awful.rules.rules = {
 			border_color = beautiful.border_normal,
 			focus = awful.client.focus.filter,
 			keys = clientkeys,
-			buttons = clientbuttons,
-			callback = awful.client.setslave
+			buttons = clientbuttons
 		}
 	},
 	-- Floating only rules:
@@ -678,7 +680,7 @@ client.connect_signal(
 		if not startup then
 			-- Set the windows at the slave,
 			-- i.e. put it at the end of others instead of setting it master.
-			-- awful.client.setslave(c)
+			awful.client.setslave(c)
 
 			-- Put windows in a smart way, only if they do not set an initial position.
 			if not c.size_hints.user_position and not c.size_hints.program_position then
