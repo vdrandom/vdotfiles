@@ -123,7 +123,6 @@ local layouts = {
 		awful.layout.suit.magnifier
 	}
 }
-layouts.tiled['default'] = layouts.tiled[3]
 -- }}}
 -- {{{ Wallpaper
 if beautiful.wallpaper then
@@ -156,15 +155,23 @@ if screen.count() >= 2 then
 end
 -- Fill the missing values with defaults
 for s = 1, screen.count() do
+	-- Set default tiled layout for all the screens
+	-- if s == 1 and screen.count() ~= 1 then -- in case I ever want to have default for less than 2 screens
+	if s == 1 then
+		default_tiled = layouts.tiled[3]
+	else
+		default_tiled = layouts.tiled[1]
+	end
 	for tag = 1, 9 do
 		local name = tags[s].name[tag] or tag
-		local layout = tags[s].layout[tag] or layouts.tiled['default']
+		local layout = tags[s].layout[tag] or default_tiled
 		tags[s].name[tag] = name
 		tags[s].layout[tag] = layout
+		-- Assign saved tiled layout so that we can use it right away
 		if enters(layout, layouts.tiled) then
 			saved_layouts[s].tiled[name] = layout
 		else
-			saved_layouts[s].tiled[name] = layouts.tiled['default']
+			saved_layouts[s].tiled[name] = default_tiled
 		end
 	end
 end
@@ -535,7 +542,8 @@ awful.rules.rules = {
 			border_color = beautiful.border_normal,
 			focus = awful.client.focus.filter,
 			keys = clientkeys,
-			buttons = clientbuttons
+			buttons = clientbuttons,
+			callback = awful.client.setslave
 		}
 	},
 	-- Floating only rules:
