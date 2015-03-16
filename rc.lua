@@ -166,7 +166,7 @@ for s = 1, screen.count() do
 		default_tiled = layouts.tiled[1]
 	end
 	for tag = 1, 9 do
-		local name = tags[s].name[tag] or tag
+		local name = tags[s].name[tag] or tostring(tag)
 		local layout = tags[s].layout[tag] or default_tiled
 		tags[s].name[tag] = name
 		tags[s].layout[tag] = layout
