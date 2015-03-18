@@ -552,14 +552,12 @@ awful.rules.rules = {
 	{
 		rule_any = {
 			class = {
-				'Audacious',
 				'Deadbeef',
 				'Google-musicmanager',
 				'mpv',
 				'Pavucontrol',
 				'pinentry',
 				'plugin-container',
-				'Qmmp',
 				'Skype',
 				'Vncviewer'
 			},
@@ -568,6 +566,19 @@ awful.rules.rules = {
 			}
 		},
 		properties = {
+			floating = true
+		}
+	},
+	-- Floating borderless, because winamp nostalgia:
+	{
+		rule_any = {
+			class = {
+				'Audacious',
+				'Qmmp'
+			}
+		},
+		properties = {
+			border_width = 0,
 			floating = true
 		}
 	},
@@ -636,10 +647,7 @@ awful.rules.rules = {
 				'Strife',
 				'Symphony.bin.x86_64',
 				'eu4',
-				'witcher2',
-				-- non-games
-				'Audacious',
-				'Qmmp'
+				'witcher2'
 			},
 			instance = {
 				'Civ4BeyondSword.exe',
