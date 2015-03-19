@@ -140,7 +140,7 @@ tags = {}
 saved_layouts = {}
 for s = 1, screen.count() do
 	tags[s] = { name = {}, layout = {} }
-	saved_layouts[s] = { tiled = {} }
+	saved_layouts[s] = { tiled = {}, float = {} }
 end
 -- screen 1
 --tags[1].name = {
@@ -701,6 +701,47 @@ client.connect_signal(
 
 client.connect_signal('focus', function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_normal end)
+
+-- save floating layout parameters for windows created and managed during the current session
+tag.connect_signal(
+	'property::layout',
+	function(t)
+		for k, c in ipairs(t:clients()) do
+			if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+				c:geometry(saved_layouts[c.screen].float[c.window])
+			end
+		end
+	end
+)
+
+client.connect_signal(
+	'manage',
+	function(c)
+		if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+			saved_layouts[c.screen].float[c.window] = c:geometry()
+		end
+	end
+)
+
+client.connect_signal('unmanage', function(c) saved_layouts[c.screen].float[c.window] = nil end)
+
+client.connect_signal(
+	'property::geometry',
+	function(c)
+		if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+			saved_layouts[c.screen].float[c.window] = c:geometry()
+		end
+	end
+)
+
+client.connect_signal(
+	'property::floating',
+	function(c)
+		if awful.client.floating.get(c) == true and saved_layouts[c.screen].float[c.window] ~= nil then
+			c:geometry(saved_layouts[c.screen].float[c.window])
+		end
+	end
+)
 -- }}}
 -- {{{ Autostart
 -- don't forget you sync this file
