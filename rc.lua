@@ -707,7 +707,7 @@ tag.connect_signal(
 	'property::layout',
 	function(t)
 		for k, c in ipairs(t:clients()) do
-			if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+			if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
 				c:geometry(saved_layouts[c.screen].float[c.window])
 			end
 		end
@@ -717,7 +717,7 @@ tag.connect_signal(
 client.connect_signal(
 	'manage',
 	function(c)
-		if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+		if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
 			saved_layouts[c.screen].float[c.window] = c:geometry()
 		end
 	end
@@ -728,7 +728,7 @@ client.connect_signal('unmanage', function(c) saved_layouts[c.screen].float[c.wi
 client.connect_signal(
 	'property::geometry',
 	function(c)
-		if awful.layout.get(mouse.screen) == awful.layout.suit.floating or awful.client.floating.get(c) == true then
+		if awful.layout.get(mouse.screen) == awful.layout.suit.floating and awful.client.floating.get(c) == false then
 			saved_layouts[c.screen].float[c.window] = c:geometry()
 		end
 	end
@@ -737,7 +737,7 @@ client.connect_signal(
 client.connect_signal(
 	'property::floating',
 	function(c)
-		if awful.client.floating.get(c) == true and saved_layouts[c.screen].float[c.window] ~= nil then
+		if awful.client.floating.get(c) == false and saved_layouts[c.screen].float[c.window] ~= nil then
 			c:geometry(saved_layouts[c.screen].float[c.window])
 		end
 	end
