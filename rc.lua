@@ -470,7 +470,7 @@ clientkeys = awful.util.table.join(
 		end),
 	awful.key({ modkey, 'Shift'   }, 't',      function (c) c.ontop = not c.ontop            end),
 	awful.key({ modkey, 'Shift'   }, 's',      function (c) c.sticky = not c.sticky          end),
-	awful.key({ modkey, 'Shift'   }, 'f',      awful.client.floating.toggle                     ),
+	awful.key({ modkey,           }, '`',      awful.client.floating.toggle                     ),
 	awful.key({ modkey, 'Shift'   }, 'm',
 		function (c)
 			c.maximized_horizontal = not c.maximized_horizontal
