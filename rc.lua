@@ -456,6 +456,13 @@ clientkeys = awful.util.table.join(
 	awful.key({ modkey, 'Shift'   }, 'c',      function (c) c:kill()                         end),
 	awful.key({ modkey,           }, 'Return', function (c) c:swap(awful.client.getmaster()) end),
 	awful.key({ modkey, 'Shift'   }, 'o',      awful.client.movetoscreen                        ),
+	-- TODO: swap tags between screens
+	awful.key({ modkey,           }, ',',
+		function(c)
+			if screen.count() == 2 then
+			end
+		end
+	),
 	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
 
 	-- Window properties
