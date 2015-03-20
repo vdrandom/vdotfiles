@@ -456,13 +456,6 @@ clientkeys = awful.util.table.join(
 	awful.key({ modkey, 'Shift'   }, 'c',      function (c) c:kill()                         end),
 	awful.key({ modkey,           }, 'Return', function (c) c:swap(awful.client.getmaster()) end),
 	awful.key({ modkey, 'Shift'   }, 'o',      awful.client.movetoscreen                        ),
-	-- TODO: swap tags between screens
-	awful.key({ modkey,           }, ',',
-		function(c)
-			if screen.count() == 2 then
-			end
-		end
-	),
 	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
 
 	-- Window properties
@@ -606,9 +599,7 @@ awful.rules.rules = {
 	{
 		rule_any = {
 			class = {
-				'Roxterm',
-				'URxvt',
-				'Xfce4-terminal'
+				'Roxterm'
 			}
 		},
 		properties = { size_hints_honor = false }
@@ -756,7 +747,14 @@ client.connect_signal(
 ---- set keyboard layouts
 awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:scroll,compose:menu')
 ---- populate xrdb with .Xresources config
-awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
+if exists('/home/von/.Xresources') then
+	awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
+end
+---- fix lack of terminus font
+if exists('/home/von/.fonts/terminus') then
+	awful.util.spawn_with_shell('xset fp- /home/von/.fonts/terminus/PCF')
+	awful.util.spawn_with_shell('xset fp+ /home/von/.fonts/terminus/PCF')
+end
 ---- execute all the other shit, installation specific
 if exists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
