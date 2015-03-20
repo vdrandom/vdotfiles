@@ -140,7 +140,7 @@ tags = {}
 saved_layouts = {}
 for s = 1, screen.count() do
 	tags[s] = { name = {}, layout = {} }
-	saved_layouts[s] = { tiled = {}, float = {} }
+	saved_layouts[s] = { tiled = {} }
 end
 -- screen 1
 --tags[1].name = {
@@ -494,7 +494,11 @@ for i = 1, 9 do
 				local screen = mouse.screen
 				local tag = awful.tag.gettags(screen)[i]
 				if tag then
-					awful.tag.viewonly(tag)
+					if awful.tag.selected(screen) == tag and awful.tag.selectedlist(screen)[2] == nil then
+						awful.tag.history.restore()
+					else
+						awful.tag.viewonly(tag)
+					end
 				end
 			end),
 		awful.key({ modkey, 'Control' }, '#' .. i + 9,
@@ -706,7 +710,7 @@ tag.connect_signal(
 	function(t)
 		for k, c in ipairs(t:clients()) do
 			if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
-				c:geometry(saved_layouts[c.screen].float[c.window])
+				c:geometry(awful.client.property.get(c, 'floating_geometry'))
 			end
 		end
 	end
@@ -716,27 +720,16 @@ client.connect_signal(
 	'manage',
 	function(c)
 		if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
-			saved_layouts[c.screen].float[c.window] = c:geometry()
+			awful.client.property.set(c, 'floating_geometry', c:geometry())
 		end
 	end
 )
-
-client.connect_signal('unmanage', function(c) saved_layouts[c.screen].float[c.window] = nil end)
 
 client.connect_signal(
 	'property::geometry',
 	function(c)
-		if awful.layout.get(mouse.screen) == awful.layout.suit.floating and awful.client.floating.get(c) == false then
-			saved_layouts[c.screen].float[c.window] = c:geometry()
-		end
-	end
-)
-
-client.connect_signal(
-	'property::floating',
-	function(c)
-		if awful.client.floating.get(c) == false and saved_layouts[c.screen].float[c.window] ~= nil then
-			c:geometry(saved_layouts[c.screen].float[c.window])
+		if awful.layout.get(mouse.screen) == awful.layout.suit.floating then
+			awful.client.property.set(c, 'floating_geometry', c:geometry())
 		end
 	end
 )
