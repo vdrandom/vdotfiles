@@ -188,6 +188,8 @@ if v:version >= 700
 		syn match pythonComma ","
 		" parenthesis
 		syn match pythonParens /[(){}\[\]]/
+		" TODO: do something about the next thing matching all the strings without .format().
+		syn match pythonStringFmt "{[^}]*}" display containedin=pythonString
 
 		" Apply highlights
 		hi link pythonSelf Identifier
@@ -196,6 +198,7 @@ if v:version >= 700
 		hi link pythonColon Structure
 		hi link pythonComma Structure
 		hi link pythonParens Keyword
+		hi link pythonStringFmt Identifier
 
 		" Some preferences
 		setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
