@@ -111,16 +111,16 @@ local layouts = {
 	float = {
 		awful.layout.suit.floating
 	},
+	spiral = {
+		awful.layout.suit.spiral,
+		awful.layout.suit.spiral.dwindle
+	},
 
 	-- Some weird shit I don't use, but it still exists:
 
 	fair = {
 		awful.layout.suit.fair,
 		awful.layout.suit.fair.horizontal
-	},
-	spiral = {
-		awful.layout.suit.spiral,
-		awful.layout.suit.spiral.dwindle
 	},
 	magnifier = {
 		awful.layout.suit.magnifier
@@ -188,14 +188,14 @@ end
 mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
-mymainmenu_quit = {
-	{ 'quit', awesome.quit }
-}
+--mymainmenu_quit = {
+--	{ 'quit', awesome.quit }
+--}
 
 mymainmenu = awful.menu({
 	items = {
-		{ 'restart',	mymainmenu_restart,	beautiful.awesome_icon },
-		{ 'quit',	mymainmenu_quit,	beautiful.awesome_icon }
+		{ 'restart',	mymainmenu_restart,	beautiful.awesome_icon }
+		-- { 'quit',	mymainmenu_quit,	beautiful.awesome_icon }
 	}
 })
 
@@ -213,7 +213,8 @@ mylbmenu = awful.menu({
 			end
 		},
 		{ 'Maximized',	function () awful.layout.set(layouts.max[1]) end },
-		{ 'Floating',	function () awful.layout.set(layouts.float[1]) end }
+		{ 'Floating',	function () awful.layout.set(layouts.float[1]) end },
+		{ 'Spiral',	function () awful.layout.set(layouts.spiral[1]) end }
 	}
 })
 -- }}}
@@ -406,7 +407,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'f',     function () awful.layout.set(layouts.float[1])    end),
 	awful.key({ modkey,           }, 'm',
 		function ()
-			local current_layout = awful.layout.get(mouse.screen)
+			local screen = mouse.screen
+			local current_layout = awful.layout.get(screen)
 			if not enters(current_layout, layouts.max) then
 				awful.layout.set(layouts.max[1])
 			else
@@ -423,6 +425,16 @@ globalkeys = awful.util.table.join(
 			else
 				awful.layout.inc(layouts.tiled, 1)
 				saved_layouts[screen].tiled[tag] = awful.layout.get(screen)
+			end
+		end),
+	awful.key({ modkey,           }, 's',
+		function ()
+			local screen = mouse.screen
+			local current_layout = awful.layout.get(screen)
+			if not enters(current_layout, layouts.spiral) then
+				awful.layout.set(layouts.spiral[1])
+			else
+				awful.layout.inc(layouts.spiral, 1)
 			end
 		end),
 
