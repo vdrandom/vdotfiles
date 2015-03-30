@@ -109,6 +109,7 @@ if v:version >= 700
 		Plugin 'junegunn/seoul256.vim'          "seoul256
 		Plugin 'morhetz/gruvbox'                "gruvbox
 		Plugin 'nanotech/jellybeans.vim'        "jellybeans
+		Plugin 'blueshirts/darcula'             "darcula
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
