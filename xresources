@@ -33,36 +33,6 @@ URxvt.matcher.button:   3
 URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
-! {{{ gotham color scheme
-URxvt.foreground:   #98d1ce
-URxvt.background:   #0a0f14
-URxvt.cursorColor:  #98d1ce
-
-! black
-URxvt.color0:       #0a0f14
-URxvt.color8:       #10151b
-! red
-URxvt.color1:       #c33027
-URxvt.color9:       #d26939
-! green
-URxvt.color2:       #26a98b
-URxvt.color10:      #081f2d
-! yellow
-URxvt.color3:       #edb54b
-URxvt.color11:      #245361
-! blue
-URxvt.color4:       #195465
-URxvt.color12:      #093748
-! magenta
-URxvt.color5:       #4e5165
-URxvt.color13:      #888ba5
-! cyan
-URxvt.color6:       #33859d
-URxvt.color14:      #599caa
-! white
-URxvt.color7:       #98d1ce
-URxvt.color15:      #d3ebe9
-! }}}
 ! {{{ drop in Solarized colorscheme for Xresources/Xdefaults
 
 !!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
@@ -85,26 +55,27 @@ URxvt.color15:      #d3ebe9
 !!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
 
 !! common
-!#define S_yellow        #b58900
-!#define S_orange        #cb4b16
-!#define S_red           #dc322f
-!#define S_magenta       #d33682
-!#define S_violet        #6c71c4
-!#define S_blue          #268bd2
-!#define S_cyan          #2aa198
-!#define S_green         #859900
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
 
 !! dark
-!#define S_base03        #002b36
-!#define S_base02        #073642
-!#define S_base01        #586e75
-!#define S_base00        #657b83
-!#define S_base0         #839496
-!#define S_base1         #93a1a1
-!#define S_base2         #eee8d5
-!#define S_base3         #fdf6e3
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
 
 !! light
+
 !#define S_base03        #fdf6e3
 !#define S_base02        #eee8d5
 !#define S_base01        #93a1a1
@@ -114,44 +85,43 @@ URxvt.color15:      #d3ebe9
 !#define S_base2         #073642
 !#define S_base3         #002b36
 
-!! colors themselves
-!URxvt.background:            S_base03
-!URxvt.foreground:            S_base0
-!URxvt.colorBD:               S_base3
-!URxvt.fadeColor:             S_base03
-!URxvt.cursorColor:           S_base3
-!URxvt.pointerColorBackground:S_base01
-!URxvt.pointerColorForeground:S_base1
+URxvt.background:            S_base03
+URxvt.foreground:            S_base0
+URxvt.colorBD:               S_base3
+URxvt.fadeColor:             S_base03
+URxvt.cursorColor:           S_base3
+URxvt.pointerColorBackground:S_base01
+URxvt.pointerColorForeground:S_base1
 
 !! black dark/light
-!URxvt.color0:                S_base02
-!URxvt.color8:                S_base03
+URxvt.color0:                S_base02
+URxvt.color8:                S_base03
 
 !! red dark/light
-!URxvt.color1:                S_red
-!URxvt.color9:                S_orange
+URxvt.color1:                S_red
+URxvt.color9:                S_orange
 
 !! green dark/light
-!URxvt.color2:                S_green
-!URxvt.color10:               S_base01
+URxvt.color2:                S_green
+URxvt.color10:               S_base01
 
 !! yellow dark/light
-!URxvt.color3:                S_yellow
-!URxvt.color11:               S_base00
+URxvt.color3:                S_yellow
+URxvt.color11:               S_base00
 
 !! blue dark/light
-!URxvt.color4:                S_blue
-!URxvt.color12:               S_base0
+URxvt.color4:                S_blue
+URxvt.color12:               S_base0
 
 !! magenta dark/light
-!URxvt.color5:                S_magenta
-!URxvt.color13:               S_violet
+URxvt.color5:                S_magenta
+URxvt.color13:               S_violet
 
 !! cyan dark/light
-!URxvt.color6:                S_cyan
-!URxvt.color14:               S_base1
+URxvt.color6:                S_cyan
+URxvt.color14:               S_base1
 
 !! white dark/light
-!URxvt.color7:                S_base2
-!URxvt.color15:               S_base3
+URxvt.color7:                S_base2
+URxvt.color15:               S_base3
 ! }}}

@@ -109,7 +109,7 @@ if v:version >= 700
 		Plugin 'junegunn/seoul256.vim'          "seoul256
 		Plugin 'morhetz/gruvbox'                "gruvbox
 		Plugin 'nanotech/jellybeans.vim'        "jellybeans
-		Plugin 'whatyouhide/vim-gotham'         "gotham
+		Plugin 'blueshirts/darcula'             "darcula
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
@@ -158,11 +158,10 @@ if v:version >= 700
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 	endif
-	colorscheme gotham
 	"------- gruvbox -------
-	"let g:gruvbox_italic=0
-	"let g:gruvbox_underline=0
-	"colorscheme gruvbox
+	let g:gruvbox_italic=0
+	let g:gruvbox_underline=0
+	colorscheme gruvbox
 	"------ solarized ------
 	"let g:solarized_bold=0
 	"let g:solarized_italic=0
