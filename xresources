@@ -22,6 +22,8 @@ URxvt.urgentOnBell:     true
 URxvt.cursorUnderline:  true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.fading:           0
+URxvt.transparent:      true
+URxvt.shading:          20
 
 ! icon (needs pixbuf support compiled)
 URxvt.iconFile:         /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
