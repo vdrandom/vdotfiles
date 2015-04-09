@@ -168,7 +168,7 @@ if is_zsh; then
 		zstyle ':vcs_info:*' enable git svn
 		zstyle ':vcs_info:*' check-for-changes true
 		zstyle ':vcs_info:*' stagedstr " %F{green}✓%f"
-		zstyle ':vcs_info:*' unstagedstr " %B%F{red}✗%f%b"
+		zstyle ':vcs_info:*' unstagedstr " %F{red}✗%f"
 		zstyle ':vcs_info:svn*' branchformat '%r'
 		zstyle ':vcs_info:*' formats "%B%F{yellow}[%f%%b%s%B%F{yellow}: %F{magenta}%r%f %F{yellow}%f%%b %F{yellow}%b%f%u%c%B%F{yellow}]%f%%b"
 	fi
@@ -178,9 +178,9 @@ if is_zsh; then
 	rb='%B%F{yellow}]%f%b'
 	bb='%B%F{yellow} %f%b'
 	prompt_cwd='%B%d%b'
-	prompt_user='%(1000#..%(1205#..%B%F{red}%n%F{yellow}@%f%b))'
+	prompt_user='%(1000#..%(1205#..%F{red}%n%B%F{yellow}@%f%b))'
 	prompt_host='%m'
-	prompt_bang='%B%(!.%F{red}.%F{green})%#%f%b'
+	prompt_bang='%(!.%F{red}.%F{white})>%f'
 	prompt_jobs='%(1j.%B%F{yellow}[%f%bjobs: %B%F{red}%j%F{yellow}]%f%b.)'
 	precmd() {
 		[[ -n ${vcs_enabled} ]] && vcs_info
@@ -312,16 +312,16 @@ else
 			if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
 				prompt_user=''
 			else
-				prompt_user="${bred}\u${byellow}@${reset}"
+				prompt_user="${nred}\u${byellow}@${reset}"
 			fi
 			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${rb}${lb}bash-\v${rb}"
 		else
 			prompt_info=''
 		fi
 		if [[ $UID -eq 0 ]]; then
-			prompt_bang_color="${bred}"
+			prompt_bang_color="${nred}"
 		else
-			prompt_bang_color="${bgreen}"
+			prompt_bang_color="${ngreen}"
 		fi
 		PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
 	}
