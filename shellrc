@@ -305,7 +305,7 @@ else
 	rb="${byellow}]${reset}"
 	bb="${byellow} ${reset}"
 	prompt_host="$HOSTNAME"
-	prompt_bang="\\\$${reset}"
+	prompt_bang=">${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
 			prompt_cwd="${bwhite}${PWD}${reset}"
@@ -321,7 +321,7 @@ else
 		if [[ $UID -eq 0 ]]; then
 			prompt_bang_color="${nred}"
 		else
-			prompt_bang_color="${ngreen}"
+			prompt_bang_color="${nwhite}"
 		fi
 		PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
 	}
