@@ -626,6 +626,7 @@ awful.rules.rules = {
 		rule_any = {
 			instance = {
 				'BaldursGate',
+				'BaldursGateII',
 				'IcewindDale'
 			}
 		},

@@ -37,6 +37,17 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
+" remove trailing spaces and tabs on exit
+function! <SID>StripTrailingWhitespaces()
+	let l = line(".")
+	let c = col(".")
+	%s/\s\+$//e
+	call cursor(l, c)
+	unlet l
+	unlet c
+endfunction
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
 " maps
 let mapleader = ","
 nmap <Space> <C-W>
@@ -59,7 +70,7 @@ if v:version >= 700
 
 	set number
 	set list
-	set listchars=tab:\|.,trail:*,nbsp:x
+	set listchars=tab:\|.,nbsp:x
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
@@ -75,19 +86,22 @@ if v:version >= 700
 		Plugin 'gmarik/Vundle.vim'              "plugin manager
 
 		" general plugins
+		Plugin 'Lokaltog/vim-easymotion'        "easy motion
+		Plugin 'Shougo/unite.vim'               "fuzzy file open
 		Plugin 'bling/vim-airline'              "stylish info display
 		Plugin 'bling/vim-bufferline'           "stylish buffer display
 		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
 		Plugin 'mhinz/vim-signify'              "version control system gutter info
 		Plugin 'scrooloose/nerdcommenter'       "comment manager
 		Plugin 'scrooloose/nerdtree'            "file manager
-		Plugin 'Shougo/unite.vim'               "fuzzy file open
 		Plugin 'tpope/vim-fugitive'             "git awesomeness
 		Plugin 'tpope/vim-surround'             "quotes replacement made easy
 		Plugin 'tpope/vim-tbone'                "tmux support
+		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
 		"Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
 
 		" IDE like features
+		Plugin 'Yggdroot/indentLine'            "indent level lines
 		Plugin 'davidhalter/jedi-vim'           "python autocompletion
 		Plugin 'jiangmiao/auto-pairs'           "automatically place closing bracket / quote
 		Plugin 'majutsushi/tagbar'              "class / module browser
@@ -100,21 +114,22 @@ if v:version >= 700
 		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff (very slow)
 		"Plugin 'vimacs'                         "it's emacs, in vim insert mode
 
-		" from vim.sf.net
-		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
-
-		" colorscheme ...
-		Plugin 'vdrandom/forked-solarized.vim'  "solarized
-		Plugin 'chriskempson/vim-tomorrow-theme' "Tomorrow-*
-		Plugin 'junegunn/seoul256.vim'          "seoul256
-		Plugin 'morhetz/gruvbox'                "gruvbox
-		Plugin 'nanotech/jellybeans.vim'        "jellybeans
-		Plugin 'blueshirts/darcula'             "darcula
+		" colorschemes
+		Plugin 'vdrandom/forked-solarized.vim'
+		Plugin 'morhetz/gruvbox'
+		Plugin 'whatyouhide/vim-gotham'
+		Plugin 'MaxSt/FlatColor'
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
 		Plugin 'nagios-syntax'                  "nagios / icinga
 		silent! call vundle#end()
+
+		" easymotion options
+		let g:EasyMotion_smartcase=1
+		nmap s <Plug>(easymotion-s)
+		map <Leader>j <Plug>(easymotion-j)
+		map <Leader>k <Plug>(easymotion-k)
 
 		" airline options
 		let g:airline_symbols={}
@@ -139,6 +154,15 @@ if v:version >= 700
 		" signify options
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
+
+		" indentLine
+		let g:indentLine_fileType=[ 'python', 'ruby' ]
+		let g:indentLine_faster=1
+		let g:indentLine_showFirstIndentLevel=1
+		let g:indentLine_noConcealCursor=1
+		let g:indentLine_char='┆'
+		let g:indentLine_first_char='┆'
+		map <Leader>i :IndentLinesToggle<CR>
 
 		" tagbar options
 		map <Leader>. :TagbarToggle<CR>
