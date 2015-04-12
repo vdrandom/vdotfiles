@@ -83,36 +83,36 @@ if v:version >= 700
 		set noshowmode
 		set rtp+=~/.vim/bundle/Vundle.vim/
 		silent! call vundle#begin()
-		Plugin 'gmarik/Vundle.vim'              "plugin manager
+		Plugin 'gmarik/Vundle.vim'               "plugin manager
 
 		" general plugins
-		Plugin 'Lokaltog/vim-easymotion'        "easy motion
-		Plugin 'Shougo/unite.vim'               "fuzzy file open
-		Plugin 'bling/vim-airline'              "stylish info display
-		Plugin 'bling/vim-bufferline'           "stylish buffer display
-		Plugin 'jeetsukumaran/vim-buffergator'  "buffer management
-		Plugin 'mhinz/vim-signify'              "version control system gutter info
-		Plugin 'scrooloose/nerdcommenter'       "comment manager
-		Plugin 'scrooloose/nerdtree'            "file manager
-		Plugin 'tpope/vim-fugitive'             "git awesomeness
-		Plugin 'tpope/vim-surround'             "quotes replacement made easy
-		Plugin 'tpope/vim-tbone'                "tmux support
-		Plugin 'directionalWindowResizer'       "resize windows with simple hotkeys
-		"Plugin 'kien/ctrlp.vim'                 "some quick file accessing goodness
+		Plugin 'Lokaltog/vim-easymotion'         "easy motion
+		Plugin 'Shougo/unite.vim'                "fuzzy file open
+		Plugin 'bling/vim-airline'               "stylish info display
+		Plugin 'bling/vim-bufferline'            "stylish buffer display
+		Plugin 'jeetsukumaran/vim-buffergator'   "buffer management
+		Plugin 'mhinz/vim-signify'               "version control system gutter info
+		Plugin 'scrooloose/nerdcommenter'        "comment manager
+		Plugin 'scrooloose/nerdtree'             "file manager
+		Plugin 'tpope/vim-fugitive'              "git awesomeness
+		Plugin 'tpope/vim-surround'              "quotes replacement made easy
+		Plugin 'directionalWindowResizer'        "resize windows with simple hotkeys
+		"Plugin 'tpope/vim-tbone'                 "tmux support
+		"Plugin 'kien/ctrlp.vim'                  "some quick file accessing goodness
+		"Plugin 'vimacs'                          "it's emacs, in vim insert mode
 
 		" IDE like features
-		Plugin 'Yggdroot/indentLine'            "indent level lines
-		Plugin 'davidhalter/jedi-vim'           "python autocompletion
-		Plugin 'jiangmiao/auto-pairs'           "automatically place closing bracket / quote
-		Plugin 'majutsushi/tagbar'              "class / module browser
-		Plugin 'msanders/snipmate.vim'          "snippets support
-		Plugin 'nvie/vim-flake8'                "python checking with flake8
-		Plugin 'scrooloose/syntastic'           "syntax checker
-		Plugin 'indentpython'                   "smarter python indentation
-		"Plugin 'klen/python-mode'               "python IDE stuff
-		"Plugin 'xolox/vim-misc'                 "deps for lua-ftplugin
-		"Plugin 'xolox/vim-lua-ftplugin'         "lua stuff (very slow)
-		"Plugin 'vimacs'                         "it's emacs, in vim insert mode
+		Plugin 'nathanaelkane/vim-indent-guides' "indent guides on demand
+		Plugin 'davidhalter/jedi-vim'            "python autocompletion
+		Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
+		Plugin 'majutsushi/tagbar'               "class / module browser
+		Plugin 'msanders/snipmate.vim'           "snippets support
+		Plugin 'nvie/vim-flake8'                 "python checking with flake8
+		Plugin 'scrooloose/syntastic'            "syntax checker
+		Plugin 'indentpython'                    "smarter python indentation
+		"Plugin 'klen/python-mode'                "python IDE stuff
+		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
+		"Plugin 'xolox/vim-lua-ftplugin'          "lua stuff (very slow)
 
 		" colorschemes
 		Plugin 'vdrandom/forked-solarized.vim'
@@ -121,11 +121,12 @@ if v:version >= 700
 		Plugin 'MaxSt/FlatColor'
 
 		" syntax highlight plugins
-		Plugin 'puppetlabs/puppet-syntax-vim'   "puppet
-		Plugin 'nagios-syntax'                  "nagios / icinga
+		Plugin 'puppetlabs/puppet-syntax-vim'
+		Plugin 'nagios-syntax'
 		silent! call vundle#end()
 
 		" easymotion options
+		let g:EasyMotion_do_mapping=0
 		let g:EasyMotion_smartcase=1
 		nmap s <Plug>(easymotion-s)
 		map <Leader>j <Plug>(easymotion-j)
@@ -154,15 +155,6 @@ if v:version >= 700
 		" signify options
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
-
-		" indentLine
-		let g:indentLine_fileType=[ 'python', 'ruby' ]
-		let g:indentLine_faster=1
-		let g:indentLine_showFirstIndentLevel=1
-		let g:indentLine_noConcealCursor=1
-		let g:indentLine_char='┆'
-		let g:indentLine_first_char='┆'
-		map <Leader>i :IndentLinesToggle<CR>
 
 		" tagbar options
 		map <Leader>. :TagbarToggle<CR>
