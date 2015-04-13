@@ -76,7 +76,7 @@ theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
 
 -- amount of pixels to snap windows from
-snap = 0
+snap = 7
 
 -- set wallpaper
 local wallpaper = '/home/von/Pictures/wallpaper.png'
