@@ -37,16 +37,17 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
-" remove trailing spaces and tabs on exit
-function! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
-	unlet l
-	unlet c
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" remove trailing spaces and tabs on exit - apparently takes a shit ton of
+" time to close the document, so no, let us keep it out of business for now
+"function! <SID>StripTrailingWhitespaces()
+"	let l = line(".")
+"	let c = col(".")
+"	%s/\s\+$//e
+"	call cursor(l, c)
+"	unlet l
+"	unlet c
+"endfunction
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " maps
 let mapleader = ","
