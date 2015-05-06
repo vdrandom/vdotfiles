@@ -167,10 +167,10 @@ if is_zsh; then
 		autoload -Uz vcs_info
 		zstyle ':vcs_info:*' enable git svn
 		zstyle ':vcs_info:*' check-for-changes true
-		zstyle ':vcs_info:*' stagedstr " %F{green}✓%f"
-		zstyle ':vcs_info:*' unstagedstr " %F{red}✗%f"
+		zstyle ':vcs_info:*' stagedstr " %F{green}v%f"
+		zstyle ':vcs_info:*' unstagedstr " %F{red}x%f"
 		zstyle ':vcs_info:svn*' branchformat '%r'
-		zstyle ':vcs_info:*' formats " %s:%B%F{magenta}%r%f%%b%F{yellow}%b%f%u%c"
+		zstyle ':vcs_info:*' formats " %s:%B%F{magenta}%r%f%%b %F{yellow}%b%f%u%c"
 	fi
 	# }}}
 	# {{{ prompt
@@ -315,7 +315,7 @@ else
 			else
 				prompt_user="${nred}\u${reset} "
 			fi
-			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd} | bash-\v${rb}"
+			prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd} bash:${nyellow}\v${reset}${rb}"
 		else
 			prompt_info=''
 		fi
