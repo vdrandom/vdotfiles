@@ -103,15 +103,15 @@ if v:version >= 700
 		"Plugin 'vimacs'                          "it's emacs, in vim insert mode
 
 		" IDE like features
-		Plugin 'nathanaelkane/vim-indent-guides' "indent guides on demand
-		Plugin 'davidhalter/jedi-vim'            "python autocompletion
 		Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
-		Plugin 'majutsushi/tagbar'               "class / module browser
 		Plugin 'msanders/snipmate.vim'           "snippets support
-		Plugin 'nvie/vim-flake8'                 "python checking with flake8
 		Plugin 'scrooloose/syntastic'            "syntax checker
-		Plugin 'indentpython'                    "smarter python indentation
+		"Plugin 'davidhalter/jedi-vim'            "python autocompletion
+		"Plugin 'indentpython'                    "smarter python indentation
 		"Plugin 'klen/python-mode'                "python IDE stuff
+		"Plugin 'majutsushi/tagbar'               "class / module browser
+		"Plugin 'nathanaelkane/vim-indent-guides' "indent guides on demand
+		"Plugin 'nvie/vim-flake8'                 "python checking with flake8
 		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
 		"Plugin 'xolox/vim-lua-ftplugin'          "lua stuff (very slow)
 
@@ -145,9 +145,9 @@ if v:version >= 700
 		let g:bufferline_show_bufnr=0
 
 		" jedi-vim options
-		let g:jedi#popup_on_dot=0
-		let g:jedi#show_call_signatures=0
-		let g:jedi#force_py_version=3
+		"let g:jedi#popup_on_dot=0
+		"let g:jedi#show_call_signatures=0
+		"let g:jedi#force_py_version=3
 
 		" nerdtree options
 		let NERDTreeDirArrows=0
@@ -158,7 +158,7 @@ if v:version >= 700
 		let g:signify_sign_change='~'
 
 		" tagbar options
-		map <Leader>. :TagbarToggle<CR>
+		"map <Leader>. :TagbarToggle<CR>
 	endif
 
 	" gvim and colorschemes related stuff
