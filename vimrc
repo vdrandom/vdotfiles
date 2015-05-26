@@ -55,6 +55,8 @@ nmap <Space> <C-W>
 noremap <F1> <Esc>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
+"disable auto indent
+nnoremap <Leader>a :set noautoindent<CR>
 "make wrapped lines navigation easier
 nnoremap j gj
 nnoremap k gk
@@ -125,6 +127,9 @@ if v:version >= 700
 		Plugin 'puppetlabs/puppet-syntax-vim'
 		Plugin 'nagios-syntax'
 		silent! call vundle#end()
+
+		" auto-pairs options
+		let g:AutoPairsShortcutToggle='<Leader>p'
 
 		" easymotion options
 		let g:EasyMotion_do_mapping=0

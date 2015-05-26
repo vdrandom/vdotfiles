@@ -30,7 +30,7 @@ URxvt.iconFile:         /usr/share/icons/Faenza/apps/scalable/utilities-terminal
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard
-URxvt.url-launcher:     /usr/bin/chromium
+URxvt.url-launcher:     /usr/bin/seamonkey
 URxvt.matcher.button:   3
 URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
