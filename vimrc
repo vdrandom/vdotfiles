@@ -56,7 +56,7 @@ noremap <F1> <Esc>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
 "disable auto indent
-nnoremap <Leader>a :set noautoindent<CR>
+nnoremap <Leader>a :set autoindent!<CR>
 "make wrapped lines navigation easier
 nnoremap j gj
 nnoremap k gk
@@ -95,33 +95,33 @@ if v:version >= 700
 		Plugin 'bling/vim-bufferline'            "stylish buffer display
 		Plugin 'jeetsukumaran/vim-buffergator'   "buffer management
 		Plugin 'mhinz/vim-signify'               "version control system gutter info
-		Plugin 'scrooloose/nerdcommenter'        "comment manager
 		Plugin 'scrooloose/nerdtree'             "file manager
 		Plugin 'tpope/vim-fugitive'              "git awesomeness
 		Plugin 'tpope/vim-surround'              "quotes replacement made easy
 		Plugin 'directionalWindowResizer'        "resize windows with simple hotkeys
+		"Plugin 'scrooloose/nerdcommenter'        "comment manager
 		"Plugin 'tpope/vim-tbone'                 "tmux support
 		"Plugin 'kien/ctrlp.vim'                  "some quick file accessing goodness
 		"Plugin 'vimacs'                          "it's emacs, in vim insert mode
 
 		" IDE like features
 		Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
-		Plugin 'msanders/snipmate.vim'           "snippets support
-		Plugin 'scrooloose/syntastic'            "syntax checker
 		"Plugin 'davidhalter/jedi-vim'            "python autocompletion
 		"Plugin 'indentpython'                    "smarter python indentation
 		"Plugin 'klen/python-mode'                "python IDE stuff
 		"Plugin 'majutsushi/tagbar'               "class / module browser
+		"Plugin 'msanders/snipmate.vim'           "snippets support
 		"Plugin 'nathanaelkane/vim-indent-guides' "indent guides on demand
 		"Plugin 'nvie/vim-flake8'                 "python checking with flake8
+		"Plugin 'scrooloose/syntastic'            "syntax checker
 		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
 		"Plugin 'xolox/vim-lua-ftplugin'          "lua stuff (very slow)
 
 		" colorschemes
-		Plugin 'vdrandom/forked-solarized.vim'
 		Plugin 'morhetz/gruvbox'
-		Plugin 'whatyouhide/vim-gotham'
-		Plugin 'MaxSt/FlatColor'
+		"Plugin 'MaxSt/FlatColor'
+		"Plugin 'vdrandom/forked-solarized.vim'
+		"Plugin 'whatyouhide/vim-gotham'
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'
@@ -191,10 +191,6 @@ if v:version >= 700
 	"let g:solarized_visibility='low'
 	"let g:solarized_termtrans=1
 	"colorscheme solarized
-	"------- seoul256 ------
-	"let g:seoul256_background=233
-	"colorscheme seoul256
-	"let g:airline_theme='powerlineish'
 	"-----------------------
 	syntax on
 
@@ -236,3 +232,4 @@ endif
 
 " Enable autoindent
 filetype plugin indent on
+
