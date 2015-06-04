@@ -5,12 +5,12 @@
 # common
 # {{{ environment
 # a bunch of functions to make this whole thing work
-is_zsh() { [[ -n ${ZSH_VERSION} ]]; }
+is_zsh() [[ -n ${ZSH_VERSION} ]]
 if is_zsh; then
-	is_exec() { [[ -x $(whence ${1}) ]]; }
+	is_exec() [[ -x $(whence ${1}) ]]
 	export HOSTNAME=${HOST}
 else
-	is_exec() { [[ -x $(type -P ${1}) ]]; }
+	is_exec() [[ -x $(type -P ${1}) ]]
 fi
 
 newline="
@@ -92,28 +92,15 @@ alias sci='command svn commit'
 alias sup='command svn up'
 # }}}
 # {{{ common functions
-screenoff-disable() {
-	xset -dpms
-	xset s off
-}
+screenoff-disable() { xset -dpms; xset s off; }
 
-screenoff-enable() {
-	xset +dpms
-	xset s on
-}
+screenoff-enable() { xset +dpms; xset s on; }
 
-dotfiles-update() {
-	git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull
-	return 0
-}
+dotfiles-update() { git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull; }
 
-hide-info() {
-	hide_info=true
-}
+hide-info() { hide_info=true; }
 
-unhide-info() {
-	unset hide_info
-}
+unhide-info() { unset hide_info; }
 
 seconds-to-hr() {
 	local seconds d h m s
