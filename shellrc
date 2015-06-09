@@ -166,7 +166,7 @@ if is_zsh; then
 	rb=' ]'
 	bb=':'
 	prompt_user='%(1000#..%(1205#..%F{red}%n%f%b ))'
-	prompt_host='%m'
+	prompt_host='%M'
 	prompt_cwd='%B%d%b'
 	prompt_bang='%(!.%F{red}>%f.%B>%b)'
 	prompt_jobs='%(1j. jobs:%B%F{red}%j%f%b.)'
