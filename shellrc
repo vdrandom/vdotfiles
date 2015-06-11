@@ -319,9 +319,18 @@ else
 	# {{{ key bindings
 	# time $command bind
 	bind '"\C-j":"\C-atime \C-m"'
-	# PgUp/PgDown and ctrl-arrows for skip word
-	bind '"\e[5~"':backward-word
-	bind '"\e[6~"':forward-word
+	# urxvt
+	bind '"\e[7~"':beginning-of-line                      # home
+	bind '"\e[8~"':end-of-line                            # end
+	# screen
+	bind '"\e[1~"':beginning-of-line                      # home
+	bind '"\e[4~"':end-of-line                            # end
+	# xterm
+	bind '"\e[H~"':beginning-of-line                      # home
+	bind '"\e[F~"':end-of-line                            # end
+	# all of them
+	bind '"\e[5~"':backward-word                          # page up
+	bind '"\e[6~"':forward-word                           # page down
 	# }}}
 	# {{{ plugins
 	completion_path='/usr/share/bash-completion/bash_completion'
