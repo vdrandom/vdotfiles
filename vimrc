@@ -2,7 +2,6 @@ set nocompatible
 set background=dark
 set backspace=indent,eol,start
 set clipboard=exclude:.*
-set cursorline
 set foldmethod=marker
 set history=50
 set hlsearch
@@ -54,6 +53,8 @@ autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use wa
 let mapleader = ","
 nmap <Space> <C-W>
 noremap <F1> <Esc>
+"enable cursorline on demand
+nnoremap <Leader>c :set cursorline!<CR>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
 "disable auto indent
@@ -74,7 +75,7 @@ if v:version >= 700
 
 	set number
 	set list
-	set listchars=tab:\|.,nbsp:x
+	set listchars=tab:\|_,nbsp:x
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
