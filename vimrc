@@ -15,8 +15,6 @@ set showcmd
 set smartcase
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set termencoding=utf-8
-set encoding=utf-8
 " scroll before reaching the first / final line
 set scrolloff=8
 set sidescrolloff=15
@@ -27,6 +25,10 @@ set noerrorbells visualbell t_vb=
 " enforce 256 colours for ssh connections and VTE
 if $TERM == 'xterm' || $TERM == 'screen' || exists("$SSH_CLIENT")
 	let &t_Co=256
+endif
+if $LANG =~ '^.*UTF-8$' || $LANG =~ 'utf8$'
+	set termencoding=utf-8
+	set encoding=utf-8
 endif
 
 " insert shebang in the beginning of the file based on its name extension
