@@ -456,6 +456,7 @@ globalkeys = awful.util.table.join(
 	-- Menubar
 	awful.key({ modkey,           }, 'p',     function () menubar.show() end),
 	-- Glbal commands
+	awful.key({ 'Mod1', 'Shift'   }, 'F12',   function () awful.util.spawn('/home/von/vscripts/compton_toggle', false) end),
 	awful.key({ modkey,           }, 'x',     function () awful.util.spawn(terminal) end),
 	awful.key({ modkey,           }, 'q',     function () awful.util.spawn('/home/von/.local/bin/ticket_watch', false) end),
 	awful.key({ modkey,           }, 'z',     function () awful.util.spawn('bash -c "until i3lock -entc 661111 -i /home/von/Pictures/wallpaper.png; do :; done"') end),

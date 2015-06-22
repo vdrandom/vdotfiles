@@ -4,7 +4,7 @@
 
 # common
 # {{{ environment
-# a bunch of functions to make this whole thing work
+# a bunch of functions and vars to make this whole thing work
 is_zsh() [[ -n ${ZSH_VERSION} ]]
 if is_zsh; then
 	is_exec() [[ -x $(whence ${1}) ]]
@@ -15,9 +15,11 @@ fi
 
 newline="
 "
+vscripts="${HOME}/vscripts"
 local_bin="${HOME}/.local/bin"
-[[ -r ${local_bin} && ${PATH} != *${local_bin}* ]] && export PATH=${PATH}:${local_bin}
-unset local_bin
+[[ -d ${vscripts} && ${PATH} != *${vscripts}* ]] && export PATH=${PATH}:${vscripts}
+[[ -d ${local_bin} && ${PATH} != *${local_bin}* ]] && export PATH=${PATH}:${local_bin}
+unset local_bin vscripts
 
 dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
