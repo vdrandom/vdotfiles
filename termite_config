@@ -2,7 +2,7 @@
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
-mouse_autohide = false
+mouse_autohide = true
 allow_bold = false
 dynamic_title = true
 urgent_on_bell = true
@@ -20,7 +20,7 @@ size_hints = false
 #cursor = #fdf6e3
 foreground = #839496
 foreground_bold = #fdf6e3
-background = rgba(0, 20, 26, 0.9)
+background = rgba(0, 20, 26, 0.8)
 #fbt's background = #00141A
 #default solarizedbackground = #002b36
 
