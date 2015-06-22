@@ -20,7 +20,7 @@ size_hints = true
 cursor = #fdf6e3
 foreground = #839496
 foreground_bold = #fdf6e3
-background = rgba(0, 20, 26, 0.8)
+background = rgba(0, 20, 26, 0.9)
 #fbt's background = #00141A
 #default solarizedbackground = #002b36
 
