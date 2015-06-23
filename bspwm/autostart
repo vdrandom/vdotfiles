@@ -1,0 +1,4 @@
+wallpaper="${HOME}/Pictures/wallpaper.png"
+[[ -r "$wallpaper" ]] && feh --bg-center "$wallpaper"
+xfce4-panel &
+nm-applet &

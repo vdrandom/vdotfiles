@@ -1,0 +1,72 @@
+#
+# bspwm hotkeys
+#
+
+super + {_,shift + } w
+	bspc window {-c,-k}
+
+super + q
+	bspc window -t fullscreen
+
+super + {j,k}
+	bspc window -f {next,prev}
+
+control + {j,l}
+	bspc window -e {down,right} +32
+
+control + {k,h}
+	bspc window -e {down,right} -32
+
+super + space
+	bspc window -t floating
+
+super + Return
+	bspc window -s biggest
+
+super + {1-9}
+	bspc desktop -f {1-9}
+
+super + shift + {1-9}
+	bspc window -d {1-9}
+
+super + t
+	/home/von/.config/bspwm/bsptl
+
+super + f
+	/home/von/.config/bspwm/bsptf
+
+control + bracketright
+	bspc desktop -R 90
+
+~button1
+	bspc pointer -g focus
+
+super + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+	bspc pointer -t %i %i
+
+super + @button{1-3}
+	bspc pointer -u
+
+super + x
+	termite
+
+super + {r,u}
+	/home/von/.config/bspwm/bspmenu_{run,url}
+
+super + z
+	i3lock-extra -m pixelize ~/pics/lock.png
+
+Print
+	snap -f
+
+super + b
+	chameleon pics/wallpapers
+
+super + {Left,Up,Right,Down}
+	bspc window --presel {left,up,right,down}
+
+super + c
+	win-hd-center 1280x720

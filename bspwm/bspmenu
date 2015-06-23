@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/bspwm/common"
+
+dmenu -fn "$fontspec" \
+      -nb "#$colour_bg_normal" \
+      -nf "#$colour_fg_normal" \
+      -sb "#$colour_bg_focused" \
+      "$@"

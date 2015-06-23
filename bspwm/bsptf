@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+source "$HOME/.config/bspwm/common"
+
+bspc desktop -t floating
+bspc control --get-status > "$panel_fifo"

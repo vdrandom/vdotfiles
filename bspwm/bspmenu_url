@@ -1,0 +1,15 @@
+#!/bin/sh
+
+get_bookmarks() {
+	while read url title; do
+		echo "$url"
+	done < "$HOME/.config/bookmarks"
+}
+
+main() {
+	uri=$(get_bookmarks | /home/von/.config/bspwm/bspmenu -p 'url' "$@")
+	[ "$uri" ] && { sx-open "$uri"; }
+	echo "$uri"
+}
+
+main "$@"
