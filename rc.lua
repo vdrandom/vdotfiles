@@ -657,6 +657,7 @@ awful.rules.rules = {
 				'DefenseGrid2',
 				'deponia_tcj',
 				'dota_linux',
+				'dota2',
 				'game.x86_64',
 				'hl2_linux',
 				'Pandora',
