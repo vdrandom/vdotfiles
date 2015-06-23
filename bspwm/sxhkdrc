@@ -2,22 +2,25 @@
 # bspwm hotkeys
 #
 
-super + {_,shift + } w
-	bspc window {-c,-k}
+super + control + c
+	bspc window -c
 
-super + q
+super + control + k
+	bspc window -k
+
+alt + Return
 	bspc window -t fullscreen
 
 super + {j,k}
 	bspc window -f {next,prev}
 
-control + {j,l}
+super + shift + {j,l}
 	bspc window -e {down,right} +32
 
-control + {k,h}
+super + shift + {k,h}
 	bspc window -e {down,right} -32
 
-super + space
+super + Tab
 	bspc window -t floating
 
 super + Return
@@ -30,15 +33,15 @@ super + shift + {1-9}
 	bspc window -d {1-9}
 
 super + t
-	/home/von/.config/bspwm/bsptl
+	bspc desktop -R 90
+
+super + m
+	bspc desktop -l next
 
 super + f
 	/home/von/.config/bspwm/bsptf
 
-control + bracketright
-	bspc desktop -R 90
-
-~button1
+~button{1-3}
 	bspc pointer -g focus
 
 super + button{1-3}
@@ -57,16 +60,16 @@ super + {r,u}
 	/home/von/.config/bspwm/bspmenu_{run,url}
 
 super + z
-	i3lock-extra -m pixelize ~/pics/lock.png
+	bash -c "until i3lock -entc 661111 -i /home/von/Pictures/wallpaper.png; do :; done"
 
 Print
-	snap -f
+	xfce4-screenshooter
 
-super + b
-	chameleon pics/wallpapers
+alt + shift + F12
+	/home/von/vscripts/compton_toggle
 
 super + {Left,Up,Right,Down}
 	bspc window --presel {left,up,right,down}
 
-super + c
-	win-hd-center 1280x720
+super + o
+	bspc monitor -f {right,left}

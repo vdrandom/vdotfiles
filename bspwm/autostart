@@ -1,4 +1,5 @@
 wallpaper="${HOME}/Pictures/wallpaper.png"
 [[ -r "$wallpaper" ]] && feh --bg-center "$wallpaper"
+setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:scroll,compose:menu
 xfce4-panel &
 nm-applet &
