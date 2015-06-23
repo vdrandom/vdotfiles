@@ -22,7 +22,7 @@ foreground = #839496
 foreground_bold = #fdf6e3
 background = rgba(0, 20, 26, 0.8)
 #fbt's background = #00141A
-#default solarizedbackground = #002b36
+#default solarized background = #002b36
 
 # solarized 16 colors
 color0 = #073642
