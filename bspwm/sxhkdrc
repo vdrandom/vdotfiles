@@ -59,6 +59,9 @@ super + x
 super + {r,u}
 	/home/von/.config/bspwm/bspmenu_{run,url}
 
+alt + F2
+	dmenu_run
+
 super + z
 	bash -c "until i3lock -entc 661111 -i /home/von/Pictures/wallpaper.png; do :; done"
 
