@@ -11,6 +11,8 @@ local beautiful = require('beautiful')
 -- Notification library
 local naughty = require('naughty')
 local menubar = require('menubar')
+-- Treesome layout module: https://github.com/RobSis/treesome
+local treesome = require('treesome')
 -- }}}
 -- {{{ Custom functions
 -- test if file exists
@@ -112,6 +114,7 @@ local layouts = {
 		awful.layout.suit.floating
 	},
 	spiral = {
+		treesome,
 		awful.layout.suit.spiral,
 		awful.layout.suit.spiral.dwindle
 	},
