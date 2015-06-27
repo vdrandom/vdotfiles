@@ -87,7 +87,7 @@ if exists(wallpaper) then
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = 'termite'
+terminal = 'urxvt'
 editor = os.getenv('EDITOR') or 'vim'
 editor_cmd = terminal .. ' -e ' .. editor
 
@@ -102,9 +102,9 @@ modkey = 'Mod4'
 local layouts = {
 	tiled = {
 		awful.layout.suit.tile,
-		awful.layout.suit.tile.bottom,
+		awful.layout.suit.tile.top,
 		awful.layout.suit.tile.left,
-		awful.layout.suit.tile.top
+		awful.layout.suit.tile.bottom
 	},
 	max = {
 		awful.layout.suit.max,
@@ -765,6 +765,7 @@ end
 if exists('/home/von/.fonts/terminus') then
 	awful.util.spawn_with_shell('xset fp- /home/von/.fonts/terminus/PCF')
 	awful.util.spawn_with_shell('xset fp+ /home/von/.fonts/terminus/PCF')
+	awful.util.spawn_with_shell('xset fp rehash')
 end
 ---- execute all the other shit, installation specific
 if exists('/home/von/.autostart') then

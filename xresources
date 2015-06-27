@@ -8,7 +8,7 @@ Xft.hintstyle:          hintslight
 Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
-#define urxvt_font      xft:Terminus:bold:size=11:antialias=false
+#define urxvt_font      -*-terminus-bold-*-normal-*-14-*-*-*-*-*-iso10646-*
 
 URxvt.scrollBar:        false
 URxvt.font:             urxvt_font
@@ -22,8 +22,7 @@ URxvt.urgentOnBell:     true
 URxvt.cursorUnderline:  true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.fading:           0
-URxvt.transparent:      true
-URxvt.shading:          20
+URxvt.depth:            32
 
 ! icon (needs pixbuf support compiled)
 URxvt.iconFile:         /usr/share/icons/Faenza/apps/scalable/utilities-terminal.svg
@@ -35,64 +34,29 @@ URxvt.matcher.button:   3
 URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
-! {{{ base16 Twilight
-!#define base00 #1e1e1e
-!#define base01 #323537
-!#define base02 #464b50
-!#define base03 #5f5a60
-!#define base04 #838184
-!#define base05 #a7a7a7
-!#define base06 #c3c3c3
-!#define base07 #ffffff
-!#define base08 #cf6a4c
-!#define base09 #cda869
-!#define base0A #f9ee98
-!#define base0B #8f9d6a
-!#define base0C #afc4db
-!#define base0D #7587a6
-!#define base0E #9b859d
-!#define base0F #9b703f
-! }}}
-! {{{ base16 Atelier Lakeside
-#define base00 #161b1d
-#define base01 #1f292e
-#define base02 #516d7b
-#define base03 #5a7b8c
-#define base04 #7195a8
-#define base05 #7ea2b4
-#define base06 #c1e4f6
-#define base07 #ebf8ff
-#define base08 #d22d72
-#define base09 #935c25
-#define base0A #8a8a0f
-#define base0B #568c3b
-#define base0C #2d8f6f
-#define base0D #257fad
-#define base0E #5d5db1
-#define base0F #b72dd2
+! {{{ urxvt colors
+URxvt.foreground:   #839496
+URxvt.background:   [80]#00141A
+URxvt.cursorColor:  #fdf6e3
+URxvt.colorBD:      #fdf6e3
 
-URxvt.foreground:   base04
-URxvt.background:   base00
-URxvt.cursorColor:  base07
-URxvt.colorBD:      base07
+URxvt.color0:       #073642
+URxvt.color1:       #dc322f
+URxvt.color2:       #859900
+URxvt.color3:       #b58900
+URxvt.color4:       #268bd2
+URxvt.color5:       #d33682
+URxvt.color6:       #2aa198
+URxvt.color7:       #eee8d5
 
-URxvt.color0:       base01
-URxvt.color1:       base08
-URxvt.color2:       base0B
-URxvt.color3:       base0A
-URxvt.color4:       base0D
-URxvt.color5:       base0F
-URxvt.color6:       base0C
-URxvt.color7:       base06
-
-URxvt.color8:       base00
-URxvt.color9:       base09
-URxvt.color10:      base02
-URxvt.color11:      base03
-URxvt.color12:      base04
-URxvt.color13:      base0E
-URxvt.color14:      base05
-URxvt.color15:      base07
+URxvt.color8:       #002b36
+URxvt.color9:       #cb4b16
+URxvt.color10:      #586e75
+URxvt.color11:      #657b83
+URxvt.color12:      #839496
+URxvt.color13:      #6c71c4
+URxvt.color14:      #93a1a1
+URxvt.color15:      #fdf6e3
 ! }}}
 ! {{{ fixes for gruvbox to look awesome, requires patched urxvt package
 URxvt.color24:  #076678
