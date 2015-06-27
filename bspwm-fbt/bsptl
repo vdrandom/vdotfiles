@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-bsp_status=$( bspc control --get-status )
-layout="${bsp_status##*:}"
-
-case "$layout" in
-	LT) bspc desktop -l monocle;;
-	LM) bspc desktop -l tiled;;
-esac

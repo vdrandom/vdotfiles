@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-source "$HOME/.config/bspwm/common"
-
-dmenu_path | /home/von/.config/bspwm/bspmenu -p 'run' "$@" | ${SHELL:-"/bin/sh"} &
