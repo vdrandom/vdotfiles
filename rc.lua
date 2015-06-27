@@ -763,7 +763,6 @@ if exists('/home/von/.Xresources') then
 end
 ---- fix lack of terminus font
 if exists('/home/von/.fonts/terminus') then
-	awful.util.spawn_with_shell('xset fp- /home/von/.fonts/terminus/PCF')
 	awful.util.spawn_with_shell('xset fp+ /home/von/.fonts/terminus/PCF')
 	awful.util.spawn_with_shell('xset fp rehash')
 end
