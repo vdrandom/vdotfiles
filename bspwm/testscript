@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+/usr/bin/sxhkd -f 60&
+wait

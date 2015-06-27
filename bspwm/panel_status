@@ -1,0 +1,54 @@
+#!/usr/bin/env zsh
+
+source $bspwm_config_dir/common
+
+status::date() {
+	while true; do
+		printf 'date::%%{T2}%s%%{T}\n' "$(date '+%a %d %H:%M:%S')"
+		sleep 1
+	done
+}
+
+status::updates() {
+	declare pkgs
+
+	while true; do
+		pkgs=( $(pacman -Qqu) )
+		pkgs_n=${#pkgs[@]}
+
+		if (( pkgs_n )); then
+			printf 'updates::[ Updates: %s ]\n' "${#pkgs[@]}"
+		else
+			printf 'updates::[ No updates ]\n'
+		fi
+
+		sleep 5
+	done
+}
+
+cleanup() {
+	eval "kill ${${jobstates##*:*:}%=*}"
+}
+
+rexec() {
+	eval "kill ${${jobstates##*:*:}%=*}"
+	exec "$0"
+}
+
+main() {
+	declare msg date
+	typeset -a modules
+
+	trap cleanup EXIT TERM INT
+	trap rexec HUP
+
+	modules=( date )
+
+	for i in "${modules[@]}"; do
+		"status::${i}" > "$panel_fifo" &
+	done
+
+	wait
+}
+
+main

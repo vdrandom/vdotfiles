@@ -1,0 +1,24 @@
+# vim: ft=sh
+# common config
+# fonts
+font_norm='-*-terminus-medium-*-normal-*-14-*-*-*-*-*-iso10646-*'
+font_bold='-*-terminus-bold*-normal-*-14-*-*-*-*-*-iso10646-*'
+# colors
+colors_fg_normal='#f9f9f9'
+colors_fg_focused=$colors_fg_normal
+colors_bg_normal='#2d2d2d'
+colors_bg_focused='#00612b'
+colors_urgent='#610000'
+colors_sticky_focused='#030061'
+# date format
+date_format='+%a %d %H:%M'
+
+# panel config
+panel_fifo="/tmp/panel$DISPLAY-sock"
+bspwm_sock="/tmp/bspwm$DISPLAY-sock"
+panel_h='14'
+panel_show_empty_tags=0
+# taskbar
+panel_taskbar_enable=1
+panel_taskbar_max_length=160
+panel_taskbar_max_title=32
