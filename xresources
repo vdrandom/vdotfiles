@@ -21,6 +21,7 @@ URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
 URxvt.cursorUnderline:  true
 URxvt.termName:         rxvt-unicode-256color
+URxvt.internalBorder:   0
 URxvt.fading:           0
 URxvt.depth:            32
 

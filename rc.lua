@@ -72,10 +72,25 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init('/usr/share/awesome/themes/default/theme.lua')
-theme.border_width = 1
 theme.font = 'Terminus 9'
 theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
+
+theme.bg_normal     = "#282828"
+theme.bg_focus      = "#607D8B"
+theme.bg_urgent     = "#D15A00"
+theme.bg_minimize   = "#373737"
+theme.bg_systray    = theme.bg_normal
+
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
+
+theme.border_width  = 2
+theme.border_normal = theme.bg_normal
+theme.border_focus  = theme.bg_focus
+theme.border_marked = "#608B63"
 
 -- amount of pixels to snap windows from
 snap = 7
