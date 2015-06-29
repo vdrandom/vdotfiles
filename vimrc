@@ -23,10 +23,12 @@ set sidescroll=1
 set noerrorbells visualbell t_vb=
 
 " enforce 256 colours for ssh connections and VTE
-if $TERM == 'xterm' || $TERM == 'screen' || exists("$SSH_CLIENT")
+if $TERM =~ '^xterm.*$' || $TERM =~ '^rxvt-unicode.*$' || $TERM == '^screen.*$'
+	let &t_SI .= "\<Esc>[6 q"
+	let &t_EI .= "\<Esc>[4 q"
 	let &t_Co=256
 endif
-if $LANG =~ '^.*UTF-8$' || $LANG =~ 'utf8$'
+if $LANG =~ 'UTF-8$' || $LANG =~ 'utf8$'
 	set termencoding=utf-8
 	set encoding=utf-8
 endif
