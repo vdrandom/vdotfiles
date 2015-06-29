@@ -335,10 +335,10 @@ for s = 1, screen.count() do
 	local left_layout = wibox.layout.fixed.horizontal()
 	local right_layout = wibox.layout.fixed.horizontal()
 	if s == 1 then
-		left_layout:add(mytextbox)
 		right_layout:add(mypromptbox[s])
 		right_layout:add(mytaglist[s])
 		if screen.count() == 1 then
+			right_layout:add(mytextbox)
 			right_layout:add(wibox.widget.systray())
 			right_layout:add(mytextclock)
 		end
@@ -348,6 +348,7 @@ for s = 1, screen.count() do
 		left_layout:add(mytextclock)
 		left_layout:add(wibox.widget.systray())
 		left_layout:add(mytaglist[s])
+		left_layout:add(mytextbox)
 		left_layout:add(mypromptbox[s])
 	else
 		left_layout:add(mytaglist[s])
