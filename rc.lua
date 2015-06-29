@@ -73,6 +73,7 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init('/usr/share/awesome/themes/default/theme.lua')
 theme.font = 'Terminus 9'
+theme.taglist_font = 'Terminus 11'
 theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
 
@@ -244,6 +245,10 @@ mytextclock:set_font('Terminus Bold 11')
 mytextbox = wibox.widget.textbox()
 mytextbox:set_text('')
 mytextbox:set_font('Terminus 9')
+mytextbox_bg = wibox.widget.background()
+mytextbox_bg:set_widget(mytextbox)
+mytextbox_bg:set_bg(theme.bg_minimize)
+mytextbox_bg:set_fg(theme.fg_minimize)
 -- Create keyboard layout indicator widget
 --mykblayout = wibox.widget.textbox()
 --mykblayout:set_text('US')
@@ -336,11 +341,13 @@ for s = 1, screen.count() do
 	local right_layout = wibox.layout.fixed.horizontal()
 	if s == 1 then
 		right_layout:add(mypromptbox[s])
-		right_layout:add(mytaglist[s])
 		if screen.count() == 1 then
-			right_layout:add(mytextbox)
+			right_layout:add(mytextbox_bg)
+			right_layout:add(mytaglist[s])
 			right_layout:add(wibox.widget.systray())
 			right_layout:add(mytextclock)
+		else
+			right_layout:add(mytaglist[s])
 		end
 		right_layout:add(mylayoutbox[s])
 	elseif s == 2 then
@@ -348,7 +355,7 @@ for s = 1, screen.count() do
 		left_layout:add(mytextclock)
 		left_layout:add(wibox.widget.systray())
 		left_layout:add(mytaglist[s])
-		left_layout:add(mytextbox)
+		left_layout:add(mytextbox_bg)
 		left_layout:add(mypromptbox[s])
 	else
 		left_layout:add(mytaglist[s])
