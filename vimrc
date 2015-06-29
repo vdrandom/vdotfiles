@@ -22,13 +22,18 @@ set sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
 
-" enforce 256 colours for ssh connections and VTE
-if $TERM =~ '^xterm' || $TERM =~ '^rxvt-unicode' || $TERM =~ '^screen'
+" 256 colours at almost all times as well as cursor shape changes
+" Relies on tmux, fails spectacularly with screen!
+if $TERM =~ '^[xterm|rxvt-unicode]'
+	let &t_Co=256
 	let &t_SI .= "\<Esc>[6 q"
 	let &t_EI .= "\<Esc>[4 q"
+elseif $TERM =~ '^screen'
 	let &t_Co=256
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
 endif
-if $LANG =~ 'UTF-8$' || $LANG =~ 'utf8$'
+if $LANG =~ '[UTF\-8|utf8]$'
 	set termencoding=utf-8
 	set encoding=utf-8
 endif
