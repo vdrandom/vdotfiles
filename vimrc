@@ -112,6 +112,8 @@ if v:version >= 700
 
 		" colorschemes
 		Plugin 'morhetz/gruvbox'
+		Plugin 'MichaelMalick/vim-colors-bluedrake'
+		Plugin 'romainl/Apprentice'
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'
@@ -146,7 +148,6 @@ if v:version >= 700
 		" signify options
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
-
 	endif
 
 	" gvim and colorschemes related stuff
@@ -163,16 +164,15 @@ if v:version >= 700
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 	endif
+
 	let g:gruvbox_italic=0
 	let g:gruvbox_underline=0
 	colorscheme gruvbox
-	syntax on
 else
 	colorscheme elflord
-	syntax on
 endif
 
+syntax on
 
 " Enable autoindent
 filetype plugin indent on
-
