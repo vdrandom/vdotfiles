@@ -22,7 +22,7 @@ URxvt.urgentOnBell:     true
 URxvt.cursorUnderline:  true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.internalBorder:   0
-URxvt.fading:           0
+URxvt.fading:           33
 URxvt.depth:            32
 
 ! urxvt perl extensions
