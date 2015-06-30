@@ -46,18 +46,6 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
-" remove trailing spaces and tabs on exit - apparently takes a shit ton of
-" time to close the document, so no, let us keep it out of business for now
-"function! <SID>StripTrailingWhitespaces()
-"	let l = line(".")
-"	let c = col(".")
-"	%s/\s\+$//e
-"	call cursor(l, c)
-"	unlet l
-"	unlet c
-"endfunction
-"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
 " maps
 let mapleader = ","
 nmap <Space> <C-W>
@@ -117,22 +105,13 @@ if v:version >= 700
 
 		" IDE like features
 		Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
-		"Plugin 'davidhalter/jedi-vim'            "python autocompletion
-		"Plugin 'indentpython'                    "smarter python indentation
-		"Plugin 'klen/python-mode'                "python IDE stuff
 		"Plugin 'majutsushi/tagbar'               "class / module browser
 		"Plugin 'msanders/snipmate.vim'           "snippets support
-		"Plugin 'nathanaelkane/vim-indent-guides' "indent guides on demand
-		"Plugin 'nvie/vim-flake8'                 "python checking with flake8
-		"Plugin 'scrooloose/syntastic'            "syntax checker
 		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
 		"Plugin 'xolox/vim-lua-ftplugin'          "lua stuff (very slow)
 
 		" colorschemes
 		Plugin 'morhetz/gruvbox'
-		"Plugin 'MaxSt/FlatColor'
-		"Plugin 'vdrandom/forked-solarized.vim'
-		"Plugin 'whatyouhide/vim-gotham'
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'
@@ -160,11 +139,6 @@ if v:version >= 700
 		" bufferline options
 		let g:bufferline_show_bufnr=0
 
-		" jedi-vim options
-		"let g:jedi#popup_on_dot=0
-		"let g:jedi#show_call_signatures=0
-		"let g:jedi#force_py_version=3
-
 		" nerdtree options
 		let NERDTreeDirArrows=0
 		map <Leader>, :NERDTreeToggle<CR>
@@ -173,8 +147,6 @@ if v:version >= 700
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
 
-		" tagbar options
-		"map <Leader>. :TagbarToggle<CR>
 	endif
 
 	" gvim and colorschemes related stuff
@@ -191,50 +163,10 @@ if v:version >= 700
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
 	endif
-	"------- gruvbox -------
 	let g:gruvbox_italic=0
 	let g:gruvbox_underline=0
 	colorscheme gruvbox
-	"------ solarized ------
-	"let g:solarized_bold=0
-	"let g:solarized_italic=0
-	"let g:solarized_underline=0
-	"let g:solarized_visibility='low'
-	"let g:solarized_termtrans=1
-	"colorscheme solarized
-	"-----------------------
 	syntax on
-
-	" Filetype specific stuff
-	function PythonHighlights()
-		" Declare new highlight groups
-		" self keyword
-		syn keyword pythonSelf self
-		" dots
-		syn match pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
-		syn match pythonDot "\." display containedin=pythonDottedName
-		" colons and commas
-		syn match pythonColon ":"
-		syn match pythonComma ","
-		" parenthesis
-		syn match pythonParens /[(){}\[\]]/
-		" TODO: do something about the next thing matching all the strings without .format().
-		syn match pythonStringFmt "{[^}]*}" display containedin=pythonString
-
-		" Apply highlights
-		hi link pythonSelf Identifier
-		hi link pythonDottedName Function
-		hi link pythonDot Normal
-		hi link pythonColon Structure
-		hi link pythonComma Structure
-		hi link pythonParens Keyword
-		hi link pythonStringFmt Identifier
-
-		" Some preferences
-		setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab
-	endfunction
-
-	autocmd FileType python call PythonHighlights()
 else
 	colorscheme elflord
 	syntax on
