@@ -27,7 +27,7 @@ vcs_enabled=true
 
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
 export TIME_STYLE='long-iso'
-export LANG='C.utf8'
+export LANG='en_US.utf8'
 export LANGUAGE="$LANG"
 if [[ ${OSTYPE} != 'cygwin' ]]; then
 	export LC_TIME='en_DK.utf8'
