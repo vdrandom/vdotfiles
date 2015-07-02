@@ -16,7 +16,7 @@ set smartcase
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 " scroll before reaching the first / final line
-set scrolloff=8
+set scrolloff=3
 set sidescrolloff=15
 set sidescroll=1
 " disable bell
