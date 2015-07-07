@@ -30,8 +30,8 @@ if $TERM =~ '^[xterm|rxvt-unicode|screen]'
 		let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
 		let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
 	else
-		let &t_SI .= "\<Esc>[6 q"
-		let &t_EI .= "\<Esc>[4 q"
+		let &t_SI = "\<Esc>[6 q"
+		let &t_EI = "\<Esc>[4 q"
 	endif
 endif
 if $LANG =~ '[UTF\-8|utf8]$'
