@@ -601,7 +601,6 @@ awful.rules.rules = {
 				'Pavucontrol',
 				'pinentry',
 				'plugin-container',
-				'Skype',
 				'Vncviewer'
 			},
 			instance = {
