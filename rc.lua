@@ -637,14 +637,14 @@ awful.rules.rules = {
 		except = { instance = 'ardour_editor' },
 		properties = { floating = true }
 	},
-	-- Remove gaps between terminal windows:
+	-- Borderless rxvt-unicode, because shading:
 	{
 		rule_any = {
 			class = {
-				'Roxterm'
+				'URxvt'
 			}
 		},
-		properties = { size_hints_honor = false }
+		properties = { border_width = 0 }
 	},
 	-- Specific desktops rules: place windows only on specific tags by default
 	-- tag 4: games = maximized
