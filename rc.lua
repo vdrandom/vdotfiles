@@ -159,7 +159,7 @@ tags = {}
 saved_layouts = {}
 for s = 1, screen.count() do
 	tags[s] = { name = {}, layout = {} }
-	saved_layouts[s] = { tiled = {} }
+	saved_layouts[s] = { tiled = {}, max = {} }
 end
 -- screen 1
 --tags[1].name = {
@@ -195,6 +195,7 @@ for s = 1, screen.count() do
 		else
 			saved_layouts[s].tiled[name] = default_tiled
 		end
+		saved_layouts[s].max[name] = layouts.max[1]
 	end
 end
 -- Set tags instances in wm
@@ -435,10 +436,12 @@ globalkeys = awful.util.table.join(
 		function ()
 			local screen = mouse.screen
 			local current_layout = awful.layout.get(screen)
+			local tag = awful.tag.selected(screen).name
 			if not enters(current_layout, layouts.max) then
-				awful.layout.set(layouts.max[1])
+				awful.layout.set(saved_layouts[screen].max[tag])
 			else
 				awful.layout.inc(layouts.max, 1)
+				saved_layouts[screen].max[tag] = awful.layout.get(screen)
 			end
 		end),
 	awful.key({ modkey,           }, 't',
