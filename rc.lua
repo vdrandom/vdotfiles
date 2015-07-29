@@ -656,7 +656,8 @@ awful.rules.rules = {
 			instance = {
 				'BaldursGate',
 				'BaldursGateII',
-				'IcewindDale'
+				'IcewindDale',
+				'Terraria.bin.x86_64'
 			}
 		},
 		properties = {
