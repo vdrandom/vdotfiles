@@ -501,7 +501,7 @@ clientkeys = awful.util.table.join(
 	awful.key({ modkey,           }, 'n',      function (c) c.minimized = true               end),
 
 	-- Window properties
-	awful.key({ 'Mod1',           }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
+	awful.key({ modkey, 'Shift'   }, 'Return', function (c) c.fullscreen = not c.fullscreen  end),
 	awful.key({ modkey,           }, 'b',
 		function (c)
 			if c.border_width ~= 0 then
