@@ -657,6 +657,7 @@ awful.rules.rules = {
 				'BaldursGate',
 				'BaldursGateII',
 				'IcewindDale',
+				'Terraria.bin.x86',
 				'Terraria.bin.x86_64'
 			}
 		},
