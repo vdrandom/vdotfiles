@@ -11,8 +11,6 @@ local beautiful = require('beautiful')
 -- Notification library
 local naughty = require('naughty')
 local menubar = require('menubar')
--- Treesome layout module: https://github.com/RobSis/treesome
-local treesome = require('treesome')
 -- }}}
 -- {{{ Custom functions
 -- test if file exists
@@ -129,10 +127,8 @@ local layouts = {
 	float = {
 		awful.layout.suit.floating
 	},
-	spiral = {
-		treesome,
-		awful.layout.suit.spiral,
-		awful.layout.suit.spiral.dwindle
+	magnifier = {
+		awful.layout.suit.magnifier
 	},
 
 	-- Some weird shit I don't use, but it still exists:
@@ -141,8 +137,9 @@ local layouts = {
 		awful.layout.suit.fair,
 		awful.layout.suit.fair.horizontal
 	},
-	magnifier = {
-		awful.layout.suit.magnifier
+	spiral = {
+		awful.layout.suit.spiral,
+		awful.layout.suit.spiral.dwindle
 	}
 }
 -- }}}
@@ -431,7 +428,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, 'Shift'   }, 'l',     function () awful.tag.incnmaster(-1)                        end),
 	awful.key({ modkey, 'Control' }, 'h',     function () awful.tag.incncol( 1)                           end),
 	awful.key({ modkey, 'Control' }, 'l',     function () awful.tag.incncol(-1)                           end),
-	awful.key({ modkey,           }, 'f',     function () awful.layout.set(layouts.float[1])    end),
+	awful.key({ modkey,           }, 'f',     function () awful.layout.set(layouts.float[1])              end),
+	awful.key({ modkey,           }, 'g',     function () awful.layout.set(layouts.magnifier[1])          end),
 	awful.key({ modkey,           }, 'm',
 		function ()
 			local screen = mouse.screen
