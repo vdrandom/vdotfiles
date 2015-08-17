@@ -638,15 +638,6 @@ awful.rules.rules = {
 		except = { instance = 'ardour_editor' },
 		properties = { floating = true }
 	},
-	-- Borderless rxvt-unicode, because shading:
-	{
-		rule_any = {
-			class = {
-				'URxvt'
-			}
-		},
-		properties = { border_width = 0 }
-	},
 	-- Specific desktops rules: place windows only on specific tags by default
 	-- tag 4: games = maximized
 	{
