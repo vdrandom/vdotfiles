@@ -777,11 +777,6 @@ awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewri
 if exists('/home/von/.Xresources') then
 	awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
 end
----- fix lack of terminus font
-if exists('/home/von/.fonts/terminus') then
-	awful.util.spawn_with_shell('xset fp+ /home/von/.fonts/terminus/PCF')
-	awful.util.spawn_with_shell('xset fp rehash')
-end
 ---- execute all the other shit, installation specific
 if exists('/home/von/.autostart') then
 	awful.util.spawn_with_shell('/home/von/.autostart')
