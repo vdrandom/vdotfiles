@@ -648,12 +648,15 @@ awful.rules.rules = {
 				'IcewindDale',
 				'Terraria.bin.x86',
 				'Terraria.bin.x86_64'
+			},
+			name = {
+				'Dragonfall',
+				'SRHK'
 			}
 		},
 		properties = {
 			border_width = 0,
-			maximized = true,
-			tag = tags[1][4]
+			maximized = true
 		}
 	},
 	-- tag 4: steam and games
