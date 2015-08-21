@@ -648,10 +648,6 @@ awful.rules.rules = {
 				'IcewindDale',
 				'Terraria.bin.x86',
 				'Terraria.bin.x86_64'
-			},
-			name = {
-				'Dragonfall',
-				'SRHK'
 			}
 		},
 		properties = {
