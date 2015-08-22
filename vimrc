@@ -55,8 +55,6 @@ noremap <F1> <Esc>
 nnoremap <Leader>c :set cursorline!<CR>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
-"disable auto indent
-nnoremap <Leader>a :set autoindent!<CR>
 "make wrapped lines navigation easier
 nnoremap j gj
 nnoremap k gk
@@ -105,7 +103,7 @@ if v:version >= 700
 		"Plugin 'vimacs'                          "it's emacs, in vim insert mode
 
 		" IDE like features
-		Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
+		"Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
 		"Plugin 'majutsushi/tagbar'               "class / module browser
 		"Plugin 'msanders/snipmate.vim'           "snippets support
 		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
@@ -122,7 +120,7 @@ if v:version >= 700
 		silent! call vundle#end()
 
 		" auto-pairs options
-		let g:AutoPairsShortcutToggle='<Leader>p'
+		"let g:AutoPairsShortcutToggle='<Leader>p'
 
 		" easymotion options
 		let g:EasyMotion_do_mapping=0
@@ -175,5 +173,4 @@ endif
 
 syntax on
 
-" Enable autoindent
-filetype plugin indent on
+filetype plugin on
