@@ -642,12 +642,16 @@ awful.rules.rules = {
 	-- tag 4: games = maximized
 	{
 		rule_any = {
-			instance = {
+			class = {
 				'BaldursGate',
 				'BaldursGateII',
 				'IcewindDale',
+				'starbound',
 				'Terraria.bin.x86',
 				'Terraria.bin.x86_64'
+			},
+			name = {
+				'Pillars of Eternity'
 			}
 		},
 		properties = {
