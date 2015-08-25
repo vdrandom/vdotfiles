@@ -8,13 +8,14 @@ Xft.hintstyle:          hintslight
 Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
-#define urxvt_font      -*-terminus-bold-*-normal-*-14-*-*-*-*-*-iso10646-*
+#define terminus_norm   -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*
+#define terminus_bold   -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
 
 URxvt.scrollBar:        false
-URxvt.font:             urxvt_font
-URxvt.boldFont:         urxvt_font
-URxvt.boldItalicFont:   urxvt_font
-URxvt.italicFont:       urxvt_font
+URxvt.font:             terminus_bold
+URxvt.boldFont:         terminus_bold
+URxvt.italicFont:       terminus_bold
+URxvt.boldItalicFont:   terminus_bold
 URxvt.saveLines:        1000
 URxvt.iso14755:         false
 URxvt.visualBell:       false
