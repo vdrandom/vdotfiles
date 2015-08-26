@@ -49,7 +49,6 @@ autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use wa
 
 " maps
 let mapleader = ","
-nmap <Space> <C-W>
 noremap <F1> <Esc>
 "enable cursorline on demand
 nnoremap <Leader>c :set cursorline!<CR>
