@@ -200,8 +200,10 @@ if is_zsh; then
 	SAVEHIST=1000
 	HISTSIZE=1000
 	HISTFILE="${HOME}/.histfile"
-	if [[ -z ${TMUX} && -z ${SSH_CLIENT} && ${TERM} =~ '^(rxvt-unicode|xterm)' ]]; then
-		gruvbox-colors
+	if [[ -z ${TMUX} && -z ${SSH_CLIENT} ]]; then
+		if [[ ${TERM} =~ '^(rxvt-unicode|xterm)' ]]; then
+			gruvbox-colors
+		fi
 	fi
 
 	extras=( "${HOME}/.zshrc.extras" )
