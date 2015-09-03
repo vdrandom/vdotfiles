@@ -22,17 +22,9 @@ set sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
 
-" 256 colours at almost all times as well as cursor shape changes
-" Relies on tmux, fails spectacularly with screen!
+" 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
 	let &t_Co=256
-	if $TERM =~ '^screen' && v:version >= 700
-		let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
-		let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
-	else
-		let &t_SI = "\<Esc>[6 q"
-		let &t_EI = "\<Esc>[4 q"
-	endif
 endif
 if $LANG =~ '[UTF\-8|utf8]$'
 	set termencoding=utf-8
@@ -73,6 +65,15 @@ if v:version >= 700
 	set listchars=tab:\|_,nbsp:x
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
+
+	" Cursor shape changes relies on tmux, fails spectacularly with screen!
+	if $TERM =~ '^screen'
+		let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
+		let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
+	else
+		let &t_SI = "\<Esc>[6 q"
+		let &t_EI = "\<Esc>[4 q"
+	endif
 
 	" enable case indentation
 	let g:sh_indent_case_labels=1
