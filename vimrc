@@ -26,7 +26,7 @@ set noerrorbells visualbell t_vb=
 " Relies on tmux, fails spectacularly with screen!
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
 	let &t_Co=256
-	if $TERM =~ '^screen'
+	if $TERM =~ '^screen' && v:version >= 700
 		let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
 		let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
 	else
