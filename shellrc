@@ -338,8 +338,8 @@ if is_zsh; then
 	if [[ -r ${hl_script} ]]; then
 		source ${hl_script}
 		ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-		ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
-		ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=white,bold'
+		ZSH_HIGHLIGHT_STYLES[path]='fg=black,bold'
+		ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=black,bold'
 	fi
 	# history substring search à la fish from https://github.com/zsh-users/zsh-history-substring-search
 	hs_script="${HOME}/.zsh-history-substring-search/zsh-history-substring-search.zsh"
@@ -374,7 +374,7 @@ else
 	prompt_bang=">${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
-			prompt_cwd="${bwhite}${PWD}${reset}"
+			prompt_cwd="${bold}${PWD}${reset}"
 			if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
 				prompt_user=''
 			else

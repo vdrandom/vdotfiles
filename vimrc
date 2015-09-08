@@ -1,5 +1,5 @@
 set nocompatible
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set clipboard=exclude:.*
 set foldmethod=marker
@@ -113,6 +113,7 @@ if v:version >= 700
 		Plugin 'morhetz/gruvbox'
 		Plugin 'MichaelMalick/vim-colors-bluedrake'
 		Plugin 'romainl/Apprentice'
+		Plugin 'vdrandom/forked-solarized.vim'
 
 		" syntax highlight plugins
 		Plugin 'puppetlabs/puppet-syntax-vim'
@@ -164,9 +165,10 @@ if v:version >= 700
 		map! <S-Insert> <MiddleMouse>
 	endif
 
-	let g:gruvbox_italic=0
-	let g:gruvbox_underline=0
-	colorscheme gruvbox
+	let g:solarized_italic=0
+	let g:solarized_underline=0
+	let g:solarized_visibility='low'
+	colorscheme solarized
 else
 	colorscheme elflord
 endif

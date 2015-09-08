@@ -23,8 +23,8 @@ URxvt.urgentOnBell:     true
 URxvt.cursorUnderline:  true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.internalBorder:   0
-URxvt.fading:           33
-URxvt.depth:            32
+!URxvt.fading:           33
+!URxvt.depth:            32
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard
@@ -34,24 +34,25 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-!Light - URxvt.foreground:   #657b83
-!Light - URxvt.background:   #fdf6e3
-!Light - URxvt.cursorColor:  #002b36
-!Light - URxvt.colorBD:      #002b36
-!Light - URxvt.color0:       #eee8d5
-!Light - URxvt.color7:       #073642
-!Light - URxvt.color8:       #fdf6e3
-!Light - URxvt.color10:      #93a1a1
-!Light - URxvt.color11:      #839496
-!Light - URxvt.color12:      #657b83
-!Light - URxvt.color14:      #586e75
-!Light - URxvt.color15:      #002b36
+! alternative solarized light
+!URxvt.foreground:   #839496
+!URxvt.background:   [80]#00141A
+!URxvt.cursorColor:  #fdf6e3
+!URxvt.colorBD:      #fdf6e3
 
-URxvt.foreground:   #839496
-URxvt.background:   [80]#00141A
-URxvt.cursorColor:  #fdf6e3
-URxvt.colorBD:      #fdf6e3
+!URxvt.color0:       #eee8d5
+!URxvt.color7:       #073642
+!URxvt.color8:       #fdf6e3
+!URxvt.color10:      #93a1a1
+!URxvt.color11:      #839496
+!URxvt.color12:      #657b83
+!URxvt.color14:      #586e75
+!URxvt.color15:      #002b36
 
+URxvt.foreground:   #657b83
+URxvt.background:   #fdf6e3
+URxvt.cursorColor:  #002b36
+URxvt.colorBD:      #002b36
 
 URxvt.color0:       #073642
 URxvt.color1:       #dc322f
