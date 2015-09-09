@@ -11,6 +11,7 @@ if is_zsh; then
 	export HOSTNAME=${HOST}
 else
 	is_exec() [[ -x $(type -P ${1}) ]]
+	alias whence='type -P'
 fi
 
 newline="
@@ -200,9 +201,6 @@ if is_zsh; then
 	SAVEHIST=1000
 	HISTSIZE=1000
 	HISTFILE="${HOME}/.histfile"
-	#if [[ -z ${TMUX} && -z ${SSH_CLIENT} && ( ${TERM} == rxvt-unicode-* || ${TERM} == xterm-* ) ]]; then
-	#	gruvbox-colors
-	#fi
 
 	extras=( "${HOME}/.zshrc.extras" )
 

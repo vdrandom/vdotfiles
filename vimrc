@@ -97,17 +97,6 @@ if v:version >= 700
 		Plugin 'tpope/vim-fugitive'              "git awesomeness
 		Plugin 'tpope/vim-surround'              "quotes replacement made easy
 		Plugin 'directionalWindowResizer'        "resize windows with simple hotkeys
-		"Plugin 'scrooloose/nerdcommenter'        "comment manager
-		"Plugin 'tpope/vim-tbone'                 "tmux support
-		"Plugin 'kien/ctrlp.vim'                  "some quick file accessing goodness
-		"Plugin 'vimacs'                          "it's emacs, in vim insert mode
-
-		" IDE like features
-		"Plugin 'jiangmiao/auto-pairs'            "automatically place closing bracket / quote
-		"Plugin 'majutsushi/tagbar'               "class / module browser
-		"Plugin 'msanders/snipmate.vim'           "snippets support
-		"Plugin 'xolox/vim-misc'                  "deps for lua-ftplugin
-		"Plugin 'xolox/vim-lua-ftplugin'          "lua stuff (very slow)
 
 		" colorschemes
 		Plugin 'morhetz/gruvbox'
@@ -119,9 +108,6 @@ if v:version >= 700
 		Plugin 'puppetlabs/puppet-syntax-vim'
 		Plugin 'nagios-syntax'
 		silent! call vundle#end()
-
-		" auto-pairs options
-		"let g:AutoPairsShortcutToggle='<Leader>p'
 
 		" easymotion options
 		let g:EasyMotion_do_mapping=0
