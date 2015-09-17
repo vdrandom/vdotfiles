@@ -618,6 +618,9 @@ awful.rules.rules = {
 			class = {
 				'Audacious',
 				'Qmmp'
+			},
+			role = {
+				'bubble'
 			}
 		},
 		properties = {

@@ -79,35 +79,34 @@ if v:version >= 700
 	let g:sh_indent_case_labels=1
 
 	" plugins
-	if filereadable(expand("$HOME/.vim/bundle/Vundle.vim/autoload/vundle.vim"))
-		filetype off
+	if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
 		set noshowmode
-		set rtp+=~/.vim/bundle/Vundle.vim/
-		silent! call vundle#begin()
-		Plugin 'gmarik/Vundle.vim'               "plugin manager
+		source ~/.vim/plugged/vim-plug/plug.vim
+		call plug#begin('~/.vim/plugged')
+		Plug 'junegunn/vim-plug'               "plugin manager
 
 		" general plugins
-		Plugin 'Lokaltog/vim-easymotion'         "easy motion
-		Plugin 'Shougo/unite.vim'                "fuzzy file open
-		Plugin 'bling/vim-airline'               "stylish info display
-		Plugin 'bling/vim-bufferline'            "stylish buffer display
-		Plugin 'jeetsukumaran/vim-buffergator'   "buffer management
-		Plugin 'mhinz/vim-signify'               "version control system gutter info
-		Plugin 'scrooloose/nerdtree'             "file manager
-		Plugin 'tpope/vim-fugitive'              "git awesomeness
-		Plugin 'tpope/vim-surround'              "quotes replacement made easy
-		Plugin 'directionalWindowResizer'        "resize windows with simple hotkeys
+		Plug 'Lokaltog/vim-easymotion'         "easy motion
+		Plug 'Shougo/unite.vim'                "fuzzy file open
+		Plug 'bling/vim-airline'               "stylish info display
+		Plug 'bling/vim-bufferline'            "stylish buffer display
+		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
+		Plug 'mhinz/vim-signify'               "version control system gutter info
+		Plug 'scrooloose/nerdtree'             "file manager
+		Plug 'tpope/vim-fugitive'              "git awesomeness
+		Plug 'tpope/vim-surround'              "quotes replacement made easy
+		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 
 		" colorschemes
-		Plugin 'morhetz/gruvbox'
-		Plugin 'MichaelMalick/vim-colors-bluedrake'
-		Plugin 'romainl/Apprentice'
-		Plugin 'vdrandom/forked-solarized.vim'
+		Plug 'morhetz/gruvbox'
+		Plug 'MichaelMalick/vim-colors-bluedrake'
+		Plug 'romainl/Apprentice'
+		Plug 'vdrandom/forked-solarized.vim'
 
 		" syntax highlight plugins
-		Plugin 'puppetlabs/puppet-syntax-vim'
-		Plugin 'nagios-syntax'
-		silent! call vundle#end()
+		Plug 'puppetlabs/puppet-syntax-vim'
+		Plug 'nagios-syntax'
+		call plug#end()
 
 		" easymotion options
 		let g:EasyMotion_do_mapping=0
