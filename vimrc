@@ -66,15 +66,6 @@ if v:version >= 700
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
-	" Cursor shape changes relies on tmux, fails spectacularly with screen!
-	if $TERM =~ '^screen'
-		let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
-		let &t_EI = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
-	else
-		let &t_SI = "\<Esc>[6 q"
-		let &t_EI = "\<Esc>[4 q"
-	endif
-
 	" enable case indentation
 	let g:sh_indent_case_labels=1
 
