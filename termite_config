@@ -12,15 +12,16 @@ scrollback_lines = 1000
 search_wrap = true
 icon_name = terminal
 cursor_blink = off
-cursor_shape = underline
-browser = chromium
+cursor_shape = block
+browser = firefox
 size_hints = false
 
 [colors]
-cursor = #fdf6e3
-foreground = #839496
-foreground_bold = #fdf6e3
-background = rgba(0, 20, 26, 0.8)
+#cursor = #002b36
+foreground = #657b83
+foreground_bold = #002b36
+background = #fdf6e3
+#background = rgba(0, 20, 26, 0.8)
 #fbt's background = #00141A
 #default solarized background = #002b36
 
