@@ -2,6 +2,7 @@ set nocompatible
 set background=light
 set backspace=indent,eol,start
 set clipboard=exclude:.*
+set cursorline
 set foldmethod=marker
 set history=50
 set hlsearch
@@ -38,6 +39,8 @@ autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
+
+autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab autoindent
 
 " maps
 let mapleader = ","
