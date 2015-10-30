@@ -1,0 +1,4 @@
+" vim: set ft=vimperator:
+
+set hintchars="qwertyuiop[]asdfghjkl;'zxcvbnm,./"
+set toolbars=addons,nobookmarks,nomenu,nonavigation,tabs
