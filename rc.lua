@@ -469,7 +469,6 @@ globalkeys = awful.util.table.join(
 
 	-- Prompt
 	awful.key({ modkey,           }, 'r',     function () mypromptbox[mouse.screen]:run() end),
-	awful.key({ 'Mod1',           }, 'F2',    function () mypromptbox[mouse.screen]:run() end),
 
 	awful.key({ modkey,           }, 'e',
 		function ()
