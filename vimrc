@@ -1,7 +1,6 @@
 set nocompatible
 set background=light
 set backspace=indent,eol,start
-set clipboard=exclude:.*
 set cursorline
 set foldmethod=marker
 set history=50
