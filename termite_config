@@ -14,7 +14,7 @@ icon_name = terminal
 cursor_blink = off
 cursor_shape = underline
 browser = firefox
-size_hints = false
+size_hints = true
 
 [colors]
 cursor = #002b36
