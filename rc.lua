@@ -75,21 +75,7 @@ theme.taglist_font = 'Terminus 11'
 theme.taglist_squares_sel = nil
 theme.taglist_squares_unsel = nil
 
-theme.bg_normal     = "#282828"
-theme.bg_focus      = "#607D8B"
-theme.bg_urgent     = "#D15A00"
-theme.bg_minimize   = "#373737"
-theme.bg_systray    = theme.bg_normal
-
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
-
-theme.border_width  = 2
-theme.border_normal = theme.bg_normal
-theme.border_focus  = theme.bg_focus
-theme.border_marked = "#608B63"
+theme.border_width = 2
 
 -- amount of pixels to snap windows from
 snap = 7
@@ -101,7 +87,7 @@ if exists(wallpaper) then
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = 'urxvt'
+terminal = 'termite'
 editor = os.getenv('EDITOR') or 'vim'
 editor_cmd = terminal .. ' -e ' .. editor
 

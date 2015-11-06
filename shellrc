@@ -40,7 +40,6 @@ export LS_COLORS='no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd
 
 # }}}
 # {{{ common aliases
-alias vi='command vim'
 alias less='command less -R'
 alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
@@ -51,7 +50,10 @@ alias hist='fc -l 1'
 alias beep='printf "\007"'
 alias fixterm='printf "c"'
 if (is_exec nvim && [[ -r ${HOME}/.vimrc ]]); then
-	alias nvim='command nvim -u ~/.vimrc'
+	alias vim='command nvim -u ~/.vimrc'
+	alias vi='command nvim -u ~/.vimrc'
+else
+	alias vi='command vim'
 fi
 
 # iconv
