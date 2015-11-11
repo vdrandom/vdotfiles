@@ -341,15 +341,8 @@ if is_zsh; then
 	if [[ -r ${hl_script} ]]; then
 		source ${hl_script}
 		ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-		ZSH_HIGHLIGHT_STYLES[path]='fg=black,bold'
-		ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=black,bold'
-	fi
-	# history substring search à la fish from https://github.com/zsh-users/zsh-history-substring-search
-	hs_script="${HOME}/.zsh-history-substring-search/zsh-history-substring-search.zsh"
-	if [[ -r ${hs_script} ]]; then
-		source ${hs_script}
-		bindkey '^[[A' history-substring-search-up
-		bindkey '^[[B' history-substring-search-down
+		ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
+		ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=white,bold'
 	fi
 	# }}}
 else
