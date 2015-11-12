@@ -87,9 +87,9 @@ if exists(wallpaper) then
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = 'termite'
-editor = os.getenv('EDITOR') or 'vim'
-editor_cmd = terminal .. ' -e ' .. editor
+terminal = 'urxvt'
+editor = 'gvim'
+editor_cmd = editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.

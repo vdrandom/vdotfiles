@@ -17,12 +17,14 @@ URxvt.boldFont:         terminus_bold
 URxvt.italicFont:       terminus_bold
 URxvt.boldItalicFont:   terminus_bold
 URxvt.saveLines:        1000
+URxvt.cursorUnderline:  true
 URxvt.iso14755:         false
 URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.internalBorder:   0
 URxvt.fading:           5
+URxvt.depth:            32
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard
@@ -32,16 +34,16 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-! alternative solarized light
-!URxvt.foreground:   #839496
-!URxvt.background:   [80]#00141A
-!URxvt.cursorColor:  #fdf6e3
-!URxvt.colorBD:      #fdf6e3
+! solarized light
+!URxvt.foreground:   #657b83
+!URxvt.background:   #fdf6e3
+!URxvt.cursorColor:  #002b36
+!URxvt.colorBD:      #002b36
 
-URxvt.foreground:   #657b83
-URxvt.background:   #fdf6e3
-URxvt.cursorColor:  #002b36
-URxvt.colorBD:      #002b36
+URxvt.foreground:   #839496
+URxvt.background:   [80]#00141A
+URxvt.cursorColor:  #fdf6e3
+URxvt.colorBD:      #fdf6e3
 
 URxvt.color0:       #073642
 URxvt.color1:       #dc322f
