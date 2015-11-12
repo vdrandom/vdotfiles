@@ -63,7 +63,7 @@ if v:version >= 700
 	set modeline
 
 	set number
-	set list
+	set nolist
 	set listchars=tab:\|_,nbsp:x
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
@@ -91,8 +91,8 @@ if v:version >= 700
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 
 		" colorschemes
+		Plug 'jonathanfilip/vim-lucius'
 		Plug 'morhetz/gruvbox'
-		Plug 'MichaelMalick/vim-colors-bluedrake'
 		Plug 'romainl/Apprentice'
 		Plug 'vdrandom/forked-solarized.vim'
 
@@ -143,10 +143,8 @@ if v:version >= 700
 		map! <S-Insert> <MiddleMouse>
 	endif
 
-	let g:solarized_italic=0
-	let g:solarized_underline=0
-	let g:solarized_visibility='low'
-	colorscheme solarized
+	let g:lucius_use_underline=0
+	colorscheme lucius
 else
 	colorscheme elflord
 endif
