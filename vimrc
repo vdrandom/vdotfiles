@@ -1,5 +1,5 @@
 set nocompatible
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
