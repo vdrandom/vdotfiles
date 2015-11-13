@@ -103,6 +103,11 @@ alias sss='command svn status'
 alias sdf='command svn diff'
 alias sci='command svn commit'
 alias sup='command svn up'
+
+# weechat (for some reason fails with screen-256color
+if [[ -n ${TMUX} ]]; then
+	alias weechat='TERM=screen command weechat'
+fi
 # }}}
 # {{{ common functions
 screenoff-disable() { xset -dpms; xset s off; }
