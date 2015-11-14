@@ -17,7 +17,7 @@ URxvt.boldFont:         terminus_bold
 URxvt.italicFont:       terminus_bold
 URxvt.boldItalicFont:   terminus_bold
 URxvt.saveLines:        1000
-URxvt.cursorUnderline:  true
+!URxvt.cursorUnderline:  true
 URxvt.iso14755:         false
 URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
@@ -40,7 +40,8 @@ URxvt.keysym.C-V:       perl:clipboard:paste
 
 URxvt.foreground:   #657b83
 URxvt.background:   #fdf6e3
-URxvt.cursorColor:  #002b36
+!URxvt.cursorColor:  #002b36
+URxvt.cursorColor:  #dc322f
 URxvt.colorBD:      #002b36
 
 URxvt.color0:       #073642

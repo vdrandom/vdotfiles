@@ -1,5 +1,5 @@
 set nocompatible
-set background=light
+set background=dark
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
@@ -104,7 +104,7 @@ if v:version >= 700
 		" easymotion options
 		let g:EasyMotion_do_mapping=0
 		let g:EasyMotion_smartcase=1
-		nmap s <Plug>(easymotion-s)
+		nmap f <Plug>(easymotion-s)
 		map <Leader>j <Plug>(easymotion-j)
 		map <Leader>k <Plug>(easymotion-k)
 
