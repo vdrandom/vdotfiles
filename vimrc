@@ -141,6 +141,8 @@ if v:version >= 700
 		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
+	else
+		set mouse=
 	endif
 
 	let g:lucius_use_underline=0
