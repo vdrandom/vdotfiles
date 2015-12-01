@@ -1,5 +1,5 @@
 set nocompatible
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
@@ -63,7 +63,7 @@ if v:version >= 700
 	set modeline
 
 	set number
-	set nolist
+	set list
 	set listchars=tab:\|_,nbsp:x
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
@@ -145,8 +145,10 @@ if v:version >= 700
 		set mouse=
 	endif
 
-	let g:lucius_use_underline=0
-	colorscheme lucius
+	let g:solarized_italic=0
+	let g:solarized_underline=0
+	let g:solarized_visibility='low'
+	colorscheme solarized
 else
 	colorscheme elflord
 endif
