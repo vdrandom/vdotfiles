@@ -81,7 +81,7 @@ theme.border_width = 2
 snap = 7
 
 -- set wallpaper
-local wallpaper = '/home/von/Pictures/wallpaper.png'
+local wallpaper = '/home/von/.wallpaper.png'
 if exists(wallpaper) then
 	theme.wallpaper = wallpaper
 end
