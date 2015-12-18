@@ -201,6 +201,10 @@ seconds-to-hr() {
 }
 
 tmuxrc() { tmux source-file "${HOME}/.tmux.conf"; tmux display-message "Config reloaded."; }
+
+if [[ -z "${DISPLAY}" ]]; then
+	x() { exec xinit -- :0 -nolisten tcp vt$XDG_VTNR; }
+fi
 # }}}
 if is_zsh; then
 # zsh
