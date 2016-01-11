@@ -763,7 +763,7 @@ client.connect_signal(
 -- don't forget you sync this file
 -- this shit runs every time you restart your wm, dumbass.
 ---- set keyboard layouts
-awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:scroll,compose:menu')
+awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant ,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:scroll,compose:menu')
 ---- populate xrdb with .Xresources config
 if exists('/home/von/.Xresources') then
 	awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
