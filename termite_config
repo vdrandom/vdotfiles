@@ -17,16 +17,12 @@ browser = firefox
 size_hints = true
 
 [colors]
-cursor = #fdf6e3
-#light cursor = #002b36
-foreground = #839496
-#light foreground = #657b83
-foreground_bold = #fdf6e3
-#light foreground_bold = #002b36
-background = rgba(0, 20, 26, 0.8)
-#light background = #fdf6e3
+cursor = #dc322f
+foreground = #657b83
+foreground_bold = #002b36
+background = #fdf6e3
+#background = rgba(0, 20, 26, 0.8)
 #fbt's background = #00141A
-#default solarized background = #002b36
 
 # solarized 16 colors
 color0 = #073642
