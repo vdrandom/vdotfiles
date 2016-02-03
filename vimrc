@@ -1,5 +1,5 @@
 set nocompatible
-set background=light
+set background=dark
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
@@ -15,8 +15,7 @@ set showcmd
 set smartcase
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-" scroll before reaching the first / final line
-set scrolloff=3
+" scroll before reaching the first / final line set scrolloff=3
 set sidescrolloff=15
 set sidescroll=1
 " disable bell
@@ -81,7 +80,8 @@ if v:version >= 700
 		" general plugins
 		Plug 'Lokaltog/vim-easymotion'         "easy motion
 		Plug 'Shougo/unite.vim'                "fuzzy file open
-		Plug 'bling/vim-airline'               "stylish info display
+		Plug 'vim-airline/vim-airline'         "stylish info display
+		Plug 'vim-airline/vim-airline-themes'  "themes for airline
 		Plug 'bling/vim-bufferline'            "stylish buffer display
 		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 		Plug 'mhinz/vim-signify'               "version control system gutter info

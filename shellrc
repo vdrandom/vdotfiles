@@ -216,6 +216,7 @@ if is_zsh; then
 	HISTSIZE=1000
 	HISTFILE="${HOME}/.histfile"
 
+	#hl_script='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 	extras=( "${HOME}/.zshrc.extras" )
 
 	# completion
@@ -346,7 +347,6 @@ if is_zsh; then
 	# }}}
 	# {{{ plugins
 	# command line syntax highlight from https://github.com/zsh-users/zsh-syntax-highlighting
-	hl_script='/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 	if [[ -r ${hl_script} ]]; then
 		source ${hl_script}
 		ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
