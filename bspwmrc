@@ -10,8 +10,11 @@ bspc config focus_by_distance       true
 bspc config focus_follows_pointer   true
 bspc config pointer_follows_monitor true
 
-bspc monitor    HDMI1 -d            1 2 3
-bspc monitor    VGA1  -d            q w e
+screens=$(xrandr|grep ' connected')
+primary=$(awk '{if ($3 == "primary") print $1}' <<< $screens)
+secondary=$(awk '{if ($3 != "primary") print $1}' <<< $screens)
+bspc monitor    $primary -d         1 2 3
+bspc monitor    $secondary -d       q w e
 
 #bspc rule -a Gimp desktop=^8 follow=on floating=on
 #bspc rule -a Chromium desktop=^2
