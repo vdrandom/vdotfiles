@@ -94,12 +94,17 @@ super + @button{1-3}
 #
 # wm independent hotkeys
 #
+super + z
+	i3lock -entc 661111 -i /home/von/.wallpaper.png
 
 super + x
 	urxvt
 
 super + r
 	gmrun
+
+super + a
+	/home/von/.local/bin/ticket_watch
 
 # make sxhkd reload its configuration files:
 super + Escape

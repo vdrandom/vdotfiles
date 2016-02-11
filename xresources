@@ -32,31 +32,49 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-URxvt.foreground:   #839496
-URxvt.background:   #002b36
-URxvt.colorBD:      #fdf6e3
+! base16 Flat by Chris Kempson (http://chriskempson.com)
+#define base00 #2C3E50
+#define base01 #34495E
+#define base02 #7F8C8D
+#define base03 #95A5A6
+#define base04 #BDC3C7
+#define base05 #e0e0e0
+#define base06 #f5f5f5
+#define base07 #ECF0F1
+#define base08 #E74C3C
+#define base09 #E67E22
+#define base0A #F1C40F
+#define base0B #2ECC71
+#define base0C #1ABC9C
+#define base0D #3498DB
+#define base0E #9B59B6
+#define base0F #be643c
 
-!URxvt.foreground:   #657b83
-!URxvt.background:   #fdf6e3
-!URxvt.colorBD:      #002b36
+URxvt.foreground:   base04
+URxvt.background:   base00
+URxvt.colorBD:      base07
 
-URxvt.cursorColor:  #dc322f
+!URxvt.foreground:   base03
+!URxvt.background:   base07
+!URxvt.colorBD:      base00
 
-URxvt.color0:       #073642
-URxvt.color1:       #dc322f
-URxvt.color2:       #859900
-URxvt.color3:       #b58900
-URxvt.color4:       #268bd2
-URxvt.color5:       #d33682
-URxvt.color6:       #2aa198
-URxvt.color7:       #eee8d5
+URxvt.cursorColor:  base08
 
-URxvt.color8:       #002b36
-URxvt.color9:       #cb4b16
-URxvt.color10:      #586e75
-URxvt.color11:      #657b83
-URxvt.color12:      #839496
-URxvt.color13:      #6c71c4
-URxvt.color14:      #93a1a1
-URxvt.color15:      #fdf6e3
+URxvt.color0:       base01
+URxvt.color1:       base08
+URxvt.color2:       base0B
+URxvt.color3:       base0A
+URxvt.color4:       base0D
+URxvt.color5:       base0F
+URxvt.color6:       base0C
+URxvt.color7:       base06
+
+URxvt.color8:       base00
+URxvt.color9:       base09
+URxvt.color10:      base02
+URxvt.color11:      base03
+URxvt.color12:      base04
+URxvt.color13:      base0E
+URxvt.color14:      base05
+URxvt.color15:      base07
 ! }}}
