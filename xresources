@@ -32,23 +32,23 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-! base16 PhD by Hennig Hasemann (http://leetless.de/vim.html)
-#define base00 #061229
-#define base01 #2a3448
-#define base02 #4d5666
-#define base03 #717885
-#define base04 #9a99a3
-#define base05 #b8bbc2
-#define base06 #dbdde0
-#define base07 #ffffff
-#define base08 #d07346
-#define base09 #f0a000
-#define base0A #fbd461
-#define base0B #99bf52
-#define base0C #72b9bf
-#define base0D #5299bf
-#define base0E #9989cc
-#define base0F #b08060
+! base16 Ocean by Chris Kempson (http://chriskempson.com)
+#define base00 #2b303b
+#define base01 #343d46
+#define base02 #4f5b66
+#define base03 #65737e
+#define base04 #a7adba
+#define base05 #c0c5ce
+#define base06 #dfe1e8
+#define base07 #eff1f5
+#define base08 #bf616a
+#define base09 #d08770
+#define base0A #ebcb8b
+#define base0B #a3be8c
+#define base0C #96b5b4
+#define base0D #8fa1b3
+#define base0E #b48ead
+#define base0F #ab7967
 
 URxvt.foreground:   base04
 URxvt.background:   base00
