@@ -38,11 +38,13 @@ autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
 
-autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 textwidth=80 smarttab expandtab autoindent
+autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 smarttab expandtab autoindent
 
 " maps
 let mapleader = ","
 noremap <F1> <Esc>
+"fold/unfold via spacebar
+nnoremap <Space> za
 "enable cursorline on demand
 nnoremap <Leader>c :set cursorline!<CR>
 "clear search highlight
