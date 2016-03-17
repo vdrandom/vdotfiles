@@ -1,0 +1,11 @@
+[url "von@git.von.lol:"]
+	pushInsteadOf = git://git.von.lol/
+[credential "https://github.com"]
+	username = vdrandom
+[credential "https://bitbucket.com"]
+	username = vdrandom
+[user]
+	email = von@vdrandom.org
+	name = Von Random
+[push]
+	default = simple
