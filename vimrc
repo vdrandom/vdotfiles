@@ -91,6 +91,7 @@ if v:version >= 700
 		Plug 'tpope/vim-fugitive'              "git awesomeness
 		Plug 'tpope/vim-surround'              "quotes replacement made easy
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
+		Plug 'junegunn/vim-easy-align'         "aligning
 
 		" colorschemes
 		Plug 'jonathanfilip/vim-lucius'
@@ -129,6 +130,10 @@ if v:version >= 700
 		" signify options
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
+
+		" easy-align options
+		xmap <Leader>a <Plug>(EasyAlign)
+		nmap <Leader>a <Plug>(EasyAlign)
 	endif
 
 	" gvim and colorschemes related stuff
