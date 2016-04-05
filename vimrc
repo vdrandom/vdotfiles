@@ -20,6 +20,10 @@ set sidescrolloff=15
 set sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
+" indentation
+set shiftwidth=3
+set tabstop=3
+set noexpandtab
 
 " 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
