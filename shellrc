@@ -2,11 +2,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# common
 # {{{ environment
 # a bunch of functions and vars to make this whole thing work
 is_zsh() [[ -n ${ZSH_VERSION} ]]
-if is_zsh; then
+is_ksh() [[ -n ${KSH_VERSION} ]]
+is_bash() [[ -n ${BASH_VERSION} ]]
+
+if is_zsh || is_ksh; then
 	is_exec() [[ -x $(whence ${1}) ]]
 	export HOSTNAME=${HOST}
 else
@@ -117,9 +119,11 @@ screenoff-enable() { xset +dpms; xset s on; }
 
 dotfiles-update() { git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull; }
 
-hide-info() { hide_info=true; }
+if ! is_ksh; then
+	hide-info() { hide_info=true; }
 
-unhide-info() { unset hide_info; }
+	unhide-info() { unset hide_info; }
+fi
 
 gruvbox-colors() {
 	printf "\033]4;24;rgb:07/66/78\033\\"
@@ -207,9 +211,62 @@ if [[ -z "${DISPLAY}" ]]; then
 	x() { exec xinit -- :0 -nolisten tcp vt$XDG_VTNR; }
 fi
 # }}}
-if is_zsh; then
-# zsh
-	# {{{ options
+if is_ksh; then # {{{
+	# {{{ ~ options
+	set -o emacs
+	HISTSIZE=1000
+	HISTFILE=${HOME}/.ksh_history
+	# }}}
+	# {{{ ~ prompt
+	set -A colors 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'
+	for i in 0 1 2 3 4 5 6 7; do
+		eval "n${colors[$i]}='\[\e[0;3${i}m\]'"
+		eval "b${colors[$i]}='\[\e[1;3${i}m\]'"
+	done
+	reset='\[\e[0m\]'
+	bold='\[\e[1m\]'
+	lb="[ "
+	rb=" ]"
+	bb=":"
+	prompt_host="${fqdn}"
+	prompt_bang=">${reset}"
+	prompt_cwd="${bold}${PWD}${reset}"
+	UID=$(id -u)
+	if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
+		prompt_user=''
+	else
+		prompt_user="${nred}\u${reset} "
+	fi
+	prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd} ksh:${nyellow}\v${reset}${rb}"
+	if [[ $UID -eq 0 ]]; then
+		prompt_bang_color="${nred}"
+	else
+		prompt_bang_color="${bold}"
+	fi
+	PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
+	# }}}
+	# {{{ ~ key bindings
+	# urxvt
+	bind '^[[7~'=beginning-of-line                      # home
+	bind '^[[8~'=end-of-line                            # end
+	# screen
+	bind '^[[1~'=beginning-of-line                      # home
+	bind '^[[4~'=end-of-line                            # end
+	# xterm
+	bind '^[[H~'=beginning-of-line                      # home
+	bind '^[[F~'=end-of-line                            # end
+	# all of them
+	bind '^[[5~'=backward-word                          # page up
+	bind '^[[6~'=forward-word                           # page down
+	# }}}
+	# {{{ ~ traps
+	# we want to see exit code on error (it also has to be the last entry here)
+	trap 'printf "\e[0m>> exit \e[1;37m%s\e[0m\n" $?' ERR
+	# }}}
+	return
+fi # }}}
+if is_zsh; then # {{{
+	# {{{ ~ options
 	setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 	unsetopt BEEP NO_MATCH NOTIFY
 
@@ -252,7 +309,7 @@ if is_zsh; then
 		zstyle ':vcs_info:*' formats " %s:%B%F{magenta}%r%f%%b %F{yellow}%b%f%u%c"
 	fi
 	# }}}
-	# {{{ prompt
+	# {{{ ~ prompt
 	lb='[ '
 	rb=' ]'
 	bb=':'
@@ -274,7 +331,7 @@ if is_zsh; then
 	PROMPT3='%b%f?%B%F{green}#%f%b '
 	PROMPT4='%b%f+%N:%i%B%F{green}>%f%b '
 	# }}}
-	# {{{ key bindings
+	# {{{ ~ key bindings
 	bindkey -e
 	# urxvt
 	bindkey '^[[7~'   beginning-of-line                   # home
@@ -300,7 +357,7 @@ if is_zsh; then
 	bindkey '^[m'     copy-prev-shell-word                # alt + m
 	bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 	# }}}
-	# {{{ global aliases
+	# {{{ ~ global aliases
 	alias -g L='| less -R'
 	alias -g H='| head'
 	alias -g T='| tail'
@@ -322,7 +379,7 @@ if is_zsh; then
 	alias -g KU='| iconvku'
 	alias -g WU='| iconvwu'
 	# }}}
-	# {{{ suffix aliases
+	# {{{ ~ suffix aliases
 	editor=${EDITOR}
 	text=( 'txt' 'xml' 'cfg' 'cnf' 'conf' 'ini' 'erb' 'pp' )
 	for i in ${text[@]}; do
@@ -346,7 +403,7 @@ if is_zsh; then
 		alias -s exe=wine
 	fi
 	# }}}
-	# {{{ plugins
+	# {{{ ~ plugins
 	# command line syntax highlight from https://github.com/zsh-users/zsh-syntax-highlighting
 	if [[ -r ${hl_script} ]]; then
 		source ${hl_script}
@@ -355,9 +412,10 @@ if is_zsh; then
 		ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=black,bold'
 	fi
 	# }}}
-else
+fi # }}}
+if is_bash; then # {{{
 # bash
-	# {{{ options
+	# {{{ ~ options
 	HISTSIZE=1000
 	HISTCONTROL=ignoredups:ignorespace
 	shopt -s histappend checkwinsize
@@ -365,7 +423,7 @@ else
 
 	extras=( "${HOME}/.bashrc.extras" )
 	# }}}
-	# {{{ prompt
+	# {{{ ~ prompt
 	colors=('black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white')
 	for i in 0 1 2 3 4 5 6 7; do
 		eval "n${colors[$i]}='\[\e[0;3${i}m\]'"
@@ -399,7 +457,7 @@ else
 	}
 	PROMPT_COMMAND='precmd'
 	# }}}
-	# {{{ key bindings
+	# {{{ ~ key bindings
 	# time $command bind
 	bind '"\C-j":"\C-atime \C-m"'
 	# urxvt
@@ -415,18 +473,18 @@ else
 	bind '"\e[5~"':backward-word                          # page up
 	bind '"\e[6~"':forward-word                           # page down
 	# }}}
-	# {{{ plugins
+	# {{{ ~ plugins
 	completion_path='/usr/share/bash-completion/bash_completion'
 	if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
 		source ${completion_path}
 	fi
 	unset completion_path
 	# }}}
-	# {{{ traps
+	# {{{ ~ traps
 	# we want to see exit code on error (it also has to be the last entry here)
 	trap 'printf "\e[0m>> exit \e[1;37m%s\e[0m\n" $?' ERR
 	# }}}
-fi
+fi               # }}}
 # {{{ source extras
 for i in ${extras[@]}; do
 	if [[ -r ${i} ]]; then
