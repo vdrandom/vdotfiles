@@ -18,7 +18,7 @@ fi
 
 export fqdn="$(hostname -f)"
 if [[ -z ${fqdn} ]]; then
-	export fqdn="${HOSTNAME}"
+	export fqdn="$(hostname)"
 fi
 
 newline="
@@ -414,7 +414,6 @@ if is_zsh; then # {{{
 	# }}}
 fi # }}}
 if is_bash; then # {{{
-# bash
 	# {{{ ~ options
 	HISTSIZE=1000
 	HISTCONTROL=ignoredups:ignorespace
