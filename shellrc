@@ -57,12 +57,7 @@ alias atmux='tmux attach'
 alias hist='fc -l 1'
 alias beep='printf "\007"'
 alias fixterm='printf "c"'
-if (is_exec nvim && [[ -r ${HOME}/.vimrc ]]); then
-	alias vim='command nvim -u ~/.vimrc'
-	alias vi='command nvim -u ~/.vimrc'
-else
-	alias vi='command vim'
-fi
+alias vi='command vim'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
