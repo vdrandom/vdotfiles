@@ -69,7 +69,7 @@ if v:version >= 700
 
 	set number
 	set list
-	set listchars=tab:\|_,nbsp:x
+	set listchars=tab:\|_,nbsp:x,trail:<
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
@@ -86,9 +86,7 @@ if v:version >= 700
 		" general plugins
 		Plug 'Lokaltog/vim-easymotion'         "easy motion
 		Plug 'Shougo/unite.vim'                "fuzzy file open
-		Plug 'vim-airline/vim-airline'         "stylish info display
-		Plug 'vim-airline/vim-airline-themes'  "themes for airline
-		Plug 'bling/vim-bufferline'            "stylish buffer display
+		Plug 'itchyny/lightline.vim'           "lightline
 		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 		Plug 'mhinz/vim-signify'               "version control system gutter info
 		Plug 'scrooloose/nerdtree'             "file manager
@@ -96,6 +94,9 @@ if v:version >= 700
 		Plug 'tpope/vim-surround'              "quotes replacement made easy
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 		Plug 'junegunn/vim-easy-align'         "aligning
+		"Plug 'vim-airline/vim-airline'         "stylish info display
+		"Plug 'vim-airline/vim-airline-themes'  "themes for airline
+		"Plug 'bling/vim-bufferline'            "stylish buffer display
 
 		" colorschemes
 		Plug 'jonathanfilip/vim-lucius'
@@ -115,11 +116,18 @@ if v:version >= 700
 		map <Leader>j <Plug>(easymotion-j)
 		map <Leader>k <Plug>(easymotion-k)
 
+		" lightline options
+		let g:lightline = {
+			\ 'colorscheme': 'solarized',
+			\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+			\ }
+
 		" airline options
-		let g:airline_symbols={}
-		let g:airline_symbols.whitespace='!'
-		let g:airline_powerline_fonts=1
-		let g:airline_theme='base16'
+		"let g:airline_symbols={}
+		"let g:airline_symbols.whitespace='!'
+		"let g:airline_powerline_fonts=1
+		"let g:airline_theme='base16'
 
 		" buffergator options
 		map <Leader><Tab> :BuffergatorToggle<CR>
