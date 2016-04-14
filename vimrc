@@ -1,5 +1,5 @@
 set nocompatible
-set background=dark
+set background=light
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
@@ -9,7 +9,6 @@ set ignorecase
 set incsearch
 set laststatus=2
 set nobackup
-set noexpandtab
 set ruler
 set showcmd
 set smartcase
@@ -118,7 +117,6 @@ if v:version >= 700
 
 		" lightline options
 		let g:lightline = {
-			\ 'colorscheme': 'solarized',
 			\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
 			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 			\ }

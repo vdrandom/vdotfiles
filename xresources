@@ -32,31 +32,31 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-! base16 PhD by Hennig Hasemann (http://leetless.de/vim.html)
-#define base00 #061229
-#define base01 #2a3448
-#define base02 #4d5666
-#define base03 #717885
-#define base04 #9a99a3
-#define base05 #b8bbc2
-#define base06 #dbdde0
-#define base07 #ffffff
-#define base08 #d07346
-#define base09 #f0a000
-#define base0A #fbd461
-#define base0B #99bf52
-#define base0C #72b9bf
-#define base0D #5299bf
-#define base0E #9989cc
-#define base0F #b08060
+! base16 Solarized by Ethan Schoonover (http://ethanschoonover.com/solarized)
+#define base00 #002b36
+#define base01 #073642
+#define base02 #586e75
+#define base03 #657b83
+#define base04 #839496
+#define base05 #93a1a1
+#define base06 #eee8d5
+#define base07 #fdf6e3
+#define base08 #dc322f
+#define base09 #cb4b16
+#define base0A #b58900
+#define base0B #859900
+#define base0C #2aa198
+#define base0D #268bd2
+#define base0E #6c71c4
+#define base0F #d33682
 
-URxvt.foreground:   base04
-URxvt.background:   base00
-URxvt.colorBD:      base07
+!URxvt.foreground:   base04
+!URxvt.background:   base00
+!URxvt.colorBD:      base07
 
-!URxvt.foreground:   base03
-!URxvt.background:   base07
-!URxvt.colorBD:      base00
+URxvt.foreground:   base03
+URxvt.background:   base07
+URxvt.colorBD:      base00
 
 URxvt.cursorColor:  base08
 
