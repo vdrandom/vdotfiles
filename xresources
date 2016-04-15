@@ -16,13 +16,16 @@ URxvt.font:             terminus_bold
 URxvt.boldFont:         terminus_bold
 URxvt.italicFont:       terminus_bold
 URxvt.boldItalicFont:   terminus_bold
-URxvt.saveLines:        1000
+URxvt.saveLines:        10000
 URxvt.iso14755:         false
 URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
 URxvt.termName:         rxvt-unicode-256color
 URxvt.internalBorder:   1
 URxvt.fading:           5
+URxvt.pastableTabs:     true
+URxvt.geometry:         120:36
+URxvt.intensityStyles:  false
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard
@@ -32,7 +35,7 @@ URxvt.keysym.C-C:       perl:clipboard:copy
 URxvt.keysym.C-V:       perl:clipboard:paste
 ! }}}
 ! {{{ urxvt colors
-! base16 Solarized by Ethan Schoonover (http://ethanschoonover.com/solarized)
+! base16-light Solarized by Ethan Schoonover (http://ethanschoonover.com/solarized)
 #define base00 #002b36
 #define base01 #073642
 #define base02 #586e75
@@ -49,10 +52,6 @@ URxvt.keysym.C-V:       perl:clipboard:paste
 #define base0D #268bd2
 #define base0E #6c71c4
 #define base0F #d33682
-
-!URxvt.foreground:   base04
-!URxvt.background:   base00
-!URxvt.colorBD:      base07
 
 URxvt.foreground:   base03
 URxvt.background:   base07
