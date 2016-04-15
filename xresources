@@ -25,7 +25,6 @@ URxvt.internalBorder:   1
 URxvt.fading:           5
 URxvt.pastableTabs:     true
 URxvt.geometry:         120:36
-URxvt.intensityStyles:  false
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard
