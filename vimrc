@@ -1,5 +1,5 @@
 set nocompatible
-set background=light
+set background=dark
 set backspace=indent,eol,start
 set cursorline
 set foldmethod=marker
@@ -102,6 +102,7 @@ if v:version >= 700
 		Plug 'morhetz/gruvbox'
 		Plug 'romainl/Apprentice'
 		Plug 'vdrandom/forked-solarized.vim'
+		Plug 'NLKNguyen/papercolor-theme'
 
 		" syntax highlight plugins
 		Plug 'puppetlabs/puppet-syntax-vim'
@@ -116,10 +117,13 @@ if v:version >= 700
 		map <Leader>k <Plug>(easymotion-k)
 
 		" lightline options
+		" 'active': { 'right': [ ['lineinfo', 'percent'] ] },
 		let g:lightline = {
+			\ 'colorscheme': 'PaperColor',
 			\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
 			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-			\ }
+			\ 'component': { 'readonly': '%{&readonly?"\ue0a2":""}' },
+		\ }
 
 		" airline options
 		"let g:airline_symbols={}
@@ -166,7 +170,7 @@ if v:version >= 700
 	let g:solarized_italic=0
 	let g:solarized_underline=0
 	let g:solarized_visibility='low'
-	colorscheme solarized
+	colorscheme PaperColor
 else
 	colorscheme elflord
 endif
