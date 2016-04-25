@@ -12,7 +12,6 @@ set nobackup
 set ruler
 set showcmd
 set smartcase
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 " scroll before reaching the first / final line set scrolloff=3
 set sidescrolloff=15
@@ -84,23 +83,13 @@ if v:version >= 700
 
 		" general plugins
 		Plug 'Lokaltog/vim-easymotion'         "easy motion
-		Plug 'Shougo/unite.vim'                "fuzzy file open
 		Plug 'itchyny/lightline.vim'           "lightline
 		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 		Plug 'mhinz/vim-signify'               "version control system gutter info
-		Plug 'scrooloose/nerdtree'             "file manager
-		Plug 'tpope/vim-fugitive'              "git awesomeness
-		Plug 'tpope/vim-surround'              "quotes replacement made easy
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 		Plug 'junegunn/vim-easy-align'         "aligning
-		"Plug 'vim-airline/vim-airline'         "stylish info display
-		"Plug 'vim-airline/vim-airline-themes'  "themes for airline
-		"Plug 'bling/vim-bufferline'            "stylish buffer display
 
 		" colorschemes
-		Plug 'jonathanfilip/vim-lucius'
-		Plug 'morhetz/gruvbox'
-		Plug 'romainl/Apprentice'
 		Plug 'vdrandom/forked-solarized.vim'
 		Plug 'NLKNguyen/papercolor-theme'
 
@@ -119,27 +108,14 @@ if v:version >= 700
 		" lightline options
 		" 'active': { 'right': [ ['lineinfo', 'percent'] ] },
 		let g:lightline = {
-			\ 'colorscheme': 'PaperColor',
-			\ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+			\ 'colorscheme':  'PaperColor',
+			\ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
 			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-			\ 'component': { 'readonly': '%{&readonly?"\ue0a2":""}' },
+			\ 'component':    { 'readonly': '%{&readonly?"\ue0a2":""}' },
 		\ }
-
-		" airline options
-		"let g:airline_symbols={}
-		"let g:airline_symbols.whitespace='!'
-		"let g:airline_powerline_fonts=1
-		"let g:airline_theme='base16'
 
 		" buffergator options
 		map <Leader><Tab> :BuffergatorToggle<CR>
-
-		" bufferline options
-		let g:bufferline_show_bufnr=0
-
-		" nerdtree options
-		let NERDTreeDirArrows=0
-		map <Leader>, :NERDTreeToggle<CR>
 
 		" signify options
 		let g:signify_vcs_list=[ 'svn', 'git' ]
@@ -167,12 +143,11 @@ if v:version >= 700
 		set mouse=
 	endif
 
-	let g:solarized_italic=0
-	let g:solarized_underline=0
-	let g:solarized_visibility='low'
 	colorscheme PaperColor
 else
-	colorscheme elflord
+	set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+	colorscheme default
 endif
 
 syntax on
