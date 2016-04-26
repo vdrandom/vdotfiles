@@ -108,7 +108,6 @@ if v:version >= 700
 		" lightline options
 		" 'active': { 'right': [ ['lineinfo', 'percent'] ] },
 		let g:lightline = {
-			\ 'colorscheme':  'PaperColor',
 			\ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
 			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 			\ 'component':    { 'readonly': '%{&readonly?"\ue0a2":""}' },
