@@ -67,7 +67,7 @@ if v:version >= 700
 
 	set number
 	set list
-	set listchars=tab:\|_,nbsp:x,trail:<
+	set listchars=tab:\|_,nbsp:x,trail:•
 	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
@@ -78,7 +78,7 @@ if v:version >= 700
 	if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
 		set noshowmode
 		source ~/.vim/plugged/vim-plug/plug.vim
-		call plug#begin('~/.vim/plugged')
+		silent!call plug#begin('~/.vim/plugged')
 		Plug 'junegunn/vim-plug'               "plugin manager
 
 		" general plugins
