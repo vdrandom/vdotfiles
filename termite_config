@@ -44,4 +44,4 @@ color15 = #fdf6e3
 [hints]
 font = Terminus 9
 
- vim: ft=dosini cms=#%s
+# vim: ft=dosini cms=#%s
