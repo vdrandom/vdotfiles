@@ -21,10 +21,6 @@ if [[ -z ${fqdn} ]]; then
 	export fqdn="$(hostname)"
 fi
 
-if [[ ${TERM} == "xterm-termite" || -n ${TMUX} ]]; then
-	export NVIM_TUI_ENABLE_TRUE_COLOR=1
-fi
-
 newline="
 "
 vscripts="${HOME}/vscripts"
@@ -36,6 +32,9 @@ unset local_bin vscripts
 dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
 vcs_enabled=true
+
+# nvim true color
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 export MYSQL_PS1="mysql [\d]> "
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"

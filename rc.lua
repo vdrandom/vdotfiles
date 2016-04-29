@@ -87,7 +87,7 @@ if exists(wallpaper) then
 end
 
 -- This is used later as the default terminal and editor to run.
-terminal = 'termite'
+terminal = 'urxvt'
 editor = 'gvim'
 editor_cmd = editor
 
