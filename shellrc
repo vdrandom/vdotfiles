@@ -33,9 +33,6 @@ dotfiles="${HOME}/vdotfiles"
 comp_enabled=true
 vcs_enabled=true
 
-# nvim true color
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 export MYSQL_PS1="mysql [\d]> "
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
 export TIME_STYLE='long-iso'
@@ -88,9 +85,12 @@ fi
 alias la='ls -FA'
 alias ll='ls -lha'
 alias ld='ls -lhda'
+
+# diff and colordiff
 if is_exec colordiff; then
-	alias diff='command colordiff'
+	alias diff='command colordiff -u'
 fi
+alias rdiff='diff -urx.svn'
 
 # mount
 alias mountiso='sudo mount -t iso9660 -o loop'

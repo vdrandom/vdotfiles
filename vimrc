@@ -1,7 +1,6 @@
 set nocompatible
-set background=dark
+set background=light
 set backspace=indent,eol,start
-set cursorline
 set foldmethod=marker
 set history=50
 set hlsearch
@@ -91,7 +90,6 @@ if v:version >= 700
 
 		" colorschemes
 		Plug 'vdrandom/forked-solarized.vim'
-		Plug 'NLKNguyen/papercolor-theme'
 
 		" syntax highlight plugins
 		Plug 'puppetlabs/puppet-syntax-vim'
@@ -108,6 +106,7 @@ if v:version >= 700
 		" lightline options
 		" 'active': { 'right': [ ['lineinfo', 'percent'] ] },
 		let g:lightline = {
+			\ 'colorscheme':  'solarized_dark',
 			\ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
 			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
 			\ 'component':    { 'readonly': '%{&readonly?"\ue0a2":""}' },
@@ -142,7 +141,10 @@ if v:version >= 700
 		set mouse=
 	endif
 
-	colorscheme PaperColor
+	let g:solarized_bold=0
+	let g:solarized_italic=0
+	let g:solarized_visibility='low'
+	colorscheme solarized
 else
 	set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
