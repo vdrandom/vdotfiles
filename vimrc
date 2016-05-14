@@ -62,7 +62,6 @@ nnoremap L $
 " still have to deal with old vim versions :<
 if v:version >= 700
 	set helplang=en
-	set modeline
 
 	set number
 	set list
@@ -87,6 +86,7 @@ if v:version >= 700
 		Plug 'mhinz/vim-signify'               "version control system gutter info
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 		Plug 'junegunn/vim-easy-align'         "aligning
+		Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
 
 		" colorschemes
 		Plug 'vdrandom/forked-solarized.vim'
@@ -137,8 +137,10 @@ if v:version >= 700
 		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-	else
+	elseif empty($TMUX) && $TERM =~ "^screen"
 		set mouse=
+	else
+		set mouse=a
 	endif
 
 	let g:solarized_bold=0
