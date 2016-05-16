@@ -119,6 +119,9 @@ if v:version >= 700
 		let g:signify_vcs_list=[ 'svn', 'git' ]
 		let g:signify_sign_change='~'
 
+		" vim-togglemouse options
+		nmap <Leader>m <F12>
+
 		" easy-align options
 		xmap <Leader>a <Plug>(EasyAlign)
 		nmap <Leader>a <Plug>(EasyAlign)
