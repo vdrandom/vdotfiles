@@ -103,7 +103,7 @@ if v:version >= 700
 		map <Leader>k <Plug>(easymotion-k)
 
 		" airline options
-		let g:airline_symbols={} 
+		let g:airline_symbols={}
 		let g:airline_symbols.whitespace='!'
 		let g:airline_powerline_fonts=1
 		let g:airline_extensions=['hunks']
