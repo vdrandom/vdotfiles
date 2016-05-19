@@ -51,10 +51,8 @@ nnoremap <Leader>c :set cursorline!<CR>
 "clear search highlight
 nnoremap <Leader>/ :nohls<CR>
 "make wrapped lines navigation easier
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 "home / end
 nnoremap H ^
 nnoremap L $
@@ -66,7 +64,7 @@ if v:version >= 700
 	set number
 	set list
 	set listchars=tab:\|_,nbsp:x,trail:•
-	nnoremap <Leader>n :setlocal number!<CR>
+	nnoremap <Leader>n :setlocal relativenumber! number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
 	" enable case indentation
@@ -81,12 +79,13 @@ if v:version >= 700
 
 		" general plugins
 		Plug 'Lokaltog/vim-easymotion'         "easy motion
-		Plug 'itchyny/lightline.vim'           "lightline
-		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
-		Plug 'mhinz/vim-signify'               "version control system gutter info
 		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
+		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 		Plug 'junegunn/vim-easy-align'         "aligning
+		Plug 'mhinz/vim-signify'               "version control system gutter info
 		Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
+		Plug 'vim-airline/vim-airline'         "airline
+		Plug 'vim-airline/vim-airline-themes'  "themes for airline
 
 		" colorschemes
 		Plug 'vdrandom/forked-solarized.vim'
@@ -103,14 +102,12 @@ if v:version >= 700
 		map <Leader>j <Plug>(easymotion-j)
 		map <Leader>k <Plug>(easymotion-k)
 
-		" lightline options
-		" 'active': { 'right': [ ['lineinfo', 'percent'] ] },
-		let g:lightline = {
-			\ 'colorscheme':  'solarized_dark',
-			\ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
-			\ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-			\ 'component':    { 'readonly': '%{&readonly?"\ue0a2":""}' },
-		\ }
+		" airline options
+		let g:airline_symbols={} 
+		let g:airline_symbols.whitespace='!'
+		let g:airline_powerline_fonts=1
+		let g:airline_extensions=['hunks']
+		let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%4l:%3v'
 
 		" buffergator options
 		map <Leader><Tab> :BuffergatorToggle<CR>
