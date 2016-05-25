@@ -57,6 +57,7 @@ alias hist='fc -l 1'
 alias beep='printf "\007"'
 alias fixterm='printf "c"'
 alias vi='command vim'
+alias pg-linux-client='command sudo -u postgres psql'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
