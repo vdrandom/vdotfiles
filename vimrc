@@ -21,6 +21,7 @@ set noerrorbells visualbell t_vb=
 set shiftwidth=3
 set tabstop=3
 set noexpandtab
+set nomodeline
 
 " 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
@@ -61,7 +62,7 @@ nnoremap L $
 if v:version >= 700
 	set helplang=en
 
-	set number
+	set relativenumber
 	set list
 	set listchars=tab:\|_,nbsp:x,trail:•
 	nnoremap <Leader>n :setlocal relativenumber! number!<CR>
