@@ -21,7 +21,6 @@ set noerrorbells visualbell t_vb=
 set shiftwidth=3
 set tabstop=3
 set noexpandtab
-set nomodeline
 
 " 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
@@ -138,10 +137,8 @@ if v:version >= 700
 		set guicursor+=a:blinkon0               "and none of them should blink
 		map <S-Insert> <MiddleMouse>
 		map! <S-Insert> <MiddleMouse>
-	elseif empty($TMUX) && $TERM =~ "^screen"
-		set mouse=
 	else
-		set mouse=a
+		set mouse=
 	endif
 
 	let g:solarized_bold=0
