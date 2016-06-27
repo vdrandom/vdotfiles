@@ -63,7 +63,7 @@ if v:version >= 700
 
 	set relativenumber
 	set list
-	set listchars=tab:\|_,nbsp:x,trail:•
+	set listchars=tab:\|_,nbsp:x,trail:*
 	nnoremap <Leader>n :setlocal relativenumber! number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
