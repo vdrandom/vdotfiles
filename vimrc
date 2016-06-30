@@ -113,7 +113,7 @@ if v:version >= 700
 		map <Leader><Tab> :BuffergatorToggle<CR>
 
 		" signify options
-		let g:signify_vcs_list=[ 'svn', 'git' ]
+		let g:signify_vcs_list=[ 'svn', 'git', 'fossil' ]
 		let g:signify_sign_change='~'
 
 		" vim-togglemouse options
