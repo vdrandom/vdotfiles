@@ -329,10 +329,10 @@ for s = 1, screen.count() do
 			right_layout:add(mytextbox_bg)
 			right_layout:add(mytaglist[s])
 			right_layout:add(wibox.widget.systray())
-			right_layout:add(mytextclock)
 		else
 			right_layout:add(mytaglist[s])
 		end
+		right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
 	elseif s == 2 then
 		left_layout:add(mylayoutbox[s])
@@ -764,6 +764,7 @@ client.connect_signal(
 -- this shit runs every time you restart your wm, dumbass.
 ---- set keyboard layouts
 awful.util.spawn_with_shell('setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:caps,compose:menu')
+awful.util.spawn_with_shell('xkbcomp $DISPLAY - | egrep -v "group . = AltGr;" | xkbcomp - $DISPLAY')
 ---- populate xrdb with .Xresources config
 if exists('/home/von/.Xresources') then
 	awful.util.spawn_with_shell('xrdb /home/von/.Xresources')
