@@ -41,7 +41,36 @@ function update_wallpapers(wallpaper)
 	end
 end
 
--- switch mode to two screens
+-- battery indicator
+function battery_status ()
+	local batt_status = "/sys/class/power_supply/BAT0/status"
+	local batt_capacity = "/sys/class/power_supply/BAT0/capacity"
+	local fd = io.open(batt_status, "r")
+	if not fd then
+		do return "" end
+	end
+	local text = fd:read("*a")
+	io.close(fd)
+	local fd = io.open(batt_capacity, "r")
+	if not fd then
+		do return "" end
+	end
+	local battery = string.match(fd:read("*a"), "%d+")
+	io.close(fd)
+	local state
+	local icon = ""
+	if string.match(text, "Charging") then
+		state = -1
+		icon =  "↑"
+	elseif string.match(text, "Discharging") then
+		state = 1
+		icon = "↓"
+	else
+		stat = 0
+		icon = "•"
+	end
+	return battery .. icon
+end
 -- }}}
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -201,8 +230,8 @@ mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
 mymainmenu_screens = {
-	{ 'one', function() awful.util.spawn('xrandr --output DP1 --off') update_wallpapers(beautiful.wallpaper) end },
-	{ 'two', function() awful.util.spawn('xrandr --output DP1 --primary --auto --output eDP1 --auto --right-of DP1') update_wallpapers(beautiful.wallpaper) end }
+	{ 'one', function() awful.util.spawn('xrandr --output DP1 --off') end },
+	{ 'two', function() awful.util.spawn('xrandr --output DP1 --primary --auto --output eDP1 --auto --right-of DP1') end }
 }
 --mymainmenu_quit = {
 --	{ 'quit', awesome.quit }
@@ -252,6 +281,11 @@ mytextbox:set_font('Terminus 9')
 --mykblayout = wibox.widget.textbox()
 --mykblayout:set_text('US')
 --mykblayout:set_font('Terminus Bold 11')
+
+-- Battery indicator
+mybattstatus = wibox.widget.textbox()
+--mybattstatus:set_font('Terminus Bold 11')
+mybattstatus:set_font('Terminus 9')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -343,6 +377,7 @@ for s = 1, screen.count() do
 		--right_layout:add(mytextbox_bg)
 		right_layout:add(mytaglist[s])
 		right_layout:add(wibox.widget.systray())
+		right_layout:add(mybattstatus)
 		right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
 	elseif s == 2 then
@@ -768,6 +803,14 @@ client.connect_signal(
 		end
 	end
 )
+
+-- timers
+if exists("/sys/class/power_supply/BAT0") then
+	mytimer = timer({ timeout = 1 })
+	mybattstatus:set_text('•••')
+	mytimer:connect_signal("timeout", function() mybattstatus:set_text(battery_status()) end)
+	mytimer:start()
+end
 -- }}}
 -- {{{ Autostart
 -- don't forget you sync this file
