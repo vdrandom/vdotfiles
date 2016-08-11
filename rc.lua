@@ -33,6 +33,13 @@ function enters(element, table)
 	end
 	return false
 end
+
+-- update wallpapers, useful when attaching screens
+function update_wallpapers(wallpaper)
+	for s = 1, screen.count() do
+		gears.wallpaper.centered(wallpaper, s)
+	end
+end
 -- }}}
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -131,9 +138,7 @@ local layouts = {
 -- }}}
 -- {{{ Wallpaper
 if beautiful.wallpaper then
-	for s = 1, screen.count() do
-		gears.wallpaper.centered(beautiful.wallpaper, s)
-	end
+	update_wallpapers(beautiful.wallpaper)
 end
 -- }}}
 -- {{{ Tags
@@ -150,11 +155,13 @@ end
 --	[9] = 'example2'
 --}
 tags[1].layout = {
+	[1] = layouts.max[1]
 	[4] = layouts.float[1]
 }
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
+		[1] = layouts.max[1]
 		[4] = layouts.float[1]
 	}
 end
@@ -191,13 +198,18 @@ end
 mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
+mymainmenu_screens = {
+	{ 'one', function() awful.util.spawn('xrandr --output DP1 --off') update_wallpapers(beautiful.wallpaper) end },
+	{ 'two', function() awful.util.spawn('xrandr --output DP1 --primary --auto --output eDP1 --auto --right-of DP1') update_wallpapers(beautiful.wallpaper) end }
+}
 --mymainmenu_quit = {
 --	{ 'quit', awesome.quit }
 --}
 
 mymainmenu = awful.menu({
 	items = {
-		{ 'restart',	mymainmenu_restart,	beautiful.awesome_icon }
+		{ 'restart',	mymainmenu_restart,	beautiful.awesome_icon },
+		{ 'screens',	mymainmenu_screens,	beautiful.awesome_icon }
 		-- { 'quit',	mymainmenu_quit,	beautiful.awesome_icon }
 	}
 })
@@ -587,6 +599,7 @@ awful.rules.rules = {
 				'Pavucontrol',
 				'pinentry',
 				'plugin-container',
+				'Skype',
 				'Vncviewer'
 			},
 			instance = {
