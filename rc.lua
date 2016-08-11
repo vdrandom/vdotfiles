@@ -155,13 +155,13 @@ end
 --	[9] = 'example2'
 --}
 tags[1].layout = {
-	[1] = layouts.max[1]
+	[1] = layouts.max[1],
 	[4] = layouts.float[1]
 }
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
-		[1] = layouts.max[1]
+		[1] = layouts.max[1],
 		[4] = layouts.float[1]
 	}
 end
