@@ -40,6 +40,8 @@ function update_wallpapers(wallpaper)
 		gears.wallpaper.centered(wallpaper, s)
 	end
 end
+
+-- switch mode to two screens
 -- }}}
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -241,10 +243,11 @@ mytextclock:set_font('Terminus Bold 11')
 mytextbox = wibox.widget.textbox()
 mytextbox:set_text('')
 mytextbox:set_font('Terminus 9')
-mytextbox_bg = wibox.widget.background()
-mytextbox_bg:set_widget(mytextbox)
-mytextbox_bg:set_bg(theme.bg_minimize)
-mytextbox_bg:set_fg(theme.fg_minimize)
+-- A box to show info about new mail, temporary unneeded
+--mytextbox_bg = wibox.widget.background()
+--mytextbox_bg:set_widget(mytextbox)
+--mytextbox_bg:set_bg(theme.bg_minimize)
+--mytextbox_bg:set_fg(theme.fg_minimize)
 -- Create keyboard layout indicator widget
 --mykblayout = wibox.widget.textbox()
 --mykblayout:set_text('US')
@@ -337,21 +340,15 @@ for s = 1, screen.count() do
 	local right_layout = wibox.layout.fixed.horizontal()
 	if s == 1 then
 		right_layout:add(mypromptbox[s])
-		if screen.count() == 1 then
-			right_layout:add(mytextbox_bg)
-			right_layout:add(mytaglist[s])
-			right_layout:add(wibox.widget.systray())
-		else
-			right_layout:add(mytaglist[s])
-		end
+		--right_layout:add(mytextbox_bg)
+		right_layout:add(mytaglist[s])
+		right_layout:add(wibox.widget.systray())
 		right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
 	elseif s == 2 then
 		left_layout:add(mylayoutbox[s])
 		left_layout:add(mytextclock)
-		left_layout:add(wibox.widget.systray())
 		left_layout:add(mytaglist[s])
-		left_layout:add(mytextbox_bg)
 		left_layout:add(mypromptbox[s])
 	else
 		left_layout:add(mytaglist[s])
