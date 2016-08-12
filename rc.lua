@@ -57,19 +57,15 @@ function battery_status ()
 	end
 	local battery = string.match(fd:read("*a"), "%d+")
 	io.close(fd)
-	local state
-	local icon = ""
+	local icon
 	if string.match(text, "Charging") then
-		state = -1
-		icon =  "↑"
+		icon = "↑"
 	elseif string.match(text, "Discharging") then
-		state = 1
 		icon = "↓"
 	else
-		stat = 0
 		icon = "•"
 	end
-	return battery .. icon
+	return ' ' .. battery .. icon
 end
 -- }}}
 -- {{{ Error handling
@@ -284,8 +280,7 @@ mytextbox:set_font('Terminus 9')
 
 -- Battery indicator
 mybattstatus = wibox.widget.textbox()
---mybattstatus:set_font('Terminus Bold 11')
-mybattstatus:set_font('Terminus 9')
+mybattstatus:set_font('Terminus Bold 11')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
