@@ -63,6 +63,8 @@ alias fixterm='printf "c"'
 alias vi='command vim'
 alias pg-linux-client='command sudo -u postgres psql'
 alias mysql='mysql --sigint-ignore'
+alias kblayouts='setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:caps,compose:menu'
+alias kbfix='xkbcomp $DISPLAY - | egrep -v "group . = AltGr;" | xkbcomp - $DISPLAY'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
