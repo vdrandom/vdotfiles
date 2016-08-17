@@ -376,10 +376,14 @@ for s = 1, screen.count() do
 		right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
 	elseif s == 2 then
-		left_layout:add(mylayoutbox[s])
-		left_layout:add(mytextclock)
-		left_layout:add(mytaglist[s])
-		left_layout:add(mypromptbox[s])
+		--left_layout:add(mylayoutbox[s])
+		--left_layout:add(mytextclock)
+		--left_layout:add(mytaglist[s])
+		--left_layout:add(mypromptbox[s])
+		right_layout:add(mypromptbox[s])
+		right_layout:add(mytaglist[s])
+		right_layout:add(mytextclock)
+		right_layout:add(mylayoutbox[s])
 	else
 		left_layout:add(mytaglist[s])
 		left_layout:add(mypromptbox[s])
