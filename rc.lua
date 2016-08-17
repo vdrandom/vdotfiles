@@ -227,7 +227,7 @@ mymainmenu_restart = {
 }
 mymainmenu_screens = {
 	{ 'one', function() awful.util.spawn('xrandr --output DP1 --off') end },
-	{ 'two', function() awful.util.spawn('xrandr --output DP1 --primary --auto --output eDP1 --auto --right-of DP1') end }
+	{ 'two', function() awful.util.spawn('xrandr --output eDP1 --primary --auto --output DP1 --auto --above eDP1') end }
 }
 --mymainmenu_quit = {
 --	{ 'quit', awesome.quit }
