@@ -188,19 +188,19 @@ tags[1].layout = {
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
-		[1] = layouts.max[1],
-		[4] = layouts.float[1]
+		[1] = layouts.float[1]
 	}
 end
 -- Fill the missing values with defaults
 for s = 1, screen.count() do
 	-- Set default tiled layout for all the screens
 	-- if s == 1 and screen.count() ~= 1 then -- in case I ever want to have default for less than 2 screens
-	if s == 1 then
-		default_tiled = layouts.tiled[1]
-	else
-		default_tiled = layouts.tiled[3]
-	end
+	--if s == 1 then
+	--	default_tiled = layouts.tiled[1]
+	--else
+	--	default_tiled = layouts.tiled[3]
+	--end
+	default_tiled = layouts.tiled[1]
 	for tag = 1, 9 do
 		local name = tags[s].name[tag] or tostring(tag)
 		local layout = tags[s].layout[tag] or default_tiled
