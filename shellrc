@@ -116,6 +116,10 @@ alias sss='command svn status'
 alias sdf='command svn diff'
 alias sci='command svn commit'
 alias sup='command svn up'
+
+# tmux
+alias tmux='command tmux -2'
+alias atmux='command tmux -2 attach'
 # }}}
 # {{{ common functions
 screenoff-disable() { xset -dpms; xset s off; }
@@ -127,8 +131,6 @@ if ! is_ksh; then
 	unhide-info() { unset hide_info; }
 fi
 
-atmux() { tmux attach; }
-rxvtmux() { curr_term=$TERM; TERM=rxvt-unicode-256color; tmux attach; TERM=$curr_term; unset curr_term; }
 tmuxrc() { tmux source-file "${HOME}/.tmux.conf"; tmux display-message "Config reloaded."; }
 
 if [[ -z "${DISPLAY}" ]]; then
