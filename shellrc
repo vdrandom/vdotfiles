@@ -63,8 +63,6 @@ alias fixterm='printf "c"'
 alias vi='command vim'
 alias pg-linux-client='command sudo -u postgres psql'
 alias mysql='mysql --sigint-ignore'
-alias kblayouts='setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:caps,compose:menu'
-alias kbfix='xkbcomp $DISPLAY - | egrep -v "group . = AltGr;" | xkbcomp - $DISPLAY'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
@@ -135,6 +133,11 @@ tmuxrc() { tmux source-file "${HOME}/.tmux.conf"; tmux display-message "Config r
 
 if [[ -z "${DISPLAY}" ]]; then
 	x() { exec xinit -- :0 -nolisten tcp vt$XDG_VTNR; }
+else
+	fixkb() {
+		setxkbmap -layout us,ru -variant altgr-intl,typewriter -option ctrl:nocaps,grp:win_space_toggle,grp_led:caps,compose:menu
+		xkbcomp $DISPLAY - | egrep -v "group . = AltGr;" | xkbcomp - $DISPLAY 2>/dev/null
+	}
 fi
 
 # }}}

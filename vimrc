@@ -91,8 +91,7 @@ if v:version >= 700
 		Plug 'vdrandom/forked-solarized.vim'
 
 		" syntax highlight plugins
-		Plug 'puppetlabs/puppet-syntax-vim'
-		Plug 'nagios-syntax'
+		Plug 'neilhwatson/vim_cf3'
 		call plug#end()
 
 		" easymotion options
