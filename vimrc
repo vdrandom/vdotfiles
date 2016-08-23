@@ -86,6 +86,7 @@ if v:version >= 700
 		Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
 		Plug 'vim-airline/vim-airline'         "airline
 		Plug 'vim-airline/vim-airline-themes'  "themes for airline
+		Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
 
 		" colorschemes
 		Plug 'vdrandom/forked-solarized.vim'
