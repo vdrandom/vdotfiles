@@ -226,8 +226,8 @@ mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
 mymainmenu_screens = {
-	{ 'one', function() awful.util.spawn('xrandr --output DP1 --off') end },
-	{ 'two', function() awful.util.spawn('xrandr --output eDP1 --primary --auto --output DP1 --auto --above eDP1') end }
+	{ 'one', function() awful.util.spawn('xrandr --output HDMI1 --off') end },
+	{ 'two', function() awful.util.spawn('xrandr --output eDP1 --primary --auto --output HDMI1 --auto --below eDP1') end }
 }
 --mymainmenu_quit = {
 --	{ 'quit', awesome.quit }
