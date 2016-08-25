@@ -5,10 +5,9 @@
 # {{{ environment
 # a bunch of functions and vars to make this whole thing work
 is_zsh() [[ -n ${ZSH_VERSION} ]]
-is_ksh() [[ -n ${KSH_VERSION} ]]
 is_bash() [[ -n ${BASH_VERSION} ]]
 
-if is_zsh || is_ksh; then
+if is_zsh; then
 	is_exec() [[ -x $(whence ${1}) ]]
 	export HOSTNAME=${HOST}
 else
@@ -57,7 +56,7 @@ alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
 alias rscreen='command screen -Dr'
 alias rdesktop='command rdesktop -g1580x860'
-alias rgrep='command grep --exclude-dir=\.{svn,git} -R'
+alias rgrep='command grep --exclude-dir=\.git -R'
 alias hist='fc -l 1'
 alias beep='printf "\007"'
 alias fixterm='printf "c"'
@@ -125,10 +124,8 @@ screenoff-disable() { xset -dpms; xset s off; }
 screenoff-enable() { xset +dpms; xset s on; }
 dotfiles-update() { git --work-tree="${dotfiles}" --git-dir="${dotfiles}/.git" pull; }
 
-if ! is_ksh; then
-	hide-info() { hide_info=true; }
-	unhide-info() { unset hide_info; }
-fi
+hide-info() { hide_info=true; }
+unhide-info() { unset hide_info; }
 
 tmuxrc() { tmux source-file "${HOME}/.tmux.conf"; tmux display-message "Config reloaded."; }
 
@@ -142,60 +139,6 @@ else
 fi
 
 # }}}
-if is_ksh; then # {{{
-	# {{{ ~ options
-	set -o emacs
-	HISTSIZE=1000
-	HISTFILE=${HOME}/.ksh_history
-	# }}}
-	# {{{ ~ prompt
-	set -A colors 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'
-	for i in 0 1 2 3 4 5 6 7; do
-		eval "n${colors[$i]}='\[\e[0;3${i}m\]'"
-		eval "b${colors[$i]}='\[\e[1;3${i}m\]'"
-	done
-	reset='\[\e[0m\]'
-	bold='\[\e[1m\]'
-	lb="[ "
-	rb=" ]"
-	bb=":"
-	prompt_host="${fqdn}"
-	prompt_bang=">${reset}"
-	prompt_cwd="${bold}${PWD}${reset}"
-	UID=$(id -u)
-	if [[ ${UID} -eq 1000 || ${UID} -eq 1205 ]]; then
-		prompt_user=''
-	else
-		prompt_user="${nred}\u${reset} "
-	fi
-	prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd} ksh:${nyellow}\v${reset}${rb}"
-	if [[ $UID -eq 0 ]]; then
-		prompt_bang_color="${nred}"
-	else
-		prompt_bang_color="${bold}"
-	fi
-	PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
-	# }}}
-	# {{{ ~ key bindings
-	# urxvt
-	bind '^[[7~'=beginning-of-line                      # home
-	bind '^[[8~'=end-of-line                            # end
-	# screen
-	bind '^[[1~'=beginning-of-line                      # home
-	bind '^[[4~'=end-of-line                            # end
-	# xterm
-	bind '^[[H~'=beginning-of-line                      # home
-	bind '^[[F~'=end-of-line                            # end
-	# all of them
-	bind '^[[5~'=backward-word                          # page up
-	bind '^[[6~'=forward-word                           # page down
-	# }}}
-	# {{{ ~ traps
-	# we want to see exit code on error (it also has to be the last entry here)
-	trap 'printf "\e[0m>> exit \e[1;37m%s\e[0m\n" $?' ERR
-	# }}}
-	return
-fi # }}}
 if is_zsh; then # {{{
 	# {{{ ~ options
 	setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
