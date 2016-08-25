@@ -15,11 +15,6 @@ else
 	alias whence='type -P'
 fi
 
-export fqdn="$(hostname -f)"
-if [[ -z ${fqdn} ]]; then
-	export fqdn="$(hostname)"
-fi
-
 newline="
 "
 vscripts="${HOME}/vscripts"
@@ -83,11 +78,7 @@ if is_exec grc; then
 fi
 
 # ls
-if [[ ${OSTYPE} == freebsd* ]]; then
-	alias ls='command ls -G '
-elif [[ ${OSTYPE} == 'linux-gnu' || ${OSTYPE} == 'cygwin' ]] && [[ ${fqdn} != *pvc* ]]; then
-	alias ls='command ls --color=auto --group-directories-first '
-fi
+alias ls='command ls --color=auto --group-directories-first '
 alias la='ls -FA'
 alias ll='ls -lha'
 alias ld='ls -lhda'
@@ -188,7 +179,7 @@ if is_zsh; then # {{{
 	rb=' ]'
 	bb=':'
 	prompt_user='%(1000#..%(1205#..%F{red}%n%f%b ))'
-	prompt_host=${fqdn}
+	prompt_host=${HOSTNAME}
 	prompt_cwd='%B%d%b'
 	prompt_bang='%(!.%F{red}>%f.%B>%b)'
 	prompt_jobs='%(1j. jobs:%B%F{red}%j%f%b.)'
@@ -307,7 +298,7 @@ if is_bash; then # {{{
 	lb="[ "
 	rb=" ]"
 	bb=":"
-	prompt_host="${fqdn}"
+	prompt_host="${HOSTNAME}"
 	prompt_bang=">${reset}"
 	precmd() {
 		if [[ -z ${hide_info} ]]; then
