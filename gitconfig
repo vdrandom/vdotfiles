@@ -1,4 +1,4 @@
-[url "von@git.vdrandom.org:git"]
+[url "von@git.vdrandom.org:git/"]
 	pushInsteadOf = git://git.vdrandom.org/
 [credential "https://github.com"]
 	username = vdrandom
