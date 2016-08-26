@@ -14,6 +14,7 @@ dotfiles="${HOME}/vdotfiles"
 #comp_enabled=true
 
 HISTSIZE=1000
+HISTFILE="${HOME}/.bash_history.${UID}"
 HISTCONTROL=ignoredups:ignorespace
 shopt -s histappend checkwinsize
 [[ ${BASH_VERSINFO} -ge 4 ]] && shopt -s autocd
@@ -91,8 +92,10 @@ alias ld='ls -lhda'
 # diff and colordiff
 if is_exec colordiff; then
 	alias diff='command colordiff -u'
+else
+	alias diff='command diff -u'
 fi
-alias rdiff='diff -urx.svn'
+alias rdiff='diff -r'
 
 # mount
 alias mountiso='sudo mount -t iso9660 -o loop'
@@ -127,28 +130,18 @@ done
 unset color_number
 reset='\[\e[0m\]'
 bold='\[\e[1m\]'
-prompt_host="${HOSTNAME}"
-prompt_bang=">${reset}"
-precmd() {
-	if [[ -z ${hide_info} ]]; then
-		prompt_cwd="${bold}${PWD}${reset}"
-		if [[ ${USER} != 'von' ]]; then
-			prompt_user="${bred}\u${reset} "
-		else
-			prompt_user="${bold}\u${reset} "
-		fi
-		prompt_info="[ ${prompt_user}${prompt_host}:${prompt_cwd} ]"
-	else
-		prompt_info=''
-	fi
-	if [[ $UID -eq 0 ]]; then
-		prompt_bang_color="${nred}"
-	else
-		prompt_bang_color="${bold}"
-	fi
-	PS1="${prompt_info}${newline}${prompt_bang_color}${prompt_bang} "
-}
-PROMPT_COMMAND='precmd'
+if [[ ${USER} == 'von' ]]; then
+	color_user="${nyellow}"
+else
+	color_user="${nred}"
+fi
+if [[ $UID -eq 0 ]]; then
+	color_bang="${nred}"
+else
+	color_bang="${bold}"
+fi
+PS1="[ ${color_user}\u${reset} ${HOSTNAME}:${bold}${PWD}${reset} ]
+${color_bang}>${reset} "
 # }}}
 # {{{ key bindings
 # urxvt
