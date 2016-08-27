@@ -1,0 +1,9 @@
+XXkb.image.path: /usr/share/xxkb
+XXkb.mainwindow.image.1: en15.xpm
+XXkb.mainwindow.image.2: ru15.xpm
+XXkb.mainwindow.image.3: by15.xpm
+XXkb.mainwindow.image.4: by15.xpm
+XXkb.mainwindow.enable: yes
+XXkb.mainwindow.type: tray
+XXkb.mainwindow.geometry: 16x16+0+0
+XXkb.mainwindow.label.enable: false
