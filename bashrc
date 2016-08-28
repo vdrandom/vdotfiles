@@ -12,6 +12,7 @@ unset local_bin vscripts gem_bin
 
 dotfiles="${HOME}/vdotfiles"
 #comp_enabled=true
+#git_enabled=true
 
 HISTSIZE=1000
 HISTFILE="${HOME}/.bash_history.${UID}"
@@ -36,7 +37,7 @@ color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
 	eval "n${color}='\[\e[0;3${color_number}m\]'"
 	eval "b${color}='\[\e[1;3${color_number}m\]'"
-	let color_number+=1
+	(( x++ ))	
 done
 unset color_number
 reset='\[\e[0m\]'
@@ -51,7 +52,7 @@ if [[ $UID -eq 0 ]]; then
 else
 	color_bang="${bold}"
 fi
-PS1="[ ${prompt_user}${HOSTNAME}:${bold}${PWD}${reset} ]
+PS1="[ ${prompt_user}${HOSTNAME}:${bold}\w${reset} ]
 ${color_bang}>${reset} "
 # }}}
 # {{{ key bindings
@@ -132,10 +133,16 @@ alias atmux='command tmux -2 attach'
 # }}}
 # {{{ plugins
 completion_path='/usr/share/bash-completion/bash_completion'
+git_prompt_path='/usr/lib/bash-git-prompt/gitprompt.sh'
 if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
 	source ${completion_path}
 fi
-unset completion_path
+if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
+	GIT_PROMPT_ONLY_IN_REPO=1
+	GIT_PROMPT_THEME=Solarized
+	source ${git_prompt_path}
+fi
+unset completion_path git_prompt_path
 # }}}
 # {{{ traps
 # we want to see exit code on error (it also has to be the last entry here)
