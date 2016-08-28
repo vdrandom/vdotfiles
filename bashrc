@@ -37,7 +37,7 @@ color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
 	eval "n${color}='\[\e[0;3${color_number}m\]'"
 	eval "b${color}='\[\e[1;3${color_number}m\]'"
-	(( x++ ))	
+	(( color_number++ ))	
 done
 unset color_number
 reset='\[\e[0m\]'
