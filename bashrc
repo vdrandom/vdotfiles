@@ -12,7 +12,7 @@ unset local_bin vscripts gem_bin
 
 dotfiles="${HOME}/vdotfiles"
 #comp_enabled=true
-#git_enabled=true
+git_enabled=true
 
 HISTSIZE=1000
 HISTFILE="${HOME}/.bash_history.${UID}"
@@ -35,13 +35,17 @@ is_exec() { [[ -x $(type -P ${1}) ]]; }
 # {{{ prompt
 color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
-	eval "n${color}='\[\e[0;3${color_number}m\]'"
-	eval "b${color}='\[\e[1;3${color_number}m\]'"
+	eval "pn${color}='\[\e[0;3${color_number}m\]'"
+	eval "pb${color}='\[\e[1;3${color_number}m\]'"
+	eval "n${color}='\e[0;3${color_number}m'"
+	eval "b${color}='\e[1;3${color_number}m'"
 	(( color_number++ ))
 done
 unset color_number
-reset='\[\e[0m\]'
-bold='\[\e[1m\]'
+preset='\[\e[0m\]'
+pbold='\[\e[1m\]'
+reset='\e[0m'
+bold='\e[1m'
 newline='
 '
 prompt_command()
@@ -57,14 +61,14 @@ prompt_command()
 	if [[ ${USER} == 'von' ]]; then
 		prompt_user=""
 	else
-		prompt_user="${nred}\u${reset} "
+		prompt_user="${pnred}\u${preset} "
 	fi
 	if [[ $UID -eq 0 ]]; then
-		color_bang="${nred}"
+		color_bang="${pnred}"
 	else
-		color_bang="${bold}"
+		color_bang="${pbold}"
 	fi
-	PS1="[ ${prompt_user}${HOSTNAME}:${bold}\w${reset} ]${newline}${color_bang}>${reset} "
+	PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${color_bang}>${preset} "
 }
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -159,5 +163,5 @@ unset completion_path git_prompt_path
 # }}}
 # {{{ traps
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "\e[0m>> exit \e[1;37m%s\e[0m\n" $?' ERR
+trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${nred}%s${reset}\n" "$?"' ERR
 # }}}
