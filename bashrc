@@ -37,23 +37,36 @@ color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
 	eval "n${color}='\[\e[0;3${color_number}m\]'"
 	eval "b${color}='\[\e[1;3${color_number}m\]'"
-	(( color_number++ ))	
+	(( color_number++ ))
 done
 unset color_number
 reset='\[\e[0m\]'
 bold='\[\e[1m\]'
-if [[ ${USER} == 'von' ]]; then
-	prompt_user=""
-else
-	prompt_user="${nred}\u${reset} "
-fi
-if [[ $UID -eq 0 ]]; then
-	color_bang="${nred}"
-else
-	color_bang="${bold}"
-fi
-PS1="[ ${prompt_user}${HOSTNAME}:${bold}\w${reset} ]
-${color_bang}>${reset} "
+newline='
+'
+prompt_command()
+{
+	case ${TERM} in
+		xterm*|rxvt*)
+			printf "\033]0;%s@%s\007" "${USER}" "${HOSTNAME%%.*}"
+			;;
+		screen*|tmux)
+			printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
+			;;
+	esac
+	if [[ ${USER} == 'von' ]]; then
+		prompt_user=""
+	else
+		prompt_user="${nred}\u${reset} "
+	fi
+	if [[ $UID -eq 0 ]]; then
+		color_bang="${nred}"
+	else
+		color_bang="${bold}"
+	fi
+	PS1="[ ${prompt_user}${HOSTNAME}:${bold}\w${reset} ]${newline}${color_bang}>${reset} "
+}
+PROMPT_COMMAND=prompt_command
 # }}}
 # {{{ key bindings
 # urxvt
