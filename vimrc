@@ -21,6 +21,7 @@ set noerrorbells visualbell t_vb=
 set shiftwidth=3
 set tabstop=3
 set noexpandtab
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
@@ -59,12 +60,16 @@ nnoremap L $
 
 " still have to deal with old vim versions :<
 if v:version >= 700
-	set helplang=en
+	if v:version >= 703
+		set relativenumber
+		nnoremap <Leader>r :setlocal relativenumber!<CR>
+	endif
 
-	set relativenumber
+	set helplang=en
 	set list
+	set number
 	set listchars=tab:\|_,nbsp:x,trail:*
-	nnoremap <Leader>n :setlocal relativenumber! number!<CR>
+	nnoremap <Leader>n :setlocal number!<CR>
 	nnoremap <Leader>l :setlocal list!<CR>
 
 	" enable case indentation
@@ -146,8 +151,6 @@ if v:version >= 700
 	let g:solarized_visibility='low'
 	colorscheme solarized
 else
-	set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 	colorscheme default
 endif
 
