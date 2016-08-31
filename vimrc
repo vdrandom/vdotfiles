@@ -131,7 +131,6 @@ if v:version >= 700
 
 	" gvim and colorschemes related stuff
 	if has("gui_running")
-		let NERDTreeDirArrows=1
 		set guioptions=aegimLl
 		set mouse=a
 		set guifont=Terminus\ 11
