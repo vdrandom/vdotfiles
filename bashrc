@@ -11,7 +11,7 @@ gem_bin="${HOME}/.local/gem-bin"
 unset local_bin vscripts gem_bin
 
 dotfiles="${HOME}/vdotfiles"
-#comp_enabled=true
+comp_enabled=true
 git_enabled=true
 
 HISTSIZE=1000
