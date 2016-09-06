@@ -166,7 +166,7 @@ if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
 	fi
 	GIT_PROMPT_PREFIX="[ "
 	GIT_PROMPT_SUFFIX=" ]"
-	GIT_PROMPT_SEPARATOR="|"
+	GIT_PROMPT_SEPARATOR=" "
 	GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:\w ]"
 	GIT_PROMPT_THEME_NAME="Custom"
 	GIT_PROMPT_UNTRACKED="${pncyan}u"
