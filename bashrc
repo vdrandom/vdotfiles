@@ -11,6 +11,9 @@ gem_bin="${HOME}/.local/gem-bin"
 unset local_bin vscripts gem_bin
 
 dotfiles="${HOME}/vdotfiles"
+
+completion_path='/usr/share/bash-completion/bash_completion'
+git_prompt_path='/usr/lib/bash-git-prompt/gitprompt.sh'
 comp_enabled=true
 git_enabled=true
 
@@ -149,15 +152,31 @@ alias tmux='command tmux -2'
 alias atmux='command tmux -2 attach'
 # }}}
 # {{{ plugins
-completion_path='/usr/share/bash-completion/bash_completion'
-git_prompt_path='/usr/lib/bash-git-prompt/gitprompt.sh'
 if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
 	source ${completion_path}
 fi
 if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
 	GIT_PROMPT_ONLY_IN_REPO=1
-	GIT_PROMPT_THEME=Solarized
 	source ${git_prompt_path}
+	# theme overrides
+	if [[ $USER == 'von' ]]; then
+		git_prompt_username=""
+	else
+		git_prompt_username="${pnred}${USER}${preset} "
+	fi
+	GIT_PROMPT_PREFIX="[ "
+	GIT_PROMPT_SUFFIX=" ]"
+	GIT_PROMPT_SEPARATOR=""
+	GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:\w ]"
+	GIT_PROMPT_THEME_NAME="Custom"
+	GIT_PROMPT_UNTRACKED=" ${pncyan}u"
+	GIT_PROMPT_CHANGED=" ${pnblue}+"
+	GIT_PROMPT_STAGED=" ${pnyellow}s"
+	GIT_PROMPT_CONFLICTS=" ${pnred}x"
+	GIT_PROMPT_STASHED=" ${pbmagenta}→"
+	GIT_PROMPT_CLEAN=" ${pngreen}v"
+	GIT_PROMPT_END_USER="\n${pbold}>${preset} "
+	GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
 fi
 unset completion_path git_prompt_path
 # }}}
