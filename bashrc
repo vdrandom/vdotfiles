@@ -147,6 +147,9 @@ alias gdf='command git diff'
 alias gci='command git commit -a'
 alias gup='command git pull'
 
+# tig
+alias gsi='command tig status'
+
 # tmux
 alias tmux='command tmux -2'
 alias atmux='command tmux -2 attach'
