@@ -17,10 +17,11 @@ set sidescrolloff=15
 set sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
-" indentation
-set shiftwidth=3
-set tabstop=3
-set noexpandtab
+" indentation_RIP
+"set shiftwidth=3 tabstop=3 noexpandtab
+" indentation_OK
+set tabstop=3 softtabstop=4 shiftwidth=4 colorcolumn=81 smarttab expandtab
+
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " 256 colours at almost all times
@@ -39,8 +40,6 @@ autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
 autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
 autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
-
-autocmd FileType python setlocal softtabstop=4 shiftwidth=4 colorcolumn=80 smarttab expandtab autoindent
 
 " maps
 let mapleader = ","

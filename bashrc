@@ -159,6 +159,8 @@ if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
 	source ${completion_path}
 fi
 if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
+	GIT_PROMPT_FETCH_REMOTE_STATUS=0
+	GIT_PROMPT_SHOW_UPSTREAM=1
 	GIT_PROMPT_ONLY_IN_REPO=1
 	source ${git_prompt_path}
 	# theme overrides
