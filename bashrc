@@ -38,11 +38,11 @@ is_exec() { [[ -x $(type -P ${1}) ]]; }
 # {{{ prompt
 color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
-	eval "pn${color}='\[\e[0;3${color_number}m\]'"
-	eval "pb${color}='\[\e[1;3${color_number}m\]'"
-	eval "n${color}='\e[0;3${color_number}m'"
-	eval "b${color}='\e[1;3${color_number}m'"
-	(( color_number++ ))
+    eval "pn${color}='\[\e[0;3${color_number}m\]'"
+    eval "pb${color}='\[\e[1;3${color_number}m\]'"
+    eval "n${color}='\e[0;3${color_number}m'"
+    eval "b${color}='\e[1;3${color_number}m'"
+    (( color_number++ ))
 done
 unset color_number
 preset='\[\e[0m\]'
@@ -53,25 +53,25 @@ newline='
 '
 prompt_command()
 {
-	case ${TERM} in
-		xterm*|rxvt*)
-			printf "\033]0;%s@%s\007" "${USER}" "${HOSTNAME%%.*}"
-			;;
-		screen*|tmux)
-			printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
-			;;
-	esac
-	if [[ ${USER} == 'von' ]]; then
-		prompt_user=""
-	else
-		prompt_user="${pnred}\u${preset} "
-	fi
-	if [[ $UID -eq 0 ]]; then
-		color_bang="${pnred}"
-	else
-		color_bang="${pbold}"
-	fi
-	PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${color_bang}>${preset} "
+    case ${TERM} in
+        xterm*|rxvt*)
+            printf "\033]0;%s@%s\007" "${USER}" "${HOSTNAME%%.*}"
+            ;;
+        screen*|tmux)
+            printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
+            ;;
+    esac
+    if [[ ${USER} == 'von' ]]; then
+        prompt_user=""
+    else
+        prompt_user="${pnred}\u${preset} "
+    fi
+    if [[ $UID -eq 0 ]]; then
+        color_bang="${pnred}"
+    else
+        color_bang="${pbold}"
+    fi
+    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${color_bang}>${preset} "
 }
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -112,14 +112,14 @@ alias iconvwu='command iconv -c -f cp1251 -t utf-8'
 
 # grc
 if is_exec grc; then
-	alias ping='command grc --colour=auto ping'
-	alias ping6='command grc --colour=auto ping'
-	alias traceroute='command grc --colour=auto traceroute'
-	alias traceroute6='command grc --colour=auto traceroute'
-	alias make='command grc --colour=auto make'
-	alias diff='command grc --colour=auto diff'
-	alias cvs='command grc --colour=auto cvs'
-	alias netstat='command grc --colour=auto netstat'
+    alias ping='command grc --colour=auto ping'
+    alias ping6='command grc --colour=auto ping'
+    alias traceroute='command grc --colour=auto traceroute'
+    alias traceroute6='command grc --colour=auto traceroute'
+    alias make='command grc --colour=auto make'
+    alias diff='command grc --colour=auto diff'
+    alias cvs='command grc --colour=auto cvs'
+    alias netstat='command grc --colour=auto netstat'
 fi
 
 # ls
@@ -130,9 +130,9 @@ alias ld='ls -lhda'
 
 # diff and colordiff
 if is_exec colordiff; then
-	alias diff='command colordiff -u'
+    alias diff='command colordiff -u'
 else
-	alias diff='command diff -u'
+    alias diff='command diff -u'
 fi
 alias rdiff='diff -r'
 
@@ -156,32 +156,32 @@ alias atmux='command tmux -2 attach'
 # }}}
 # {{{ plugins
 if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
-	source ${completion_path}
+    source ${completion_path}
 fi
 if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
-	GIT_PROMPT_FETCH_REMOTE_STATUS=0
-	GIT_PROMPT_SHOW_UPSTREAM=1
-	GIT_PROMPT_ONLY_IN_REPO=1
-	source ${git_prompt_path}
-	# theme overrides
-	if [[ $USER == 'von' ]]; then
-		git_prompt_username=""
-	else
-		git_prompt_username="${pnred}${USER}${preset} "
-	fi
-	GIT_PROMPT_PREFIX="[ "
-	GIT_PROMPT_SUFFIX=" ]"
-	GIT_PROMPT_SEPARATOR=" "
-	GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:\w ]"
-	GIT_PROMPT_THEME_NAME="Custom"
-	GIT_PROMPT_UNTRACKED="${pncyan}u"
-	GIT_PROMPT_CHANGED="${pnblue}+"
-	GIT_PROMPT_STAGED="${pnyellow}s"
-	GIT_PROMPT_CONFLICTS="${pnred}x"
-	GIT_PROMPT_STASHED="${pbmagenta}→"
-	GIT_PROMPT_CLEAN="${pngreen}."
-	GIT_PROMPT_END_USER="\n${pbold}>${preset} "
-	GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0
+    GIT_PROMPT_SHOW_UPSTREAM=1
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source ${git_prompt_path}
+    # theme overrides
+    if [[ $USER == 'von' ]]; then
+        git_prompt_username=""
+    else
+        git_prompt_username="${pnred}${USER}${preset} "
+    fi
+    GIT_PROMPT_PREFIX="[ "
+    GIT_PROMPT_SUFFIX=" ]"
+    GIT_PROMPT_SEPARATOR=" "
+    GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:\w ]"
+    GIT_PROMPT_THEME_NAME="Custom"
+    GIT_PROMPT_UNTRACKED="${pncyan}u"
+    GIT_PROMPT_CHANGED="${pnblue}+"
+    GIT_PROMPT_STAGED="${pnyellow}s"
+    GIT_PROMPT_CONFLICTS="${pnred}x"
+    GIT_PROMPT_STASHED="${pbmagenta}→"
+    GIT_PROMPT_CLEAN="${pngreen}."
+    GIT_PROMPT_END_USER="\n${pbold}>${preset} "
+    GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
 fi
 unset completion_path git_prompt_path
 # }}}
