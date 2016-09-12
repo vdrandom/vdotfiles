@@ -91,7 +91,7 @@ if v:version >= 700
         Plug 'vim-airline/vim-airline'         "airline
         Plug 'vim-airline/vim-airline-themes'  "themes for airline
         Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
-        Plug 'neomake/neomake'
+        Plug 'neomake/neomake'                 "linter
 
         " colorschemes
         Plug 'vdrandom/forked-solarized.vim'
@@ -129,16 +129,17 @@ if v:version >= 700
         nmap <Leader>a <Plug>(EasyAlign)
 
         " neomake
+        nmap <Leader>p :Neomake<CR>
         let g:neomake_error_sign={
-                    \ 'text': '!',
+                    \ 'text': 'e>',
                     \ 'texthl': 'ErrorMsg',
                     \ }
         let g:neomake_warning_sign={
-                    \ 'text': '!',
+                    \ 'text': 'w>',
                     \ 'texthl': 'WarningMsg',
                     \ }
         let g:neomake_info_sign={
-                    \ 'text': '!',
+                    \ 'text': 'i>',
                     \ 'texthl': 'InfoMsg',
                     \ }
     endif
