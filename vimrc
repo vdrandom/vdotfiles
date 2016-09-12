@@ -26,11 +26,11 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [L
 
 " 256 colours at almost all times
 if $TERM =~ '^[xterm|rxvt-unicode|screen]'
-	let &t_Co=256
+    let &t_Co=256
 endif
 if $LANG =~ '[UTF\-8|utf8]$'
-	set termencoding=utf-8
-	set encoding=utf-8
+    set termencoding=utf-8
+    set encoding=utf-8
 endif
 
 " insert shebang in the beginning of the file based on its name extension
@@ -59,112 +59,112 @@ nnoremap L $
 
 " still have to deal with old vim versions :<
 if v:version >= 700
-	if v:version >= 703
-		set relativenumber
-		nnoremap <Leader>r :setlocal relativenumber!<CR>
-	endif
+    if v:version >= 703
+        set relativenumber
+        nnoremap <Leader>r :setlocal relativenumber!<CR>
+    endif
 
-	set helplang=en
-	set list
-	set number
-	set listchars=tab:\|_,nbsp:x,trail:*
-	nnoremap <Leader>n :setlocal number!<CR>
-	nnoremap <Leader>l :setlocal list!<CR>
+    set helplang=en
+    set list
+    set number
+    set listchars=tab:\|_,nbsp:x,trail:*
+    nnoremap <Leader>n :setlocal number!<CR>
+    nnoremap <Leader>l :setlocal list!<CR>
 
-	" enable case indentation
-	let g:sh_indent_case_labels=1
+    " enable case indentation
+    let g:sh_indent_case_labels=1
 
-	" plugins
-	if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
-		set noshowmode
-		source ~/.vim/plugged/vim-plug/plug.vim
-		silent!call plug#begin('~/.vim/plugged')
-		Plug 'junegunn/vim-plug'               "plugin manager
+    " plugins
+    if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
+        set noshowmode
+        source ~/.vim/plugged/vim-plug/plug.vim
+        silent!call plug#begin('~/.vim/plugged')
+        Plug 'junegunn/vim-plug'               "plugin manager
 
-		" general plugins
-		Plug 'Lokaltog/vim-easymotion'         "easy motion
-		Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
-		Plug 'jeetsukumaran/vim-buffergator'   "buffer management
-		Plug 'junegunn/vim-easy-align'         "aligning
-		Plug 'mhinz/vim-signify'               "version control system gutter info
-		Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
-		Plug 'vim-airline/vim-airline'         "airline
-		Plug 'vim-airline/vim-airline-themes'  "themes for airline
-		Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
-		Plug 'neomake/neomake'
+        " general plugins
+        Plug 'Lokaltog/vim-easymotion'         "easy motion
+        Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
+        Plug 'jeetsukumaran/vim-buffergator'   "buffer management
+        Plug 'junegunn/vim-easy-align'         "aligning
+        Plug 'mhinz/vim-signify'               "version control system gutter info
+        Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
+        Plug 'vim-airline/vim-airline'         "airline
+        Plug 'vim-airline/vim-airline-themes'  "themes for airline
+        Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
+        Plug 'neomake/neomake'
 
-		" colorschemes
-		Plug 'vdrandom/forked-solarized.vim'
+        " colorschemes
+        Plug 'vdrandom/forked-solarized.vim'
 
-		" syntax highlight plugins
-		Plug 'neilhwatson/vim_cf3'
-		call plug#end()
+        " syntax highlight plugins
+        Plug 'neilhwatson/vim_cf3'
+        call plug#end()
 
-		" easymotion options
-		let g:EasyMotion_do_mapping=0
-		let g:EasyMotion_smartcase=1
-		nmap f <Plug>(easymotion-s)
-		map <Leader>j <Plug>(easymotion-j)
-		map <Leader>k <Plug>(easymotion-k)
+        " easymotion options
+        let g:EasyMotion_do_mapping=0
+        let g:EasyMotion_smartcase=1
+        nmap f <Plug>(easymotion-s)
+        map <Leader>j <Plug>(easymotion-j)
+        map <Leader>k <Plug>(easymotion-k)
 
-		" airline options
-		let g:airline_symbols={}
-		let g:airline_symbols.whitespace='!'
-		let g:airline_powerline_fonts=1
-		let g:airline_extensions=['hunks']
-		let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%4l:%3v'
+        " airline options
+        let g:airline_symbols={}
+        let g:airline_symbols.whitespace='!'
+        let g:airline_powerline_fonts=1
+        let g:airline_extensions=['hunks']
+        let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%4l:%3v'
 
-		" buffergator options
-		map <Leader><Tab> :BuffergatorToggle<CR>
+        " buffergator options
+        map <Leader><Tab> :BuffergatorToggle<CR>
 
-		" signify options
-		let g:signify_vcs_list=[ 'svn', 'git', 'fossil' ]
-		let g:signify_sign_change='~'
+        " signify options
+        let g:signify_vcs_list=[ 'svn', 'git', 'fossil' ]
+        let g:signify_sign_change='~'
 
-		" vim-togglemouse options
-		nmap <Leader>m <F12>
+        " vim-togglemouse options
+        nmap <Leader>m <F12>
 
-		" easy-align options
-		xmap <Leader>a <Plug>(EasyAlign)
-		nmap <Leader>a <Plug>(EasyAlign)
+        " easy-align options
+        xmap <Leader>a <Plug>(EasyAlign)
+        nmap <Leader>a <Plug>(EasyAlign)
 
-		" neomake
-		let g:neomake_error_sign={
-			\ 'text': '!',
-			\ 'texthl': 'ErrorMsg',
-		\ }
-		let g:neomake_warning_sign={
-			\ 'text': '!',
-			\ 'texthl': 'WarningMsg',
-		\ }
-		let g:neomake_info_sign={
-			\ 'text': '!',
-			\ 'texthl': 'InfoMsg',
-		\ }
-	endif
+        " neomake
+        let g:neomake_error_sign={
+                    \ 'text': '!',
+                    \ 'texthl': 'ErrorMsg',
+                    \ }
+        let g:neomake_warning_sign={
+                    \ 'text': '!',
+                    \ 'texthl': 'WarningMsg',
+                    \ }
+        let g:neomake_info_sign={
+                    \ 'text': '!',
+                    \ 'texthl': 'InfoMsg',
+                    \ }
+    endif
 
-	" gvim and colorschemes related stuff
-	if has("gui_running")
-		set guioptions=aegimLl
-		set mouse=a
-		set guifont=Terminus\ 11
-		set novb
-		set guicursor=a:hor1-Cursor/lCursor     "underline cursor by default
-		set guicursor+=i:ver1-Cursor/lCursor    "vertical cursor for insert mode
-		set guicursor+=r:block                  "block for replace
-		set guicursor+=a:blinkon0               "and none of them should blink
-		map <S-Insert> <MiddleMouse>
-		map! <S-Insert> <MiddleMouse>
-	else
-		set mouse=
-	endif
+    " gvim and colorschemes related stuff
+    if has("gui_running")
+        set guioptions=aegimLl
+        set mouse=a
+        set guifont=Terminus\ 11
+        set novb
+        set guicursor=a:hor1-Cursor/lCursor     "underline cursor by default
+        set guicursor+=i:ver1-Cursor/lCursor    "vertical cursor for insert mode
+        set guicursor+=r:block                  "block for replace
+        set guicursor+=a:blinkon0               "and none of them should blink
+        map <S-Insert> <MiddleMouse>
+        map! <S-Insert> <MiddleMouse>
+    else
+        set mouse=
+    endif
 
-	let g:solarized_bold=0
-	let g:solarized_italic=0
-	let g:solarized_visibility='low'
-	colorscheme solarized
+    let g:solarized_bold=0
+    let g:solarized_italic=0
+    let g:solarized_visibility='low'
+    colorscheme solarized
 else
-	colorscheme default
+    colorscheme default
 endif
 
 syntax on
