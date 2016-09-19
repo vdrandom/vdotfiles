@@ -67,9 +67,9 @@ prompt_command()
         prompt_user="${pnred}\u${preset} "
     fi
     if [[ $UID -eq 0 ]]; then
-        bang="${pnred}#"
+        bang="${pnred}>"
     else
-        bang="${pbold}$"
+        bang="${pbold}>"
     fi
     PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
 }
@@ -180,8 +180,8 @@ if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
     GIT_PROMPT_CONFLICTS="${pnred}x"
     GIT_PROMPT_STASHED="${pbmagenta}→"
     GIT_PROMPT_CLEAN="${pngreen}."
-    GIT_PROMPT_END_USER="\n${pbold}\$${preset} "
-    GIT_PROMPT_END_ROOT="\n${pnred}#${preset} "
+    GIT_PROMPT_END_USER="\n${pbold}>${preset} "
+    GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
 fi
 unset completion_path git_prompt_path
 # }}}
