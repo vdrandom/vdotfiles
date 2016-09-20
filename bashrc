@@ -162,7 +162,6 @@ if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
     GIT_PROMPT_FETCH_REMOTE_STATUS=0
     GIT_PROMPT_SHOW_UPSTREAM=1
     GIT_PROMPT_ONLY_IN_REPO=1
-    source ${git_prompt_path}
     # theme overrides
     if [[ $USER == 'von' ]]; then
         git_prompt_username=""
@@ -172,7 +171,7 @@ if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
     GIT_PROMPT_PREFIX="[ "
     GIT_PROMPT_SUFFIX=" ]"
     GIT_PROMPT_SEPARATOR=" "
-    GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:\w ]"
+    GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:${pbold}\w${preset} ]"
     GIT_PROMPT_THEME_NAME="Custom"
     GIT_PROMPT_UNTRACKED="${pncyan}u"
     GIT_PROMPT_CHANGED="${pnblue}+"
@@ -182,6 +181,7 @@ if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
     GIT_PROMPT_CLEAN="${pngreen}."
     GIT_PROMPT_END_USER="\n${pbold}>${preset} "
     GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
+    source ${git_prompt_path}
 fi
 unset completion_path git_prompt_path
 # }}}
