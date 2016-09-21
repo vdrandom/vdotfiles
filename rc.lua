@@ -188,7 +188,6 @@ tags[1].layout = {
 -- screens 2+
 if screen.count() >= 2 then
 	tags[2].layout = {
-		[1] = layouts.float[1]
 	}
 end
 -- Fill the missing values with defaults
@@ -226,8 +225,8 @@ mymainmenu_restart = {
 	{ 'restart', awesome.restart }
 }
 mymainmenu_screens = {
-	{ 'one', function() awful.util.spawn('xrandr --output HDMI1 --off') end },
-	{ 'two', function() awful.util.spawn('xrandr --output eDP1 --auto --output HDMI1 --primary --auto --right-of eDP1') end }
+	{ 'one', function() awful.util.spawn_with_shell('1monitor') end },
+	{ 'two', function() awful.util.spawn_with_shell('2monitors') end }
 }
 --mymainmenu_quit = {
 --	{ 'quit', awesome.quit }
