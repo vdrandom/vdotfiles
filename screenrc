@@ -10,11 +10,11 @@ defscrollback 10000
 vbell off
 bell off
 autodetach on
-term screen-256color-bce
-defbce on
+term screen-256color
 altscreen on
 activity "activity on %n"
-caption always '%{=}%{RW} %H %{Yw} %S %{Cw} %n %{wd} %t %{Bw} %-=%W '
+caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{wk}[%t]%{wd}%+w'
+escape ^@@
 bind w windowlist -b
 bindkey ^[q prev
 bindkey ^[w next
