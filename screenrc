@@ -1,0 +1,20 @@
+# window title hack
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+defhstatus "$USER@^EH (screen)"
+# so we don't have to enter the copy mode every time we want to scroll
+termcapinfo rxvt*|xterm* ti@:te@
+# the rest is pretty obvious
+startup_message off
+hardstatus off
+defscrollback 10000
+vbell off
+bell off
+autodetach on
+term screen-256color-bce
+defbce on
+altscreen on
+activity "activity on %n"
+caption always '%{=}%{RW} %H %{Yw} %S %{Cw} %n %{wd} %t %{Bw} %-=%W '
+bind w windowlist -b
+bindkey ^[q prev
+bindkey ^[w next
