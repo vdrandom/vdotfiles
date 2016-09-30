@@ -20,7 +20,7 @@ set noerrorbells visualbell t_vb=
 " indentation_RIP
 "set shiftwidth=3 tabstop=3 noexpandtab
 " indentation_OK
-set tabstop=3 softtabstop=4 shiftwidth=4 colorcolumn=81 smarttab expandtab
+set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
@@ -60,8 +60,12 @@ nnoremap L $
 " still have to deal with old vim versions :<
 if v:version >= 700
     if v:version >= 703
+        set colorcolumn=80
         set relativenumber
         nnoremap <Leader>r :setlocal relativenumber!<CR>
+    endif
+    if v:version >= 800
+        set breakindent
     endif
 
     set helplang=en

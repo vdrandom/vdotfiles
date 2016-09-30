@@ -187,5 +187,5 @@ unset completion_path git_prompt_path
 # }}}
 # {{{ traps
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${nred}%s${reset}\n" "$?"' ERR
+trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${nred}%s${reset}\n" "$?" >&2' ERR
 # }}}
