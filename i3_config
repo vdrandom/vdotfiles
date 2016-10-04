@@ -163,6 +163,31 @@ new_float pixel 1
 hide_edge_borders both
 
 # rules
+# games
+for_window [class="Steam"] floating enable
+for_window [class="Awesomenauts.bin.x86"] floating enable
+for_window [class="Civ5XP"] floating enable
+for_window [class="ck2"] floating enable
+for_window [class="csgo_linux"] floating enable
+for_window [class="deponia_tcj"] floating enable
+for_window [class="dota_linux"] floating enable
+for_window [class="EoCApp"] floating enable
+for_window [class="game.x86_64"] floating enable
+for_window [class="hl2_linux"] floating enable
+for_window [class="jng_gold"] floating enable
+for_window [class="Pandora"] floating enable
+for_window [class="Strife"] floating enable
+for_window [class="Symphony.bin.x86_64"] floating enable
+for_window [class="witcher2"] floating enable
+for_window [class="^Binding of Isaac"] floating enable
+for_window [title="^GunsOfIcarusOnline$"] floating enable
+for_window [title="^Hand of Fate$"] floating enable
+for_window [title="^Serious Sam 3 - Linux$"] floating enable
+for_window [instance="Steam.exe"] floating enable
+for_window [instance="Civ4BeyondSword.exe"] floating enable
+for_window [instance="KB.exe"] floating enable
+for_window [instance="nwn2main.exe"] floating enable
+# other
 for_window [class="Deadbeef"] floating enable
 for_window [class="Google-musicmanager"] floating enable
 for_window [class="mpv"] floating enable
@@ -172,28 +197,8 @@ for_window [class="plugin-container"] floating enable
 for_window [class="Qmmp"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Vncviewer"] floating enable
-for_window [class="Steam"] floating enable
-for_window [class="Awesomenauts.bin.x86"] floating enable
-for_window [class="Civ5XP"] floating enable
-for_window [class="ck2"] floating enable
-for_window [class="csgo_linux"] floating enable
-for_window [class="deponia_tcj"] floating enable
-for_window [class="dota_linux"] floating enable
-for_window [class="game.x86_64"] floating enable
-for_window [class="hl2_linux"] floating enable
-for_window [class="Pandora"] floating enable
-for_window [class="Strife"] floating enable
-for_window [class="Symphony.bin.x86_64"] floating enable
-for_window [class="witcher2"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
-for_window [instance="Steam.exe"] floating enable
-for_window [instance="Civ4BeyondSword.exe"] floating enable
-for_window [instance="KB.exe"] floating enable
-for_window [instance="nwn2main.exe"] floating enable
-for_window [title="^GunsOfIcarusOnline$"] floating enable
-for_window [title="^Hand of Fate$"] floating enable
-for_window [title="^Serious Sam 3 - Linux$"] floating enable
 
 # execs
 exec --no-startup-id /home/von/.autostart
