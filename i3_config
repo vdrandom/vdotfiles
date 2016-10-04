@@ -104,6 +104,8 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+o workspace back_and_forth
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
@@ -161,6 +163,8 @@ bar {
 new_window pixel 1
 new_float pixel 1
 hide_edge_borders both
+
+workspace_auto_back_and_forth yes
 
 # rules
 # games
