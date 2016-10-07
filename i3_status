@@ -17,9 +17,11 @@ while True:
     current_time = time.strftime('%a %d %H:%M')
     values.append(current_time)
     mem = psutil.virtual_memory()
-    memory = 'RAM: {}% ({:.3}G)'.format(100.0 - mem.percent, mem.available / 2**30)
+    memory = 'RAM: {}% ({}G)'.format(round(100.0 - mem.percent, 2),
+                                     round(mem.available / 2**30, 2))
     values.append(memory)
-    with open('/sys/class/power_supply/BAT0/capacity', 'r') as capacity, open('/sys/class/power_supply/BAT0/status', 'r') as status:
+    with open('/sys/class/power_supply/BAT0/capacity', 'r') as capacity, \
+         open('/sys/class/power_supply/BAT0/status', 'r') as status:
         batt_status = status.read().strip()
         batt_capacity = capacity.read().strip()
     if batt_status != 'Discharging':
