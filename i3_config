@@ -158,7 +158,8 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     status_command /home/von/vdotfiles/i3_status
-    tray_output primary
+    # doesn't work, probably some bug
+    #tray_output primary
 }
 
 new_window pixel 1
