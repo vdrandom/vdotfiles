@@ -157,7 +157,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position top
-    status_command i3status
+    status_command /home/von/vdotfiles/i3_status
+    tray_output primary
 }
 
 new_window pixel 1

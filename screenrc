@@ -10,7 +10,7 @@ defscrollback 10000
 vbell off
 bell off
 autodetach on
-term screen-256color
+term screen
 altscreen on
 activity "activity on %n"
 caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{wk}[%t]%{wd}%+w'
