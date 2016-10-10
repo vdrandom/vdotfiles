@@ -14,8 +14,10 @@ def status_print(status_msg):
 print('{"version":1}\n[')
 while True:
     values = list()
-    current_time = time.strftime('%a %d %H:%M')
+    current_time = time.strftime('%H:%M')
     values.append(current_time)
+    current_day = time.strftime('%a %d')
+    values.append(current_day)
     mem = psutil.virtual_memory()
     memory = 'RAM: {}% ({}G)'.format(round(100.0 - mem.percent, 2),
                                      round(mem.available / 2**30, 2))
