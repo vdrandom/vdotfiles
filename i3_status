@@ -15,13 +15,10 @@ print('{"version":1}\n[')
 while True:
     values = list()
     current_time = time.strftime('%H:%M')
-    values.append(current_time)
     current_day = time.strftime('%a %d')
-    values.append(current_day)
     mem = psutil.virtual_memory()
     memory = 'RAM: {}% ({}G)'.format(round(100.0 - mem.percent, 2),
                                      round(mem.available / 2**30, 2))
-    values.append(memory)
     with open('/sys/class/power_supply/BAT0/capacity', 'r') as capacity, \
          open('/sys/class/power_supply/BAT0/status', 'r') as status:
         batt_status = status.read().strip()
@@ -31,8 +28,12 @@ while True:
     else:
         batt_status = '↓'
     batt = 'BAT: ' + batt_capacity + '% ' + batt_status
+    # populate the bar
     values.append(batt)
-    values.reverse()
+    values.append(memory)
+    values.append(current_day)
+    values.append(current_time)
+    # print da shit
     status_print(values)
     time.sleep(5)
     print(',', end='')
