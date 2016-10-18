@@ -33,7 +33,10 @@ bindsym $mod+x exec urxvt
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn Terminus
+#bindsym $mod+d exec dmenu_run -fn Terminus
+bindsym $mod+d exec rofi -show run
+bindsym $mod+i exec rofi -show window
+bindsym $mod+p exec rofi -show ssh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -157,9 +160,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position top
-    status_command /home/von/vdotfiles/i3_status
-    # doesn't work, probably some bug
-    #tray_output primary
+    status_command /home/von/.local/bin/i3_status
 }
 
 new_window pixel 1
@@ -202,7 +203,6 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="pinentry"] floating enable
 for_window [class="plugin-container"] floating enable
 for_window [class="Qmmp"] floating enable
-for_window [class="Skype"] floating enable
 for_window [class="Vncviewer"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [instance="sun-awt-X11-XFramePeer"] floating enable
