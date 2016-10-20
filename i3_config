@@ -163,6 +163,8 @@ bar {
     status_command /home/von/.local/bin/i3_status
 }
 
+workspace_layout tabbed
+
 new_window pixel 1
 new_float pixel 1
 hide_edge_borders both
