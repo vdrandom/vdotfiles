@@ -19,7 +19,7 @@ git_enabled=true
 
 HISTSIZE=1000
 HISTFILE="${HOME}/.bash_history.${UID}"
-HISTCONTROL=ignoredups:ignorespace
+HISTCONTROL=ignoredups
 shopt -s histappend checkwinsize
 [[ ${BASH_VERSINFO} -ge 4 ]] && shopt -s autocd
 

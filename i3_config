@@ -207,7 +207,9 @@ for_window [class="plugin-container"] floating enable
 for_window [class="Qmmp"] floating enable
 for_window [class="Vncviewer"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [title="^Cacti - Realtime - Mozilla Firefox$"] floating enable
+# java KVM
+for_window [instance="sun-awt-X11-XFramePeer" title="(?i)kvm"] floating enable
 
 # execs
 exec --no-startup-id /home/von/.autostart
