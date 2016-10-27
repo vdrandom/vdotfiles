@@ -94,7 +94,6 @@ alias whence='type -P'
 alias less='command less -R'
 alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
-alias rscreen='command screen -Dr'
 alias rgrep='command grep --exclude-dir=\.git -R'
 alias hist='fc -l 1'
 alias beep='printf "\007"'
@@ -152,6 +151,10 @@ alias gsi='command tig status'
 # tmux
 alias tmux='command tmux -2'
 alias atmux='command tmux -2 attach'
+
+# screen
+alias rscreen='command screen -Dr'
+alias scr='command screen sudo -Es'
 # }}}
 # {{{ plugins
 if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
