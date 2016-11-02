@@ -162,7 +162,6 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     status_command /home/von/vdstatus/vdstatus
-    tray_output primary
 }
 
 workspace_layout tabbed
