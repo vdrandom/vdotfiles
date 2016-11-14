@@ -10,12 +10,26 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $i3_font -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+set $dmenu_font Terminus:Bold:size=12
+set $selected_bg #d64937
+set $selected_fg #dedede
+set $inactive_bg #333333
+set $inactive_fg #dedede
+set $urgent_bg #383a3b
+set $urgent_fg #ee0000
+
+# colors
+client.focused $selected_bg $selected_bg $selected_fg
+client.unfocused $inactive_bg $inactive_bg $inactive_fg
+client.focused_inactive $inactive_bg $inactive_bg $inactive_fg
+client.urgent $urgent_bg $urgent_bg $urgent_fg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+font $i3_font
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -33,11 +47,9 @@ bindsym $mod+x exec urxvt
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run -fn Terminus
-bindsym $mod+d exec rofi -show run
-bindsym $mod+i exec rofi -show window
-bindsym $mod+p exec rofi -show ssh
-bindsym $mod+u exec rofi-pass
+bindsym $mod+d exec dmenu_run -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
+bindsym $mod+p exec dmenu_ssh '/usr/bin/urxvt -e ssh' -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
+bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -162,6 +174,18 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     status_command /home/von/vdstatus/vdstatus
+
+    colors {
+        background #2d2d2d
+        statusline #dedede
+        separator #2d2d2d
+
+        focused_workspace  #d64937 #d64937 #dedede
+        active_workspace   #2d2d2d #5f676a #dedede
+        inactive_workspace #2d2d2d #2d2d2d #888888
+        urgent_workspace   #333333 #900000 #ffffff
+
+    }
 }
 
 workspace_layout tabbed

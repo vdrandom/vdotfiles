@@ -95,12 +95,12 @@ alias less='command less -R'
 alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
 alias rgrep='command grep --exclude-dir=\.git -R'
-alias hist='fc -l 1'
+alias hist='command fc -l -1'
 alias beep='printf "\007"'
 alias fixterm='printf "c"'
 alias vi='command vim'
 alias pg-linux-client='command sudo -u postgres psql'
-alias mysql='mysql --sigint-ignore'
+alias mysql='command mysql --sigint-ignore'
 
 # iconv
 alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
@@ -132,7 +132,7 @@ if is_exec colordiff; then
 else
     alias diff='command diff -u'
 fi
-alias rdiff='diff -r'
+alias rdiff='command diff -r'
 
 # mount
 alias mountiso='sudo mount -t iso9660 -o loop'
