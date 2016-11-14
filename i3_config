@@ -47,7 +47,7 @@ bindsym $mod+x exec urxvt
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
+bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
 bindsym $mod+p exec dmenu_ssh '/usr/bin/urxvt -e ssh' -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
 bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font" -sb "$selected_bg" -sf "$selected_fg"
 # There also is the (new) i3-dmenu-desktop which only displays applications
