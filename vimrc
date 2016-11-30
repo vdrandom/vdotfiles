@@ -1,5 +1,3 @@
-set nocompatible
-set background=light
 set backspace=indent,eol,start
 set foldmethod=marker
 set history=50
@@ -25,7 +23,7 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " 256 colours at almost all times
-if $TERM =~ '^[xterm|rxvt-unicode|screen]'
+if $TERM =~ '^[xterm|rxvt-unicode|screen|st]'
     let &t_Co=256
 endif
 if $LANG =~ '[UTF\-8|utf8]$'
@@ -98,7 +96,9 @@ if v:version >= 700
         Plug 'neomake/neomake'                 "linter
 
         " colorschemes
-        Plug 'vdrandom/forked-solarized.vim'
+        Plug 'lifepillar/vim-solarized8'
+        Plug 'KeitaNakamura/neodark.vim'
+        Plug 'morhetz/gruvbox'
 
         " syntax highlight plugins
         Plug 'neilhwatson/vim_cf3'
@@ -146,6 +146,8 @@ if v:version >= 700
                     \ 'text': 'i>',
                     \ 'texthl': 'InfoMsg',
                     \ }
+
+        let g:solarized_visibility='low'
     endif
 
     " gvim and colorschemes related stuff
@@ -158,16 +160,20 @@ if v:version >= 700
         set guicursor+=i:ver1-Cursor/lCursor    "vertical cursor for insert mode
         set guicursor+=r:block                  "block for replace
         set guicursor+=a:blinkon0               "and none of them should blink
+        colorscheme solarized8_light
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
+    elseif has("nvim") || v:version >= 704
+        " fix tmux and st
+        set t_8f=[38;2;%lu;%lu;%lum
+        set t_8b=[48;2;%lu;%lu;%lum
+        set termguicolors
+        colorscheme neodark
+        set mouse=
     else
+        colorscheme solarized8_light
         set mouse=
     endif
-
-    let g:solarized_bold=0
-    let g:solarized_italic=0
-    let g:solarized_visibility='low'
-    colorscheme solarized
 else
     colorscheme default
 endif
