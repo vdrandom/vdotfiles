@@ -92,6 +92,7 @@ if v:version >= 700
         Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
         Plug 'vim-airline/vim-airline'         "airline
         Plug 'vim-airline/vim-airline-themes'  "themes for airline
+        " Plug 'itchyny/lightline.vim'           "simpler airline replacement
         Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
         Plug 'neomake/neomake'                 "linter
 
@@ -163,7 +164,7 @@ if v:version >= 700
         colorscheme solarized8_light
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
-    elseif has("nvim") || v:version >= 704
+    elseif (has("nvim") || v:version >= 704) && $TERM != 'screen'
         " fix tmux and st
         set t_8f=[38;2;%lu;%lu;%lum
         set t_8b=[48;2;%lu;%lu;%lum
