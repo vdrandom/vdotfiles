@@ -66,10 +66,10 @@ prompt_command()
     else
         prompt_user="${pnred}\u${preset} "
     fi
-    if [[ $UID -eq 0 ]]; then
-        bang="${pnred}>"
-    else
+    if ((UID)); then
         bang="${pbold}>"
+    else
+        bang="${pnred}>"
     fi
     PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
 }
