@@ -23,9 +23,9 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " 256 colours at almost all times; do I even need it?..
-"if $TERM =~ '^[xterm|rxvt-unicode|screen|st]'
-"    let &t_Co=256
-"endif
+if $TERM =~ '^[xterm|rxvt-unicode|screen|st]'
+    let &t_Co=256
+endif
 if $LANG =~ '[UTF\-8|utf8]$'
     set termencoding=utf-8
     set encoding=utf-8
@@ -94,7 +94,8 @@ if v:version >= 700
         Plug 'vim-airline/vim-airline-themes'  "themes for airline
         Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
         Plug 'neomake/neomake'                 "linter
-        "Plug 'davidhalter/jedi-vim'            "python support
+        Plug 'davidhalter/jedi-vim'            "python support
+        Plug 'ervandew/supertab'               "TAB autocompletion
 
         " colorschemes
         Plug 'lifepillar/vim-solarized8'
@@ -117,6 +118,7 @@ if v:version >= 700
         let g:airline_symbols={}
         let g:airline_symbols.whitespace='!'
         let g:airline_powerline_fonts=1
+        let g:airline_exclude_preview=1
         let g:airline_extensions=['hunks']
         let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%4l:%3v'
 
@@ -156,26 +158,25 @@ if v:version >= 700
         set mouse=a
         set guifont=Fantasque\ Sans\ Mono\ 11
         set novb
-        set guicursor=a:hor1-Cursor/lCursor     "underline cursor by default
-        set guicursor+=i:ver1-Cursor/lCursor    "vertical cursor for insert mode
-        set guicursor+=r:block                  "block for replace
+        set guicursor=a:block                   "block cursor by default
+        set guicursor+=i:ver1-Cursor/lCursor    "i-beam for insert mode
+        set guicursor+=r:hor1-Cursor/lCursor    "underline for replace
         set guicursor+=a:blinkon0               "and none of them should blink
         set guiheadroom=0
         colorscheme neodark
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
-    " if I ever want to use termguicolors aka true color theme
-    "elseif (has("nvim") || v:version >= 704) && $TERM != 'screen'
+    elseif (has("nvim") || v:version >= 704) && $TERM != 'screen'
         " fix tmux and st
-        "set t_8f=[38;2;%lu;%lu;%lum
-        "set t_8b=[48;2;%lu;%lu;%lum
-        "set termguicolors
-        "colorscheme neodark
-        "set mouse=
+        set t_8f=[38;2;%lu;%lu;%lum
+        set t_8b=[48;2;%lu;%lu;%lum
+        set termguicolors
+        set mouse=a
+        colorscheme neodark
     else
-        "set background=dark
-        colorscheme solarized8_light
+        set bg=light
         set mouse=
+        colorscheme solarized8_light
     endif
 else
     colorscheme default
