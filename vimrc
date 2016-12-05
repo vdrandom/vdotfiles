@@ -22,14 +22,9 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-" 256 colours at almost all times; do I even need it?..
-if $TERM =~ '^[xterm|rxvt-unicode|screen|st]'
-    let &t_Co=256
-endif
-if $LANG =~ '[UTF\-8|utf8]$'
-    set termencoding=utf-8
-    set encoding=utf-8
-endif
+let &t_Co=256
+set termencoding=utf-8
+set encoding=utf-8
 
 " insert shebang in the beginning of the file based on its name extension
 autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
