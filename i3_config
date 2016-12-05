@@ -175,6 +175,7 @@ force_focus_wrapping yes
 
 # rules
 # games
+for_window [class="Mojosetup"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Awesomenauts.bin.x86"] floating enable
 for_window [class="Civ5XP"] floating enable
