@@ -25,6 +25,7 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [L
 let &t_Co=256
 set termencoding=utf-8
 set encoding=utf-8
+set fillchars+=vert:│
 
 " insert shebang in the beginning of the file based on its name extension
 autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
@@ -76,7 +77,8 @@ if v:version >= 700
         set noshowmode
         source ~/.vim/plugged/vim-plug/plug.vim
         silent!call plug#begin('~/.vim/plugged')
-        Plug 'junegunn/vim-plug'               "plugin manager
+        "plugin manager
+        Plug 'junegunn/vim-plug'
 
         " general plugins
         Plug 'Lokaltog/vim-easymotion'         "easy motion
@@ -91,6 +93,7 @@ if v:version >= 700
         Plug 'neomake/neomake'                 "linter
         Plug 'davidhalter/jedi-vim'            "python support
         Plug 'ervandew/supertab'               "TAB autocompletion
+        Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
 
         " colorschemes
         Plug 'lifepillar/vim-solarized8'
@@ -169,7 +172,6 @@ if v:version >= 700
         set mouse=a
         colorscheme neodark
     else
-        set bg=light
         set mouse=
         colorscheme solarized8_light
     endif
