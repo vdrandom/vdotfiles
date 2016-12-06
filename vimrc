@@ -164,7 +164,7 @@ if v:version >= 700
         colorscheme neodark
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
-    elseif (has("nvim") || v:version >= 704) && $TERM != 'screen'
+    elseif (has("nvim") || v:version >= 800) && $TERM != 'screen'
         " fix tmux and st
         set t_8f=[38;2;%lu;%lu;%lum
         set t_8b=[48;2;%lu;%lu;%lum
