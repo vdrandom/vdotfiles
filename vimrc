@@ -10,7 +10,8 @@ set ruler
 set showcmd
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-" scroll before reaching the first / final line set scrolloff=3
+" scroll before reaching the first / final line
+set scrolloff=3
 set sidescrolloff=15
 set sidescroll=1
 " disable bell
@@ -27,19 +28,9 @@ set termencoding=utf-8
 set encoding=utf-8
 set fillchars+=vert:│
 
-" insert shebang in the beginning of the file based on its name extension
-autocmd BufNewFile *.zsh 0put =\"#!/usr/bin/env zsh\<nl>\"|$
-autocmd BufNewFile *.lua 0put =\"#!/usr/bin/env lua\<nl>\"|$
-autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
-autocmd BufNewFile *.rb 0put =\"#!/usr/bin/env ruby\<nl>\"|$
-autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\"|$
-autocmd BufNewFile *.pl 0put =\"#!/usr/bin/env perl\<nl>\use strict;\<nl>\use warnings;\<nl>\use feature 'say';\<nl>\"|$
-
 " maps
-let mapleader = ","
+map <Space> <leader>
 noremap <F1> <Esc>
-"fold/unfold via spacebar
-nnoremap <Space> za
 "enable cursorline on demand
 nnoremap <Leader>c :set cursorline!<CR>
 "clear search highlight
@@ -50,6 +41,15 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 "home / end
 nnoremap H ^
 nnoremap L $
+"copy to / paste from clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+"quit without saving
+nmap <Leader>qq :qa!<CR>
 
 " still have to deal with old vim versions :<
 if v:version >= 700
@@ -135,7 +135,7 @@ if v:version >= 700
         nmap <Leader>a <Plug>(EasyAlign)
 
         " neomake
-        nmap <Leader>p :Neomake<CR>
+        nmap <Leader>i :Neomake<CR>
         let g:neomake_error_sign={
                     \ 'text': 'e>',
                     \ 'texthl': 'ErrorMsg',
