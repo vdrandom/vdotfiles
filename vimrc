@@ -6,10 +6,12 @@ set ignorecase
 set incsearch
 set laststatus=2
 set nobackup
+set nomodeline
 set ruler
 set showcmd
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set wildmenu
 " scroll before reaching the first / final line
 set scrolloff=3
 set sidescrolloff=15
@@ -23,7 +25,9 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
-let &t_Co=256
+" termcap fixes
+set t_Co=256
+set t_ut=
 set termencoding=utf-8
 set encoding=utf-8
 set fillchars+=vert:│
@@ -48,8 +52,15 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-"quit without saving
-nmap <Leader>qq :qa!<CR>
+"move macro somewhere I won't accidentally use it
+nnoremap Q q
+nnoremap q <Nop>
+"quit / save
+nmap qq :q<CR>
+nmap qf :q!<CR>
+nmap qa :qa<CR>
+nmap qw :wq<CR>
+nmap <Leader>w :w<CR>
 
 " still have to deal with old vim versions :<
 if v:version >= 700
@@ -89,13 +100,16 @@ if v:version >= 700
         Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
         Plug 'vim-airline/vim-airline'         "airline
         Plug 'vim-airline/vim-airline-themes'  "themes for airline
-        Plug 'vimwiki/vimwiki'                 "another attempt at doing notebook via vim
-        Plug 'neomake/neomake'                 "linter
-        Plug 'davidhalter/jedi-vim'            "python support
-        Plug 'ervandew/supertab'               "TAB autocompletion
-        Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
+        Plug 'wincent/command-t'               "fuzzy file search
+        Plug 'tpope/vim-fugitive'              "moar git awesomeness
+
+        " python, uncomment when needed
+        "Plug 'neomake/neomake'                 "linter
+        "Plug 'davidhalter/jedi-vim'            "python support
+        "Plug 'ervandew/supertab'               "TAB autocompletion
 
         " colorschemes
+        Plug 'cocopon/iceberg.vim'
         Plug 'lifepillar/vim-solarized8'
         Plug 'KeitaNakamura/neodark.vim'
         Plug 'jonathanfilip/vim-lucius'
@@ -161,7 +175,7 @@ if v:version >= 700
         set guicursor+=r:hor1-Cursor/lCursor    "underline for replace
         set guicursor+=a:blinkon0               "and none of them should blink
         set guiheadroom=0
-        colorscheme neodark
+        colorscheme iceberg
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
     elseif (has("nvim") || v:version >= 800) && $TERM != 'screen'
@@ -170,7 +184,8 @@ if v:version >= 700
         set t_8b=[48;2;%lu;%lu;%lum
         set termguicolors
         set mouse=a
-        colorscheme neodark
+        let g:airline_theme='neodark'
+        colorscheme iceberg
     else
         set mouse=
         colorscheme solarized8_light
