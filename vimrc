@@ -109,11 +109,12 @@ if v:version >= 700
         "Plug 'ervandew/supertab'               "TAB autocompletion
 
         " colorschemes
-        Plug 'cocopon/iceberg.vim'
         Plug 'lifepillar/vim-solarized8'
-        Plug 'KeitaNakamura/neodark.vim'
-        Plug 'jonathanfilip/vim-lucius'
-        Plug 'chriskempson/base16-vim'
+        "Plug 'jonathanfilip/vim-lucius'
+        " some good true color themes
+        "Plug 'cocopon/iceberg.vim'
+        "Plug 'KeitaNakamura/neodark.vim'
+        "Plug 'chriskempson/base16-vim'
 
         " syntax highlight plugins
         Plug 'neilhwatson/vim_cf3'
@@ -175,19 +176,24 @@ if v:version >= 700
         set guicursor+=r:hor1-Cursor/lCursor    "underline for replace
         set guicursor+=a:blinkon0               "and none of them should blink
         set guiheadroom=0
-        colorscheme iceberg
+        colorscheme solarized8_light
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
-    elseif (has("nvim") || v:version >= 800) && $TERM != 'screen'
-        " fix tmux and st
-        set t_8f=[38;2;%lu;%lu;%lum
-        set t_8b=[48;2;%lu;%lu;%lum
-        set termguicolors
-        set mouse=a
-        let g:airline_theme='neodark'
-        colorscheme iceberg
+    " if true color support and I want to use it:
+    "elseif (has("nvim") || v:version >= 800) && $TERM != 'screen'
+    "    " fix tmux and st
+    "    set t_8f=[38;2;%lu;%lu;%lum
+    "    set t_8b=[48;2;%lu;%lu;%lum
+    "    set termguicolors
+    "    set mouse=a
+    "    let g:airline_theme='neodark'
+    "    colorscheme iceberg
     else
-        set mouse=
+        if $TERM != 'screen'
+            set mouse=a
+        else
+            set mouse=
+        endif
         colorscheme solarized8_light
     endif
 else
