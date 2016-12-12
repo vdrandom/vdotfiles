@@ -2,20 +2,8 @@
 [[ $- != *i* ]] && return
 
 # {{{ settings
-vscripts="${HOME}/vscripts"
 local_bin="${HOME}/.local/bin"
-gem_bin="${HOME}/.local/gem-bin"
-[[ -d ${vscripts} && ${PATH} != *${vscripts}* ]] && export PATH=${PATH}:${vscripts}
-[[ -d ${local_bin} && ${PATH} != *${local_bin}* ]] && export PATH=${PATH}:${local_bin}
-[[ -h ${gem_bin} && ${PATH} != *${gem_bin}* ]] && export PATH=${PATH}:${gem_bin}
-unset local_bin vscripts gem_bin
-
-dotfiles="${HOME}/vdotfiles"
-
-completion_path='/usr/share/bash-completion/bash_completion'
-git_prompt_path='/usr/lib/bash-git-prompt/gitprompt.sh'
-comp_enabled=true
-git_enabled=true
+[[ -d "${local_bin}" && "${PATH}" != *${local_bin}* ]] && export PATH="${PATH}:${local_bin}"
 
 HISTSIZE=1000
 HISTFILE="${HOME}/.bash_history.${UID}"
@@ -71,7 +59,7 @@ prompt_command()
     else
         bang="${pnred}>"
     fi
-    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
+    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}${PWD}${preset} ]${newline}${bang}${preset} "
 }
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -156,38 +144,10 @@ alias atmux='command tmux -2 attach'
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 # }}}
-# {{{ plugins
-if [[ -n ${comp_enabled} && -r ${completion_path} ]]; then
-    source ${completion_path}
-fi
-if [[ -n ${git_enabled} && -r ${git_prompt_path} ]]; then
-    GIT_PROMPT_FETCH_REMOTE_STATUS=0
-    GIT_PROMPT_SHOW_UPSTREAM=1
-    GIT_PROMPT_ONLY_IN_REPO=1
-    # theme overrides
-    if [[ $USER == 'von' ]]; then
-        git_prompt_username=""
-    else
-        git_prompt_username="${pnred}${USER}${preset} "
-    fi
-    GIT_PROMPT_PREFIX="[ "
-    GIT_PROMPT_SUFFIX=" ]"
-    GIT_PROMPT_SEPARATOR=" "
-    GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:${pbold}\w${preset} ]"
-    GIT_PROMPT_THEME_NAME="Custom"
-    GIT_PROMPT_UNTRACKED="${pncyan}u"
-    GIT_PROMPT_CHANGED="${pnblue}+"
-    GIT_PROMPT_STAGED="${pnyellow}s"
-    GIT_PROMPT_CONFLICTS="${pnred}x"
-    GIT_PROMPT_STASHED="${pbmagenta}→"
-    GIT_PROMPT_CLEAN="${pngreen}."
-    GIT_PROMPT_END_USER="\n${pbold}>${preset} "
-    GIT_PROMPT_END_ROOT="\n${pnred}>${preset} "
-    source ${git_prompt_path}
-fi
-unset completion_path git_prompt_path
-# }}}
-# {{{ traps
+# {{{ plugins and traps
+plugins="${HOME}/vdotfiles/plugins.bash"
+[[ -r "${plugins}" ]] && . "${plugins}"
+
 # we want to see exit code on error (it also has to be the last entry here)
 trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${nred}%s${reset}\n" "$?" >&2' ERR
 # }}}
