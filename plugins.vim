@@ -1,6 +1,6 @@
 if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
     set noshowmode
-    source ~/.vimplug/vim-plug/plug.vim
+    source ~/.vim/plugged/vim-plug/plug.vim
     silent!call plug#begin('~/.vim/plugged')
     " plugin manager for self updates
     Plug 'junegunn/vim-plug'
