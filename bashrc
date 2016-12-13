@@ -59,7 +59,7 @@ prompt_command()
     else
         bang="${pnred}>"
     fi
-    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}${PWD}${preset} ]${newline}${bang}${preset} "
+    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
 }
 PROMPT_COMMAND=prompt_command
 # }}}
