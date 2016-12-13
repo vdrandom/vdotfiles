@@ -63,12 +63,12 @@ nmap qw :wq<CR>
 nmap <Leader>w :w<CR>
 
 " still have to deal with old vim versions :<
-if v:version >= 703
+if has("nvim") || v:version >= 703
     set colorcolumn=80
     set relativenumber
     nnoremap <Leader>r :setlocal relativenumber!<CR>
 endif
-if v:version >= 800
+if has("nvim") || v:version >= 800
     set breakindent
 endif
 

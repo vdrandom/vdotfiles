@@ -7,7 +7,7 @@ allow_bold = false
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Terminus Bold 11
+font = Fantasque Sans Mono 11
 scrollback_lines = 10000
 search_wrap = true
 icon_name = terminal
@@ -42,6 +42,6 @@ color14 = #93a1a1
 color15 = #fdf6e3
 
 [hints]
-font = Terminus 9
+font = Fantasque Sans Mono 9
 
 # vim: ft=dosini cms=#%s
