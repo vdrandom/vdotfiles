@@ -59,8 +59,9 @@ nnoremap qw :wq<CR>
 nnoremap <Leader>w :w<CR>
 
 " plugins
-if filereadable(expand("$HOME/vdotfiles/plugins.vim"))
-    source ~/vdotfiles/plugins.vim
+let plugins = expand("$HOME/vdotfiles/plugins.vim")
+if filereadable(plugins)
+    execute 'source ' . fnameescape(plugins)
 endif
 
 colorscheme solarized8_light
