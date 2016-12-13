@@ -1,43 +1,39 @@
-set backspace=indent,eol,start
-set foldmethod=marker
-set history=50
-set hlsearch
-set ignorecase
-set incsearch
-set laststatus=2
-set nobackup
-set nomodeline
-set ruler
-set showcmd
-set smartcase
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set wildmenu
+" various settings
+set number helplang=en foldmethod=marker mouse=
+set history=50 nobackup nomodeline backspace=indent,eol,start
+" hidden characters
+set list listchars=tab:\|_,nbsp:x,trail:*
+" search
+set hlsearch incsearch smartcase
 " scroll before reaching the first / final line
-set scrolloff=3
-set sidescrolloff=15
-set sidescroll=1
+set scrolloff=3 sidescrolloff=15 sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
-" indentation_RIP
-"set shiftwidth=3 tabstop=3 noexpandtab
-" indentation_OK
+" indentation
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
-
+" status line
+set wildmenu showcmd ruler laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-
 " termcap fixes
-set t_Co=256
-set t_ut=
-set termencoding=utf-8
-set encoding=utf-8
-set fillchars+=vert:│
+set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
+" enable case indentation
+let g:sh_indent_case_labels=1
+" version specific settings
+if has("nvim") || v:version >= 800
+    set breakindent
+endif
+if has("nvim") || v:version >= 703
+    set colorcolumn=80 relativenumber
+    nnoremap <Leader>r :setlocal relativenumber!<CR>
+endif
 
 " maps
 map <Space> <leader>
 noremap <F1> <Esc>
-"enable cursorline on demand
-nnoremap <Leader>c :set cursorline!<CR>
-"clear search highlight
+" some toggles
+nnoremap <Leader>n :setlocal number!<CR>
+nnoremap <Leader>l :setlocal list!<CR>
+nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>/ :nohls<CR>
 "make wrapped lines navigation easier
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -56,33 +52,11 @@ vmap <Leader>P "+P
 nnoremap Q q
 nnoremap q <Nop>
 "quit / save
-nmap qq :q<CR>
-nmap qf :q!<CR>
-nmap qa :qa<CR>
-nmap qw :wq<CR>
-nmap <Leader>w :w<CR>
-
-" still have to deal with old vim versions :<
-if has("nvim") || v:version >= 703
-    set colorcolumn=80
-    set relativenumber
-    nnoremap <Leader>r :setlocal relativenumber!<CR>
-endif
-if has("nvim") || v:version >= 800
-    set breakindent
-endif
-
-set mouse=
-
-set helplang=en
-set list
-set number
-set listchars=tab:\|_,nbsp:x,trail:*
-nnoremap <Leader>n :setlocal number!<CR>
-nnoremap <Leader>l :setlocal list!<CR>
-
-" enable case indentation
-let g:sh_indent_case_labels=1
+nnoremap qq :q<CR>
+nnoremap qf :q!<CR>
+nnoremap qa :qa<CR>
+nnoremap qw :wq<CR>
+nnoremap <Leader>w :w<CR>
 
 " plugins
 if filereadable(expand("$HOME/vdotfiles/plugins.vim"))
@@ -90,7 +64,5 @@ if filereadable(expand("$HOME/vdotfiles/plugins.vim"))
 endif
 
 colorscheme solarized8_light
-
 syntax on
-
 filetype plugin on
