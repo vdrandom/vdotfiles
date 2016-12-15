@@ -25,6 +25,7 @@ if filereadable(expand("$HOME/.vim/plugged/vim-plug/plug.vim"))
 
     " colorschemes
     Plug 'lifepillar/vim-solarized8'
+    Plug 'cocopon/iceberg.vim'
 
     " syntax highlight plugins
     Plug 'neilhwatson/vim_cf3'
