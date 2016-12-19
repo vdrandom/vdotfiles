@@ -26,10 +26,10 @@ is_exec() { [[ -x $(type -P ${1}) ]]; }
 # {{{ prompt
 color_number=0
 for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
-    eval "pn${color}='\[\e[0;3${color_number}m\]'"
-    eval "pb${color}='\[\e[1;3${color_number}m\]'"
-    eval "n${color}='\e[0;3${color_number}m'"
-    eval "b${color}='\e[1;3${color_number}m'"
+    eval "pn${color}='\[\e[38;5;$((color_number))m\]'"
+    eval "pb${color}='\[\e[38;5;$((color_number+8))m\]'"
+    eval "n${color}='\e[38;5;$((color_number))m'"
+    eval "b${color}='\e[38;5;$((color_number+8))m'"
     (( color_number++ ))
 done
 unset color_number

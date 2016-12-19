@@ -9,3 +9,5 @@ set guicursor+=a:blinkon0               "and none of them should blink
 set guiheadroom=0
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
+
+colorscheme iceberg
