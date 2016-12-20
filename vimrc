@@ -4,7 +4,7 @@ set history=50 nobackup nomodeline backspace=indent,eol,start
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
-set hlsearch incsearch smartcase
+set hlsearch incsearch ignorecase smartcase
 " scroll before reaching the first / final line
 set scrolloff=3 sidescrolloff=15 sidescroll=1
 " disable bell
