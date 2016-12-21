@@ -1,5 +1,5 @@
 " various settings
-set number helplang=en foldmethod=marker mouse=
+set number helplang=en foldmethod=marker ttymouse=xterm2 mouse=
 set history=50 nobackup nomodeline backspace=indent,eol,start
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
