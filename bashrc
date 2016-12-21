@@ -145,7 +145,7 @@ alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 # }}}
 # {{{ plugins and traps
-plugins="${HOME}/vdotfiles/plugins.bash"
+plugins="${HOME}/.bashplugins"
 [[ -r "${plugins}" ]] && . "${plugins}"
 
 # we want to see exit code on error (it also has to be the last entry here)

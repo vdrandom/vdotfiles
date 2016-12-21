@@ -59,7 +59,7 @@ nnoremap qw :wq<CR>
 nnoremap <Leader>w :w<CR>
 
 " plugins
-let plugins = expand("$HOME/vdotfiles/plugins.vim")
+let plugins = expand("$HOME/.vimplugins")
 if filereadable(plugins)
     execute 'source ' . fnameescape(plugins)
 endif
