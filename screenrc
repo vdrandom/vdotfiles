@@ -12,7 +12,7 @@ autodetach on
 term screen
 altscreen on
 activity "activity on %n"
-caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{wk}[%t]%{wd}%+w'
+caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{Wk}%n_%t%{wd}%+w'
 escape ^@@
 bind w windowlist -b
 bindkey ^[q prev
