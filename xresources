@@ -1,4 +1,3 @@
-! vim: ft=xdefaults
 ! {{{ xft and cursor configuration
 Xcursor.theme:          Vanilla-DMZ-AA
 Xft.antialias:          true

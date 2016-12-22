@@ -139,8 +139,10 @@ alias gup='command git pull'
 alias gsi='command tig status'
 
 # tmux
-alias tmux='command tmux -2'
-alias atmux='command tmux -2 attach'
+if is_exec tmux; then
+    alias tmux='command tmux -2'
+    alias atmux='command tmux -2 attach'
+fi
 
 # screen
 alias rscreen='command screen -Dr'
