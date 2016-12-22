@@ -25,11 +25,13 @@ is_exec() { [[ -x $(type -P ${1}) ]]; }
 # }}}
 # {{{ prompt
 color_number=0
-for color in 'black' 'red' 'green' 'yellow' 'blue' 'magenta' 'cyan' 'white'; do
-    eval "pn${color}='\[\e[38;5;$((color_number))m\]'"
-    eval "pb${color}='\[\e[38;5;$((color_number+8))m\]'"
-    eval "n${color}='\e[38;5;$((color_number))m'"
-    eval "b${color}='\e[38;5;$((color_number+8))m'"
+# colors are named for the solarized palette
+for color in \
+    gray6 red green yellow blue magenta cyan gray1 \
+    black orange gray5 gray4 gray3 purple gray2 white
+do
+    eval "p${color}='\[\e[38;5;${color_number}m\]'"
+    eval "${color}='\e[38;5;${color_number}m'"
     (( color_number++ ))
 done
 unset color_number
@@ -52,12 +54,12 @@ prompt_command()
     if [[ ${USER} == 'von' ]]; then
         prompt_user=""
     else
-        prompt_user="${pnred}\u${preset} "
+        prompt_user="${pred}\u${preset} "
     fi
     if ((UID)); then
         bang="${pbold}>"
     else
-        bang="${pnred}>"
+        bang="${pred}>"
     fi
     PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
 }
@@ -149,5 +151,5 @@ plugins="${HOME}/.bashplugins"
 [[ -r "${plugins}" ]] && . "${plugins}"
 
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${nred}%s${reset}\n" "$?" >&2' ERR
+trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
 # }}}
