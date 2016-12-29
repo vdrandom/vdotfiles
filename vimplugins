@@ -29,7 +29,10 @@ Plug 'sheerun/vim-polyglot'            "syntax
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
-Plug 'cocopon/iceberg.vim'
+"Plug 'cocopon/iceberg.vim'
+"Plug 'whatyouhide/vim-gotham'
+"Plug 'KeitaNakamura/neodark.vim'
+"Plug 'morhetz/gruvbox'
 
 " syntax highlight plugins
 Plug 'neilhwatson/vim_cf3'

@@ -153,5 +153,5 @@ plugins="${HOME}/.bashplugins"
 [[ -r "${plugins}" ]] && . "${plugins}"
 
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "${nred}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
+trap 'printf "${red}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
 # }}}
