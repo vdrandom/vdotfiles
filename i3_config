@@ -12,7 +12,7 @@
 set $mod Mod4
 set $i3_term urxvtc
 set $i3_font -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
-set $dmenu_font Terminus:Bold:size=12
+set $dmenu_font xos4 Terminus:Bold:pixelsize=14
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
