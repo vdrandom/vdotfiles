@@ -76,3 +76,11 @@ URxvt.color13:      base0E
 URxvt.color14:      base05
 URxvt.color15:      base07
 ! }}}
+! {{{ rofi
+rofi.modi:            window
+rofi.font:            xos4 Terminus Bold 11
+rofi.terminal:        /home/von/.local/bin/default-terminal-emulator
+rofi.hide-scrollbar:  true
+rofi.monitor:         -5
+rofi.location:        2
+! }}}
