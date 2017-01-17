@@ -18,12 +18,12 @@ Plug 'mhinz/vim-signify'               "version control system gutter info
 Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
 Plug 'vim-airline/vim-airline'         "airline
 Plug 'vim-airline/vim-airline-themes'  "themes for airline
-Plug 'kien/ctrlp.vim'                  "fuzzy file search
+Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
 Plug 'tpope/vim-fugitive'              "moar git awesomeness
-Plug 'sheerun/vim-polyglot'            "syntax
+"Plug 'sheerun/vim-polyglot'            "syntax
 
 " python, uncomment when needed
-"Plug 'neomake/neomake'                           "linter
+Plug 'neomake/neomake', { 'for': 'python' }      "linter
 Plug 'davidhalter/jedi-vim', { 'for': 'python' } "python support
 Plug 'ervandew/supertab', { 'for': 'python' }    "TAB autocompletion
 
