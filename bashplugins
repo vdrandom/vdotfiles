@@ -1,3 +1,5 @@
+fuck() { echo 'no, fuck you'; }
+
 enable_vscripts()
 {
     local vscripts="${HOME}/vscripts"
