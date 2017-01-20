@@ -27,7 +27,7 @@
     startup_notification = false
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /home/von/.local/bin/default-web-browser
-    icon_position = off
+    icon_position = left
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]

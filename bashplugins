@@ -23,7 +23,7 @@ enable_git_prompt()
         if [[ $USER == 'von' ]]; then
             git_prompt_username=""
         else
-            git_prompt_username="${pnred}${USER}${preset} "
+            git_prompt_username="${pred}${USER}${preset} "
         fi
         GIT_PROMPT_PREFIX="[ "
         GIT_PROMPT_SUFFIX=" ]"
