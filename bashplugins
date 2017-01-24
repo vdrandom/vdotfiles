@@ -1,5 +1,20 @@
 fuck() { echo 'no, fuck you'; }
 
+gdiff() { /usr/bin/git diff --color "$@"; }
+
+gdf()
+{
+    local fancydiff='/usr/bin/diff-so-fancy'
+    local githighlight='/usr/share/git/diff-highlight/diff-highlight'
+    if [[ -x ${fancydiff} ]]; then
+        gdiff "$@" | ${fancydiff} | less --tabs=4 -RFX
+    elif [[ -x ${githighlight} ]]; then
+        gdiff "$@" | ${githighlight} | less --tabs=4 -RFX
+    else
+        gdiff "$@"
+    fi
+}
+
 enable_vscripts()
 {
     local vscripts="${HOME}/vscripts"
