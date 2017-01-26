@@ -7,9 +7,9 @@ gdf()
     local fancydiff='/usr/bin/diff-so-fancy'
     local githighlight='/usr/share/git/diff-highlight/diff-highlight'
     if [[ -x ${fancydiff} ]]; then
-        gdiff "$@" | ${fancydiff} | less --tabs=4 -RFX
+        gdiff "$@" | ${fancydiff} | less --tabs=4 -RSFX
     elif [[ -x ${githighlight} ]]; then
-        gdiff "$@" | ${githighlight} | less --tabs=4 -RFX
+        gdiff "$@" | ${githighlight} | less --tabs=4 -RSFX
     else
         gdiff "$@"
     fi
