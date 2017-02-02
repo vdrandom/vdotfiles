@@ -20,7 +20,8 @@ Plug 'vim-airline/vim-airline'         "airline
 Plug 'vim-airline/vim-airline-themes'  "themes for airline
 Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
 Plug 'tpope/vim-fugitive'              "moar git awesomeness
-"Plug 'sheerun/vim-polyglot'            "syntax
+Plug 'vimwiki/vimwiki'                 "vimwiki
+Plug 'sheerun/vim-polyglot'            "syntax
 
 " python, uncomment when needed
 Plug 'neomake/neomake', { 'for': 'python' }      "linter
@@ -81,3 +82,7 @@ let g:neomake_info_sign={
             \ 'text': 'i>',
             \ 'texthl': 'InfoMsg',
             \ }
+
+if expand('%:r') == 'index.wiki'
+    set titlestring=vimwiki
+endif

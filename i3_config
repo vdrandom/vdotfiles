@@ -3,7 +3,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $i3_term urxvtc
+set $i3_term default-terminal-emulator
 set $i3_font -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
 set $dmenu_font xos4 Terminus:Bold:pixelsize=14
 
@@ -182,6 +182,9 @@ for_window [class="Qmmp"] floating enable
 for_window [class="Vncviewer"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
+# vimwiki to scratchpad
+for_window [instance="vimwiki"] move scratchpad, scratchpad show
+bindsym $mod+n scratchpad show
 # java KVM
 for_window [instance="sun-awt-X11-XFramePeer" title="(?i)kvm"] floating enable
 
