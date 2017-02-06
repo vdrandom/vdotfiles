@@ -3,7 +3,7 @@ Xcursor.theme:          Vanilla-DMZ-AA
 Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
-Xft.hintstyle:          hintslight
+Xft.hintstyle:          hintfull
 Xft.dpi:                96
 ! }}}
 ! {{{ urxvt

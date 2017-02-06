@@ -21,6 +21,8 @@ let g:sh_indent_case_labels=1
 " version specific settings
 if has("nvim") || v:version >= 800
     set breakindent
+    set keymap=russian-jcukenwintype iminsert=0 imsearch=0
+    inoremap <C-@> <C-^>
 endif
 if has("nvim") || v:version >= 703
     set colorcolumn=80 relativenumber
