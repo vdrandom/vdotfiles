@@ -3,62 +3,40 @@ autocmd BufRead *vimplugins set ft=vim
 autocmd BufRead *bashplugins set ft=sh
 
 " enable plugins
-set noshowmode
 source ~/.vim/plugged/vim-plug/plug.vim
 silent!call plug#begin('~/.vim/plugged')
 " plugin manager for self updates
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'Lokaltog/vim-easymotion'         "easy motion
 Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
 Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 Plug 'junegunn/vim-easy-align'         "aligning
 Plug 'mhinz/vim-signify'               "version control system gutter info
 Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
-Plug 'vim-airline/vim-airline'         "airline
-Plug 'vim-airline/vim-airline-themes'  "themes for airline
 Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
 Plug 'tpope/vim-fugitive'              "moar git awesomeness
 Plug 'vimwiki/vimwiki'                 "vimwiki
 Plug 'sheerun/vim-polyglot'            "syntax
 
-" python, uncomment when needed
+" IDE liek, per filetype
 Plug 'neomake/neomake', { 'for': 'python' }      "linter
 Plug 'davidhalter/jedi-vim', { 'for': 'python' } "python support
 Plug 'ervandew/supertab', { 'for': 'python' }    "TAB autocompletion
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
-"Plug 'cocopon/iceberg.vim'
-"Plug 'whatyouhide/vim-gotham'
-"Plug 'KeitaNakamura/neodark.vim'
-"Plug 'morhetz/gruvbox'
+Plug 'KeitaNakamura/neodark.vim'
 
 " syntax highlight plugins
 Plug 'neilhwatson/vim_cf3'
 call plug#end()
 
-" easymotion options
-let g:EasyMotion_do_mapping=0
-let g:EasyMotion_smartcase=1
-nmap f <Plug>(easymotion-s)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-" airline options
-let g:airline_symbols={}
-let g:airline_symbols.whitespace='!'
-let g:airline_powerline_fonts=1
-let g:airline_exclude_preview=1
-let g:airline_extensions=['hunks']
-let g:airline_section_z='%3p%% %{g:airline_symbols.linenr}%4l:%3v'
-
 " buffergator options
 map <Leader><Tab> :BuffergatorToggle<CR>
 
 " signify options
-let g:signify_vcs_list=[ 'svn', 'git', 'fossil' ]
+let g:signify_vcs_list=[ 'git', 'fossil' ]
 let g:signify_sign_change='~'
 
 " vim-togglemouse options
@@ -83,6 +61,8 @@ let g:neomake_info_sign={
             \ 'texthl': 'InfoMsg',
             \ }
 
-if expand('%:r') == 'index.wiki'
-    set titlestring=vimwiki
+if has('gui_running')
+    colorscheme neodark
+else
+    colorscheme solarized8_light
 endif

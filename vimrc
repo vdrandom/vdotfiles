@@ -13,7 +13,7 @@ set noerrorbells visualbell t_vb=
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 " status line
 set wildmenu showcmd ruler laststatus=2
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F\ %m%r%h%w%=%y\ [%{&ff}]\ [%4l/%L:%3v]\ [%3p%%]
 " termcap fixes
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
 " enable case indentation
@@ -23,6 +23,9 @@ if has("nvim") || v:version >= 800
     set breakindent
     set keymap=russian-jcukenwintype iminsert=0 imsearch=0
     inoremap <C-@> <C-^>
+    cnoremap <C-@> <C-^>
+    inoremap <C-Space> <C-^>
+    cnoremap <C-Space> <C-^>
 endif
 if has("nvim") || v:version >= 703
     set colorcolumn=80 relativenumber
@@ -30,16 +33,16 @@ if has("nvim") || v:version >= 703
 endif
 
 " maps
-map <Space> <leader>
+" leader
+map <Space> <NOP>
+let mapleader="\<Space>"
+" no more F1
 noremap <F1> <Esc>
 " some toggles
 nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>/ :nohls<CR>
-"make wrapped lines navigation easier
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 "home / end
 nnoremap H ^
 nnoremap L $
@@ -64,8 +67,9 @@ nnoremap <Leader>w :w<CR>
 let plugins = expand("$HOME/.vimplugins")
 if filereadable(plugins)
     execute 'source ' . fnameescape(plugins)
+else
+    colorscheme solarized8_light
 endif
 
-colorscheme solarized8_light
 syntax on
 filetype plugin on

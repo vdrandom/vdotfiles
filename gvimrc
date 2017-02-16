@@ -1,3 +1,4 @@
+" solarized for gvim
 set guioptions=aegimLl
 set mouse=a
 set guifont=Fantasque\ Sans\ Mono\ 11
