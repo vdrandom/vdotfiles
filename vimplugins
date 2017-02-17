@@ -48,6 +48,7 @@ nmap <Leader>a <Plug>(EasyAlign)
 
 " neomake
 nmap <Leader>i :Neomake<CR>
+let g:neomake_open_list = 7
 let g:neomake_error_sign={
             \ 'text': 'e>',
             \ 'texthl': 'ErrorMsg',
