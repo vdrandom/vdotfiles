@@ -15,7 +15,7 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
 " status line
 set wildmenu showcmd ruler laststatus=2
-set statusline=%F\ %m%r%h%w%=%{&fenc}/%{&ff}\ %y\ [%4l/%L:%3v]\ [%3p%%]
+set statusline=[%{getcwd()}]\ %f\ %m%r%h%w%=%{&fenc}/%{&ff}\ %y\ [%4l/%L:%3v]\ [%3P]
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings
@@ -67,9 +67,8 @@ nnoremap <Leader>w :w<CR>
 let plugins = expand("$HOME/.vimplugins")
 if filereadable(plugins)
     execute 'source ' . fnameescape(plugins)
-else
-    colorscheme solarized8_light
 endif
 
+colorscheme solarized8_light
 syntax on
 filetype plugin on

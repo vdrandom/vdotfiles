@@ -61,9 +61,3 @@ let g:neomake_info_sign={
             \ 'text': 'i>',
             \ 'texthl': 'InfoMsg',
             \ }
-
-if has('gui_running')
-    colorscheme neodark
-else
-    colorscheme solarized8_light
-endif
