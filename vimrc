@@ -11,11 +11,11 @@ set scrolloff=3 sidescrolloff=15 sidescroll=1
 set noerrorbells visualbell t_vb=
 " indentation
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
-" status line
-set wildmenu showcmd ruler laststatus=2
-set statusline=%F\ %m%r%h%w%=%y\ [%{&ff}]\ [%4l/%L:%3v]\ [%3p%%]
 " termcap fixes
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
+" status line
+set wildmenu showcmd ruler laststatus=2
+set statusline=%F\ %m%r%h%w%=%{&fenc}/%{&ff}\ %y\ [%4l/%L:%3v]\ [%3p%%]
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings

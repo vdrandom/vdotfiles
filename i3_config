@@ -182,8 +182,9 @@ for_window [class="Qmmp"] floating enable
 for_window [class="Vncviewer"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
-# vimwiki to scratchpad
+# vimwiki to scratchpad (gvim included)
 for_window [instance="vimwiki"] move scratchpad, scratchpad show
+for_window [class="Gvim" title="vimwiki"] move scratchpad, scratchpad show
 bindsym $mod+n scratchpad show
 # java KVM
 for_window [instance="sun-awt-X11-XFramePeer" title="(?i)kvm"] floating enable
