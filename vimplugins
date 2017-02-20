@@ -14,10 +14,8 @@ Plug 'jeetsukumaran/vim-buffergator'   "buffer management
 Plug 'junegunn/vim-easy-align'         "aligning
 Plug 'mhinz/vim-signify'               "version control system gutter info
 Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
-Plug 'ctrlpvim/ctrlp.vim'              "fuzzy file search
 Plug 'tpope/vim-fugitive'              "moar git awesomeness
 Plug 'vimwiki/vimwiki'                 "vimwiki
-Plug 'sheerun/vim-polyglot'            "syntax
 
 " IDE liek, per filetype
 Plug 'neomake/neomake', { 'for': 'python' }      "linter
@@ -26,14 +24,11 @@ Plug 'ervandew/supertab', { 'for': 'python' }    "TAB autocompletion
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
-Plug 'KeitaNakamura/neodark.vim'
 
 " syntax highlight plugins
 Plug 'neilhwatson/vim_cf3'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
-
-" buffergator options
-map <Leader><Tab> :BuffergatorToggle<CR>
 
 " signify options
 let g:signify_vcs_list=[ 'git', 'fossil' ]
@@ -49,15 +44,6 @@ nmap <Leader>a <Plug>(EasyAlign)
 " neomake
 nmap <Leader>i :Neomake<CR>
 let g:neomake_open_list = 7
-let g:neomake_error_sign={
-            \ 'text': 'e>',
-            \ 'texthl': 'ErrorMsg',
-            \ }
-let g:neomake_warning_sign={
-            \ 'text': 'w>',
-            \ 'texthl': 'WarningMsg',
-            \ }
-let g:neomake_info_sign={
-            \ 'text': 'i>',
-            \ 'texthl': 'InfoMsg',
-            \ }
+let g:neomake_error_sign   = { 'text': 'e>', 'texthl': 'ErrorMsg' }
+let g:neomake_warning_sign = { 'text': 'w>', 'texthl': 'WarningMsg' }
+let g:neomake_info_sign    = { 'text': 'i>', 'texthl': 'InfoMsg' }
