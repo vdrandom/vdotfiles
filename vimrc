@@ -15,7 +15,7 @@ set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
 " status line
 set wildmenu showcmd ruler laststatus=2
-set statusline=[%{getcwd()}]\ %f\ %m%r%h%w%=%{&fenc}/%{&ff}\ %y\ [%4l/%L:%3v]\ [%3P]
+set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings
