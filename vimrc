@@ -38,6 +38,11 @@ map <Space> <NOP>
 let mapleader="\<Space>"
 " no more F1
 noremap <F1> <Esc>
+xnoremap <F1> <Esc>
+snoremap <F1> <Esc>
+inoremap <F1> <Esc>
+lnoremap <F1> <Esc>
+cnoremap <F1> <Esc>
 " some toggles
 nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
