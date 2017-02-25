@@ -157,6 +157,7 @@ for_window [class="deponia_tcj"] floating enable
 for_window [class="dota_linux"] floating enable
 for_window [class="EoCApp"] floating enable
 for_window [class="game.x86_64"] floating enable
+for_window [class="HitmanPro"] floating enable
 for_window [class="hl2_linux"] floating enable
 for_window [class="jng_gold"] floating enable
 for_window [class="Pandora"] floating enable
