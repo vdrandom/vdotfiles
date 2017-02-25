@@ -1,6 +1,6 @@
 " various settings
-set number helplang=en foldmethod=marker ttymouse=xterm2 mouse=
-set history=50 nobackup nomodeline backspace=indent,eol,start
+set relativenumber number helplang=en foldmethod=marker history=50 nomodeline
+set nobackup backspace=indent,eol,start colorcolumn=80 ttymouse=xterm2 mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -27,10 +27,6 @@ if has("nvim") || v:version >= 800
     inoremap <C-Space> <C-^>
     cnoremap <C-Space> <C-^>
 endif
-if has("nvim") || v:version >= 703
-    set colorcolumn=80 relativenumber
-    nnoremap <Leader>r :setlocal relativenumber!<CR>
-endif
 
 " maps
 " leader
@@ -45,6 +41,7 @@ lnoremap <F1> <Esc>
 cnoremap <F1> <Esc>
 " some toggles
 nnoremap <Leader>n :setlocal number!<CR>
+nnoremap <Leader>r :setlocal relativenumber!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>/ :nohls<CR>
