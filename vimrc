@@ -1,6 +1,6 @@
 " various settings
-set relativenumber number helplang=en foldmethod=marker history=50 nomodeline
-set nobackup backspace=indent,eol,start colorcolumn=80 ttymouse=xterm2 mouse=
+set nobackup number nomodeline cursorline backspace=indent,eol,start
+set foldmethod=marker ttymouse=xterm2 mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -19,7 +19,10 @@ set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings
-if has("nvim") || v:version >= 800
+if v:version >= 703
+    set colorcolumn=80 relativenumber
+endif
+if v:version >= 800
     set breakindent
     set keymap=russian-jcukenwintype iminsert=0 imsearch=0
     inoremap <C-@> <C-^>
@@ -67,7 +70,7 @@ nnoremap <Leader>w :w<CR>
 
 " plugins
 let plugins = expand("$HOME/.vimplugins")
-if filereadable(plugins)
+if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
