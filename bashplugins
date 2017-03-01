@@ -25,9 +25,6 @@ gdf()
 
 git_prompt()
 {
-    # FIXME:
-    # upon the first traverse into the git repository, we always get staged
-    # count instead of unstaged, that is weird
     prompt_command
     if ! raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
         return
@@ -37,6 +34,8 @@ git_prompt()
     unstaged_count=0
     untracked_count=0
     unmerged_count=0
+
+    IFS=
 
     while read line; do
         if [[ "${line:0:2}" == '##' ]]; then
@@ -49,14 +48,17 @@ git_prompt()
     done <<< "${raw_status}"
 
     (( $unstaged_count > 0 )) && git_status+="${pmagenta}~${unstaged_count}"
-    (( $staged_count > 0 )) && git_status+="${pyellow}+${staged_count}"
-    (( $untracked_count > 0 )) && git_status+="${pcyan}?${untracked_count}"
-    (( $unmerged_count > 0 )) && git_status+="${pred}!${unmerged_count}"
+    (( $staged_count > 0 )) && git_status+="${pgreen}+${staged_count}"
+    (( $untracked_count > 0 )) && git_status+="${pyellow}-${untracked_count}"
+    (( $unmerged_count > 0 )) && git_status+="${pred}*${unmerged_count}"
     [[ -z "${git_status}" ]] && git_status='.'
 
     full_status="{ ${pblue}${branch_info}${preset} | ${git_status}${preset} }"
-    IFS="$ifs_temp"
-    PS1="${ps_line1} ${full_status}\n${ps_line2}"
+    if [[ -n "${OLD_PROMPT}" ]]; then
+        PS1="${ps_line1} ${full_status}\n${ps_line2}"
+    else
+        echo ${full_status}
+    fi
 }
 
 gitmode()
@@ -69,3 +71,5 @@ gitmode()
         PROMPT_COMMAND=git_prompt
     fi
 }
+
+gitmode
