@@ -1,5 +1,13 @@
+vscripts="${HOME}/vscripts"
+[[ -d ${vscripts} && ${PATH} != *${vscripts}* ]] && export PATH=${PATH}:${vscripts}
+
+completion_path='/usr/share/bash-completion/bash_completion'
+[[ -r "${completion_path}" ]] && . "${completion_path}"
+
+# because fuck you thats' why
 fuck() { echo 'no, fuck you'; }
 
+# some cool git stuff
 gdiff() { /usr/bin/git diff --color "$@"; }
 
 gdf()
@@ -15,48 +23,49 @@ gdf()
     fi
 }
 
-enable_vscripts()
+git_prompt()
 {
-    local vscripts="${HOME}/vscripts"
-    [[ -d ${vscripts} && ${PATH} != *${vscripts}* ]] && export PATH=${PATH}:${vscripts}
-}
+    # FIXME:
+    # upon the first traverse into the git repository, we always get staged
+    # count instead of unstaged, that is weird
+    prompt_command
+    if ! raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
+        return
+    fi
+    git_status=''
+    staged_count=0
+    unstaged_count=0
+    untracked_count=0
+    unmerged_count=0
 
-enable_completion()
-{
-    local completion_path='/usr/share/bash-completion/bash_completion'
-    [[ -r "${completion_path}" ]] && . "${completion_path}"
-}
-
-enable_git_prompt()
-{
-    local git_prompt_path='/usr/lib/bash-git-prompt/gitprompt.sh'
-    if [[ -r "${git_prompt_path}" ]]; then
-        GIT_PROMPT_FETCH_REMOTE_STATUS=0
-        GIT_PROMPT_SHOW_UPSTREAM=1
-        GIT_PROMPT_ONLY_IN_REPO=1
-        # theme overrides
-        if [[ $USER == 'von' ]]; then
-            git_prompt_username=""
-        else
-            git_prompt_username="${pred}${USER}${preset} "
+    while read line; do
+        if [[ "${line:0:2}" == '##' ]]; then
+            read branch_info <<< "${line:3}"
         fi
-        GIT_PROMPT_PREFIX="[ "
-        GIT_PROMPT_SUFFIX=" ]"
-        GIT_PROMPT_SEPARATOR=" "
-        GIT_PROMPT_START="[ ${git_prompt_username}${HOSTNAME}:${pbold}\w${preset} ]"
-        GIT_PROMPT_THEME_NAME="Custom"
-        GIT_PROMPT_UNTRACKED="${pcyan}u"
-        GIT_PROMPT_CHANGED="${pblue}+"
-        GIT_PROMPT_STAGED="${pyellow}s"
-        GIT_PROMPT_CONFLICTS="${pred}x"
-        GIT_PROMPT_STASHED="${ppurple}→"
-        GIT_PROMPT_CLEAN="${pgreen}."
-        GIT_PROMPT_END_USER="\n${pbold}>${preset} "
-        GIT_PROMPT_END_ROOT="\n${pred}>${preset} "
-        . "${git_prompt_path}"
+        [[ "${line:0:2}" =~ .[MD] ]] && (( unstaged_count++ ))
+        [[ "${line:0:2}" =~ [MDARC]. ]] && (( staged_count++ ))
+        [[ "${line:0:2}" == '??' ]] && (( untracked_count++ ))
+        [[ "${line:0:2}" =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++ ))
+    done <<< "${raw_status}"
+
+    (( $unstaged_count > 0 )) && git_status+="${pmagenta}~${unstaged_count}"
+    (( $staged_count > 0 )) && git_status+="${pyellow}+${staged_count}"
+    (( $untracked_count > 0 )) && git_status+="${pcyan}?${untracked_count}"
+    (( $unmerged_count > 0 )) && git_status+="${pred}!${unmerged_count}"
+    [[ -z "${git_status}" ]] && git_status='.'
+
+    full_status="{ ${pblue}${branch_info}${preset} | ${git_status}${preset} }"
+    IFS="$ifs_temp"
+    PS1="${ps_line1} ${full_status}\n${ps_line2}"
+}
+
+gitmode()
+{
+    if [[ -n "${OLD_PROMPT}" ]]; then
+        PROMPT_COMMAND=${OLD_PROMPT}
+        unset OLD_PROMPT
+    else
+        OLD_PROMPT=${PROMPT_COMMAND}
+        PROMPT_COMMAND=git_prompt
     fi
 }
-
-enable_vscripts
-enable_completion
-enable_git_prompt

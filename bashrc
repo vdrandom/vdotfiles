@@ -39,8 +39,6 @@ preset='\[\e[0m\]'
 pbold='\[\e[1m\]'
 reset='\e[0m'
 bold='\e[1m'
-newline='
-'
 prompt_command()
 {
     case ${TERM} in
@@ -61,7 +59,9 @@ prompt_command()
     else
         bang="${pred}>"
     fi
-    PS1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]${newline}${bang}${preset} "
+    ps_line1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]"
+    ps_line2="${bang}${preset} "
+    PS1="${ps_line1}\n${ps_line2}"
 }
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -130,8 +130,9 @@ alias mountmdf='sudo mount -o loop'
 alias mountnrg='sudo mount -o loop,offset=307200'
 
 # git
-alias gss='command git status -s'
 alias gci='command git commit'
+alias gsl='command git stash list'
+alias gss='command git status -sbu'
 alias gup='command git pull'
 
 # tig
