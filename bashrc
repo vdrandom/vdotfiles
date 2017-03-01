@@ -150,7 +150,7 @@ alias scr='command screen sudo -Es'
 # }}}
 # {{{ plugins and traps
 plugins="${HOME}/.bashplugins"
-[[ -r "${plugins}" ]] && . "${plugins}"
+[[ -r "${plugins}" && "$BASH_VERSINFO" -ge 4 ]] && . "${plugins}"
 
 # we want to see exit code on error (it also has to be the last entry here)
 trap 'printf "${red}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
