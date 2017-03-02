@@ -1,6 +1,6 @@
 " various settings
 set nobackup number nomodeline cursorline backspace=indent,eol,start
-set foldmethod=marker ttymouse=xterm2 mouse=
+set formatoptions+=j foldmethod=marker ttymouse=xterm2 mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -59,8 +59,8 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 "move macro somewhere I won't accidentally use it
-nnoremap Q q
-nnoremap q <Nop>
+noremap Q q
+noremap q <Nop>
 "quit / save
 nnoremap qq :q<CR>
 nnoremap qf :q!<CR>
