@@ -9,18 +9,18 @@ silent!call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'directionalWindowResizer'        "resize windows with simple hotkeys
-Plug 'jeetsukumaran/vim-buffergator'   "buffer management
-Plug 'junegunn/vim-easy-align'         "aligning
-Plug 'mhinz/vim-signify'               "version control system gutter info
-Plug 'nvie/vim-togglemouse'            "hotkey to toggle mouse
-Plug 'tpope/vim-fugitive'              "moar git awesomeness
-Plug 'vimwiki/vimwiki'                 "vimwiki
+Plug 'directionalWindowResizer'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'junegunn/vim-easy-align'
+Plug 'mhinz/vim-signify'
+Plug 'nvie/vim-togglemouse'
+Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
 
 " IDE liek, per filetype
-Plug 'neomake/neomake', { 'for': 'python' }      "linter
-Plug 'davidhalter/jedi-vim', { 'for': 'python' } "python support
-Plug 'ervandew/supertab', { 'for': 'python' }    "TAB autocompletion
+Plug 'neomake/neomake', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'ervandew/supertab', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'

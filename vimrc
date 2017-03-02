@@ -65,8 +65,8 @@ nnoremap q <Nop>
 nnoremap qq :q<CR>
 nnoremap qf :q!<CR>
 nnoremap qa :qa<CR>
-nnoremap qw :wq<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap qs :wq<CR>
+nnoremap <Leader>s :w<CR>
 
 " plugins
 let plugins = expand("$HOME/.vimplugins")
