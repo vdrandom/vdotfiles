@@ -83,7 +83,6 @@ fun! s:ToggleMouse()
     endif
 endfunction
 noremap <Leader>m :call <SID>ToggleMouse()<CR>
-inoremap <Leader>m <Esc>:call <SID>ToggleMouse()<CR>a
 
 " plugins
 let plugins = expand("$HOME/.vimplugins")
