@@ -10,6 +10,7 @@ Plug 'junegunn/vim-plug'
 
 " general plugins
 Plug 'directionalWindowResizer'
+Plug 'ervandew/supertab'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
@@ -21,7 +22,6 @@ Plug 'vimwiki/vimwiki'
 " IDE liek, per filetype
 Plug 'neomake/neomake', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'ervandew/supertab', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'

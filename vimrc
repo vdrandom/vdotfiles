@@ -32,25 +32,25 @@ if v:version >= 800
 endif
 
 " maps
-" leader
+"leader
 map <Space> <NOP>
 let mapleader="\<Space>"
-" no more F1
+"no more F1
 noremap <F1> <Esc>
 xnoremap <F1> <Esc>
 snoremap <F1> <Esc>
 inoremap <F1> <Esc>
 lnoremap <F1> <Esc>
 cnoremap <F1> <Esc>
-" some toggles
+"some toggles
 nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>r :setlocal relativenumber!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>/ :nohls<CR>
 "home / end
-nnoremap H ^
-nnoremap L $
+noremap H ^
+noremap L $
 "copy to / paste from clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
