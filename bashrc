@@ -59,7 +59,7 @@ prompt_command()
     else
         bang="${pred}>"
     fi
-    ps_line1="[ ${prompt_user}${HOSTNAME}:${pbold}\w${preset} ]"
+    ps_line1="[ ${prompt_user}${HOSTNAME}:${pbold}$(pwd)${preset} ]"
     ps_line2="${bang}${preset} "
     PS1="${ps_line1}\n${ps_line2}"
 }
