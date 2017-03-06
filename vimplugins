@@ -14,7 +14,6 @@ Plug 'ervandew/supertab'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
-Plug 'nvie/vim-togglemouse'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vimwiki/vimwiki'
@@ -34,9 +33,6 @@ call plug#end()
 " signify options
 let g:signify_vcs_list=[ 'git', 'fossil' ]
 let g:signify_sign_change='~'
-
-" vim-togglemouse options
-nmap <Leader>m <F12>
 
 " easy-align options
 xmap <Leader>a <Plug>(EasyAlign)
