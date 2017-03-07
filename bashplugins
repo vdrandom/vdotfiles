@@ -35,7 +35,7 @@ git_prompt()
     untracked_count=0
     unmerged_count=0
 
-    IFS=
+    local IFS=
 
     while read line; do
         if [[ "${line:0:2}" == '##' ]]; then
