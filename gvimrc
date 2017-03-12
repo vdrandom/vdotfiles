@@ -1,9 +1,13 @@
 " solarized for gvim
-highlight Cursor guibg=#dc322f
+highlight Cursor guibg=#dc322f guifg=#fdf6e3
 set guioptions=aegimLl
 set mouse=a
-set guifont=Fantasque\ Sans\ Mono\ 11
-set novb
+if has('win32')
+    set guifont=Fantasque_Sans_Mono:h11
+else
+    set guifont=Fantasque\ Sans\ Mono\ 11
+endif
+set noeb vb t_vb=
 set guicursor=a:block                   "block cursor by default
 set guicursor+=i:ver1-Cursor/lCursor    "i-beam for insert mode
 set guicursor+=r:hor1-Cursor/lCursor    "underline for replace
