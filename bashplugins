@@ -25,35 +25,37 @@ gdf()
 
 git_prompt()
 {
+    local staged_count unstaged_count untracked_count unmerged_count
+    local git_status branch_info full_status IFS=
+
     prompt_command
+
     if ! raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
         return
     fi
+
     git_status=''
     staged_count=0
     unstaged_count=0
     untracked_count=0
     unmerged_count=0
 
-    local IFS=
-
     while read line; do
-        if [[ "${line:0:2}" == '##' ]]; then
-            read branch_info <<< "${line:3}"
-        fi
+        [[ "${line:0:2}" == '##' ]] && branch_info="${line:3}"
         [[ "${line:0:2}" =~ .[MD] ]] && (( unstaged_count++ ))
         [[ "${line:0:2}" =~ [MDARC]. ]] && (( staged_count++ ))
         [[ "${line:0:2}" == '??' ]] && (( untracked_count++ ))
         [[ "${line:0:2}" =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++ ))
     done <<< "${raw_status}"
 
-    (( $unstaged_count > 0 )) && git_status+="${pmagenta}~${unstaged_count}"
-    (( $staged_count > 0 )) && git_status+="${pgreen}+${staged_count}"
-    (( $untracked_count > 0 )) && git_status+="${pyellow}-${untracked_count}"
-    (( $unmerged_count > 0 )) && git_status+="${pred}*${unmerged_count}"
-    [[ -z "${git_status}" ]] && git_status='.'
+    (( $unstaged_count > 0 )) && git_status+="${ppurple}~${unstaged_count}"
+    (( $staged_count > 0 )) && git_status+="${pblue}+${staged_count}"
+    (( $untracked_count > 0 )) && git_status+="${pred}-${untracked_count}"
+    (( $unmerged_count > 0 )) && git_status+="${porange}*${unmerged_count}"
+    [[ -z "${git_status}" ]] && git_status="${pgreen}ok"
 
-    full_status="{ ${pblue}${branch_info}${preset} | ${git_status}${preset} }"
+    full_status="{ ${pgray3}${branch_info}${preset} | ${git_status}${preset} }"
+
     if [[ -n "${OLD_PROMPT}" ]]; then
         PS1="${ps_line1} ${full_status}\n${ps_line2}"
     else
