@@ -15,7 +15,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
 
 " IDE liek, per filetype
