@@ -7,6 +7,11 @@ Xft.hintstyle:          hintslight
 Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
+#define fantasque_norm  xft:Fantasque Sans Mono:size=11
+#define fantasque_bold  xft:Fantasque Sans Mono:Bold:size=11
+#define fantasque_ital  xft:Fantasque Sans Mono:Italic:size=11
+#define fantasque_boit  xft:Fantasque Sans Mono:Bold:Italic:size=11
+
 #define terminus_norm   -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*
 #define terminus_bold   -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
 
@@ -26,6 +31,7 @@ URxvt.pastableTabs:     true
 URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
 URxvt.secondaryScroll:  false
+!URxvt.letterSpace:      -1
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard

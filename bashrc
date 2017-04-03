@@ -82,6 +82,7 @@ bind '"\e[6~"':forward-word                           # page down
 # {{{ aliases
 alias whence='type -P'
 alias less='command less -R'
+alias ltail='command less -R +F'
 alias cower='command cower -c'
 alias pacman='command pacman --color=auto'
 alias rgrep='command grep --exclude-dir=\.git -R'
