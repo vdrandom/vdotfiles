@@ -46,7 +46,8 @@ nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>r :setlocal relativenumber!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
-nnoremap <Leader>/ :nohls<CR>
+nnoremap <Leader>/ :setlocal hls!<CR>
+nnoremap <Leader>v :setlocal wrap!<CR>
 "home / end
 noremap H ^
 noremap L $
