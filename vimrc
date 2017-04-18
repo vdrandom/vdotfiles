@@ -60,7 +60,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 "move macro somewhere I won't accidentally use it
 noremap Q q
-noremap q <Nop>
+noremap q <NOP>
 "quit / save
 nnoremap qq :q<CR>
 nnoremap qf :q!<CR>
