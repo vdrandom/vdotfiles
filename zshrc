@@ -17,34 +17,34 @@ HISTFILE="${HOME}/.histfile"
 
 # completion
 if [[ -n ${comp_enabled} ]]; then
-	autoload -Uz compinit zsh/terminfo
-	compinit
-	setopt MENU_COMPLETE
-	zstyle ':completion:*' completer _list _complete _ignored
-	zstyle ':completion:*' insert-unambiguous true
-	zstyle ':completion:*' file-sort name
-	zstyle ':completion:*' format 'Completing %d'
-	zstyle ':completion:*' group-name ''
-	zstyle ':completion:*' list-colors ''
-	zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-	zstyle ':completion:*' list-suffixes true
-	zstyle ':completion:*' menu select=long-list select=0
-	zstyle ':completion:*' original true
-	zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-	zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-	zstyle ':completion:*' rehash true
-	zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
-	zstyle ':completion:*:processes-names' command 'ps axho command'
-	zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    autoload -Uz compinit zsh/terminfo
+    compinit
+    setopt MENU_COMPLETE
+    zstyle ':completion:*' completer _list _complete _ignored
+    zstyle ':completion:*' insert-unambiguous true
+    zstyle ':completion:*' file-sort name
+    zstyle ':completion:*' format 'Completing %d'
+    zstyle ':completion:*' group-name ''
+    zstyle ':completion:*' list-colors ''
+    zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+    zstyle ':completion:*' list-suffixes true
+    zstyle ':completion:*' menu select=long-list select=0
+    zstyle ':completion:*' original true
+    zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+    zstyle ':completion:*' rehash true
+    zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
+    zstyle ':completion:*:processes-names' command 'ps axho command'
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 # git info
 if [[ -n ${vcs_enabled} ]]; then
-	autoload -Uz vcs_info
-	zstyle ':vcs_info:*' enable git
-	zstyle ':vcs_info:*' check-for-changes true
-	zstyle ':vcs_info:*' stagedstr " %F{2}~%f"
-	zstyle ':vcs_info:*' unstagedstr " %F{1}-%f"
-	zstyle ':vcs_info:*' formats " { %B%F{12}%r%f%%b %F{3}%b%f%u%c }"
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr " %F{2}~%f"
+    zstyle ':vcs_info:*' unstagedstr " %F{1}-%f"
+    zstyle ':vcs_info:*' formats " { %B%F{12}%r%f%%b %F{3}%b%f%u%c }"
 fi
 
 export MYSQL_PS1="mysql [\d]> "
@@ -65,19 +65,14 @@ new_line='
 lb='[ '
 rb=' ]'
 bb=':'
-prompt_user='%(!.%F{red}%n%f.%F{blue}%n%f) '
+prompt_user='%(1000#..%B%F{red}%n%f%b )'
 prompt_host='%m'
 prompt_cwd='%B%d%b'
-prompt_bang='%B%(!.%F{red}>%f.>)%b'
+prompt_bang='%B%(!.%F{red}>%f.>)%b '
 prompt_jobs='%(1j. jobs:%B%F{red}%j%f%b.)'
 precmd() {
-[[ -n ${vcs_enabled} ]] && vcs_info
-if [[ -z ${hide_info} ]]; then
-	prompt_info="${lb}${prompt_user}${prompt_host}${bb}${prompt_cwd}${prompt_jobs}${rb}${vcs_info_msg_0_}"
-else
-	prompt_info=''
-fi
-PROMPT="${prompt_info}${new_line}${prompt_bang} "
+    [[ -n ${vcs_enabled} ]] && vcs_info
+    PROMPT="[ ${prompt_user}${prompt_host}${bb}${prompt_cwd}${prompt_jobs} ]${vcs_info_msg_0_}${new_line}${prompt_bang}"
 }
 PROMPT2='%b%f%_%B%F{green}>%f%b '
 PROMPT3='%b%f?%B%F{green}#%f%b '
@@ -211,23 +206,23 @@ alias -g WU='| iconvwu'
 editor=${EDITOR}
 text=( 'txt' 'xml' 'cfg' 'cnf' 'conf' 'ini' 'erb' 'pp' )
 for i in ${text[@]}; do
-	alias -s ${i}=${editor}
+    alias -s ${i}=${editor}
 done
 
 player='mpv'
 media=( 'mkv' 'mp4' 'avi' 'mpg' 'mp3' 'ogg' 'mpeg' 'mov' 'webm' 'flv' )
 for i in ${media[@]}; do
-	alias -s ${i}=${player}
+    alias -s ${i}=${player}
 done
 
 viewer='eog'
 image=( 'jpg' 'png' 'gif' 'bmp' 'jpeg' )
 for i in ${image[@]}; do
-	alias -s ${i}=${viewer}
+    alias -s ${i}=${viewer}
 done
 
 # wine:
 if [[ ${OSTYPE} != 'cygwin' ]]; then
-	alias -s exe=wine
+    alias -s exe=wine
 fi
 # }}}
