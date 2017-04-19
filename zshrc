@@ -112,6 +112,21 @@ bindkey '^R'      history-incremental-search-backward # ctrl + r
 bindkey '^[m'     copy-prev-shell-word                # alt + m
 bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 # }}}
+# {{{ functions
+gdiff() { /usr/bin/git diff --color "$@"; }
+gdf()
+{
+    local fancydiff='/usr/bin/diff-so-fancy'
+    local githighlight='/usr/share/git/diff-highlight/diff-highlight'
+    if [[ -x ${fancydiff} ]]; then
+        gdiff "$@" | ${fancydiff} | less --tabs=4 -RSFX
+    elif [[ -x ${githighlight} ]]; then
+        gdiff "$@" | ${githighlight} | less --tabs=4 -RSFX
+    else
+        gdiff "$@"
+    fi
+}
+# }}}
 # {{{ aliases
 alias less='command less -R'
 alias ltail='command less -R +F'
@@ -180,13 +195,6 @@ fi
 # screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
-# }}}
-# {{{ plugins and traps
-#plugins="${HOME}/.bashplugins"
-#[[ -r "${plugins}" && "$BASH_VERSINFO" -ge 4 ]] && . "${plugins}"
-#
-## we want to see exit code on error (it also has to be the last entry here)
-#trap 'printf "${red}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
 # }}}
 # {{{ global aliases
 alias -g L='| less -R'
