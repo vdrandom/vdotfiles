@@ -42,9 +42,9 @@ if [[ -n ${vcs_enabled} ]]; then
     autoload -Uz vcs_info
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr " %F{2}~%f"
-    zstyle ':vcs_info:*' unstagedstr " %F{1}-%f"
-    zstyle ':vcs_info:*' formats " { %B%F{12}%r%f%%b %F{3}%b%f%u%c }"
+    zstyle ':vcs_info:*' stagedstr " %F{green}~%f"
+    zstyle ':vcs_info:*' unstagedstr " %F{red}-%f"
+    zstyle ':vcs_info:*' formats " { %F{blue}%r%f %F{yellow}%b%f%u%c }"
 fi
 
 export MYSQL_PS1="mysql [\d]> "
@@ -71,6 +71,14 @@ prompt_cwd='%B%d%b'
 prompt_bang='%B%(!.%F{red}>%f.>)%b '
 prompt_jobs='%(1j. jobs:%B%F{red}%j%f%b.)'
 precmd() {
+    case ${TERM} in
+        xterm*|rxvt*)
+            printf "\033]0;%s@%s\007" "${USER}" "${HOST%%.*}"
+            ;;
+        screen*|tmux)
+            printf "\033k%s@%s\033\\" "${USER}" "${HOST%%.*}"
+            ;;
+    esac
     [[ -n ${vcs_enabled} ]] && vcs_info
     PROMPT="[ ${prompt_user}${prompt_host}${bb}${prompt_cwd}${prompt_jobs} ]${vcs_info_msg_0_}${new_line}${prompt_bang}"
 }
