@@ -1,6 +1,6 @@
 " solarized for gvim
 highlight Cursor guibg=#dc322f guifg=#fdf6e3
-set guioptions=aegimLl
+set guioptions=aeilL
 set mouse=a
 if has('win32')
     set guifont=Fantasque_Sans_Mono:h11
