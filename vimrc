@@ -46,8 +46,9 @@ nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>r :setlocal relativenumber!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
-nnoremap <Leader>/ :setlocal hls!<CR>
 nnoremap <Leader>v :setlocal wrap!<CR>
+"turn off highlight until next search
+nnoremap <Leader>/ :noh<CR>
 "home / end
 noremap H ^
 noremap L $
