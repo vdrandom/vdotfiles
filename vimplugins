@@ -9,7 +9,6 @@ silent!call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'directionalWindowResizer'
 Plug 'ervandew/supertab'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
@@ -18,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
+Plug 'vim-scripts/directionalWindowResizer'
 
 " IDE liek, per filetype
 Plug 'neomake/neomake', { 'for': 'python' }
