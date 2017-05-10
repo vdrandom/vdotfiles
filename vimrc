@@ -92,6 +92,10 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
+if &term == 'xterm-termite'
+    let solarized_term_italics = 1
+    set termguicolors
+endif
 colorscheme solarized8_light
 syntax on
 filetype plugin on
