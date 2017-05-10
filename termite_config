@@ -1,3 +1,4 @@
+# here be config!
 [options]
 scroll_on_output = false
 scroll_on_keystroke = true
@@ -12,15 +13,16 @@ scrollback_lines = 10000
 search_wrap = true
 icon_name = terminal
 cursor_blink = off
-cursor_shape = underline
+cursor_shape = block
 browser = default-web-browser
 size_hints = true
 
 [colors]
-cursor          = #dc322f
-foreground      = #657b83
-foreground_bold = #002b36
-background      = #fdf6e3
+cursor            = #dc322f
+cursor_foreground = #fdf6e3
+foreground        = #657b83
+foreground_bold   = #002b36
+background        = #fdf6e3
 
 # base16-light Solarized by Ethan Schoonover (http://ethanschoonover.com/solarized)
 color0  = #073642
