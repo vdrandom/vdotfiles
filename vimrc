@@ -93,9 +93,9 @@ if filereadable(plugins) && v:version >= 703
 endif
 
 if &term == 'xterm-termite'
-    let solarized_term_italics = 1
     set termguicolors
 endif
+let solarized_term_italics = 1
 colorscheme solarized8_light
 syntax on
 filetype plugin on

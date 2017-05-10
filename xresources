@@ -15,11 +15,16 @@ Xft.dpi:                96
 #define terminus_norm   -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*
 #define terminus_bold   -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
 
+!URxvt.font:             terminus_bold
+!URxvt.boldFont:         terminus_bold
+!URxvt.italicFont:       terminus_bold
+!URxvt.boldItalicFont:   terminus_bold
+URxvt.font:             fantasque_norm
+URxvt.boldFont:         fantasque_bold
+URxvt.italicFont:       fantasque_ital
+URxvt.boldItalicFont:   fantasque_boit
+URxvt.letterSpace:      -1
 URxvt.scrollBar:        false
-URxvt.font:             terminus_bold
-URxvt.boldFont:         terminus_bold
-URxvt.italicFont:       terminus_bold
-URxvt.boldItalicFont:   terminus_bold
 URxvt.saveLines:        10000
 URxvt.iso14755:         false
 URxvt.visualBell:       false
@@ -31,7 +36,6 @@ URxvt.pastableTabs:     true
 URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
 URxvt.secondaryScroll:  false
-!URxvt.letterSpace:      -1
 
 ! urxvt perl extensions
 URxvt.perl-ext-common:  default,matcher,clipboard

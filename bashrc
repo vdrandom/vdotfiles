@@ -57,7 +57,7 @@ prompt_command()
     if ((UID)); then
         bang="${pbold}>"
     else
-        bang="${pred}>"
+        bang="${pbold}${pred}>"
     fi
     ps_line1="[ ${prompt_user}${HOSTNAME}:${pbold}$(pwd)${preset} ]"
     ps_line2="${bang}${preset} "
@@ -154,5 +154,5 @@ plugins="${HOME}/.bashplugins"
 [[ -r "${plugins}" && "$BASH_VERSINFO" -ge 4 ]] && . "${plugins}"
 
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "${red}>>${reset} ${bold}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
+trap 'printf "${bold}${red}>>${reset} ${bold}exit${reset} ${bold}${red}%s${reset}\n" "$?" >&2' ERR
 # }}}
