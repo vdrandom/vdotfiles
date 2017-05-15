@@ -28,6 +28,9 @@ if v:version >= 800
     cnoremap <C-@> <C-^>
     inoremap <C-Space> <C-^>
     cnoremap <C-Space> <C-^>
+    if &term =~ 'xterm'
+        set termguicolors
+    endif
 endif
 
 " maps
@@ -92,9 +95,6 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
-if &term == 'xterm-termite'
-    set termguicolors
-endif
 let solarized_term_italics = 1
 colorscheme solarized8_light
 syntax on

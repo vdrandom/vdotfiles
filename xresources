@@ -7,23 +7,25 @@ Xft.hintstyle:          hintslight
 Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
-#define fantasque_norm  xft:Fantasque Sans Mono:size=11
-#define fantasque_bold  xft:Fantasque Sans Mono:Bold:size=11
-#define fantasque_ital  xft:Fantasque Sans Mono:Italic:size=11
-#define fantasque_boit  xft:Fantasque Sans Mono:Bold:Italic:size=11
+! fonts
+!#define fantasque_norm  xft:Fantasque Sans Mono:size=11
+!#define fantasque_bold  xft:Fantasque Sans Mono:Bold:size=11
+!#define fantasque_ital  xft:Fantasque Sans Mono:Italic:size=11
+!#define fantasque_boit  xft:Fantasque Sans Mono:Bold:Italic:size=11
+!URxvt.font:             fantasque_norm
+!URxvt.boldFont:         fantasque_bold
+!URxvt.italicFont:       fantasque_ital
+!URxvt.boldItalicFont:   fantasque_boit
+!URxvt.letterSpace:      -1
 
 #define terminus_norm   -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*
 #define terminus_bold   -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+URxvt.font:             terminus_bold
+URxvt.boldFont:         terminus_bold
+URxvt.italicFont:       terminus_bold
+URxvt.boldItalicFont:   terminus_bold
 
-!URxvt.font:             terminus_bold
-!URxvt.boldFont:         terminus_bold
-!URxvt.italicFont:       terminus_bold
-!URxvt.boldItalicFont:   terminus_bold
-URxvt.font:             fantasque_norm
-URxvt.boldFont:         fantasque_bold
-URxvt.italicFont:       fantasque_ital
-URxvt.boldItalicFont:   fantasque_boit
-URxvt.letterSpace:      -1
+! misc
 URxvt.scrollBar:        false
 URxvt.saveLines:        10000
 URxvt.iso14755:         false
@@ -37,7 +39,7 @@ URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
 URxvt.secondaryScroll:  false
 
-! urxvt perl extensions
+! perls
 URxvt.perl-ext-common:  default,matcher,clipboard
 URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
 URxvt.matcher.button:   3
