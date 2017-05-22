@@ -4,6 +4,9 @@ vscripts="${HOME}/vscripts"
 completion_path='/usr/share/bash-completion/bash_completion'
 [[ -r "${completion_path}" ]] && . "${completion_path}"
 
+grc_rc='/etc/profile.d/grc.bashrc'
+[[ -r "${grc_rc}" ]] && . "${grc_rc}"
+
 # because fuck you thats' why
 fuck() { echo 'no, fuck you'; }
 

@@ -99,18 +99,6 @@ alias iconvuk='command iconv -c -f utf-8 -t koi8-r'
 alias iconvku='command iconv -c -f koi8-r -t utf-8'
 alias iconvwu='command iconv -c -f cp1251 -t utf-8'
 
-# grc
-if is_exec grc; then
-    alias ping='command grc --colour=auto ping'
-    alias ping6='command grc --colour=auto ping'
-    alias traceroute='command grc --colour=auto traceroute'
-    alias traceroute6='command grc --colour=auto traceroute'
-    alias make='command grc --colour=auto make'
-    alias diff='command grc --colour=auto diff'
-    alias cvs='command grc --colour=auto cvs'
-    alias netstat='command grc --colour=auto netstat'
-fi
-
 # ls
 alias ls='command ls --color=auto --group-directories-first '
 alias la='ls -FA'
