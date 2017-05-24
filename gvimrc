@@ -1,6 +1,3 @@
-" solarized cursor for gvim
-highlight Cursor guibg=#dc322f guifg=#fdf6e3
-
 if has('win32')
     set guifont=Fantasque_Sans_Mono:h11
 else
