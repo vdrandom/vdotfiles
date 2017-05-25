@@ -24,7 +24,7 @@ Plug 'neomake/neomake', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " colorschemes
-Plug 'vdrandom/vim-solarized8'
+Plug 'lifepillar/vim-solarized8'
 Plug 'NLKNguyen/papercolor-theme'
 
 " syntax highlight plugins
