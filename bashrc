@@ -15,6 +15,7 @@ export MYSQL_PS1="mysql [\d]> "
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
 export TIME_STYLE='long-iso'
 
+export LC_CTYPE='ru_RU.utf8'
 export LANG='en_US.utf8'
 export LANGUAGE="$LANG"
 export EDITOR='vim'
