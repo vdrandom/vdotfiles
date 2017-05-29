@@ -8,44 +8,38 @@ local_bin="${HOME}/.local/bin"
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD
 setopt AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY
-comp_enabled=1
-vcs_enabled=1
 
 SAVEHIST=1000
 HISTSIZE=1000
 HISTFILE="${HOME}/.histfile"
 
 # completion
-if [[ -n ${comp_enabled} ]]; then
-    autoload -Uz compinit zsh/terminfo
-    compinit
-    setopt MENU_COMPLETE
-    zstyle ':completion:*' completer _list _complete _ignored
-    zstyle ':completion:*' insert-unambiguous true
-    zstyle ':completion:*' file-sort name
-    zstyle ':completion:*' format 'Completing %d'
-    zstyle ':completion:*' group-name ''
-    zstyle ':completion:*' list-colors ''
-    zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-    zstyle ':completion:*' list-suffixes true
-    zstyle ':completion:*' menu select=long-list select=0
-    zstyle ':completion:*' original true
-    zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-    zstyle ':completion:*' rehash true
-    zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
-    zstyle ':completion:*:processes-names' command 'ps axho command'
-    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-fi
+autoload -Uz compinit zsh/terminfo
+compinit
+setopt MENU_COMPLETE
+zstyle ':completion:*' completer _list _complete _ignored
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' menu select=long-list select=0
+zstyle ':completion:*' original true
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' rehash true
+zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
+zstyle ':completion:*:processes-names' command 'ps axho command'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # git info
-if [[ -n ${vcs_enabled} ]]; then
-    autoload -Uz vcs_info
-    zstyle ':vcs_info:*' enable git
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr " %F{green}~%f"
-    zstyle ':vcs_info:*' unstagedstr " %F{red}-%f"
-    zstyle ':vcs_info:*' formats " { %F{blue}%r%f %F{yellow}%b%f%u%c }"
-fi
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr " %F{2}S%f"
+zstyle ':vcs_info:*' unstagedstr " %F{1}U%f"
+zstyle ':vcs_info:*' formats " { %F{4}%r%f %F{3}%b%f%u%c }"
 
 export MYSQL_PS1="mysql [\d]> "
 export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
@@ -65,11 +59,11 @@ new_line='
 lb='[ '
 rb=' ]'
 bb=':'
-prompt_user='%(1000#..%B%F{red}%n%f%b )'
+prompt_user='%(1000#..%F{1}%n%f )'
 prompt_host='%m'
-prompt_cwd='%B%d%b'
-prompt_bang='%B%(!.%F{red}>%f.>)%b '
-prompt_jobs='%(1j. jobs:%B%F{red}%j%f%b.)'
+prompt_cwd='%F{8}%d%f'
+prompt_bang='%(!.%F{1}>%f.%F{8}>%f) '
+prompt_jobs='%(1j. jobs:%F{1}%j%f.)'
 precmd() {
     case ${TERM} in
         xterm*|rxvt*)
@@ -79,12 +73,12 @@ precmd() {
             printf "\033k%s@%s\033\\" "${USER}" "${HOST%%.*}"
             ;;
     esac
-    [[ -n ${vcs_enabled} ]] && vcs_info
+    vcs_info
     PROMPT="[ ${prompt_user}${prompt_host}${bb}${prompt_cwd}${prompt_jobs} ]${vcs_info_msg_0_}${new_line}${prompt_bang}"
 }
-PROMPT2='%b%f%_%B%F{green}>%f%b '
-PROMPT3='%b%f?%B%F{green}#%f%b '
-PROMPT4='%b%f+%N:%i%B%F{green}>%f%b '
+PROMPT2='%b%f%_%F{2}>%f%b '
+PROMPT3='%b%f?%F{2}#%f%b '
+PROMPT4='%b%f+%N:%i%F{2}>%f%b '
 # }}}
 # {{{ key bindings
 bindkey -e
@@ -146,18 +140,6 @@ alias iconvuk='command iconv -c -f utf-8 -t koi8-r'
 alias iconvku='command iconv -c -f koi8-r -t utf-8'
 alias iconvwu='command iconv -c -f cp1251 -t utf-8'
 
-# grc
-if is_exec grc; then
-    alias ping='command grc --colour=auto ping'
-    alias ping6='command grc --colour=auto ping'
-    alias traceroute='command grc --colour=auto traceroute'
-    alias traceroute6='command grc --colour=auto traceroute'
-    alias make='command grc --colour=auto make'
-    alias diff='command grc --colour=auto diff'
-    alias cvs='command grc --colour=auto cvs'
-    alias netstat='command grc --colour=auto netstat'
-fi
-
 # ls
 alias ls='command ls --color=auto --group-directories-first '
 alias la='ls -FA'
@@ -195,6 +177,10 @@ fi
 # screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
+
+# grc
+grc_rc='/etc/grc.zsh'
+[[ -r ${grc_rc} ]] && . ${grc_rc}
 # }}}
 # {{{ global aliases
 alias -g L='| less -R'
