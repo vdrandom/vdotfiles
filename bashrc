@@ -66,58 +66,21 @@ prompt_command()
 }
 PROMPT_COMMAND=prompt_command
 # }}}
-# {{{ key bindings
-# urxvt
-bind '"\e[7~"':beginning-of-line                      # home
-bind '"\e[8~"':end-of-line                            # end
-# screen
-bind '"\e[1~"':beginning-of-line                      # home
-bind '"\e[4~"':end-of-line                            # end
-# xterm
-bind '"\e[H~"':beginning-of-line                      # home
-bind '"\e[F~"':end-of-line                            # end
-# all of them
-bind '"\e[5~"':backward-word                          # page up
-bind '"\e[6~"':forward-word                           # page down
-# }}}
 # {{{ aliases
-alias whence='type -P'
-alias less='command less -R'
-alias ltail='command less -R +F'
+alias beep='printf "\007"'
 alias cower='command cower -c'
+alias fixterm='printf "c"'
+alias less='command less -R'
+alias mysql='command mysql --sigint-ignore'
 alias pacman='command pacman --color=auto'
 alias rgrep='command grep --exclude-dir=\.git -R'
-alias hist='command fc -l -1'
-alias beep='printf "\007"'
-alias fixterm='printf "c"'
+alias tailf='command less -R +F'
 alias vi='command vim'
-alias pg-linux-client='command sudo -u postgres psql'
-alias mysql='command mysql --sigint-ignore'
-
-# iconv
-alias iconvwk='command iconv -c -f cp1251 -t koi8-r'
-alias iconvuk='command iconv -c -f utf-8 -t koi8-r'
-alias iconvku='command iconv -c -f koi8-r -t utf-8'
-alias iconvwu='command iconv -c -f cp1251 -t utf-8'
+alias whence='type -P'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '
-alias la='ls -FA'
 alias ll='ls -lha'
-alias ld='ls -lhda'
-
-# diff and colordiff
-if is_exec colordiff; then
-    alias diff='command colordiff -u'
-else
-    alias diff='command diff -u'
-fi
-alias rdiff='command diff -r'
-
-# mount
-alias mountiso='sudo mount -t iso9660 -o loop'
-alias mountmdf='sudo mount -o loop'
-alias mountnrg='sudo mount -o loop,offset=307200'
 
 # git
 alias gci='command git commit'
