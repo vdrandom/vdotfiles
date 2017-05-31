@@ -98,7 +98,6 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
-set bg=dark
-colorscheme PaperColor
+colorscheme solarized8_light
 syntax on
 filetype plugin on
