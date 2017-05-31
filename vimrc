@@ -24,12 +24,6 @@ if v:version >= 703
 endif
 if v:version >= 800
     set breakindent keymap=russian-jcukenwintype iminsert=0 imsearch=0
-    if &term =~ '^[tmux|st|rxvt|xterm]'
-        set termguicolors
-    endif
-    if &term =~ '^[tmux|st]'
-        set t_8f=[38;2;%lu;%lu;%lum t_8b=[48;2;%lu;%lu;%lum
-    endif
     inoremap <C-@> <C-^>
     cnoremap <C-@> <C-^>
     inoremap <C-Space> <C-^>

@@ -18,12 +18,11 @@ Xft.dpi:                96
 !URxvt.boldItalicFont:   fantasque_boit
 !URxvt.letterSpace:      -1
 
-#define terminus_norm   -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*
-#define terminus_bold   -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
-URxvt.font:             terminus_bold
-URxvt.boldFont:         terminus_bold
-URxvt.italicFont:       terminus_bold
-URxvt.boldItalicFont:   terminus_bold
+#define terminus        -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+URxvt.font:             terminus
+URxvt.boldFont:         terminus
+URxvt.italicFont:       terminus
+URxvt.boldItalicFont:   terminus
 
 ! misc
 URxvt.scrollBar:        false
