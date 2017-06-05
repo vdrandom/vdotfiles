@@ -58,44 +58,12 @@ prompt_command()
 }
 PROMPT_COMMAND=prompt_command
 # }}}
-# {{{ aliases
-alias beep='printf "\007"'
-alias cower='command cower -c'
-alias fixterm='printf "c"'
-alias less='command less -R'
-alias mysql='command mysql --sigint-ignore'
-alias pacman='command pacman --color=auto'
-alias rgrep='command grep --exclude-dir=\.git -R'
-alias tailf='command less -R +F'
-alias vi='command vim'
-alias whence='type -P'
-
-# ls
-alias ls='command ls --color=auto --group-directories-first '
-alias ll='ls -lha'
-
-# git
-alias gci='command git commit'
-alias gsl='command git stash list'
-alias gss='command git status -sbu'
-alias gup='command git pull'
-
-# tig
-alias gsi='command tig status'
-
-# tmux
-alias tmux='command tmux -2'
-alias atmux='command tmux -2 attach'
-
-# screen
-alias rscreen='command screen -Dr'
-alias scr='command screen sudo -Es'
-# }}}
 # {{{ plugins and traps
 aliases="${HOME}/.aliases"
 plugins="${HOME}/.bashplugins"
-[[ -r "${aliases}" ]] && . "${aliases}"; unset aliases
-[[ -r "${plugins}" ]] && . "${plugins}"; unset plugins
+[[ -r "${aliases}" ]] && . "${aliases}"
+[[ -r "${plugins}" && "$BASH_VERSINFO" -ge 4 ]] && . "${plugins}"
+unset aliases plugins
 
 # we want to see exit code on error (it also has to be the last entry here)
 trap 'printf "${red}>>${reset} ${black}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
