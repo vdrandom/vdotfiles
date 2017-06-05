@@ -18,7 +18,7 @@ Xft.dpi:                96
 !URxvt.boldItalicFont:   fantasque_boit
 !URxvt.letterSpace:      -1
 
-#define terminus        -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+#define terminus        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 URxvt.font:             terminus
 URxvt.boldFont:         terminus
 URxvt.italicFont:       terminus
