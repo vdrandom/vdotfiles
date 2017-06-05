@@ -1,5 +1,4 @@
-vscripts="${HOME}/vscripts"
-[[ -d ${vscripts} && ${PATH} != *${vscripts}* ]] && export PATH=${PATH}:${vscripts}
+export SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
 
 completion_path='/usr/share/bash-completion/bash_completion'
 [[ -r "${completion_path}" ]] && . "${completion_path}"
@@ -15,8 +14,9 @@ colorize() {
             alias ${cmd}="command grc -es --colour=auto ${cmd}"
         done
 }
-if is_exec grc; then
+if [[ -x $(type -P grc) ]]; then
     colorize
+    unset -f colorize
 fi
 
 # because fuck you thats' why
