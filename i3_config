@@ -190,6 +190,7 @@ for_window [title="^Cacti - Realtime"] floating enable
 # vimwiki to scratchpad (gvim included)
 for_window [class="keepassxc"] move scratchpad, scratchpad show
 for_window [instance="vimwiki"] move scratchpad, scratchpad show
+for_window [class="Gvim" title="vimwiki"] move scratchpad, scratchpad show
 bindsym $mod+n [instance="vimwiki"] scratchpad show
 bindsym $mod+i [class="keepassxc"] scratchpad show
 # java KVM
