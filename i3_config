@@ -21,8 +21,7 @@ bindsym $mod+Shift+c kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
 bindsym $mod+p exec dmenu_ssh "$i3_term -e ssh" -i -fn "$dmenu_font"
-#bindsym $mod+i exec dmenu_pass -i -fn "$dmenu_font"
-bindsym $mod+u exec dmenu_pass_local -i -fn "$dmenu_font"
+bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font"
 bindsym $mod+Tab exec rofi -show window
 
 # change focus
@@ -190,7 +189,6 @@ for_window [title="^Cacti - Realtime"] floating enable
 # vimwiki to scratchpad (gvim included)
 for_window [class="keepassxc"] move scratchpad, scratchpad show
 for_window [instance="vimwiki"] move scratchpad, scratchpad show
-for_window [class="Gvim" title="vimwiki"] move scratchpad, scratchpad show
 bindsym $mod+n [instance="vimwiki"] scratchpad show
 bindsym $mod+i [class="keepassxc"] scratchpad show
 # java KVM
