@@ -1,7 +1,7 @@
 if has('win32')
     set guifont=Fantasque_Sans_Mono:h11
 else
-    set guifont=Input\ 10
+    set guifont=Fantasque\ Sans\ Mono\ 11
 endif
 set guiheadroom=0 guioptions=aei mouse=a
 set noerrorbells visualbell t_vb=

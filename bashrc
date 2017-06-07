@@ -62,7 +62,7 @@ PROMPT_COMMAND=prompt_command
 aliases="${HOME}/.aliases"
 plugins="${HOME}/.bashplugins"
 [[ -r "${aliases}" ]] && . "${aliases}"
-[[ -r "${plugins}" && "$BASH_VERSINFO" -ge 4 ]] && . "${plugins}"
+[[ -r "${plugins}" ]] && . "${plugins}"
 unset aliases plugins
 
 # we want to see exit code on error (it also has to be the last entry here)
