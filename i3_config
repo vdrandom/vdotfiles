@@ -19,6 +19,7 @@ bindsym $mod+x exec $i3_term
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
+bindsym $mod+s exec dmenu_laptop_screens -i -fn "$dmenu_font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
 bindsym $mod+p exec dmenu_ssh "$i3_term -e ssh" -i -fn "$dmenu_font"
 bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font"
@@ -58,7 +59,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+#bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -72,7 +73,7 @@ bindsym $mod+Return focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # move to another screen
 bindsym $mod+Shift+o move workspace to output left
@@ -166,6 +167,7 @@ for_window [class="jng_gold"] floating enable
 for_window [class="Pandora"] floating enable
 for_window [class="Strife"] floating enable
 for_window [class="Symphony.bin.x86_64"] floating enable
+for_window [class="Vpnui"] floating enable
 for_window [class="witcher2"] floating enable
 for_window [class="^Binding of Isaac"] floating enable
 for_window [title="^GunsOfIcarusOnline$"] floating enable
@@ -189,8 +191,10 @@ for_window [title="^Cacti - Realtime"] floating enable
 # vimwiki to scratchpad (gvim included)
 for_window [class="keepassxc"] move scratchpad, scratchpad show
 for_window [instance="vimwiki"] move scratchpad, scratchpad show
+for_window [class="Vpnui"] move scratchpad, scratchpad show
 bindsym $mod+n [instance="vimwiki"] scratchpad show
 bindsym $mod+i [class="keepassxc"] scratchpad show
+bindsym $mod+y [class="Vpnui"] scratchpad show
 # java KVM
 for_window [instance="sun-awt-X11-XFramePeer" title="(?i)kvm"] floating enable
 

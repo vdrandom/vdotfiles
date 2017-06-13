@@ -1,6 +1,7 @@
 " support my own way of using plugins in vim / bash
 autocmd BufRead *vimplugins set ft=vim
 autocmd BufRead *bashplugins set ft=sh
+autocmd BufRead *aliases set ft=sh
 
 " enable plugins
 source ~/.vim/plugged/vim-plug/plug.vim
