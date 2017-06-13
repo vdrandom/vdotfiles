@@ -19,7 +19,7 @@ bindsym $mod+x exec $i3_term
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec dmenu_laptop_screens -i -fn "$dmenu_font"
+bindsym $mod+s exec dmenu_displays -i -fn "$dmenu_font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
 bindsym $mod+p exec dmenu_ssh "$i3_term -e ssh" -i -fn "$dmenu_font"
 bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font"
