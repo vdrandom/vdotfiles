@@ -54,9 +54,9 @@ git_prompt()
 
     while read line; do
         [[ "${line:0:2}" == '##'                 ]] && branch_info="${line:3}"
+        [[ "${line:0:2}" == '??'                 ]] && (( untracked_count++ ))
         [[ "${line:0:2}" =~ .[MD]                ]] && (( unstaged_count++ ))
         [[ "${line:0:2}" =~ [MDARC].             ]] && (( staged_count++ ))
-        [[ "${line:0:2}" == '??'                 ]] && (( untracked_count++ ))
         [[ "${line:0:2}" =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++ ))
     done <<< "${raw_status}"
 
