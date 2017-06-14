@@ -40,33 +40,30 @@ gdf()
 
 git_prompt()
 {
-    local staged_count unstaged_count untracked_count unmerged_count
-    local git_status branch_info full_status IFS=
-
     prompt_command
 
-    if ! raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
+    if [[ ! -r ./.git/HEAD ]] || ! local raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
         return
     fi
-
-    git_status=''
-    staged_count=0
-    unstaged_count=0
-    untracked_count=0
-    unmerged_count=0
+    local branch_info full_status IFS=
+    local git_status=''
+    local staged_count=0
+    local unstaged_count=0
+    local untracked_count=0
+    local unmerged_count=0
 
     while read line; do
-        [[ "${line:0:2}" == '##' ]] && branch_info="${line:3}"
-        [[ "${line:0:2}" =~ .[MD] ]] && (( unstaged_count++ ))
-        [[ "${line:0:2}" =~ [MDARC]. ]] && (( staged_count++ ))
-        [[ "${line:0:2}" == '??' ]] && (( untracked_count++ ))
+        [[ "${line:0:2}" == '##'                 ]] && branch_info="${line:3}"
+        [[ "${line:0:2}" =~ .[MD]                ]] && (( unstaged_count++ ))
+        [[ "${line:0:2}" =~ [MDARC].             ]] && (( staged_count++ ))
+        [[ "${line:0:2}" == '??'                 ]] && (( untracked_count++ ))
         [[ "${line:0:2}" =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++ ))
     done <<< "${raw_status}"
 
-    (( $unstaged_count > 0 )) && git_status+="${ppurple}~${unstaged_count}"
-    (( $staged_count > 0 )) && git_status+="${pblue}+${staged_count}"
-    (( $untracked_count > 0 )) && git_status+="${pred}-${untracked_count}"
-    (( $unmerged_count > 0 )) && git_status+="${porange}*${unmerged_count}"
+    (( unstaged_count     )) && git_status+="${ppurple}~${unstaged_count}"
+    (( staged_count       )) && git_status+="${pblue}+${staged_count}"
+    (( untracked_count    )) && git_status+="${pred}-${untracked_count}"
+    (( unmerged_count     )) && git_status+="${porange}*${unmerged_count}"
     [[ -z "${git_status}" ]] && git_status="${pgreen}ok"
 
     full_status="{ ${pgray3}${branch_info}${preset} | ${git_status}${preset} }"
