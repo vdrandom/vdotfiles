@@ -12,7 +12,7 @@ set noerrorbells visualbell t_vb=
 " indentation
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 " termcap fixes
-set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
+set t_ut= termencoding=utf-8 encoding=utf-8
 " status line
 set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
