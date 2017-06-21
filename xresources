@@ -30,6 +30,7 @@ URxvt.saveLines:        10000
 URxvt.iso14755:         false
 URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
+URxvt.termName:         rxvt-unicode
 URxvt.internalBorder:   1
 URxvt.fading:           5
 URxvt.pastableTabs:     true
