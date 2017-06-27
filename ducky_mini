@@ -1,3 +1,8 @@
+// This is a wip layout that mimicks ducky shine mini keyboard layout.
+// Uses us standard and ru typewriter keyboard layouts.
+// WIP, should be used with lv3 and grp switches
+// Has to be copied to /usr/share/X11/xkb/symbols/ducky_mini
+
 default partial alphanumeric_keys
 xkb_symbols "us" {
 	name[Group1]="English (US, with a layout mimicking the Ducky Mini)";
