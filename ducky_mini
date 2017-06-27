@@ -78,7 +78,7 @@ xkb_symbols "ru" {
 	key <AB07> { [ Cyrillic_softsign, Cyrillic_SOFTSIGN, Next,        Next        ] };
 	key <AB08> { [ Cyrillic_be,       Cyrillic_BE,       Home,        Home        ] };
 	key <AB09> { [ Cyrillic_yu,       Cyrillic_YU,       End,         End         ] };
-                                                                            
+
 	key <BKSL> { [ parenright,        parenleft,         Insert,      Insert      ] };
 	key <BKSP> { [ BackSpace,         BackSpace,         Delete,      Delete      ] };
 };
@@ -90,6 +90,11 @@ xkb_symbols "common" {
 	key <LCTL> {
 		type[Group1]="ONE_LEVEL",
 		symbols[Group1] = [ ISO_Level3_Shift ]
+	};
+	key <SPCE> {
+		type="PC_SUPER_LEVEL2",
+		symbols[Group1]= [ space, ISO_Next_Group ],
+		symbols[Group2]= [ space, ISO_Next_Group ]
 	};
 	key <CAPS> { [ Control_L ] };
 	modifier_map Control { <CAPS>, <RCTL> };
