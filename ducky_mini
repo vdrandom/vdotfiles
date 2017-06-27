@@ -5,7 +5,7 @@
 
 default partial alphanumeric_keys
 xkb_symbols "us" {
-	name[Group1]="English (US, with a layout mimicking the Ducky Mini)";
+	name[Group1] = "English (US, with a layout mimicking the Ducky Shine Mini fn functionality)";
 
 	include "us(basic)"
 	include "ducky_mini(common)"
@@ -45,7 +45,7 @@ xkb_symbols "us" {
 
 partial alphanumeric_keys
 xkb_symbols "ru" {
-	name[Group1]= "Russian (RU typewriter, with a layout mimicking the Ducky Mini)";
+	name[Group1] = "Russian (RU typewriter, with a layout mimicking the Ducky Shine Mini fn functionality)";
 
 	include "ru(typewriter)"
 	include "ducky_mini(common)"
@@ -85,17 +85,14 @@ xkb_symbols "ru" {
 
 partial modifier_keys
 xkb_symbols "common" {
-	name[Group1]= "Common (layout mimicking the Ducky Mini)";
+	name[Group1] = "Common (layout mimicking the Ducky Shine Mini fn functionality)";
 
-	key <LCTL> {
-		type[Group1]="ONE_LEVEL",
-		symbols[Group1] = [ ISO_Level3_Shift ]
-	};
+	replace key <CAPS> { [ Control_L ] };
+	replace key <LCTL> { [ ISO_Level3_Shift ] };
+
 	key <SPCE> {
-		type="PC_SUPER_LEVEL2",
-		symbols[Group1]= [ space, ISO_Next_Group ],
-		symbols[Group2]= [ space, ISO_Next_Group ]
+		type = "PC_SUPER_LEVEL2",
+		symbols[Group1] = [ space, ISO_Next_Group ],
+		symbols[Group2] = [ space, ISO_Next_Group ]
 	};
-	key <CAPS> { [ Control_L ] };
-	modifier_map Control { <CAPS>, <RCTL> };
 };
