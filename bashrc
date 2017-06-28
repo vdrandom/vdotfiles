@@ -42,14 +42,11 @@ prompt_command()
             printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
             ;;
     esac
-    if [[ ${USER} == 'von' ]]; then
-        prompt_user=""
-    else
-        prompt_user="${pred}\u${preset} "
-    fi
     if ((UID)); then
+        prompt_user="${pblack}\u${preset} "
         bang="${pblack}>"
     else
+        prompt_user="${pred}\u${preset} "
         bang="${pred}>"
     fi
     ps_line1="[ ${prompt_user}${HOSTNAME}:${pblack}$(pwd)${preset} ]"
