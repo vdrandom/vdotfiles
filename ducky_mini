@@ -89,10 +89,4 @@ xkb_symbols "common" {
 
 	replace key <CAPS> { [ Control_L ] };
 	replace key <LCTL> { [ ISO_Level3_Shift ] };
-
-	key <SPCE> {
-		type = "PC_SUPER_LEVEL2",
-		symbols[Group1] = [ space, ISO_Next_Group ],
-		symbols[Group2] = [ space, ISO_Next_Group ]
-	};
 };
