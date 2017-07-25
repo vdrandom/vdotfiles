@@ -10,7 +10,8 @@ xkb_symbols "us" {
 	include "us(basic)"
 	include "ducky_mini(common)"
 
-	key <TLDE> { [ Escape,       asciitilde,  grave,       Escape      ] };
+	// chromium doesn't like it when esc is bound to a normal key :(
+	// key <TLDE> { [ Escape,       asciitilde,  grave,       Escape      ] };
 	key <AE01> { [ 1,            exclam,      F1,          F1          ] };
 	key <AE02> { [ 2,            at,          F2,          F2          ] };
 	key <AE03> { [ 3,            numbersign,  F3,          F3          ] };
@@ -50,7 +51,8 @@ xkb_symbols "ru" {
 	include "ru(typewriter)"
 	include "ducky_mini(common)"
 
-	key <TLDE> { [ Escape,            plus,              bar,         Escape      ] };
+	// chromium doesn't like it when esc is bound to a normal key :(
+	// key <TLDE> { [ Escape,            plus,              bar,         Escape      ] };
 	key <AE01> { [ numerosign,        1,                 F1,          F1          ] };
 	key <AE02> { [ minus,             2,                 F2,          F2          ] };
 	key <AE03> { [ slash,             3,                 F3,          F3          ] };
@@ -87,6 +89,5 @@ partial modifier_keys
 xkb_symbols "common" {
 	name[Group1] = "Common (layout mimicking the Ducky Shine Mini fn functionality)";
 
-	replace key <CAPS> { [ Control_L ] };
 	replace key <LCTL> { [ ISO_Level3_Shift ] };
 };
