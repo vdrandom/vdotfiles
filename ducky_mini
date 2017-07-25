@@ -89,5 +89,6 @@ partial modifier_keys
 xkb_symbols "common" {
 	name[Group1] = "Common (layout mimicking the Ducky Shine Mini fn functionality)";
 
+	replace key <CAPS> { [ Control_L ] };
 	replace key <LCTL> { [ ISO_Level3_Shift ] };
 };
