@@ -38,13 +38,26 @@ gdf()
     fi
 }
 
+is_git_repo()
+{
+    local curr_dir="$PWD"
+    while [[ -n "${curr_dir}" ]]; do
+        if [[ -r "${curr_dir}/.git/HEAD" ]]; then
+            return 0
+        else
+            curr_dir="${curr_dir%/*}"
+        fi
+    done
+    return 1
+}
+
 git_prompt()
 {
     prompt_command
 
-    if [[ ! -r ./.git/HEAD ]] || ! local raw_status="$(git status --porcelain -bu 2>/dev/null)"; then
-        return
-    fi
+    is_git_repo || return 0
+
+    local raw_status="$(git status --porcelain -bu 2>/dev/null)"
     local branch_info full_status IFS=
     local git_status=''
     local staged_count=0

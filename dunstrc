@@ -29,6 +29,7 @@
     browser = /home/von/.local/bin/default-web-browser
     icon_position = left
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    max_icon_size = 32
 
 [frame]
     width = 1
