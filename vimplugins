@@ -11,6 +11,7 @@ Plug 'junegunn/vim-plug'
 
 " general plugins
 Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
@@ -32,8 +33,17 @@ Plug 'neilhwatson/vim_cf3'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
+" lightline options
+set noshowmode
+let g:solarized_termcolors = 16
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ }
+
 " signify options
-let g:signify_vcs_list=[ 'git', 'fossil' ]
+let g:signify_vcs_list=[ 'git' ]
 let g:signify_sign_change='~'
 
 " easy-align options
