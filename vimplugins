@@ -22,14 +22,13 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/directionalWindowResizer'
 
 " IDE liek, per filetype
-Plug 'neomake/neomake', { 'for': 'python' }
+Plug 'w0rp/ale', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
 
 " syntax highlight plugins
-Plug 'neilhwatson/vim_cf3'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
