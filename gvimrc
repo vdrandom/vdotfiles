@@ -1,7 +1,7 @@
 if has('win32')
-    set guifont=Input:h10
+    set guifont=Iosevka_Regular:h10
 else
-    set guifont=Input\ 10
+    set guifont=Iosevka\ Regular\ 10
 endif
 set guiheadroom=0 guioptions=aei mouse=a
 set noerrorbells visualbell t_vb=

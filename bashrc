@@ -44,13 +44,13 @@ prompt_command()
     esac
     if ((UID)); then
         prompt_user="${pblack}\u${preset} "
-        bang="${pblack}>"
+        bang="${pblack}>${preset}"
     else
         prompt_user="${pred}\u${preset} "
-        bang="${pred}>"
+        bang="${pred}>${preset}"
     fi
     ps_line1="[ ${prompt_user}${HOSTNAME}:${pblack}$(pwd)${preset} ]"
-    ps_line2="${bang}${preset} "
+    ps_line2="${bang} "
     PS1="${ps_line1}\n${ps_line2}"
 }
 PROMPT_COMMAND=prompt_command
