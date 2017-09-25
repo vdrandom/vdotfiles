@@ -8,7 +8,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Iosevka Regular 10
+font = Iosevka Term Regular 10
 scrollback_lines = 10000
 search_wrap = true
 icon_name = terminal
@@ -44,4 +44,4 @@ color14 = #93a1a1
 color15 = #fdf6e3
 
 [hints]
-font = Iosevka Regular 9
+font = Iosevka Term Regular 9

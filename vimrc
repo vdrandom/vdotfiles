@@ -92,6 +92,7 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
+let g:solarized_term_italics = 1
 colorscheme solarized8_light
 syntax on
 filetype plugin on

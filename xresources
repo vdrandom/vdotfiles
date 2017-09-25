@@ -8,15 +8,10 @@ Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
 ! fonts
-!#define fantasque_norm  xft:Fantasque Sans Mono:size=11
-!#define fantasque_bold  xft:Fantasque Sans Mono:Bold:size=11
-!#define fantasque_ital  xft:Fantasque Sans Mono:Italic:size=11
-!#define fantasque_boit  xft:Fantasque Sans Mono:Bold:Italic:size=11
-!URxvt.font:             fantasque_norm
-!URxvt.boldFont:         fantasque_bold
-!URxvt.italicFont:       fantasque_ital
-!URxvt.boldItalicFont:   fantasque_boit
-!URxvt.letterSpace:      -1
+!URxvt.font:             xft:Iosevka Term:Regular:size=10
+!URxvt.boldFont:         xft:Iosevka Term:Bold:size=10
+!URxvt.italicFont:       xft:Iosevka Term:Italic:size=10
+!URxvt.boldItalicFont:   xft:Iosevka Term:Bold:Italic:size=10
 
 #define terminus        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 URxvt.font:             terminus
