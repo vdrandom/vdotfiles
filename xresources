@@ -20,6 +20,7 @@ URxvt.italicFont:       terminus
 URxvt.boldItalicFont:   terminus
 
 ! misc
+URxvt.pointerBlank:     true
 URxvt.scrollBar:        false
 URxvt.saveLines:        10000
 URxvt.iso14755:         false
