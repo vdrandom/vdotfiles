@@ -58,9 +58,11 @@ PROMPT_COMMAND=prompt_command
 # {{{ plugins and traps
 aliases="${HOME}/.aliases"
 plugins="${HOME}/.bashplugins"
+localconf="${HOME}/.bashlocal"
 [[ -r "${aliases}" ]] && . "${aliases}"
 [[ -r "${plugins}" ]] && . "${plugins}"
-unset aliases plugins
+[[ -r "${localconf}" ]] && . "${localconf}"
+unset aliases plugins localconf
 
 # we want to see exit code on error (it also has to be the last entry here)
 trap 'printf "${red}>>${reset} ${black}exit${reset} ${red}%s${reset}\n" "$?" >&2' ERR
