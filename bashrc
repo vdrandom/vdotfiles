@@ -7,9 +7,6 @@ HISTFILE="${HOME}/.bash_history.${UID}"
 HISTCONTROL=ignoredups
 shopt -s histappend checkwinsize autocd
 
-export LANG='en_US.utf8'
-export LANGUAGE="$LANG"
-export LC_CTYPE='ru_RU.utf8'
 export PAGER='less -R'
 export EDITOR='vim'
 export MYSQL_PS1="mysql [\d]> "
