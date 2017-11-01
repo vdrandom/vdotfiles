@@ -1,5 +1,5 @@
 " various settings
-set nobackup number nomodeline cursorline backspace=indent,eol,start
+set nobackup number nomodeline backspace=indent,eol,start
 set foldmethod=marker ttymouse=xterm2 mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*

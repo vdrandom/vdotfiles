@@ -1,8 +1,8 @@
 " Iosevka Term ss10
 if has('win32')
-    set guifont=Fantasque_Sams_Mono:h12
+    set guifont=Fantasque_Sans_Mono:h11
 else
-    set guifont=Fantasque\ Sans\ Mono\ 12
+    set guifont=Fantasque\ Sans\ Mono\ 11
 endif
 let g:lightline = { 'colorscheme': 'solarized', }
 set guiheadroom=0 guioptions=aei mouse=a

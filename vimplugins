@@ -48,10 +48,3 @@ let g:signify_sign_change='~'
 " easy-align options
 xmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
-
-" neomake
-nmap <Leader>i :Neomake<CR>
-let g:neomake_open_list = 7
-let g:neomake_error_sign   = { 'text': 'e>', 'texthl': 'ErrorMsg' }
-let g:neomake_warning_sign = { 'text': 'w>', 'texthl': 'WarningMsg' }
-let g:neomake_info_sign    = { 'text': 'i>', 'texthl': 'InfoMsg' }
