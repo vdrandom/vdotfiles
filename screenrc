@@ -13,7 +13,7 @@ term screen
 altscreen on
 activity "activity on %n"
 caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{wk}%n_%t%{wd}%+w'
-escape ^@@
+escape ^gg
 bind w windowlist -b
 bindkey ^[q prev
 bindkey ^[w next

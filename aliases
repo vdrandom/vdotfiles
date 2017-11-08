@@ -8,7 +8,6 @@ alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias vi='command vim'
-alias whence='type -P'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '

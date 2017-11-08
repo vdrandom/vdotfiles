@@ -23,11 +23,7 @@ if v:version >= 703
     set colorcolumn=80 relativenumber formatoptions+=j
 endif
 if v:version >= 800
-    set breakindent keymap=russian-jcukenwintype iminsert=0 imsearch=0
-    inoremap <C-@> <C-^>
-    cnoremap <C-@> <C-^>
-    inoremap <C-Space> <C-^>
-    cnoremap <C-Space> <C-^>
+    set breakindent
 endif
 
 " maps

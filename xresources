@@ -64,7 +64,7 @@ URxvt.foreground:   base03
 URxvt.background:   base07
 URxvt.colorBD:      base00
 
-URxvt.cursorColor:  base08
+URxvt.cursorColor:  base09
 
 URxvt.color0:       base01
 URxvt.color1:       base08
