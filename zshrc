@@ -4,7 +4,6 @@
 # {{{ settings
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
-autoload -Uz colors && colors
 
 SAVEHIST=1000
 HISTSIZE=1000
@@ -138,6 +137,21 @@ TRAPEXIT() {
 }
 # }}}
 # {{{ plugins
+# colors
+font_colors() {
+    color_number=0
+    # colors are named for the solarized palette
+    for color in \
+        gray6 red green yellow blue magenta cyan gray1 \
+        black orange gray5 gray4 gray3 purple gray2 white
+    do
+        eval "${color}='\e[38;5;${color_number}m'"
+        (( color_number++ ))
+    done
+    unset color_number
+    reset='\e[0m'
+    bold='\e[1m'
+}
 # grc
 colorize() {
         local cmds cmd
