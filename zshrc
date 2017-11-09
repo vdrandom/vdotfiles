@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # {{{ settings
-setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD
+setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
 autoload -Uz colors && colors
 
@@ -133,11 +133,8 @@ precmd() {
     precmd.prompt
     precmd.git_update &!
 }
-TRAPERR() {
-    printf "$fg[red]>>$reset_color $fg[black]exit$reset_color $fg[red]%s$reset_color\n" "$?" >&2
-}
 TRAPEXIT() {
-    rm $prompt_state_file
+    [[ -r $prompt_state_file ]] && rm $prompt_state_file
 }
 # }}}
 # {{{ plugins
