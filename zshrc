@@ -64,13 +64,13 @@ bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 # }}}
 # {{{ prompt
 prompt_nl=$'\n'
-prompt_ln1='[ %(!.%F{1}.%F{0})%n%f %m:%F{0}%d%f ]'
-prompt_ln2='%(!.%F{1}.%F{0})>%f '
-prompt_state="$XDG_RUNTIME_DIR/zsh_rprompt_$$.tmp"
+prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
+prompt_ln2='%(!.%F{red}.%F{black})>%f '
+prompt_state="$XDG_RUNTIME_DIR/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_nl$prompt_ln2"
-PROMPT2='%b%f%_%F{2}>%f%b '
-PROMPT3='%b%f?%F{2}#%f%b '
-PROMPT4='%b%f+%N:%i%F{2}>%f%b '
+PROMPT2='%b%f%_%F{green}>%f%b '
+PROMPT3='%b%f?%F{green}#%f%b '
+PROMPT4='%b%f+%N:%i%F{green}>%f%b '
 precmd.title() {
     case ${TERM} in
         xterm*|rxvt*)
@@ -98,26 +98,22 @@ precmd.git()
     precmd.is_git_repo || return 0
 
     local raw_status=$(git status --porcelain -bu 2>/dev/null)
-    local branch_info full_status IFS=
-    local git_status=''
-    local staged_count=0
-    local unstaged_count=0
-    local untracked_count=0
-    local unmerged_count=0
+    local branch_info full_status git_status IFS=
+    local staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
     while read line; do
         [[ $line[1,2] == '##'                 ]] && branch_info=$line[4,-1]
         [[ $line[1,2] == '??'                 ]] && (( untracked_count++ ))
-        [[ $line[1,2] =~ .[MD]                ]] && (( unstaged_count++ ))
-        [[ $line[1,2] =~ [MDARC].             ]] && (( staged_count++ ))
-        [[ $line[1,2] =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++ ))
+        [[ $line[1,2] =~ .[MD]                ]] && (( unstaged_count++  ))
+        [[ $line[1,2] =~ [MDARC].             ]] && (( staged_count++    ))
+        [[ $line[1,2] =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++  ))
     done <<< "${raw_status}"
 
-    (( unstaged_count     )) && git_status+="%F{5}~$unstaged_count"
-    (( staged_count       )) && git_status+="%F{4}+$staged_count"
-    (( untracked_count    )) && git_status+="%F{1}-$untracked_count"
-    (( unmerged_count     )) && git_status+="%F{9}*$unmerged_count"
-    [[ -z $git_status ]] && git_status="%F{2}ok"
+    (( unstaged_count  )) && git_status+="%F{yellow}~$unstaged_count"
+    (( staged_count    )) && git_status+="%F{blue}+$staged_count"
+    (( untracked_count )) && git_status+="%F{red}-$untracked_count"
+    (( unmerged_count  )) && git_status+="%F{magenta}*$unmerged_count"
+    [[ -z $git_status  ]] && git_status="%F{green}ok"
 
     printf ' { %s | %s%%f }' $branch_info $git_status
 }
