@@ -97,8 +97,8 @@ precmd.git()
 {
     precmd.is_git_repo || return 0
 
-    local raw_status=$(git status --porcelain -bu 2>/dev/null)
-    local branch_info full_status git_status IFS=
+    local raw_status="$(git status --porcelain -bu 2>/dev/null)"
+    local branch_info full_status git_status= IFS=
     local staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
     while read line; do
@@ -125,7 +125,7 @@ precmd.git_update() {
     kill -s USR1 $$
 }
 TRAPUSR1() {
-    prompt_async_data=$(<$prompt_state)
+    prompt_async_data="$(<$prompt_state)"
     precmd.prompt
     zle && zle reset-prompt
 }
@@ -147,7 +147,7 @@ colorize() {
             alias $cmd="command grc -es --colour=auto $cmd"
         done
 }
-if [[ -x $(whence grc) ]]; then
+if [[ -x "$(whence grc)" ]]; then
     colorize
     unset -f colorize
 fi
