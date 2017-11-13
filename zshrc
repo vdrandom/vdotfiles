@@ -33,8 +33,8 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# key bindings
+# }}}
+# {{{ key bindings
 bindkey -e
 # urxvt
 bindkey '^[[7~'   beginning-of-line                   # home
@@ -66,9 +66,9 @@ prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
 prompt_ln2='%(!.%F{red}.%F{black})>%f '
 prompt_state_file="$XDG_RUNTIME_DIR/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_nl$prompt_ln2"
-PROMPT2='%b%f%_%F{green}>%f%b '
-PROMPT3='%b%f?%F{green}#%f%b '
-PROMPT4='%b%f+%N:%i%F{green}>%f%b '
+PROMPT2='%b%f%_%(!.%F{red}.%F{black})>%f%b '
+PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
+PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
 precmd.title() {
     case ${TERM} in
         xterm*|rxvt*)
@@ -136,6 +136,52 @@ TRAPEXIT() {
     [[ -r $prompt_state_file ]] && rm $prompt_state_file
 }
 # }}}
+# {{{ aliases
+alias beep='printf "\007"'
+alias cower='command cower -c'
+alias fixterm='printf "c"'
+alias less='command less -R'
+alias mysql='command mysql --sigint-ignore'
+alias pacman='command pacman --color=auto'
+alias rgrep='command grep --exclude-dir=\.git -R'
+alias ggrep='command git grep'
+alias tailf='command less -R +F'
+alias vi='command vim'
+alias ls='command ls --color=auto --group-directories-first '
+alias ll='ls -lha'
+alias gci='command git commit'
+alias gsl='command git stash list'
+alias gss='command git status -sbu'
+alias gup='command git pull'
+alias gsi='command tig status'
+alias tmux='command tmux -2'
+alias atmux='command tmux -2 attach'
+alias rscreen='command screen -Dr'
+alias scr='command screen sudo -Es'
+# }}}
+# {{{ global aliases
+alias -g L='| less -R'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g PV='| pv |'
+alias -g WCL='| wc -l'
+alias -g NCL='| nc -l 17777'
+alias -g NO='1> /dev/null'
+alias -g NE='2> /dev/null'
+alias -g EO='2> &1'
+alias -g OE='1> &2'
+alias -g TEE='>&1 >>'
+alias -g WK='| iconvwk'
+alias -g UK='| iconvuk'
+alias -g KU='| iconvku'
+alias -g WU='| iconvwu'
+# }}}
+# {{{ suffix aliases
+alias -s {txt,xml,cfg,cnf,conf,ini.erb.pp}=${EDITOR}
+alias -s {mkv,mp4,avi,mpg,mp3,ogg,mpeg,mov,webm,flv}='mpv'
+alias -s {jpg,png,gif,bmp,jpeg}='eog'
+# }}}
 # {{{ plugins
 # colors
 font_colors() {
@@ -182,10 +228,4 @@ gdf() {
         gdiff "$@"
     fi
 }
-
-shaliases=$HOME/.aliases
-localconf=$HOME/.zshlocal
-[[ -r $shaliases ]] && . $shaliases
-[[ -r $localconf ]] && . $localconf
-unset shaliases localconf
 # }}}
