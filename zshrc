@@ -79,8 +79,7 @@ precmd.title() {
             ;;
     esac
 }
-precmd.is_git_repo()
-{
+precmd.is_git_repo() {
     local curr_dir=$PWD
     while [[ -n $curr_dir ]]; do
         if [[ -r $curr_dir/.git/HEAD ]]; then
@@ -91,8 +90,7 @@ precmd.is_git_repo()
     done
     return 1
 }
-precmd.git()
-{
+precmd.git() {
     precmd.is_git_repo || return 0
 
     local raw_status="$(git status --porcelain -bu 2>/dev/null)"
@@ -122,15 +120,15 @@ precmd.git_update() {
     precmd.git > $prompt_state_file
     kill -s USR1 $$
 }
-TRAPUSR1() {
-    prompt_git_data="$(<$prompt_state_file)"
-    precmd.prompt
-    zle && zle reset-prompt
-}
 precmd() {
     precmd.title
     precmd.prompt
     precmd.git_update &!
+}
+TRAPUSR1() {
+    prompt_git_data="$(<$prompt_state_file)"
+    precmd.prompt
+    zle && zle reset-prompt
 }
 TRAPEXIT() {
     [[ -r $prompt_state_file ]] && rm $prompt_state_file
@@ -159,7 +157,7 @@ alias atmux='command tmux -2 attach'
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 # }}}
-# {{{ global aliases
+# {{{ awesome zsh only aliases
 alias -g L='| less -R'
 alias -g H='| head'
 alias -g T='| tail'
@@ -176,8 +174,6 @@ alias -g WK='| iconvwk'
 alias -g UK='| iconvuk'
 alias -g KU='| iconvku'
 alias -g WU='| iconvwu'
-# }}}
-# {{{ suffix aliases
 alias -s {txt,xml,cfg,cnf,conf,ini.erb.pp}=${EDITOR}
 alias -s {mkv,mp4,avi,mpg,mp3,ogg,mpeg,mov,webm,flv}='mpv'
 alias -s {jpg,png,gif,bmp,jpeg}='eog'
@@ -227,5 +223,11 @@ gdf() {
     else
         gdiff "$@"
     fi
+}
+greset() {
+    echo "OK to reset and clean teh repo?"
+    read _
+    /usr/bin/git clean -fd
+    /usr/bin/git reset --hard
 }
 # }}}
