@@ -1,6 +1,6 @@
 " various settings
 set nobackup number nomodeline backspace=indent,eol,start
-set foldmethod=marker ttymouse=xterm2 mouse=
+set bg=light foldmethod=marker ttymouse=xterm2 mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -88,6 +88,8 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
-colorscheme solarized8_light
+let g:solarized_use16 = 1
+let g:solarized_term_italics = 0
+colorscheme solarized8
 syntax on
 filetype plugin on
