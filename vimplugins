@@ -1,7 +1,5 @@
 " support my own way of using plugins in vim / bash
 autocmd BufRead *vimplugins set ft=vim
-autocmd BufRead *bashplugins set ft=sh
-autocmd BufRead *aliases set ft=sh
 
 " enable plugins
 source ~/.vim/plugged/vim-plug/plug.vim
@@ -10,27 +8,28 @@ silent!call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-vinegar'
 Plug 'vdrandom/vim-tru-typewriter'
-Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/directionalWindowResizer'
 
 " IDE liek, per filetype
-Plug 'w0rp/ale', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'w0rp/ale', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
 
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'
+
+" only plug vimwiki within vimwiki dir
+if expand('%:p:h') =~ 'vimwiki'
+    Plug 'vimwiki/vimwiki'
+endif
 call plug#end()
 
 " lightline options
