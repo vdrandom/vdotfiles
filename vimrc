@@ -1,6 +1,6 @@
 " various settings
-set nobackup number nomodeline backspace=indent,eol,start
-set bg=light foldmethod=marker ttymouse=xterm2 mouse=
+set nobackup nomodeline backspace=indent,eol,start foldmethod=marker mouse=
+set cursorline bg=light
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -20,7 +20,7 @@ set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 let g:sh_indent_case_labels=1
 " version specific settings
 if v:version >= 703
-    set colorcolumn=80 relativenumber formatoptions+=j
+    set colorcolumn=80 relativenumber formatoptions+=j ttymouse=sgr
 endif
 if v:version >= 800
     set breakindent
@@ -38,16 +38,11 @@ inoremap <F1> <Esc>
 lnoremap <F1> <Esc>
 cnoremap <F1> <Esc>
 "some toggles
-nnoremap <Leader>n :setlocal number!<CR>
-nnoremap <Leader>r :setlocal relativenumber!<CR>
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
-nnoremap <Leader>v :setlocal wrap!<CR>
+nnoremap <Leader>w :setlocal wrap!<CR>
 "turn off highlight until next search
 nnoremap <Leader>/ :noh<CR>
-"home / end
-noremap H ^
-noremap L $
 "copy to / paste from clipboard
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -56,13 +51,9 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 "move macro somewhere I won't accidentally use it
-noremap Q q
 noremap q <NOP>
 "quit / save
-nnoremap qq :q<CR>
-nnoremap qf :q!<CR>
-nnoremap qa :qa<CR>
-nnoremap qs :wq<CR>
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 
 " mouse toggle

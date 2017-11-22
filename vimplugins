@@ -22,6 +22,7 @@ Plug 'w0rp/ale', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
+Plug 'KeitaNakamura/neodark.vim'
 
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'
