@@ -200,14 +200,14 @@ font_colors() {
 }
 # grc
 colorize() {
-        local cmds cmd
-        cmds=(\
-            cc configure cvs df diff dig gcc gmake id ip last lsof make mount \
-            mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
-        )
-        for cmd in $cmds[@]; do
-            alias $cmd="command grc -es --colour=auto $cmd"
-        done
+    local cmds cmd
+    cmds=(\
+        cc configure cvs df diff dig gcc gmake id ip last lsof make mount \
+        mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
+    )
+    for cmd in $cmds[@]; do
+        alias $cmd="command grc -es --colour=auto $cmd"
+    done
 }
 if [[ -x "$(whence grc)" ]]; then
     colorize

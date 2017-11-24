@@ -4,7 +4,10 @@ if has('win32')
 else
     set guifont=Fantasque\ Sans\ Mono\ 11
 endif
-let g:lightline = { 'colorscheme': 'solarized', }
+if exists("g:lightline")
+    unlet g:lightline.separator
+    unlet g:lightline.subseparator
+endif
 set guiheadroom=0 guioptions=aei mouse=a
 set noerrorbells visualbell t_vb=
 set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
