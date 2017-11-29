@@ -8,11 +8,6 @@ Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
 ! fonts
-!URxvt.font:             xft:Iosevka Term:Regular:pixelsize=14
-!URxvt.boldFont:         xft:Iosevka Term:Bold:pixelsize=14
-!URxvt.italicFont:       xft:Iosevka Term:Regular:Italic:pixelsize=14
-!URxvt.boldItalicFont:   xft:Iosevka Term:Bold:Italic:pixelsize=14
-
 #define terminus        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 URxvt.font:             terminus
 URxvt.boldFont:         terminus
@@ -28,7 +23,6 @@ URxvt.visualBell:       false
 URxvt.urgentOnBell:     true
 URxvt.termName:         rxvt-unicode
 URxvt.internalBorder:   1
-URxvt.fading:           5
 URxvt.pastableTabs:     true
 URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
