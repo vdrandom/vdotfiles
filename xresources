@@ -15,68 +15,45 @@ URxvt.italicFont:       terminus
 URxvt.boldItalicFont:   terminus
 
 ! misc
-URxvt.pointerBlank:     true
-URxvt.scrollBar:        false
-URxvt.saveLines:        10000
-URxvt.iso14755:         false
-URxvt.visualBell:       false
-URxvt.urgentOnBell:     true
-URxvt.termName:         rxvt-unicode
-URxvt.internalBorder:   1
-URxvt.pastableTabs:     true
 URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
+URxvt.internalBorder:   1
+URxvt.iso14755:         false
+URxvt.keysym.C-Insert:  eval:selection_to_clipboard
+URxvt.keysym.S-Insert:  eval:paste_clipboard
+URxvt.pastableTabs:     true
+URxvt.pointerBlank:     true
+URxvt.saveLines:        10000
+URxvt.scrollBar:        false
 URxvt.secondaryScroll:  false
+URxvt.termName:         rxvt-unicode
+URxvt.urgentOnBell:     true
+URxvt.visualBell:       false
 
-! perls
-URxvt.perl-ext-common:  default,matcher,clipboard
-URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
-URxvt.matcher.button:   3
-URxvt.keysym.C-C:       perl:clipboard:copy
-URxvt.keysym.C-V:       perl:clipboard:paste
-! }}}
-! {{{ urxvt colors
-! base16-light Solarized by Ethan Schoonover (http://ethanschoonover.com/solarized)
-#define base00 #002b36
-#define base01 #073642
-#define base02 #586e75
-#define base03 #657b83
-#define base04 #839496
-#define base05 #93a1a1
-#define base06 #eee8d5
-#define base07 #fdf6e3
-#define base08 #dc322f
-#define base09 #cb4b16
-#define base0A #b58900
-#define base0B #859900
-#define base0C #2aa198
-#define base0D #268bd2
-#define base0E #6c71c4
-#define base0F #d33682
+! colors
+URxvt.foreground:   #657b83
+URxvt.background:   #fdf6e3
+URxvt.colorBD:      #002b36
 
-URxvt.foreground:   base03
-URxvt.background:   base07
-URxvt.colorBD:      base00
+URxvt.cursorColor:  #cb4b16
 
-URxvt.cursorColor:  base09
+URxvt.color0:       #073642
+URxvt.color1:       #dc322f
+URxvt.color2:       #859900
+URxvt.color3:       #b58900
+URxvt.color4:       #268bd2
+URxvt.color5:       #d33682
+URxvt.color6:       #2aa198
+URxvt.color7:       #eee8d5
 
-URxvt.color0:       base01
-URxvt.color1:       base08
-URxvt.color2:       base0B
-URxvt.color3:       base0A
-URxvt.color4:       base0D
-URxvt.color5:       base0F
-URxvt.color6:       base0C
-URxvt.color7:       base06
-
-URxvt.color8:       base00
-URxvt.color9:       base09
-URxvt.color10:      base02
-URxvt.color11:      base03
-URxvt.color12:      base04
-URxvt.color13:      base0E
-URxvt.color14:      base05
-URxvt.color15:      base07
+URxvt.color8:       #002b36
+URxvt.color9:       #cb4b16
+URxvt.color10:      #586e75
+URxvt.color11:      #657b83
+URxvt.color12:      #839496
+URxvt.color13:      #6c71c4
+URxvt.color14:      #93a1a1
+URxvt.color15:      #fdf6e3
 ! }}}
 ! {{{ rofi
 rofi.modi:            window
