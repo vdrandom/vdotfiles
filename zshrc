@@ -70,12 +70,12 @@ PROMPT2='%b%f%_%(!.%F{red}.%F{black})>%f%b '
 PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
 PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
 precmd.title() {
-    case ${TERM} in
+    case $TERM in
         xterm*|rxvt*)
-            printf "\033]0;%s@%s\007" "$USER" "${HOST%%.*}"
+            printf "\033]0;%s@%s\007" $USER ${HOST%%.*}
             ;;
         screen*|tmux)
-            printf "\033k%s@%s\033\\" "$USER" "${HOST%%.*}"
+            printf "\033k%s@%s\033\\" $USER ${HOST%%.*}
             ;;
     esac
 }
@@ -98,12 +98,12 @@ precmd.git() {
     local staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
     while read line; do
-        [[ $line[1,2] == '##'                 ]] && branch_info=$line[4,-1]
-        [[ $line[1,2] == '??'                 ]] && (( untracked_count++ ))
-        [[ $line[1,2] =~ .[MD]                ]] && (( unstaged_count++  ))
-        [[ $line[1,2] =~ [MDARC].             ]] && (( staged_count++    ))
-        [[ $line[1,2] =~ (U[ADU]|A[AU]|D[DU]) ]] && (( unmerged_count++  ))
-    done <<< "${raw_status}"
+        [[ $line[1,2] == '##'     ]] && branch_info=$line[4,-1]
+        [[ $line[1,2] == '??'     ]] && (( untracked_count++ ))
+        [[ $line[1,2] =~ .[MD]    ]] && (( unstaged_count++  ))
+        [[ $line[1,2] =~ [MDARC]. ]] && (( staged_count++    ))
+        [[ $line[1,2] =~ [ADU]{2} ]] && (( unmerged_count++  ))
+    done <<< $raw_status
 
     (( unstaged_count  )) && git_status+="%F{yellow}~$unstaged_count"
     (( staged_count    )) && git_status+="%F{blue}+$staged_count"
@@ -178,7 +178,7 @@ alias -g WK='| iconvwk'
 alias -g UK='| iconvuk'
 alias -g KU='| iconvku'
 alias -g WU='| iconvwu'
-alias -s {txt,xml,cfg,cnf,conf,ini.erb.pp}=${EDITOR}
+alias -s {txt,xml,cf,cfg,cnf,conf,ini,erb,pp}=$EDITOR
 alias -s {mkv,mp4,avi,mpg,mp3,ogg,mpeg,mov,webm,flv}='mpv'
 alias -s {jpg,png,gif,bmp,jpeg}='eog'
 # }}}

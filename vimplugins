@@ -22,8 +22,8 @@ Plug 'w0rp/ale', { 'for': 'python' }
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'rakr/vim-one'
 
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'
@@ -43,8 +43,8 @@ let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 
 " signify options
-let g:signify_vcs_list=[ 'git' ]
-let g:signify_sign_change='~'
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_sign_change = '~'
 
 " easy-align options
 xmap <Leader>a <Plug>(EasyAlign)
