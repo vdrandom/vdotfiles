@@ -23,6 +23,8 @@ if v:version >= 703
     set colorcolumn=80 relativenumber formatoptions+=j ttymouse=sgr
 endif
 if v:version >= 800
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set breakindent
 endif
 
@@ -79,8 +81,6 @@ if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let g:solarized_use16 = 1
 let g:solarized_term_italics = 0
 colorscheme solarized8

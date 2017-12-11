@@ -19,8 +19,6 @@ URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
 URxvt.internalBorder:   1
 URxvt.iso14755:         false
-URxvt.keysym.C-Insert:  eval:selection_to_clipboard
-URxvt.keysym.S-Insert:  eval:paste_clipboard
 URxvt.pastableTabs:     true
 URxvt.pointerBlank:     true
 URxvt.saveLines:        10000
