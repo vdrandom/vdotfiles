@@ -230,7 +230,8 @@ gdf() {
 }
 greset() {
     echo "OK to reset and clean teh repo?"
-    read _
+    read -sq _
+    (( $? )) && return 1
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
 }

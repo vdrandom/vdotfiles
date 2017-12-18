@@ -18,6 +18,9 @@ bindsym $mod+x exec $i3_term
 # kill focused window
 bindsym $mod+Shift+c kill
 
+# workaround for firefox
+bindsym Control+q exec /bin/true
+
 # start dmenu (a program launcher)
 bindsym $mod+s exec dmenu_displays -i -fn "$dmenu_font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
