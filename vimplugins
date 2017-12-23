@@ -8,7 +8,6 @@ silent!call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -24,23 +23,17 @@ Plug 'w0rp/ale', { 'for': 'python' }
 Plug 'lifepillar/vim-solarized8'
 Plug 'nanotech/jellybeans.vim'
 Plug 'rakr/vim-one'
+Plug 'whatyouhide/vim-gotham'
+Plug 'morhetz/gruvbox'
 
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'
 
-" only plug vimwiki within vimwiki dir
-if expand('%:p:h') =~ 'vimwiki'
+" only plug vimwiki within vimwiki dir and this file
+if expand('%:p:h') =~ 'vimwiki' || expand('%') =~ 'vimplugins'
     Plug 'vimwiki/vimwiki'
 endif
 call plug#end()
-
-" lightline options
-set noshowmode
-let g:solarized_termcolors = 16
-let g:lightline = {}
-let g:lightline.colorscheme = 'solarized'
-let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 
 " signify options
 let g:signify_vcs_list = [ 'git' ]
