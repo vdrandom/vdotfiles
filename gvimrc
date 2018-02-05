@@ -1,4 +1,3 @@
-" Iosevka Term ss10
 if has('win32')
     set guifont=Fantasque_Sans_Mono:h11
 else

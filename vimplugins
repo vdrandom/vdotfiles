@@ -16,8 +16,10 @@ Plug 'vdrandom/vim-tru-typewriter'
 Plug 'vim-scripts/directionalWindowResizer'
 
 " IDE liek, per filetype
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'w0rp/ale', { 'for': 'python' }
+if v:version >= 800
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+    Plug 'w0rp/ale', { 'for': 'python' }
+endif
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
