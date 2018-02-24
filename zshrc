@@ -64,7 +64,7 @@ bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 prompt_nl=$'\n'
 prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
 prompt_ln2='%(!.%F{red}.%F{black})>%f '
-prompt_state_file="$XDG_RUNTIME_DIR/zsh_gitstatus_$$.tmp"
+prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_nl$prompt_ln2"
 PROMPT2='%b%f%_%(!.%F{red}.%F{black})>%f%b '
 PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '

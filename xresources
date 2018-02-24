@@ -6,7 +6,7 @@ Xft.hinting:            true
 Xft.hintstyle:          hintslight
 Xft.dpi:                96
 #define terminus        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
-#define terminussmall   -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
+#define terminus_small  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
 ! }}}
 ! {{{ urxvt
 ! fonts
@@ -28,6 +28,12 @@ URxvt.secondaryScroll:  false
 URxvt.termName:         rxvt-unicode
 URxvt.urgentOnBell:     true
 URxvt.visualBell:       false
+
+! perl extensions
+URxvt.perl-ext:             default,url-select
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  /usr/bin/xdg-open
+URxvt.url-select.underline: true
 
 ! colors
 URxvt.foreground:   #657b83
@@ -56,7 +62,7 @@ URxvt.color15:      #fdf6e3
 ! }}}
 ! {{{ xscreensaver and rofi
 xscreensaver.font:         terminus
-xscreensaver.Dialog.Font:  terminussmall
+xscreensaver.Dialog.Font:  terminus_small
 
 rofi.modi:            window
 rofi.font:            xos4 Terminus Bold 11
