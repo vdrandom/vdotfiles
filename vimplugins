@@ -14,6 +14,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'vdrandom/vim-tru-typewriter'
 Plug 'vim-scripts/directionalWindowResizer'
+Plug 'lifepillar/vim-cheat40'
 
 " IDE liek, per filetype
 if v:version >= 800
@@ -23,10 +24,10 @@ endif
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-gruvbox8'
+Plug 'lifepillar/vim-wwdc17-theme'
 Plug 'nanotech/jellybeans.vim'
-Plug 'rakr/vim-one'
 Plug 'whatyouhide/vim-gotham'
-Plug 'morhetz/gruvbox'
 
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'

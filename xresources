@@ -30,10 +30,9 @@ URxvt.urgentOnBell:     true
 URxvt.visualBell:       false
 
 ! perl extensions
-URxvt.perl-ext:             default,url-select
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.url-select.launcher:  /usr/bin/xdg-open
-URxvt.url-select.underline: true
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
+URxvt.matcher.button:   3
 
 ! colors
 URxvt.foreground:   #657b83
