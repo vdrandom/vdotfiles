@@ -5,7 +5,8 @@
 HISTSIZE=1000
 HISTFILE="${HOME}/.bash_history.${UID}"
 HISTCONTROL=ignoredups
-shopt -s histappend checkwinsize autocd
+shopt -s histappend checkwinsize
+((BASH_VERSINFO > 3)) && shopt -s autocd
 
 export PAGER='less -R'
 export EDITOR='vim'
@@ -46,7 +47,7 @@ prompt_command()
         prompt_user="${pred}\u${preset} "
         bang="${pred}>${preset}"
     fi
-    ps_line1="[ ${prompt_user}${HOSTNAME}:${pblack}$(pwd)${preset} ]"
+    ps_line1="[ bash-$BASH_VERSINFO | ${prompt_user}${HOSTNAME}:${pblack}$(pwd)${preset} ]"
     ps_line2="${bang} "
     PS1="${ps_line1}\n${ps_line2}"
 }
@@ -54,11 +55,11 @@ PROMPT_COMMAND=prompt_command
 # }}}
 # {{{ plugins and traps
 aliases="${HOME}/.aliases"
-plugins="${HOME}/.bashplugins"
 localconf="${HOME}/.bashlocal"
+plugins="${HOME}/.bashplugins"
 [[ -r "${aliases}" ]] && . "${aliases}"
-[[ -r "${plugins}" ]] && . "${plugins}"
 [[ -r "${localconf}" ]] && . "${localconf}"
+[[ -r "${plugins}" && $BASH_VERSINFO -gt 3 ]] && . "${plugins}"
 unset aliases plugins localconf
 
 # we want to see exit code on error (it also has to be the last entry here)
