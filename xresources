@@ -5,15 +5,15 @@ Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
 Xft.dpi:                96
-#define terminus        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
-#define terminus_small  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
+#define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
+#define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
 ! }}}
 ! {{{ urxvt
 ! fonts
-URxvt.font:             terminus
-URxvt.boldFont:         terminus
-URxvt.italicFont:       terminus
-URxvt.boldItalicFont:   terminus
+URxvt.font:             TERMINUS
+URxvt.boldFont:         TERMINUS
+URxvt.italicFont:       TERMINUS
+URxvt.boldItalicFont:   TERMINUS
 
 ! misc
 URxvt.geometry:         120:36
@@ -60,8 +60,8 @@ URxvt.color14:      #93a1a1
 URxvt.color15:      #fdf6e3
 ! }}}
 ! {{{ xscreensaver and rofi
-xscreensaver.font:         terminus
-xscreensaver.Dialog.Font:  terminus_small
+xscreensaver.font:         TERMINUS
+xscreensaver.Dialog.Font:  TERMINUS_SMALL
 
 rofi.modi:            window
 rofi.font:            xos4 Terminus Bold 11
