@@ -14,13 +14,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'vdrandom/vim-tru-typewriter'
 Plug 'vim-scripts/directionalWindowResizer'
-Plug 'lifepillar/vim-cheat40'
 
 " IDE liek, per filetype
-if v:version >= 800
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-    Plug 'w0rp/ale', { 'for': 'python' }
-endif
+" if v:version >= 800
+"     Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+"     Plug 'w0rp/ale', { 'for': 'python' }
+" endif
 
 " colorschemes
 Plug 'lifepillar/vim-solarized8'
