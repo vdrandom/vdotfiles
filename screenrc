@@ -14,6 +14,5 @@ altscreen on
 activity "activity on %n"
 caption always '%{=}%{RW} %H %{Yw} %S %{wd} %-w%{wk}%n_%t%{wd}%+w'
 escape ^gg
+bindkey "^[g" command
 bind w windowlist -b
-bindkey ^[q prev
-bindkey ^[w next
