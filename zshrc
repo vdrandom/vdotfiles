@@ -2,6 +2,8 @@
 [[ $- != *i* ]] && return
 
 # {{{ settings
+# disable the bloody ^S / ^Q, I use tmux all the time anyway
+stty -ixon
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
 
@@ -148,6 +150,7 @@ alias pacman='command pacman --color=auto'
 alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
+alias diff='command diff --color'
 alias vi='command vim'
 alias ls='command ls --color=auto --group-directories-first '
 alias ll='ls -lha'
@@ -160,27 +163,6 @@ alias tmux='command tmux -2'
 alias atmux='command tmux -2 attach'
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
-# }}}
-# {{{ awesome zsh only aliases
-alias -g L='| less -R'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g PV='| pv |'
-alias -g WCL='| wc -l'
-alias -g NCL='| nc -l 17777'
-alias -g NO='1> /dev/null'
-alias -g NE='2> /dev/null'
-alias -g EO='2> &1'
-alias -g OE='1> &2'
-alias -g TEE='>&1 >>'
-alias -g WK='| iconvwk'
-alias -g UK='| iconvuk'
-alias -g KU='| iconvku'
-alias -g WU='| iconvwu'
-alias -s {txt,xml,cf,cfg,cnf,conf,ini,erb,pp}=$EDITOR
-alias -s {mkv,mp4,avi,mpg,mp3,ogg,mpeg,mov,webm,flv}='mpv'
-alias -s {jpg,png,gif,bmp,jpeg}='eog'
 # }}}
 # {{{ plugins
 # colors
@@ -202,7 +184,7 @@ font_colors() {
 colorize() {
     local cmds cmd
     cmds=(\
-        cc configure cvs df diff dig gcc gmake id ip last lsof make mount \
+        cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
     )
     for cmd in $cmds[@]; do
