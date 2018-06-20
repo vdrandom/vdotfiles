@@ -1,6 +1,5 @@
 " various settings
-set nobackup nomodeline backspace=indent,eol,start foldmethod=marker mouse=
-set cursorline bg=light
+set nobackup nomodeline backspace=indent,eol,start foldmethod=marker mouse= cursorline
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -23,8 +22,6 @@ if v:version >= 703
     set colorcolumn=80 relativenumber formatoptions+=j ttymouse=sgr
 endif
 if v:version >= 800
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set breakindent
 endif
 
@@ -75,14 +72,13 @@ fun! s:ToggleMouse()
 endfunction
 noremap <Leader>m :call <SID>ToggleMouse()<CR>
 
+colorscheme default
+
 " plugins
 let plugins = expand("$HOME/.vimplugins")
 if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
 endif
 
-let g:solarized_use16 = 1
-let g:solarized_term_italics = 0
-colorscheme solarized8
 syntax on
 filetype plugin on

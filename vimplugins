@@ -16,10 +16,12 @@ Plug 'vdrandom/vim-tru-typewriter'
 Plug 'vim-scripts/directionalWindowResizer'
 
 " colorschemes
+Plug 'jonathanfilip/vim-lucius'
 Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-wwdc17-theme'
 Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
 Plug 'whatyouhide/vim-gotham'
 
 " syntax highlight plugins
@@ -38,3 +40,16 @@ let g:signify_sign_change = '~'
 " easy-align options
 xmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
+
+" we have themes installed, so we use them!
+if &term =~ '^[tmux|st]' && v:version >= 800
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors bg=dark
+    colorscheme gruvbox8
+else
+    set bg=light
+    let g:solarized_use16 = 1
+    let g:solarized_term_italics = 0
+    colorscheme solarized8
+endif
