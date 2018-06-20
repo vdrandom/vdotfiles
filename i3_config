@@ -195,9 +195,9 @@ for_window [instance="KB.exe"] floating enable
 for_window [instance="nwn2main.exe"] floating enable
 # scratchpad
 for_window [class="keepassxc"] move scratchpad, scratchpad show
-for_window [instance="vimwiki"] move scratchpad, scratchpad show
+for_window [title="vimwiki"] move scratchpad, scratchpad show
 for_window [class="Vpnui"] move scratchpad, scratchpad show
-bindsym $mod+n [instance="vimwiki"] scratchpad show
+bindsym $mod+n [title="vimwiki"] scratchpad show
 bindsym $mod+i [class="keepassxc"] scratchpad show
 bindsym $mod+y [class="Vpnui"] scratchpad show
 
