@@ -50,6 +50,9 @@ bindkey '^[[4~'   end-of-line                         # end
 # xterm
 bindkey '^[[H'    beginning-of-line                   # home
 bindkey '^[[F'    end-of-line                         # end
+# st
+bindkey '^[[P'    delete-char                         # del
+bindkey '^[[M'    delete-word                         # ctrl + del
 # most of them (but not urxvt)
 bindkey '^[[1;5C' forward-word                        # ctrl + right
 bindkey '^[[1;5D' backward-word                       # ctrl + left
@@ -58,7 +61,6 @@ bindkey '^[[3;5~' delete-word                         # ctrl + del
 bindkey '^[[5~'   backward-word                       # page up
 bindkey '^[[6~'   forward-word                        # page down
 bindkey '^[[3~'   delete-char                         # del
-bindkey '^R'      history-incremental-search-backward # ctrl + r
 bindkey '^[m'     copy-prev-shell-word                # alt + m
 bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 # }}}
