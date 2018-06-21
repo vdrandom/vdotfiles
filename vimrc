@@ -1,5 +1,5 @@
 " various settings
-set nobackup nomodeline backspace=indent,eol,start foldmethod=marker mouse= cursorline
+set nobackup nomodeline backspace=indent,eol,start foldmethod=marker cursorline mouse=
 " hidden characters
 set list listchars=tab:\|_,nbsp:x,trail:*
 " search
@@ -19,7 +19,7 @@ set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 let g:sh_indent_case_labels=1
 " version specific settings
 if v:version >= 703
-    set colorcolumn=80 relativenumber formatoptions+=j ttymouse=sgr
+    set colorcolumn=80 relativenumber formatoptions+=j
 endif
 if v:version >= 800
     set breakindent
@@ -59,8 +59,8 @@ nnoremap <Leader>s :w<CR>
 fun! s:ToggleMouse()
     if !exists("s:old_mouse")
         let s:old_mouse = "a"
+        set ttymouse=sgr
     endif
-
     if &mouse == ""
         let &mouse = s:old_mouse
         echo "mouse enabled (" . &mouse . ")"
@@ -72,13 +72,19 @@ fun! s:ToggleMouse()
 endfunction
 noremap <Leader>m :call <SID>ToggleMouse()<CR>
 
-colorscheme default
-
 " plugins
 let plugins = expand("$HOME/.vimplugins")
 if filereadable(plugins) && v:version >= 703
     execute 'source ' . fnameescape(plugins)
+else
+    colorscheme default
 endif
+
+" explicit solarized8
+"let g:solarized_use16 = 1
+"let g:solarized_term_italics = 0
+"set bg=light
+"colorscheme solarized8
 
 syntax on
 filetype plugin on
