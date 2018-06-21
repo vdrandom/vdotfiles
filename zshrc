@@ -75,10 +75,10 @@ PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
 PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
 precmd.title() {
     case $TERM in
-        xterm*|rxvt*)
+        st*|xterm*|rxvt*)
             printf "\033]0;%s@%s\007" $USER ${HOST%%.*}
             ;;
-        screen*|tmux)
+        screen*|tmux*)
             printf "\033k%s@%s\033\\" $USER ${HOST%%.*}
             ;;
     esac
