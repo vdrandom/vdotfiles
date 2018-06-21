@@ -10,6 +10,7 @@ Plug 'junegunn/vim-plug'
 " general plugins
 Plug 'junegunn/vim-easy-align'
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'vdrandom/vim-tru-typewriter'
@@ -42,14 +43,14 @@ xmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 
 " we have themes installed, so we use them!
-if &term =~ '^[tmux|st]' && v:version >= 800
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+if &term =~ '^\(tmux\|st\)' && v:version >= 800
+    let &t_8f = "\033[38;2;%lu;%lu;%lum"
+    let &t_8b = "\033[48;2;%lu;%lu;%lum"
     set termguicolors bg=dark
     colorscheme gruvbox8
 else
-    set bg=light
     let g:solarized_use16 = 1
     let g:solarized_term_italics = 0
+    set bg=light
     colorscheme solarized8
 endif
