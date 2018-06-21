@@ -25,6 +25,10 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'tomasr/molokai'
 Plug 'whatyouhide/vim-gotham'
 
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dracula/vim'
+Plug 'jacoborus/tender.vim'
+
 " syntax highlight plugins
 Plug 'sheerun/vim-polyglot'
 
