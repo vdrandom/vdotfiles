@@ -154,15 +154,24 @@ alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias diff='command diff --color'
 alias vi='command vim'
+
+# ls
 alias ls='command ls --color=auto --group-directories-first '
 alias ll='ls -lha'
+
+# git
 alias gci='command git commit'
 alias gsl='command git stash list'
 alias gss='command git status -sbu'
 alias gup='command git pull'
+alias groot='cd $(command git rev-parse --show-cdup)'
 alias gsi='command tig status'
+
+# tmux
 alias tmux='command tmux -2'
 alias atmux='command tmux -2 attach'
+
+# screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 # }}}
