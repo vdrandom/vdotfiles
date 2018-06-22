@@ -34,3 +34,9 @@
 [submodule "pack/colors/start/PaperColor"]
 	path = pack/colors/start/PaperColor
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "pack/colors/start/blame"]
+	path = pack/colors/start/blame
+	url = https://github.com/hauleth/blame.vim.git
+[submodule "pack/general/opt/vimwiki"]
+	path = pack/general/opt/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
