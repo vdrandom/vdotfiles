@@ -1,0 +1,36 @@
+[submodule "pack/general/vim-easy-align"]
+	path = pack/general/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule "pack/general/vim-signify"]
+	path = pack/general/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
+[submodule "pack/general/vim-commentary"]
+	path = pack/general/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/general/vim-fugitive"]
+	path = pack/general/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/general/vim-rsi"]
+	path = pack/general/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
+[submodule "pack/general/vim-polyglot"]
+	path = pack/general/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "pack/general/vim-tru-typewriter"]
+	path = pack/general/vim-tru-typewriter
+	url = https://git.vdrandom.org/vim-tru-typewriter
+[submodule "pack/colors/lucius"]
+	path = pack/colors/lucius
+	url = https://github.com/jonathanfilip/vim-lucius.git
+[submodule "pack/colors/gruvbox8"]
+	path = pack/colors/gruvbox8
+	url = https://github.com/lifepillar/vim-gruvbox8
+[submodule "pack/colors/solarized8"]
+	path = pack/colors/solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "pack/colors/jellybeans"]
+	path = pack/colors/jellybeans
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule "pack/colors/PaperColor"]
+	path = pack/colors/PaperColor
+	url = https://github.com/NLKNguyen/papercolor-theme.git
