@@ -154,6 +154,7 @@ force_focus_wrapping yes
 
 # rules
 # software
+for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Vpnui"] floating enable
 for_window [class="Deadbeef"] floating enable
 for_window [class="Google-musicmanager"] floating enable

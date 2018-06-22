@@ -21,9 +21,6 @@ let g:sh_indent_case_labels=1
 if v:version >= 703
     set colorcolumn=80 relativenumber formatoptions+=j
 endif
-if v:version >= 800
-    set breakindent
-endif
 
 " maps
 "leader
@@ -55,36 +52,35 @@ noremap q <NOP>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 
-" mouse toggle
-fun! s:ToggleMouse()
-    if !exists("s:old_mouse")
-        let s:old_mouse = "a"
-        set ttymouse=sgr
+if v:version >= 800 && !has('nvim')
+    set breakindent
+
+    " signify options
+    let g:signify_vcs_list = [ 'git' ]
+    let g:signify_sign_change = '~'
+
+    " easy-align options
+    xmap <Leader>a <Plug>(EasyAlign)
+    nmap <Leader>a <Plug>(EasyAlign)
+
+    " only plug vimwiki within vimwiki dir and this file
+    if expand('%:p:h') =~ 'vimwiki' || expand('%') =~ 'vimplugins'
+        packadd vimwiki
     endif
-    if &mouse == ""
-        let &mouse = s:old_mouse
-        echo "mouse enabled (" . &mouse . ")"
+
+    " yaaay themes
+    if has('gui_running') || $TERM =~ '^\(tmux\|st\)'
+        let &t_8f = "\033[38;2;%lu;%lu;%lum"
+        let &t_8b = "\033[48;2;%lu;%lu;%lum"
+        set termguicolors bg=light
+        colorscheme PaperColor
     else
-        let s:old_mouse = &mouse
-        let &mouse=""
-        echo "mouse disabled"
+        let g:solarized_use16 = 1
+        let g:solarized_term_italics = 0
+        set bg=light
+        colorscheme solarized8
     endif
-endfunction
-noremap <Leader>m :call <SID>ToggleMouse()<CR>
-
-" plugins
-let plugins = expand("$HOME/.vimplugins")
-if filereadable(plugins) && v:version >= 703
-    execute 'source ' . fnameescape(plugins)
-else
-    colorscheme default
 endif
-
-" explicit solarized8
-"let g:solarized_use16 = 1
-"let g:solarized_term_italics = 0
-"set bg=light
-"colorscheme solarized8
 
 syntax on
 filetype plugin on
