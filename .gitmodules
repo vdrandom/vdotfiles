@@ -1,24 +1,27 @@
-[submodule "pack/general/start/vim-easy-align"]
-	path = pack/general/start/vim-easy-align
+[submodule "vimpack/start/vim-easy-align"]
+	path = vimpack/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "pack/general/start/vim-signify"]
-	path = pack/general/start/vim-signify
+[submodule "vimpack/start/vim-signify"]
+	path = vimpack/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule "pack/general/start/vim-commentary"]
-	path = pack/general/start/vim-commentary
+[submodule "vimpack/start/vim-commentary"]
+	path = vimpack/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "pack/general/start/vim-fugitive"]
-	path = pack/general/start/vim-fugitive
+[submodule "vimpack/start/vim-fugitive"]
+	path = vimpack/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "pack/general/start/vim-rsi"]
-	path = pack/general/start/vim-rsi
+[submodule "vimpack/start/vim-rsi"]
+	path = vimpack/start/vim-rsi
 	url = https://github.com/tpope/vim-rsi.git
-[submodule "pack/general/start/vim-polyglot"]
-	path = pack/general/start/vim-polyglot
+[submodule "vimpack/start/vim-polyglot"]
+	path = vimpack/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
-[submodule "pack/general/start/vim-tru-typewriter"]
-	path = pack/general/start/vim-tru-typewriter
+[submodule "vimpack/start/vim-tru-typewriter"]
+	path = vimpack/start/vim-tru-typewriter
 	url = https://git.vdrandom.org/vim-tru-typewriter
+[submodule "vimpack/opt/vimwiki"]
+	path = vimpack/opt/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
 [submodule "pack/colors/start/lucius"]
 	path = pack/colors/start/lucius
 	url = https://github.com/jonathanfilip/vim-lucius.git
@@ -37,6 +40,3 @@
 [submodule "pack/colors/start/blame"]
 	path = pack/colors/start/blame
 	url = https://github.com/hauleth/blame.vim.git
-[submodule "pack/general/opt/vimwiki"]
-	path = pack/general/opt/vimwiki
-	url = https://github.com/vimwiki/vimwiki.git

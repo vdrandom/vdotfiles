@@ -72,8 +72,8 @@ if v:version >= 800
     if has('gui_running') || $TERM =~ '^\(tmux\|st\)'
         let &t_8f = "\033[38;2;%lu;%lu;%lum"
         let &t_8b = "\033[48;2;%lu;%lu;%lum"
-        set termguicolors bg=light
-        colorscheme PaperColor
+        set termguicolors bg=dark
+        colorscheme gruvbox8
     else
         let g:solarized_use16 = 1
         let g:solarized_term_italics = 0
