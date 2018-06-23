@@ -52,7 +52,7 @@ noremap q <NOP>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 
-if v:version >= 800 && !has('nvim')
+if v:version >= 800
     set breakindent
 
     " signify options
@@ -64,7 +64,7 @@ if v:version >= 800 && !has('nvim')
     nmap <Leader>a <Plug>(EasyAlign)
 
     " only plug vimwiki within vimwiki dir and this file
-    if expand('%:p:h') =~ 'vimwiki' || expand('%') =~ 'vimplugins'
+    if expand('%:p:h') =~ 'vimwiki'
         packadd vimwiki
     endif
 
@@ -80,6 +80,18 @@ if v:version >= 800 && !has('nvim')
         set bg=light
         colorscheme solarized8
     endif
+endif
+
+if has('gui_running')
+    if has('win32')
+        set guifont=Fantasque_Sans_Mono:h11
+    else
+        set guifont=Fantasque\ Sans\ Mono\ 11
+    endif
+    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
+    set guiheadroom=0 guioptions=aei mouse=a noerrorbells visualbell t_vb=
+    map <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
 endif
 
 syntax on
