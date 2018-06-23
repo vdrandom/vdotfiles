@@ -19,24 +19,15 @@
 [submodule "vimpack/start/vim-tru-typewriter"]
 	path = vimpack/start/vim-tru-typewriter
 	url = https://git.vdrandom.org/vim-tru-typewriter
+[submodule "vimpack/start/vim-gruvbox8"]
+	path = vimpack/start/vim-gruvbox8
+	url = https://github.com/lifepillar/vim-gruvbox8.git
+[submodule "vimpack/start/vim-solarized8"]
+	path = vimpack/start/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vimpack/start/PaperColor"]
+	path = vimpack/start/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule "vimpack/opt/vimwiki"]
 	path = vimpack/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule "pack/colors/start/lucius"]
-	path = pack/colors/start/lucius
-	url = https://github.com/jonathanfilip/vim-lucius.git
-[submodule "pack/colors/start/gruvbox8"]
-	path = pack/colors/start/gruvbox8
-	url = https://github.com/lifepillar/vim-gruvbox8
-[submodule "pack/colors/start/solarized8"]
-	path = pack/colors/start/solarized8
-	url = https://github.com/lifepillar/vim-solarized8.git
-[submodule "pack/colors/start/jellybeans"]
-	path = pack/colors/start/jellybeans
-	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule "pack/colors/start/PaperColor"]
-	path = pack/colors/start/PaperColor
-	url = https://github.com/NLKNguyen/papercolor-theme.git
-[submodule "pack/colors/start/blame"]
-	path = pack/colors/start/blame
-	url = https://github.com/hauleth/blame.vim.git
