@@ -33,10 +33,10 @@ bold='\e[1m'
 prompt_command()
 {
     case ${TERM} in
-        xterm*|rxvt*)
+        rxvt*|st*|xterm*)
             printf "\033]0;%s@%s\007" "${USER}" "${HOSTNAME%%.*}"
             ;;
-        screen*|tmux)
+        screen*|tmux*)
             printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
             ;;
     esac

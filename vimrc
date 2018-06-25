@@ -67,9 +67,10 @@ if v:version >= 800
     if expand('%:p:h') =~ 'vimwiki'
         packadd vimwiki
     endif
+    autocmd FileType python packadd jedi-vim | packadd ale
 
     " yaaay themes
-    if has('gui_running') || $TERM =~ '^\(tmux\|st\)'
+    if has('gui_running') || $TERM =~ '^\(st\|tmux\|xterm\)'
         let &t_8f = "\033[38;2;%lu;%lu;%lum"
         let &t_8b = "\033[48;2;%lu;%lu;%lum"
         set termguicolors

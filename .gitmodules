@@ -1,36 +1,42 @@
-[submodule "vimpack/start/vim-easy-align"]
+[submodule "vim-easy-align"]
 	path = vimpack/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "vimpack/start/vim-signify"]
+[submodule "vim-signify"]
 	path = vimpack/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
-[submodule "vimpack/start/vim-commentary"]
+[submodule "vim-commentary"]
 	path = vimpack/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "vimpack/start/vim-fugitive"]
+[submodule "vim-fugitive"]
 	path = vimpack/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vimpack/start/vim-rsi"]
+[submodule "vim-rsi"]
 	path = vimpack/start/vim-rsi
 	url = https://github.com/tpope/vim-rsi.git
-[submodule "vimpack/start/vim-polyglot"]
+[submodule "vim-polyglot"]
 	path = vimpack/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
-[submodule "vimpack/start/vim-tru-typewriter"]
+[submodule "vim-tru-typewriter"]
 	path = vimpack/start/vim-tru-typewriter
 	url = https://git.vdrandom.org/vim-tru-typewriter
-[submodule "vimpack/start/vim-gruvbox8"]
+[submodule "vim-gruvbox8"]
 	path = vimpack/start/vim-gruvbox8
 	url = https://github.com/lifepillar/vim-gruvbox8.git
-[submodule "vimpack/start/vim-solarized8"]
+[submodule "vim-solarized8"]
 	path = vimpack/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
-[submodule "vimpack/start/PaperColor"]
+[submodule "PaperColor"]
 	path = vimpack/start/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
-[submodule "vimpack/opt/vimwiki"]
+[submodule "vimwiki"]
 	path = vimpack/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule "vimpack/start/iceberg.vim"]
+[submodule "iceberg.vim"]
 	path = vimpack/start/iceberg.vim
 	url = https://github.com/cocopon/iceberg.vim.git
+[submodule "ale"]
+	path = vimpack/opt/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "jedi-vim"]
+	path = vimpack/opt/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git
