@@ -70,14 +70,13 @@ if v:version >= 800
     autocmd FileType python packadd jedi-vim | packadd ale
 
     " yaaay themes
-    if has('gui_running') || $TERM =~ '^\(rxvt\|st\|tmux\|xterm\)'
-        let &t_8f = "\033[38;2;%lu;%lu;%lum"
-        let &t_8b = "\033[48;2;%lu;%lu;%lum"
-        set termguicolors
-        colorscheme iceberg
-    else
-        colorscheme apprentice
-    endif
+    " if has('gui_running') || $TERM =~ '^\(rxvt\|st\|tmux\|xterm\)'
+    "     let &t_8f = "\033[38;2;%lu;%lu;%lum"
+    "     let &t_8b = "\033[48;2;%lu;%lu;%lum"
+    "     set termguicolors
+    " endif
+    set bg=light
+    colorscheme PaperColor
 endif
 
 if has('gui_running')

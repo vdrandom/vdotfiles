@@ -31,9 +31,6 @@
 [submodule "vimwiki"]
 	path = vimpack/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule "iceberg.vim"]
-	path = vimpack/start/iceberg.vim
-	url = https://github.com/cocopon/iceberg.vim.git
 [submodule "ale"]
 	path = vimpack/opt/ale
 	url = https://github.com/w0rp/ale.git
