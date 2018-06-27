@@ -1,9 +1,6 @@
 [submodule "vim-easy-align"]
 	path = vimpack/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "vim-signify"]
-	path = vimpack/start/vim-signify
-	url = https://github.com/mhinz/vim-signify.git
 [submodule "vim-commentary"]
 	path = vimpack/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
@@ -37,3 +34,6 @@
 [submodule "jedi-vim"]
 	path = vimpack/opt/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "vim-gitgutter"]
+	path = vimpack/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git

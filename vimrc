@@ -55,9 +55,8 @@ nnoremap <Leader>s :w<CR>
 if v:version >= 800
     set breakindent
 
-    " signify options
-    let g:signify_vcs_list = [ 'git' ]
-    let g:signify_sign_change = '~'
+    " FZF map
+    nmap <Leader><Tab> :FZF<CR>
 
     " easy-align options
     xmap <Leader>a <Plug>(EasyAlign)
