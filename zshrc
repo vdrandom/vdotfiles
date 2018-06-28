@@ -76,10 +76,10 @@ PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
 precmd.title() {
     case $TERM in
         st*|xterm*|rxvt*)
-            printf "\033]0;%s\007" ${HOST%%.*}
+            printf '\033]0;%s\007' ${HOST%%.*}
             ;;
         screen*|tmux*)
-            printf "\033k%s\033\\" ${HOST%%.*}
+            printf '\033k%s\033\' ${HOST%%.*}
             ;;
     esac
 }

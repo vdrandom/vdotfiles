@@ -12,9 +12,10 @@ set noerrorbells visualbell t_vb=
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
 " termcap fixes
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
-" status line
+" status line and title
 set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
+set title titlestring=[%{hostname()}]\ %t\ -\ vim
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings
@@ -51,6 +52,11 @@ noremap q <NOP>
 "quit / save
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
+
+if $TERM =~ '^\(screen\|tmux\)'
+    set t_ts=k
+    set t_fs=\
+endif
 
 if v:version >= 800
     set breakindent

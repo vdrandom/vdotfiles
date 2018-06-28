@@ -21,35 +21,33 @@ for color in \
     gray6 red green yellow blue magenta cyan gray1 \
     black orange gray5 gray4 gray3 purple gray2 white
 do
-    eval "p${color}='\[\e[38;5;${color_number}m\]'"
-    eval "${color}='\e[38;5;${color_number}m'"
+    eval "p${color}='\\[\\e[38;5;${color_number}m\\]'"
+    eval "${color}='\\e[38;5;${color_number}m'"
     (( color_number++ ))
 done
 unset color_number
 preset='\[\e[0m\]'
-pbold='\[\e[1m\]'
 reset='\e[0m'
-bold='\e[1m'
 prompt_command()
 {
     case ${TERM} in
         rxvt*|st*|xterm*)
-            printf "\033]0;%s\007" "${HOSTNAME%%.*}"
+            printf '\033]0;%s\007' "${HOSTNAME%%.*}"
             ;;
         screen*|tmux*)
-            printf "\033k%s\033\\" "${HOSTNAME%%.*}"
+            printf '\033k%s\033\' "${HOSTNAME%%.*}"
             ;;
     esac
     if ((UID)); then
-        prompt_user="${pblack}\u${preset} "
+        prompt_user="${pblack}\\u${preset} "
         bang="${pblack}>${preset}"
     else
-        prompt_user="${pred}\u${preset} "
+        prompt_user="${pred}\\u${preset} "
         bang="${pred}>${preset}"
     fi
     ps_line1="[ bash-$BASH_VERSINFO | ${prompt_user}${HOSTNAME}:${pblack}$(pwd)${preset} ]"
     ps_line2="${bang} "
-    PS1="${ps_line1}\n${ps_line2}"
+    PS1="${ps_line1}\\n${ps_line2}"
 }
 PROMPT_COMMAND=prompt_command
 # }}}
