@@ -34,10 +34,10 @@ prompt_command()
 {
     case ${TERM} in
         rxvt*|st*|xterm*)
-            printf "\033]0;%s@%s\007" "${USER}" "${HOSTNAME%%.*}"
+            printf "\033]0;%s\007" "${HOSTNAME%%.*}"
             ;;
         screen*|tmux*)
-            printf "\033k%s@%s\033\\" "${USER}" "${HOSTNAME%%.*}"
+            printf "\033k%s\033\\" "${HOSTNAME%%.*}"
             ;;
     esac
     if ((UID)); then
