@@ -55,9 +55,6 @@ nnoremap <Leader>s :w<CR>
 if v:version >= 800
     set breakindent
 
-    " FZF map
-    nmap <Leader><Tab> :FZF<CR>
-
     " easy-align options
     xmap <Leader>a <Plug>(EasyAlign)
     nmap <Leader>a <Plug>(EasyAlign)
@@ -67,27 +64,16 @@ if v:version >= 800
         packadd vimwiki
     endif
     autocmd FileType python packadd jedi-vim | packadd ale
+    autocmd FileType sh packadd ale
 
     " yaaay themes
-    " if has('gui_running') || $TERM =~ '^\(rxvt\|st\|tmux\|xterm\)'
-    "     let &t_8f = "\033[38;2;%lu;%lu;%lum"
-    "     let &t_8b = "\033[48;2;%lu;%lu;%lum"
-    "     set termguicolors
-    " endif
-    set bg=light
-    colorscheme PaperColor
-endif
-
-if has('gui_running')
-    if has('win32')
-        set guifont=Fantasque_Sans_Mono:h11
-    else
-        set guifont=Fantasque\ Sans\ Mono\ 11
+    if $TERM =~ '^\(rxvt\|st\|tmux\|xterm\)'
+        let &t_8f = "\033[38;2;%lu;%lu;%lum"
+        let &t_8b = "\033[48;2;%lu;%lu;%lum"
+        set termguicolors
     endif
-    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
-    set guiheadroom=0 guioptions=aei mouse=a noerrorbells visualbell t_vb=
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
+    set bg=dark
+    colorscheme gruvbox8
 endif
 
 syntax on
