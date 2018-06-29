@@ -1,0 +1,4 @@
+set titlestring=vimwiki
+let wiki = expand("$HOME/vimwiki/index.wiki")
+packadd vimwiki
+execute 'edit ' . fnameescape(wiki)

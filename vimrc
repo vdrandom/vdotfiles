@@ -9,12 +9,17 @@ set scrolloff=3 sidescrolloff=15 sidescroll=1
 " disable bell
 set noerrorbells visualbell t_vb=
 " indentation
-set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab
+set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab autoindent
 " termcap fixes
 set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
-" status line and title
+" status line
 set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
+" update window title
+if $TERM =~ '^\(screen\|tmux\)'
+    set t_ts=k
+    set t_fs=\
+endif
 set title titlestring=[%{hostname()}]\ %t\ -\ vim
 " enable case indentation
 let g:sh_indent_case_labels=1
@@ -53,11 +58,6 @@ noremap q <NOP>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 
-if $TERM =~ '^\(screen\|tmux\)'
-    set t_ts=k
-    set t_fs=\
-endif
-
 if v:version >= 800
     set breakindent
 
@@ -65,10 +65,7 @@ if v:version >= 800
     xmap <Leader>a <Plug>(EasyAlign)
     nmap <Leader>a <Plug>(EasyAlign)
 
-    " only plug vimwiki within vimwiki dir and this file
-    if expand('%:p:h') =~ 'vimwiki'
-        packadd vimwiki
-    endif
+    " enable packs based on filetype
     autocmd FileType python packadd jedi-vim | packadd ale
     autocmd FileType sh packadd ale
 
