@@ -69,14 +69,7 @@ if v:version >= 800
     autocmd FileType python packadd jedi-vim | packadd ale
     autocmd FileType sh packadd ale
 
-    " yaaay themes
-    if $TERM =~ '^\(rxvt\|st\|tmux\|xterm\)'
-        let &t_8f = "\033[38;2;%lu;%lu;%lum"
-        let &t_8b = "\033[48;2;%lu;%lu;%lum"
-        set termguicolors
-    endif
-    set bg=dark
-    colorscheme gruvbox8
+    colorscheme flattened_light
 endif
 
 syntax on

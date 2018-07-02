@@ -228,4 +228,9 @@ greset() {
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
 }
+vim() {
+    local vimbin
+    vimbin=$(whence nvim) || vimbin=$(whence vim)
+    $vimbin "$@"
+}
 # }}}

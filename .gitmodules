@@ -16,15 +16,6 @@
 [submodule "vim-tru-typewriter"]
 	path = vimpack/start/vim-tru-typewriter
 	url = https://git.vdrandom.org/vim-tru-typewriter
-[submodule "vim-gruvbox8"]
-	path = vimpack/start/vim-gruvbox8
-	url = https://github.com/lifepillar/vim-gruvbox8.git
-[submodule "vim-solarized8"]
-	path = vimpack/start/vim-solarized8
-	url = https://github.com/lifepillar/vim-solarized8.git
-[submodule "PaperColor"]
-	path = vimpack/start/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme.git
 [submodule "vimwiki"]
 	path = vimpack/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
@@ -37,3 +28,6 @@
 [submodule "vim-gitgutter"]
 	path = vimpack/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "flattened"]
+	path = vimpack/start/flattened
+	url = https://github.com/romainl/flattened.git
