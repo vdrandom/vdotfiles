@@ -28,6 +28,6 @@
 [submodule "vim-gitgutter"]
 	path = vimpack/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "flattened"]
-	path = vimpack/start/flattened
-	url = https://github.com/romainl/flattened.git
+[submodule "vim-solarized8"]
+	path = vimpack/start/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git

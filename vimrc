@@ -16,7 +16,7 @@ set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
 set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 " update window title
-if $TERM =~ '^\(screen\|tmux\)'
+if $TERM =~ '^screen'
     set t_ts=k
     set t_fs=\
 endif
@@ -66,10 +66,13 @@ if v:version >= 800
     nmap <Leader>a <Plug>(EasyAlign)
 
     " enable packs based on filetype
-    autocmd FileType python packadd jedi-vim | packadd ale
+    let g:ale_python_flake8_executable = 'python2'
+    autocmd FileType python packadd ale
     autocmd FileType sh packadd ale
 
-    colorscheme flattened_light
+    let g:solarized_extra_hi_groups = 1
+    let g:solarized_use16 = 1
+    colorscheme solarized8
 endif
 
 syntax on

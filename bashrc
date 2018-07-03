@@ -31,11 +31,11 @@ reset='\e[0m'
 prompt_command()
 {
     case ${TERM} in
-        rxvt*|st*|xterm*)
-            printf '\033]0;%s\007' "${HOSTNAME%%.*}"
-            ;;
-        screen*|tmux*)
+        screen*)
             printf '\033k%s\033\' "${HOSTNAME%%.*}"
+            ;;
+        *)
+            printf '\033]0;%s\007' "${HOSTNAME%%.*}"
             ;;
     esac
     if ((UID)); then
