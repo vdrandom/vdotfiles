@@ -70,9 +70,11 @@ if v:version >= 800
     autocmd FileType python packadd ale
     autocmd FileType sh packadd ale
 
-    let g:solarized_extra_hi_groups = 1
-    let g:solarized_use16 = 1
-    colorscheme solarized8
+    if $TERM != 'linux'
+        let g:solarized_extra_hi_groups = 1
+        let g:solarized_use16 = 1
+        colorscheme solarized8
+    endif
 endif
 
 syntax on

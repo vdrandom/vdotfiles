@@ -228,9 +228,21 @@ greset() {
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
 }
+# ssh-compat, when terminfo is missing
+s() {
+    local -A terms tempterm ssh
+    ssh=$(whence ssh)
+    terms=(
+        'st'   'xterm'
+        'tmux' 'screen'
+    )
+    tempterm=${TERM%%-256color}
+    TERM=${TERMS[$tempterm]-$tempterm} $ssh "$@"
+}
+# prefer neovim over vim
 vim() {
-    local vimbin
-    vimbin=$(whence nvim) || vimbin=$(whence vim)
-    $vimbin "$@"
+    local vim
+    vim=$(whence nvim) || vimbin=$(whence vim)
+    $vim "$@"
 }
 # }}}
