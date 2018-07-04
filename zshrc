@@ -153,7 +153,6 @@ alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias diff='command diff --color'
-alias vi='command vim'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '
@@ -174,6 +173,10 @@ alias atmux='command tmux -2 attach'
 # screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
+
+# neovim over vim
+[[ -x $(whence nvim) ]] && alias vim='command nvim'
+alias vi='vim'
 # }}}
 # {{{ plugins
 # colors
@@ -238,11 +241,5 @@ s() {
     )
     tempterm=${TERM%%-256color}
     TERM=${TERMS[$tempterm]-$tempterm} $ssh "$@"
-}
-# prefer neovim over vim
-vim() {
-    local vim
-    vim=$(whence nvim) || vim=$(whence vim)
-    $vim "$@"
 }
 # }}}
