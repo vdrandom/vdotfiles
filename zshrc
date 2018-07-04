@@ -242,7 +242,7 @@ s() {
 # prefer neovim over vim
 vim() {
     local vim
-    vim=$(whence nvim) || vimbin=$(whence vim)
+    vim=$(whence nvim) || vim=$(whence vim)
     $vim "$@"
 }
 # }}}
