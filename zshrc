@@ -236,10 +236,10 @@ s() {
     local -A terms tempterm ssh
     ssh=$(whence ssh)
     terms=(
-        'st'   'xterm'
-        'tmux' 'screen'
+        'rxvt-unicode-256color' 'rxvt-unicode'
+        'st-256color'           'xterm-256color'
+        'tmux-256color'         'screen-256color'
     )
-    tempterm=${TERM%%-256color}
-    TERM=${TERMS[$tempterm]-$tempterm} $ssh "$@"
+    TERM=${terms[$TERM]-$TERM} $ssh "$@"
 }
 # }}}

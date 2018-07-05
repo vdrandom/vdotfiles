@@ -16,11 +16,13 @@ set t_Co=256 t_ut= termencoding=utf-8 encoding=utf-8
 set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 " update window title
-if $TERM =~ '^screen'
-    set t_ts=k
-    set t_fs=\
+if !exists('g:tvim')
+    if $TERM =~ '^screen'
+        set t_ts=k
+        set t_fs=\
+    endif
+    set title titlestring=[%{hostname()}]\ %t\ -\ vim
 endif
-set title titlestring=[%{hostname()}]\ %t\ -\ vim
 " enable case indentation
 let g:sh_indent_case_labels=1
 " version specific settings
@@ -34,11 +36,7 @@ map <Space> <NOP>
 let mapleader="\<Space>"
 "no more F1
 noremap <F1> <Esc>
-xnoremap <F1> <Esc>
-snoremap <F1> <Esc>
-inoremap <F1> <Esc>
 lnoremap <F1> <Esc>
-cnoremap <F1> <Esc>
 "some toggles
 nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
@@ -70,7 +68,9 @@ if v:version >= 800
     autocmd FileType python packadd ale | packadd jedi-vim
     autocmd FileType sh packadd ale
 
-    if $TERM != 'linux'
+    if exists('g:tvim') || has('gui_running')
+        colorscheme jellybeans
+    elseif $TERM != 'linux'
         let g:solarized_extra_hi_groups = 1
         let g:solarized_use16 = 1
         colorscheme solarized8
