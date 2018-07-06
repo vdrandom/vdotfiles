@@ -153,6 +153,7 @@ alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias diff='command diff --color'
+alias s='tcmp ssh'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '
@@ -207,14 +208,13 @@ greset() {
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
 }
-# ssh-compat, when terminfo is missing
-s() {
-    local ssh=$(whence ssh)
+# term compatibility for remote stuff
+tcmp() {
     local -A terms=(
         'rxvt-unicode-256color' 'rxvt-unicode'
         'st-256color'           'xterm-256color'
         'tmux-256color'         'screen-256color'
     )
-    TERM=${terms[$TERM]:-$TERM} $ssh "$@"
+    TERM=${terms[$TERM]:-$TERM} "$@"
 }
 # }}}
