@@ -14,7 +14,7 @@
 	path = vimpack/start/vim-rsi
 	url = https://github.com/tpope/vim-rsi.git
 [submodule "vim-signify"]
-	path = vimpack/start/git-signify
+	path = vimpack/start/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
 [submodule "vim-tru-typewriter"]
 	path = vimpack/start/vim-tru-typewriter
