@@ -210,7 +210,7 @@ greset() {
 # ssh-compat, when terminfo is missing
 s() {
     local ssh=$(whence ssh)
-    local terms=(
+    local -A terms=(
         'rxvt-unicode-256color' 'rxvt-unicode'
         'st-256color'           'xterm-256color'
         'tmux-256color'         'screen-256color'
