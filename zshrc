@@ -179,24 +179,8 @@ alias scr='command screen sudo -Es'
 alias vi='vim'
 # }}}
 # {{{ plugins
-# colors
-font_colors() {
-    color_number=0
-    # colors are named for the solarized palette
-    for color in \
-        gray6 red green yellow blue magenta cyan gray1 \
-        black orange gray5 gray4 gray3 purple gray2 white
-    do
-        eval "${color}='\e[38;5;${color_number}m'"
-        (( color_number++ ))
-    done
-    unset color_number
-    reset='\e[0m'
-    bold='\e[1m'
-}
 # grc
-colorize() {
-    local cmds cmd
+if [[ -x "$(whence grc)" ]]; then
     cmds=(\
         cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
@@ -204,22 +188,14 @@ colorize() {
     for cmd in $cmds[@]; do
         alias $cmd="command grc -es --colour=auto $cmd"
     done
-}
-if [[ -x "$(whence grc)" ]]; then
-    colorize
-    unset -f colorize
+    unset cmds cmd
 fi
-# because fuck you thats' why
-fuck() { echo 'no, fuck you'; }
 # some cool git stuff
 gdiff() { /usr/bin/git diff --color "$@"; }
 gdf() {
-    local fancydiff='/usr/bin/diff-so-fancy'
-    local githighlight='/usr/share/git/diff-highlight/diff-highlight'
-    if [[ -x $fancydiff ]]; then
-        gdiff "$@" | $fancydiff | less --tabs=4 -RSFX
-    elif [[ -x $githighlight ]]; then
-        gdiff "$@" | $githighlight | less --tabs=4 -RSFX
+    local difftool
+    if difftool=$(whence sdiff-so-fancy); then
+        gdiff "$@" | $difftool | less --tabs=4 -RSFX
     else
         gdiff "$@"
     fi
@@ -233,13 +209,12 @@ greset() {
 }
 # ssh-compat, when terminfo is missing
 s() {
-    local -A terms tempterm ssh
-    ssh=$(whence ssh)
-    terms=(
+    local ssh=$(whence ssh)
+    local terms=(
         'rxvt-unicode-256color' 'rxvt-unicode'
         'st-256color'           'xterm-256color'
         'tmux-256color'         'screen-256color'
     )
-    TERM=${terms[$TERM]-$TERM} $ssh "$@"
+    TERM=${terms[$TERM]:-$TERM} $ssh "$@"
 }
 # }}}
