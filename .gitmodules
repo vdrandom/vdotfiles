@@ -1,33 +1,33 @@
-[submodule "vim-easy-align"]
-	path = vimpack/start/vim-easy-align
-	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "vim-commentary"]
 	path = vimpack/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim-easy-align"]
+	path = vimpack/start/vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
 [submodule "vim-fugitive"]
 	path = vimpack/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim-rsi"]
-	path = vimpack/start/vim-rsi
-	url = https://github.com/tpope/vim-rsi.git
 [submodule "vim-polyglot"]
 	path = vimpack/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim-rsi"]
+	path = vimpack/start/vim-rsi
+	url = https://github.com/tpope/vim-rsi.git
+[submodule "vim-signify"]
+	path = vimpack/start/git-signify
+	url = https://github.com/mhinz/vim-signify.git
 [submodule "vim-tru-typewriter"]
 	path = vimpack/start/vim-tru-typewriter
 	url = https://git.vdrandom.org/vim-tru-typewriter
-[submodule "vimwiki"]
-	path = vimpack/opt/vimwiki
-	url = https://github.com/vimwiki/vimwiki.git
 [submodule "ale"]
 	path = vimpack/opt/ale
 	url = https://github.com/w0rp/ale.git
 [submodule "jedi-vim"]
 	path = vimpack/opt/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
-[submodule "vim-gitgutter"]
-	path = vimpack/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vimwiki"]
+	path = vimpack/opt/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
 [submodule "vim-solarized8"]
-	path = vimpack/start/vim-solarized8
+	path = vimpack/opt/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git

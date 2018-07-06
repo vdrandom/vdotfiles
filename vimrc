@@ -63,6 +63,10 @@ if v:version >= 800
     xmap <Leader>a <Plug>(EasyAlign)
     nmap <Leader>a <Plug>(EasyAlign)
 
+    " signify options
+    let g:signify_vcs_list = [ 'git' ]
+    let g:signify_sign_change = '~'
+
     " enable packs based on filetype
     let g:ale_python_flake8_executable = 'python2'
     autocmd FileType python packadd ale | packadd jedi-vim
