@@ -4,9 +4,6 @@
 [submodule "vim-easy-align"]
 	path = vimpack/start/vim-easy-align
 	url = https://github.com/junegunn/vim-easy-align.git
-[submodule "vim-fugitive"]
-	path = vimpack/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim-polyglot"]
 	path = vimpack/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot

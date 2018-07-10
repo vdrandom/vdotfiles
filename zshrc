@@ -75,12 +75,8 @@ PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
 PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
 precmd.title() {
     case $TERM in
-        screen*)
-            printf '\033k%s\033\' ${HOST%%.*}
-            ;;
-        *)
-            printf '\033]0;%s\007' ${HOST%%.*}
-            ;;
+        (screen*) printf '\033k%s\033\'  ${HOST%%.*};;
+        (*)       printf '\033]2;%s\007' ${HOST%%.*};;
     esac
 }
 precmd.is_git_repo() {
@@ -174,10 +170,6 @@ alias atmux='command tmux -2 attach'
 # screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
-
-# neovim over vim
-[[ -x $(whence nvim) ]] && alias vim='command nvim'
-alias vi='vim'
 # }}}
 # {{{ plugins
 # grc
