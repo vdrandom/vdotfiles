@@ -187,7 +187,7 @@ fi
 gdiff() { /usr/bin/git diff --color "$@"; }
 gdf() {
     local difftool
-    if difftool=$(whence sdiff-so-fancy); then
+    if difftool=$(whence diff-so-fancy); then
         gdiff "$@" | $difftool | less --tabs=4 -RSFX
     else
         gdiff "$@"
