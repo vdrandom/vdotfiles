@@ -6,8 +6,8 @@ set list listchars=tab:\|_,nbsp:x,trail:*
 set hlsearch incsearch ignorecase smartcase
 " scroll before reaching the first / final line
 set scrolloff=3 sidescrolloff=15 sidescroll=1
-" disable bell and fix termcap
-set noerrorbells visualbell t_vb= t_8f=[38;2;%lu;%lu;%lum t_8b=[48;2;%lu;%lu;%lum
+" disable bell
+set noerrorbells visualbell
 " indentation
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab autoindent
 " status line
@@ -24,6 +24,10 @@ let g:sh_indent_case_labels=1
 " version specific settings
 if v:version >= 703
     set colorcolumn=80 relativenumber formatoptions+=j
+endif
+" fix termcap and ttymouse, but not for neovim
+if !has('nvim')
+    set ttymouse=sgr t_vb= t_8f=[38;2;%lu;%lu;%lum t_8b=[48;2;%lu;%lu;%lum
 endif
 
 " maps
@@ -65,7 +69,7 @@ if v:version >= 800
     autocmd FileType sh packadd ale
 
     if $TERM != 'linux'
-        set termguicolors bg=dark ttymouse=sgr
+        set termguicolors bg=dark
         colorscheme hybrid
     endif
 endif
