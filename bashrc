@@ -112,7 +112,7 @@ tcmp() {
     local -A terms=(
         [rxvt-unicode-256color]='rxvt-unicode'
         [st-256color]='xterm-256color'
-        [tmux-256color]='screen-256color'
+        [tmux-256color]='screen.xterm-new'
     )
     TERM="${terms[$TERM]:-$TERM}" "$@"
 }
