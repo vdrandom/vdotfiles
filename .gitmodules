@@ -25,6 +25,3 @@
 [submodule "vimwiki"]
 	path = vimpack/opt/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-[submodule "vim-solarized8"]
-	path = vimpack/opt/vim-solarized8
-	url = https://github.com/lifepillar/vim-solarized8.git

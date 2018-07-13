@@ -27,7 +27,7 @@ if v:version >= 703
 endif
 " fix termcap and ttymouse, but not for neovim
 if !has('nvim')
-    set ttymouse=sgr t_vb= t_8f=[38;2;%lu;%lu;%lum t_8b=[48;2;%lu;%lu;%lum
+    set ttymouse=sgr t_vb= t_Co=256 t_8f=[38;2;%lu;%lu;%lum t_8b=[48;2;%lu;%lu;%lum
 endif
 
 " maps
@@ -69,8 +69,7 @@ if v:version >= 800
     autocmd FileType sh packadd ale
 
     if $TERM != 'linux'
-        set termguicolors bg=dark
-        colorscheme hybrid
+        color solarized8
     endif
 endif
 
