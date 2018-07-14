@@ -1,14 +1,14 @@
-" Name:         Solarized 8
+" Name:         Solarized 16
 " Description:  Precision colors for machines and people
 " Author:       Ethan Schoonover
-" Author:       Lifepillar <lifepillar@lifepillar.me>
+" Author:       Lifepillar
 " Maintainer:   Von Random
 " License:      OSI approved MIT license
-" Last Updated: Thu Jun 21 12:32:13 2018
+" Last Updated: Sat Jul 14 13:01:01 2018
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running')
       \ && (!exists('&t_Co') || &t_Co < 16)
-  echoerr '[Solarized 8] There are not enough colors.'
+  echoerr '[Solarized 16] There are not enough colors.'
   finish
 endif
 
@@ -17,80 +17,34 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let g:colors_name = 'solarized8'
+let g:colors_name = 'solarized16'
 
-" 16-color variant
 if &background ==# 'dark'
   let g:terminal_ansi_colors = ['#073642', '#dc322f', '#859900', '#b58900', '#268bd2', '#d33682', '#2aa198', '#eee8d5',
         \ '#002b36', '#cb4b16', '#586e75', '#657b83', '#839496', '#6c71c4', '#93a1a1', '#fdf6e3']
-  if !has('gui_running') && get(g:, 'solarized_termtrans', 0)
-    hi Normal ctermfg=12 ctermbg=NONE guifg=#839496 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-    hi FoldColumn ctermfg=fg ctermbg=NONE guifg=fg guibg=NONE guisp=NONE cterm=NONE gui=NONE
-    hi Folded ctermfg=fg ctermbg=NONE guifg=fg guibg=NONE guisp=#002b36 cterm=NONE,bold gui=NONE,bold
-    hi LineNr ctermfg=10 ctermbg=NONE guifg=#586e75 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-    hi Terminal ctermfg=fg ctermbg=NONE guifg=fg guibg=NONE guisp=NONE cterm=NONE gui=NONE
-    hi CursorLineNr ctermbg=NONE guifg=NONE
-  else
-    hi Normal ctermfg=12 ctermbg=8 guifg=#839496 guibg=#002b36 guisp=NONE cterm=NONE gui=NONE
-    hi FoldColumn ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE gui=NONE
-    hi Folded ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=#002b36 cterm=NONE,bold gui=NONE,bold
-    hi LineNr ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE gui=NONE
-    hi Terminal ctermfg=fg ctermbg=8 guifg=fg guibg=#002b36 guisp=NONE cterm=NONE gui=NONE
-    hi CursorLineNr ctermbg=0 guibg=#073642
-  endif
-  if get(g:, "solarized_visibility", "") == "high"
-    hi CursorLineNr ctermfg=9 guifg=#cb4b16 cterm=bold gui=bold
-    hi NonText ctermfg=9 ctermbg=NONE guifg=#cb4b16 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi SpecialKey ctermfg=9 ctermbg=NONE guifg=#cb4b16 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi SpellBad ctermfg=13 ctermbg=15 guifg=#6c71c4 guibg=#fdf6e3 guisp=#dc322f cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-    hi SpellCap ctermfg=13 ctermbg=15 guifg=#6c71c4 guibg=#fdf6e3 guisp=#dc322f cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-    hi SpellLocal ctermfg=3 ctermbg=15 guifg=#b58900 guibg=#fdf6e3 guisp=#dc322f cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-    hi SpellRare ctermfg=6 ctermbg=15 guifg=#2aa198 guibg=#fdf6e3 guisp=#dc322f cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-    hi Title ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  elseif get(g:, "solarized_visibility", "") == "low"
-    hi CursorLineNr ctermfg=10 guifg=#586e75 cterm=bold gui=bold
-    hi NonText ctermfg=0 ctermbg=NONE guifg=#073642 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi SpecialKey ctermfg=0 ctermbg=NONE guifg=#073642 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi SpellBad ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellCap ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
-    hi Title ctermfg=10 ctermbg=NONE guifg=#586e75 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  else
-    hi CursorLineNr ctermfg=12 guifg=#839496 cterm=bold gui=bold
-    hi NonText ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi SpecialKey ctermfg=11 ctermbg=0 guifg=#657b83 guibg=#073642 guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi SpellBad ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellCap ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
-    hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
-    hi Title ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  endif
+  hi Normal ctermfg=12 ctermbg=8 guifg=#839496 guibg=#002b36 guisp=NONE cterm=NONE gui=NONE
+  hi FoldColumn ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE gui=NONE
+  hi Folded ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=#002b36 cterm=NONE,bold gui=NONE,bold
+  hi LineNr ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE gui=NONE
+  hi Terminal ctermfg=fg ctermbg=8 guifg=fg guibg=#002b36 guisp=NONE cterm=NONE gui=NONE
+  hi CursorLineNr ctermbg=0 guibg=#073642
+  hi CursorLineNr ctermfg=12 guifg=#839496 cterm=bold gui=bold
+  hi NonText ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
+  hi SpecialKey ctermfg=11 ctermbg=0 guifg=#657b83 guibg=#073642 guisp=NONE cterm=NONE,bold gui=NONE,bold
+  hi SpellBad ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
+  hi SpellCap ctermfg=13 ctermbg=NONE guifg=#6c71c4 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
+  hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
+  hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
+  hi Title ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
   hi ColorColumn ctermfg=NONE ctermbg=0 guifg=NONE guibg=#073642 guisp=NONE cterm=NONE gui=NONE
   hi Conceal ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  if get(g:, 'solarized_old_cursor_style', 0)
-    hi Cursor ctermfg=8 ctermbg=12 guifg=#002b36 guibg=#839496 guisp=NONE cterm=NONE gui=NONE
-  else
-    hi Cursor ctermfg=15 ctermbg=4 guifg=#fdf6e3 guibg=#268bd2 guisp=NONE cterm=NONE gui=NONE
-  endif
+  hi Cursor ctermfg=15 ctermbg=4 guifg=#fdf6e3 guibg=#268bd2 guisp=NONE cterm=NONE gui=NONE
   hi CursorColumn ctermfg=NONE ctermbg=0 guifg=NONE guibg=#073642 guisp=NONE cterm=NONE gui=NONE
   hi CursorLine ctermfg=NONE ctermbg=0 guifg=NONE guibg=#073642 guisp=#93a1a1 cterm=NONE gui=NONE
-  if get(g:, "solarized_diffmode", "") == "high"
-    hi DiffAdd ctermfg=2 ctermbg=NONE guifg=#859900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi DiffChange ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi DiffDelete ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi DiffText ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  elseif get(g:, "solarized_diffmode", "") == "low"
-    hi DiffAdd ctermfg=2 ctermbg=NONE guifg=#859900 guibg=NONE guisp=#859900 cterm=NONE gui=NONE
-    hi DiffChange ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE gui=NONE
-    hi DiffDelete ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi DiffText ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=#268bd2 cterm=NONE gui=NONE
-  else
-    hi DiffAdd ctermfg=2 ctermbg=0 guifg=#859900 guibg=#073642 guisp=#859900 cterm=NONE gui=NONE
-    hi DiffChange ctermfg=3 ctermbg=0 guifg=#b58900 guibg=#073642 guisp=#b58900 cterm=NONE gui=NONE
-    hi DiffDelete ctermfg=1 ctermbg=0 guifg=#dc322f guibg=#073642 guisp=NONE cterm=NONE,bold gui=NONE,bold
-    hi DiffText ctermfg=4 ctermbg=0 guifg=#268bd2 guibg=#073642 guisp=#268bd2 cterm=NONE gui=NONE
-  endif
+  hi DiffAdd ctermfg=2 ctermbg=0 guifg=#859900 guibg=#073642 guisp=#859900 cterm=NONE gui=NONE
+  hi DiffChange ctermfg=3 ctermbg=0 guifg=#b58900 guibg=#073642 guisp=#b58900 cterm=NONE gui=NONE
+  hi DiffDelete ctermfg=1 ctermbg=0 guifg=#dc322f guibg=#073642 guisp=NONE cterm=NONE,bold gui=NONE,bold
+  hi DiffText ctermfg=4 ctermbg=0 guifg=#268bd2 guibg=#073642 guisp=#268bd2 cterm=NONE gui=NONE
   hi Directory ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE gui=NONE
   hi EndOfBuffer ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE guisp=NONE cterm=NONE gui=NONE
   hi ErrorMsg ctermfg=1 ctermbg=15 guifg=#dc322f guibg=#fdf6e3 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
@@ -106,19 +60,11 @@ if &background ==# 'dark'
   hi! link QuickFixLine Search
   hi Search ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
   hi SignColumn ctermfg=12 ctermbg=NONE guifg=#839496 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  if get(g:, "solarized_statusline", "") == "low"
-    hi StatusLine ctermfg=10 ctermbg=7 guifg=#586e75 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi StatusLineNC ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLine ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLineFill ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLineSel ctermfg=12 ctermbg=15 guifg=#839496 guibg=#fdf6e3 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  else
-    hi StatusLine ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi StatusLineNC ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLine ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLineFill ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-    hi TabLineSel ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  endif
+  hi StatusLine ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+  hi StatusLineNC ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+  hi TabLine ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+  hi TabLineFill ctermfg=10 ctermbg=0 guifg=#586e75 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+  hi TabLineSel ctermfg=12 ctermbg=0 guifg=#839496 guibg=#073642 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
   hi! link StatusLineTerm StatusLine
   hi! link StatusLineTermNC StatusLineNC
   hi VertSplit ctermfg=0 ctermbg=10 guifg=#073642 guibg=#586e75 guisp=NONE cterm=NONE gui=NONE
@@ -372,87 +318,30 @@ endif
 
 let g:terminal_ansi_colors = ['#eee8d5', '#dc322f', '#859900', '#b58900', '#268bd2', '#d33682', '#2aa198', '#073642',
       \ '#fdf6e3', '#cb4b16', '#93a1a1', '#839496', '#657b83', '#6c71c4', '#586e75', '#002b36']
-if !has('gui_running') && get(g:, 'solarized_termtrans', 0)
-  hi Normal ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  hi FoldColumn ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  hi Folded ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=#fdf6e3 cterm=NONE,bold gui=NONE,bold
-  hi LineNr ctermfg=14 ctermbg=NONE guifg=#93a1a1 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  hi Terminal ctermfg=fg ctermbg=NONE guifg=fg guibg=NONE guisp=NONE cterm=NONE gui=NONE
-  hi CursorLineNr ctermbg=NONE guifg=NONE
-else
-  hi Normal ctermfg=11 ctermbg=15 guifg=#657b83 guibg=#fdf6e3 guisp=NONE cterm=NONE gui=NONE
-  hi FoldColumn ctermfg=11 ctermbg=7 guifg=#657b83 guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
-  hi Folded ctermfg=11 ctermbg=7 guifg=#657b83 guibg=#eee8d5 guisp=#fdf6e3 cterm=NONE,bold gui=NONE,bold
-  hi LineNr ctermfg=14 ctermbg=7 guifg=#93a1a1 guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
-  hi Terminal ctermfg=fg ctermbg=15 guifg=fg guibg=#fdf6e3 guisp=NONE cterm=NONE gui=NONE
-  hi CursorLineNr ctermbg=7 guibg=#eee8d5
-endif
-if get(g:, "solarized_visibility", "") == "high"
-  hi CursorLineNr ctermfg=1 guifg=#dc322f cterm=bold gui=bold
-  if get(g:, 'solarized_old_cursor_style', 0)
-    hi Cursor ctermfg=15 ctermbg=11 guifg=#fdf6e3 guibg=#657b83 guisp=NONE cterm=NONE gui=NONE
-  else
-    hi Cursor ctermfg=15 ctermbg=1 guifg=#fdf6e3 guibg=#dc322f guisp=NONE cterm=NONE gui=NONE
-  endif
-  hi MatchParen ctermfg=15 ctermbg=12 guifg=#fdf6e3 guibg=#839496 guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi NonText ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi SpecialKey ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi SpellBad ctermfg=5 ctermbg=15 guifg=#d33682 guibg=#fdf6e3 guisp=#6c71c4 cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-  hi SpellCap ctermfg=5 ctermbg=15 guifg=#d33682 guibg=#fdf6e3 guisp=#6c71c4 cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-  hi SpellLocal ctermfg=3 ctermbg=15 guifg=#b58900 guibg=#fdf6e3 guisp=#cb4b16 cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-  hi SpellRare ctermfg=6 ctermbg=15 guifg=#2aa198 guibg=#fdf6e3 guisp=#cb4b16 cterm=NONE,reverse,underline gui=NONE,reverse,undercurl
-  hi Title ctermfg=9 ctermbg=NONE guifg=#cb4b16 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-elseif get(g:, "solarized_visibility", "") == "low"
-  hi CursorLineNr ctermfg=14 guifg=#93a1a1 cterm=bold gui=bold
-  if get(g:, 'solarized_old_cursor_style', 0)
-    hi Cursor ctermfg=15 ctermbg=11 guifg=#fdf6e3 guibg=#657b83 guisp=NONE cterm=NONE gui=NONE
-  else
-    hi Cursor ctermfg=15 ctermbg=9 guifg=#fdf6e3 guibg=#cb4b16 guisp=NONE cterm=NONE gui=NONE
-  endif
-  hi MatchParen ctermfg=1 ctermbg=7 guifg=#dc322f guibg=#eee8d5 guisp=NONE cterm=NONE,bold,underline gui=NONE,bold,underline
-  hi NonText ctermfg=7 ctermbg=NONE guifg=#eee8d5 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi SpecialKey ctermfg=7 ctermbg=NONE guifg=#eee8d5 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi SpellBad ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellCap ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
-  hi Title ctermfg=14 ctermbg=NONE guifg=#93a1a1 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-else
-  hi CursorLineNr ctermfg=11 guifg=#657b83 cterm=bold gui=bold
-  if get(g:, 'solarized_old_cursor_style', 0)
-    hi Cursor ctermfg=15 ctermbg=11 guifg=#fdf6e3 guibg=#657b83 guisp=NONE cterm=NONE gui=NONE
-  else
-    hi Cursor ctermfg=15 ctermbg=9 guifg=#fdf6e3 guibg=#cb4b16 guisp=NONE cterm=NONE gui=NONE
-  endif
-  hi MatchParen ctermfg=1 ctermbg=7 guifg=#dc322f guibg=#eee8d5 guisp=NONE cterm=NONE,bold,underline gui=NONE,bold,underline
-  hi NonText ctermfg=12 ctermbg=NONE guifg=#839496 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi SpecialKey ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi SpellBad ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellCap ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
-  hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
-  hi Title ctermfg=9 ctermbg=NONE guifg=#cb4b16 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-endif
+hi Normal ctermfg=11 ctermbg=15 guifg=#657b83 guibg=#fdf6e3 guisp=NONE cterm=NONE gui=NONE
+hi FoldColumn ctermfg=11 ctermbg=7 guifg=#657b83 guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
+hi Folded ctermfg=11 ctermbg=7 guifg=#657b83 guibg=#eee8d5 guisp=#fdf6e3 cterm=NONE,bold gui=NONE,bold
+hi LineNr ctermfg=14 ctermbg=7 guifg=#93a1a1 guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
+hi Terminal ctermfg=fg ctermbg=15 guifg=fg guibg=#fdf6e3 guisp=NONE cterm=NONE gui=NONE
+hi CursorLineNr ctermbg=7 guibg=#eee8d5
+hi CursorLineNr ctermfg=11 guifg=#657b83 cterm=bold gui=bold
+hi Cursor ctermfg=15 ctermbg=9 guifg=#fdf6e3 guibg=#cb4b16 guisp=NONE cterm=NONE gui=NONE
+hi MatchParen ctermfg=1 ctermbg=7 guifg=#dc322f guibg=#eee8d5 guisp=NONE cterm=NONE,bold,underline gui=NONE,bold,underline
+hi NonText ctermfg=12 ctermbg=NONE guifg=#839496 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
+hi SpecialKey ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,bold gui=NONE,bold
+hi SpellBad ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
+hi SpellCap ctermfg=5 ctermbg=NONE guifg=#d33682 guibg=NONE guisp=#6c71c4 cterm=NONE,underline gui=NONE,undercurl
+hi SpellLocal ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE,underline gui=NONE,undercurl
+hi SpellRare ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=#2aa198 cterm=NONE,underline gui=NONE,undercurl
+hi Title ctermfg=9 ctermbg=NONE guifg=#cb4b16 guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
 hi ColorColumn ctermfg=NONE ctermbg=7 guifg=NONE guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
 hi Conceal ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=7 guifg=NONE guibg=#eee8d5 guisp=NONE cterm=NONE gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=7 guifg=NONE guibg=#eee8d5 guisp=#586e75 cterm=NONE gui=NONE
-if get(g:, "solarized_diffmode", "") == "high"
-  hi DiffAdd ctermfg=2 ctermbg=NONE guifg=#859900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi DiffChange ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi DiffDelete ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi DiffText ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-elseif get(g:, "solarized_diffmode", "") == "low"
-  hi DiffAdd ctermfg=2 ctermbg=NONE guifg=#859900 guibg=NONE guisp=#859900 cterm=NONE gui=NONE
-  hi DiffChange ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=#b58900 cterm=NONE gui=NONE
-  hi DiffDelete ctermfg=1 ctermbg=NONE guifg=#dc322f guibg=NONE guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi DiffText ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=#268bd2 cterm=NONE gui=NONE
-else
-  hi DiffAdd ctermfg=2 ctermbg=7 guifg=#859900 guibg=#eee8d5 guisp=#859900 cterm=NONE gui=NONE
-  hi DiffChange ctermfg=3 ctermbg=7 guifg=#b58900 guibg=#eee8d5 guisp=#b58900 cterm=NONE gui=NONE
-  hi DiffDelete ctermfg=1 ctermbg=7 guifg=#dc322f guibg=#eee8d5 guisp=NONE cterm=NONE,bold gui=NONE,bold
-  hi DiffText ctermfg=4 ctermbg=7 guifg=#268bd2 guibg=#eee8d5 guisp=#268bd2 cterm=NONE gui=NONE
-endif
+hi DiffAdd ctermfg=2 ctermbg=7 guifg=#859900 guibg=#eee8d5 guisp=#859900 cterm=NONE gui=NONE
+hi DiffChange ctermfg=3 ctermbg=7 guifg=#b58900 guibg=#eee8d5 guisp=#b58900 cterm=NONE gui=NONE
+hi DiffDelete ctermfg=1 ctermbg=7 guifg=#dc322f guibg=#eee8d5 guisp=NONE cterm=NONE,bold gui=NONE,bold
+hi DiffText ctermfg=4 ctermbg=7 guifg=#268bd2 guibg=#eee8d5 guisp=#268bd2 cterm=NONE gui=NONE
 hi Directory ctermfg=4 ctermbg=NONE guifg=#268bd2 guibg=NONE guisp=NONE cterm=NONE gui=NONE
 hi EndOfBuffer ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE guisp=NONE cterm=NONE gui=NONE
 hi ErrorMsg ctermfg=1 ctermbg=15 guifg=#dc322f guibg=#fdf6e3 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
@@ -467,19 +356,11 @@ hi Question ctermfg=6 ctermbg=NONE guifg=#2aa198 guibg=NONE guisp=NONE cterm=NON
 hi! link QuickFixLine Search
 hi Search ctermfg=3 ctermbg=NONE guifg=#b58900 guibg=NONE guisp=NONE cterm=NONE,reverse gui=NONE,reverse
 hi SignColumn ctermfg=11 ctermbg=NONE guifg=#657b83 guibg=NONE guisp=NONE cterm=NONE gui=NONE
-if get(g:, "solarized_statusline", "") == "low"
-  hi StatusLine ctermfg=14 ctermbg=15 guifg=#93a1a1 guibg=#fdf6e3 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi StatusLineNC ctermfg=14 ctermbg=10 guifg=#93a1a1 guibg=#586e75 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLine ctermfg=14 ctermbg=10 guifg=#93a1a1 guibg=#586e75 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLineFill ctermfg=14 ctermbg=10 guifg=#93a1a1 guibg=#586e75 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLineSel ctermfg=10 ctermbg=15 guifg=#586e75 guibg=#fdf6e3 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-else
-  hi StatusLine ctermfg=10 ctermbg=7 guifg=#586e75 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi StatusLineNC ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLine ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLineFill ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-  hi TabLineSel ctermfg=10 ctermbg=7 guifg=#586e75 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
-endif
+hi StatusLine ctermfg=10 ctermbg=7 guifg=#586e75 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+hi StatusLineNC ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+hi TabLine ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+hi TabLineFill ctermfg=12 ctermbg=7 guifg=#839496 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
+hi TabLineSel ctermfg=10 ctermbg=7 guifg=#586e75 guibg=#eee8d5 guisp=NONE cterm=NONE,reverse gui=NONE,reverse
 hi! link StatusLineTerm StatusLine
 hi! link StatusLineTermNC StatusLineNC
 hi VertSplit ctermfg=10 ctermbg=14 guifg=#586e75 guibg=#93a1a1 guisp=NONE cterm=NONE gui=NONE

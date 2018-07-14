@@ -69,7 +69,7 @@ if v:version >= 800
     autocmd FileType sh packadd ale
 
     if $TERM != 'linux'
-        color solarized8
+        color solarized16
     endif
 endif
 
