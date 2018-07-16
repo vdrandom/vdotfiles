@@ -65,11 +65,10 @@ bindkey '^[m'     copy-prev-shell-word                # alt + m
 bindkey -s '^j'   '^atime ^m'                         # ctrl + j
 # }}}
 # {{{ prompt
-prompt_nl=$'\n'
 prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
-prompt_ln2='%(!.%F{red}.%F{black})>%f '
+prompt_ln2=$'\n''%(!.%F{red}.%F{black})>%f '
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
-PROMPT="$prompt_ln1$prompt_nl$prompt_ln2"
+PROMPT="$prompt_ln1$prompt_ln2"
 PROMPT2='%b%f%_%(!.%F{red}.%F{black})>%f%b '
 PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
 PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
@@ -115,9 +114,9 @@ precmd.git() {
 }
 precmd.prompt() {
     if (($#)); then
-        PROMPT="$prompt_ln1$prompt_git_data$prompt_nl$prompt_ln2"
+        PROMPT="$prompt_ln1$prompt_git_data$prompt_ln2"
     else
-        PROMPT="$prompt_ln1$prompt_nl$prompt_ln2"
+        PROMPT="$prompt_ln1$prompt_ln2"
     fi
 }
 precmd.git_update() {
