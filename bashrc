@@ -42,7 +42,6 @@ alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias diff='command diff --color'
-alias s='tcmp ssh'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '
@@ -84,20 +83,19 @@ gdiff() { /usr/bin/git diff --color "$@"; }
 gdf()
 {
     local difftool
-    if difftool=$(whence sdiff-so-fancy); then
-        gdiff "$@" | $difftool | less --tabs=4 -RSFX
+    if difftool=$(command -v sdiff-so-fancy); then
+        gdiff "$@" | "$difftool" | less --tabs=4 -RSFX
     else
         gdiff "$@"
     fi
 }
-# term compatibility for remote stuff
-tcmp() {
-    local -A terms=(
-        [rxvt-unicode-256color]='rxvt-unicode'
-        [st-256color]='xterm-256color'
-        [tmux-256color]='screen.xterm-new'
-    )
-    TERM="${terms[$TERM]:-$TERM}" "$@"
+# more compatible TERM for ssh sessions
+s() {
+    if termcompat=$(command -v termcompat); then
+        "$termcompat" ssh "$@"
+    else
+        ssh "$@"
+    fi
 }
 
 # we want to see exit code on error (it also has to be the last entry here)
