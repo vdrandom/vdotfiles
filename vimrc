@@ -15,8 +15,7 @@ set wildmenu showcmd ruler laststatus=2
 set statusline=[%F]\ %R%H%W%M\ %=[%{&fenc}/%{&ff}]\ %y\ [%4l/%L:%3v]
 " update window title
 if $TERM =~ '^screen'
-    set t_ts=k
-    set t_fs=\
+    set t_ts=k t_fs=\
 endif
 set title titlestring=[%{hostname()}]\ %t\ -\ vim
 " enable case indentation
@@ -42,16 +41,16 @@ nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>w :setlocal wrap!<CR>
 "turn off highlight until next search
-nnoremap <Leader>/ :noh<CR>
+noremap <Leader>/ :noh<CR>
 "copy to / paste from clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+noremap <Leader>y "+y
+noremap <Leader>d "+d
+noremap <Leader>p "+p
+noremap <Leader>P "+P
 "move macro somewhere I won't accidentally use it
 noremap q <NOP>
+"Return in normal should insert new lines
+nnoremap <CR> o<ESC>k
 "quit / save
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
