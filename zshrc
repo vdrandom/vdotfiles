@@ -170,6 +170,11 @@ alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 # }}}
 # {{{ plugins
+# vi alias
+vim() {
+    vimcmd=$(whence nvim) || vimcmd=$(whence vim) || vimcmd=$(whence vi)
+    $vimcmd "$@"
+}
 # grc
 if [[ -x "$(whence grc)" ]]; then
     cmds=(\
