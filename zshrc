@@ -168,15 +168,23 @@ alias atmux='command tmux -2 attach'
 # screen
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
+
+# (neo)vim
+vimcmd=$(whence nvim) || vimcmd=$(whence vim) || vimcmd=$(whence vi)
+alias vim=$vimcmd
+alias vi='vim'
+
+# termcompat
+if [[ -x $(whence termcompat) ]]; then
+    alias s='command termcompat ssh'
+else
+    alias s='command ssh'
+fi
+
 # }}}
 # {{{ plugins
-# vi alias
-vim() {
-    vimcmd=$(whence nvim) || vimcmd=$(whence vim) || vimcmd=$(whence vi)
-    $vimcmd "$@"
-}
 # grc
-if [[ -x "$(whence grc)" ]]; then
+if [[ -x $(whence grc) ]]; then
     cmds=(\
         cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
@@ -202,13 +210,5 @@ greset() {
     (( $? )) && return 1
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
-}
-# more compatible TERM for ssh sessions
-s() {
-    if termcompat=$(whence termcompat); then
-        $termcompat ssh "$@"
-    else
-        ssh "$@"
-    fi
 }
 # }}}
