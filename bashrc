@@ -27,7 +27,7 @@ prompt_command()
         (*)       printf '\033]0;%s\007' "${HOSTNAME%%.*}";;
     esac
     ((UID)) && clr=8 || clr=1
-    PS1="[ \\v | $(colorize $clr \\u) \\h:$(colorize 8 \\W) ]\\n> "
+    PS1="[ bash-\\v $(colorize "$clr" \\u) \\h:$(colorize 8 "$(pwd)") ]\\n> "
 }
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -42,6 +42,7 @@ alias rgrep='command grep --exclude-dir=\.git -R'
 alias ggrep='command git grep'
 alias tailf='command less -R +F'
 alias diff='command diff --color'
+alias whence='command -v'
 
 # ls
 alias ls='command ls --color=auto --group-directories-first '
@@ -99,5 +100,5 @@ s() {
 }
 
 # we want to see exit code on error (it also has to be the last entry here)
-trap 'printf "$(colorize 1 \>\>) $(colorize 8 exit) $(colorize 1 %s)\n" "$?" >&2' ERR
+trap 'returncode=$?; printf "$(colorize 1 \>\>) $(colorize 8 exit) $(colorize 1 %s)\n" "$returncode" >&2' ERR
 # }}}
