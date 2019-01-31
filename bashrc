@@ -27,9 +27,9 @@ prompt_command()
         (*)       printf '\033]0;%s\007' "${HOSTNAME%%.*}";;
     esac
     ((UID)) && clr=8 || clr=1
-    echo "[ bash-$BASH_VERSINFO | $(colorize "$clr" $USER) $HOSTNAME:$(colorize 8 "$(pwd)") ]"
+    echo "[ $(colorize "$clr" $USER) $HOSTNAME:$(colorize 8 "$(pwd)") ]"
 }
-PS1='> '
+PS1='\$ '
 PROMPT_COMMAND=prompt_command
 # }}}
 # {{{ aliases
