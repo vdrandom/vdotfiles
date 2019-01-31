@@ -85,7 +85,7 @@ precmd.title() {
     esac
 }
 precmd.is_git_repo() {
-    local curr_dir=$PWD
+    typeset curr_dir=$PWD
     while [[ -n $curr_dir ]]; do
         if [[ -r $curr_dir/.git/HEAD ]]; then
             return 0
@@ -98,10 +98,12 @@ precmd.is_git_repo() {
 precmd.git() {
     precmd.is_git_repo || return 0
 
-    local raw_status="$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
-    [[ -n $raw_status ]] || return 0
-    local branch_info full_status git_status= IFS=
-    local staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
+    typeset raw_status
+    raw_status="$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
+    (($?)) && return 0
+
+    typeset branch_info full_status git_status= IFS=
+    typeset staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
     while read line; do
         [[ $line[1,2] == '##'     ]] && branch_info=$line[4,-1]
@@ -204,7 +206,7 @@ fi
 # some cool git stuff
 gdiff() { /usr/bin/git diff --color "$@"; }
 gdf() {
-    local difftool
+    typeset difftool
     if difftool=$(whence diff-so-fancy); then
         gdiff "$@" | $difftool | less --tabs=4 -RSFX
     else
