@@ -98,7 +98,8 @@ precmd.is_git_repo() {
 precmd.git() {
     precmd.is_git_repo || return 0
 
-    local raw_status="$(flock -w 1 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
+    local raw_status="$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
+    [[ -n $raw_status ]] || return 0
     local branch_info full_status git_status= IFS=
     local staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
