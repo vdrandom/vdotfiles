@@ -119,7 +119,7 @@ precmd.git() {
     (( unmerged_count  )) && git_status+="%F{magenta}*$unmerged_count"
     [[ -z $git_status  ]] && git_status="%F{green}ok"
 
-    printf ' { %s | %s%%f }' $branch_info $git_status
+    printf ' { %s \ue0a0 %s%%f }' $branch_info $git_status
 }
 precmd.prompt() {
     if (($#)); then
