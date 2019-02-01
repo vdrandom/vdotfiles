@@ -72,12 +72,12 @@ bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
 prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
-prompt_ln2=$'\n''%(!.%F{red}.%F{black})>%f '
+prompt_ln2=$'\n%(!.%F{red}.%F{black})>%f '
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_ln2"
-PROMPT2='%b%f%_%(!.%F{red}.%F{black})>%f%b '
-PROMPT3='%b%f?%(!.%F{red}.%F{black})#%f%b '
-PROMPT4='%b%f+%N:%i%(!.%F{red}.%F{black})>%f%b '
+PROMPT2='%_%(!.%F{red}.%F{black})>%f '
+PROMPT3='?%(!.%F{red}.%F{black})#%f '
+PROMPT4='+%N:%i%(!.%F{red}.%F{black})>%f '
 precmd.title() {
     case $TERM in
         (screen*) printf '\033k%s\033\'  ${HOST%%.*};;
@@ -96,8 +96,6 @@ precmd.is_git_repo() {
     return 1
 }
 precmd.git() {
-    precmd.is_git_repo || return 0
-
     typeset raw_status
     raw_status="$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
     (($?)) && return 0
@@ -119,31 +117,30 @@ precmd.git() {
     (( unmerged_count  )) && git_status+="%F{magenta}*$unmerged_count"
     [[ -z $git_status  ]] && git_status="%F{green}ok"
 
-    printf ' { %s \ue0a0 %s%%f }' $branch_info $git_status
+    printf ' { %s \ue0a0 %s%%f }' $branch_info $git_status > $prompt_state_file
 }
 precmd.prompt() {
-    if (($#)); then
-        PROMPT="$prompt_ln1$prompt_git_data$prompt_ln2"
-    else
-        PROMPT="$prompt_ln1$prompt_ln2"
-    fi
+    PROMPT="$prompt_ln1$1$prompt_ln2"
 }
 precmd.git_update() {
-    precmd.git > $prompt_state_file
+    precmd.git
     kill -s USR1 $$
 }
 precmd() {
     precmd.title
-    precmd.prompt
-    precmd.git_update &!
+    if precmd.is_git_repo; then
+        precmd.prompt $' { \ue0a0 }'
+        precmd.git_update &!
+    else
+        precmd.prompt
+    fi
 }
 TRAPUSR1() {
-    prompt_git_data="$(<$prompt_state_file)"
-    precmd.prompt 1
+    precmd.prompt "$(<$prompt_state_file)"
     zle && zle reset-prompt
 }
 TRAPEXIT() {
-    [[ -r $prompt_state_file ]] && rm $prompt_state_file
+    [[ -f $prompt_state_file ]] && rm $prompt_state_file
 }
 # }}}
 # {{{ aliases
