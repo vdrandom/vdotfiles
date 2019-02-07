@@ -16,19 +16,15 @@ export LS_COLORS='no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd
 # }}}
 # {{{ prompt
 colorize() {
-    typeset prompt="$1"; shift
-    typeset color_nr="$1"; shift
-    if ((prompt)); then
-        printf '\[\e[38;5;%sm\]%s\[\e[39m\]' "$color_nr" "$*"
-    else
-        printf '\e[38;5;%sm%s\e[39m' "$color_nr" "$*"
-    fi
+    typeset escs prompt="$1" color_nr="$2"; shift 2
+    ((prompt)) && escs='\[\e[38;5;%sm\]%s\[\e[39m\]' || escs='\e[38;5;%sm%s\e[39m'
+    printf "$escs" "$color_nr" "$*"
 }
 prompt_command() {
     typeset cwd=$(colorize 1 8 "$(pwd)")
     case "$TERM" in
-        (screen*) printf '\033k%s\033\'  "${HOSTNAME%%.*}";;
-        (*)       printf '\033]0;%s\007' "${HOSTNAME%%.*}";;
+        (screen*) printf '\ek%s\e\'  "${HOSTNAME%%.*}";;
+        (*)       printf '\e]0;%s\a' "${HOSTNAME%%.*}";;
     esac
     PS1="[ bash-\\v | $ps_user $HOSTNAME:$cwd ]\\n$ps_bang "
 }
