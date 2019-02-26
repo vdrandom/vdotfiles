@@ -155,6 +155,7 @@ force_focus_wrapping yes
 # rules
 # workspace 6 is for always floating
 for_window [workspace=6] floating enable
+assign [class="Steam"] → 6
 # software
 for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Vpnui"] floating enable
@@ -169,33 +170,6 @@ for_window [class="Vncviewer"] floating enable
 for_window [class="X64"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
-for_window [instance="sun-awt-X11-XFramePeer" title="(?i)kvm"] floating enable
-# games
-for_window [class="Awesomenauts.bin.x86"] floating enable
-for_window [class="Civ5XP"] floating enable
-for_window [class="EoCApp"] floating enable
-for_window [class="HitmanPro"] floating enable
-for_window [class="Mojosetup"] floating enable
-for_window [class="Pandora"] floating enable
-for_window [class="Strife"] floating enable
-for_window [class="Symphony.bin.x86_64"] floating enable
-for_window [class="^Binding of Isaac"] floating enable
-for_window [class="ck2"] floating enable
-for_window [class="csgo_linux"] floating enable
-for_window [class="deponia_tcj"] floating enable
-for_window [class="dota_linux"] floating enable
-for_window [class="game.x86_64"] floating enable
-for_window [class="hl2_linux"] floating enable
-for_window [class="jng_gold"] floating enable
-for_window [class="witcher2"] floating enable
-for_window [title="^GunsOfIcarusOnline$"] floating enable
-for_window [title="^Hand of Fate$"] floating enable
-for_window [title="^Serious Sam 3 - Linux$"] floating enable
-# wine
-for_window [instance="Steam.exe"] floating enable
-for_window [instance="Civ4BeyondSword.exe"] floating enable
-for_window [instance="KB.exe"] floating enable
-for_window [instance="nwn2main.exe"] floating enable
 # scratchpad
 for_window [class="keepassxc"] move scratchpad, scratchpad show
 for_window [title="^vimwiki$"] move scratchpad, scratchpad show
