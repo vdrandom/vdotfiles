@@ -155,7 +155,7 @@ force_focus_wrapping yes
 # rules
 # workspace 6 is for always floating
 for_window [workspace=6] floating enable
-assign [class="Steam"] → 6
+assign [class="Steam"] 6
 # software
 for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Vpnui"] floating enable
