@@ -22,7 +22,7 @@ bindsym $mod+Shift+c kill
 bindsym Control+q exec /bin/true
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec dmenu_displays -i -fn "$dmenu_font"
+bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$dmenu_font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
 bindsym $mod+p exec dmenu_ssh "$i3_term -e termcompat ssh" -i -fn "$dmenu_font"
 bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font"
@@ -140,7 +140,7 @@ bindsym $mod+r mode "resize"
 
 bar {
     position top
-    status_command /home/von/vdstatus/vdstatus
+    status_command "$HOME/vdstatus/vdstatus"
     tray_output primary
 }
 
@@ -181,5 +181,4 @@ bindsym $mod+n [title="^vimwiki$"] scratchpad show
 bindsym $mod+y [class="Vpnui"] scratchpad show
 
 # execs
-exec --no-startup-id /home/von/.autostart
-exec --no-startup-id xrdb /home/von/.Xresources
+exec --no-startup-id "$HOME/.autostart"
