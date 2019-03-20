@@ -175,11 +175,6 @@ alias atmux='command tmux -2 attach'
 alias rscreen='command screen -Dr'
 alias scr='command screen sudo -Es'
 
-# (neo)vim
-vimcmd=$(whence nvim) || vimcmd=$(whence vim) || vimcmd=$(whence vi)
-alias vim=$vimcmd
-alias vi='vim'
-
 # termcompat
 if [[ -x $(whence termcompat) ]]; then
     alias s='command termcompat ssh'
