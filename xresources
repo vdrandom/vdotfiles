@@ -7,6 +7,30 @@ Xft.hintstyle:          hintslight
 Xft.dpi:                100
 #define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
+
+! solarized light
+#define COLORFG #657b83
+#define COLORBG #fdf6e3
+#define COLORBD #002b36
+#define COLORCR #cb4b16
+
+#define COLOR0  #073642
+#define COLOR1  #dc322f
+#define COLOR2  #859900
+#define COLOR3  #b58900
+#define COLOR4  #268bd2
+#define COLOR5  #d33682
+#define COLOR6  #2aa198
+#define COLOR7  #eee8d5
+
+#define COLOR8  #002b36
+#define COLOR9  #cb4b16
+#define COLOR10 #586e75
+#define COLOR11 #657b83
+#define COLOR12 #839496
+#define COLOR13 #6c71c4
+#define COLOR14 #93a1a1
+#define COLOR15 #fdf6e3
 ! }}}
 ! {{{ urxvt
 ! fonts
@@ -14,9 +38,6 @@ URxvt.font:             TERMINUS
 URxvt.boldFont:         TERMINUS
 URxvt.italicFont:       TERMINUS
 URxvt.boldItalicFont:   TERMINUS
-
-! misc
-URxvt.geometry:         120:36
 URxvt.intensityStyles:  false
 URxvt.internalBorder:   1
 URxvt.iso14755:         false
@@ -34,29 +55,61 @@ URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
 URxvt.matcher.button:   3
 
 ! colors
-URxvt.foreground:   #657b83
-URxvt.background:   #fdf6e3
-URxvt.colorBD:      #002b36
+URxvt.foreground:   COLORFG
+URxvt.background:   COLORBG
+URxvt.colorBD:      COLORBD
+URxvt.cursorColor:  COLORCR
 
-URxvt.cursorColor:  #cb4b16
+URxvt.color0:       COLOR0
+URxvt.color1:       COLOR1
+URxvt.color2:       COLOR2
+URxvt.color3:       COLOR3
+URxvt.color4:       COLOR4
+URxvt.color5:       COLOR5
+URxvt.color6:       COLOR6
+URxvt.color7:       COLOR7
 
-URxvt.color0:       #073642
-URxvt.color1:       #dc322f
-URxvt.color2:       #859900
-URxvt.color3:       #b58900
-URxvt.color4:       #268bd2
-URxvt.color5:       #d33682
-URxvt.color6:       #2aa198
-URxvt.color7:       #eee8d5
+URxvt.color8:       COLOR8
+URxvt.color9:       COLOR9
+URxvt.color10:      COLOR10
+URxvt.color11:      COLOR11
+URxvt.color12:      COLOR12
+URxvt.color13:      COLOR13
+URxvt.color14:      COLOR14
+URxvt.color15:      COLOR15
+! }}}
+! {{{ xterm
+XTerm.termName:               xterm-direct
+XTerm.vt100.font:             TERMINUS
+XTerm.vt100.colorBDMode:      true
+XTerm.vt100.allowBoldFonts:   false
+XTerm.vt100.boldColors:       false
+XTerm.vt100.bellIsUrgent:     true
+XTerm.vt100.visualBell:       false
 
-URxvt.color8:       #002b36
-URxvt.color9:       #cb4b16
-URxvt.color10:      #586e75
-URxvt.color11:      #657b83
-URxvt.color12:      #839496
-URxvt.color13:      #6c71c4
-URxvt.color14:      #93a1a1
-URxvt.color15:      #fdf6e3
+! colors
+XTerm.vt100.foreground:   COLORFG
+XTerm.vt100.background:   COLORBG
+XTerm.vt100.colorBD:      COLORBD
+XTerm.vt100.cursorColor:  COLORCR
+
+XTerm.vt100.color0:       COLOR0
+XTerm.vt100.color1:       COLOR1
+XTerm.vt100.color2:       COLOR2
+XTerm.vt100.color3:       COLOR3
+XTerm.vt100.color4:       COLOR4
+XTerm.vt100.color5:       COLOR5
+XTerm.vt100.color6:       COLOR6
+XTerm.vt100.color7:       COLOR7
+
+XTerm.vt100.color8:       COLOR8
+XTerm.vt100.color9:       COLOR9
+XTerm.vt100.color10:      COLOR10
+XTerm.vt100.color11:      COLOR11
+XTerm.vt100.color12:      COLOR12
+XTerm.vt100.color13:      COLOR13
+XTerm.vt100.color14:      COLOR14
+XTerm.vt100.color15:      COLOR15
 ! }}}
 ! {{{ xscreensaver and rofi
 xscreensaver.font:         TERMINUS
