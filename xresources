@@ -1,10 +1,11 @@
-! {{{ xft and cursor configuration, font aliases
+! {{{ xft and cursor configuration, aliases
 Xcursor.theme:          Vanilla-DMZ-AA
 Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
 Xft.dpi:                100
+
 #define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
 
@@ -80,12 +81,16 @@ URxvt.color15:      COLOR15
 ! }}}
 ! {{{ xterm
 XTerm.termName:               xterm-direct
+XTerm.borderWidth:            0
 XTerm.vt100.font:             TERMINUS
 XTerm.vt100.colorBDMode:      true
 XTerm.vt100.allowBoldFonts:   false
 XTerm.vt100.boldColors:       false
 XTerm.vt100.bellIsUrgent:     true
 XTerm.vt100.visualBell:       false
+XTerm.vt100.metaSendsEscape:  true
+XTerm.vt100.fastScroll:       true
+XTerm.vt100.internalBorder:   1
 
 ! colors
 XTerm.vt100.foreground:   COLORFG
