@@ -173,6 +173,7 @@ for_window [class="vlc"] floating enable
 for_window [class="X64"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
+for_window [class="java-lang-Thread"] floating enable
 # scratchpad
 for_window [class="keepassxc"] move scratchpad, scratchpad show
 for_window [title="^vimwiki$"] move scratchpad, scratchpad show
