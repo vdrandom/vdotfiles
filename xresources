@@ -50,6 +50,10 @@ URxvt.secondaryScroll:  false
 URxvt.urgentOnBell:     true
 URxvt.visualBell:       false
 
+! keymaps
+URxvt.keysym.M-v: eval:paste_clipboard
+URxvt.keysym.M-c: eval:selection_to_clipboard
+
 ! perl extensions
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
