@@ -22,10 +22,9 @@ bindsym $mod+Shift+c kill
 bindsym Control+q exec /bin/true
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$dmenu_font"
-bindsym $mod+d exec dmenu_run -p run -i -fn "$dmenu_font"
-bindsym $mod+p exec dmenu_ssh "$i3_term -e termcompat ssh" -i -fn "$dmenu_font"
-bindsym $mod+u exec dmenu_pass -i -fn "$dmenu_font"
+bindsym $mod+s exec rofi -show display -sort
+bindsym $mod+d exec rofi -show run -sort
+bindsym $mod+p exec rofi -show ssh -sort
 bindsym $mod+Tab exec rofi -show window
 
 # change focus
