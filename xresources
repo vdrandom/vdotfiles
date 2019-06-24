@@ -124,9 +124,10 @@ xterm.vt100.color15:      COLOR15
 xscreensaver.font:         TERMINUS
 xscreensaver.Dialog.Font:  TERMINUS_SMALL
 
-rofi.modi:            window,run,ssh,display:/home/von/git/mine/vscripts/rofi_multicmd /home/von/.displayrc.yaml
 rofi.font:            xos4 Terminus Bold 11
-rofi.terminal:        default-terminal-emulator
-rofi.theme:           paper-float
+rofi.location:        2
+rofi.modi:            window,run,drun,ssh,display:/home/von/git/mine/vscripts/rofi_multicmd /home/von/.displayrc.yaml
 rofi.ssh-command:     tmux_ssh {host}
+rofi.terminal:        default-terminal-emulator
+rofi.theme:           Arc-Dark
 ! }}}

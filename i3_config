@@ -22,9 +22,10 @@ bindsym $mod+Shift+c kill
 bindsym Control+q exec /bin/true
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec rofi -show display -sort
-bindsym $mod+d exec rofi -show run -sort
-bindsym $mod+p exec rofi -show ssh -sort
+bindsym $mod+s exec rofi -show display -disable-history -lines 3 -sort
+bindsym $mod+d exec rofi -show run -disable-history -sort
+bindsym $mod+Shift+d exec rofi -show drun -disable-history -sort
+bindsym $mod+p exec rofi -show ssh -disable-history -sort
 bindsym $mod+Tab exec rofi -show window
 
 # change focus
