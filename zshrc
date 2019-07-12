@@ -88,6 +88,7 @@ precmd.is_git_repo() {
     typeset curr_dir=$PWD
     while [[ -n $curr_dir ]]; do
         if [[ -r $curr_dir/.git/HEAD ]]; then
+            [[ -e $curr_dir/.git/nozsh ]] && return 1
             return 0
         else
             curr_dir=${curr_dir%/*}
