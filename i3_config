@@ -4,10 +4,10 @@
 
 set $mod Mod4
 set $i3_term default-terminal-emulator
-set $i3_font -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
-set $dmenu_font xos4 Terminus:Bold:pixelsize=14
+set $terminus -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
+set $terminus_xft xos4 Terminus:Bold:pixelsize=14
 
-font $i3_font
+font $terminus
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -22,11 +22,9 @@ bindsym $mod+Shift+c kill
 bindsym Control+q exec /bin/true
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec rofi -show display -disable-history -lines 3 -sort
-bindsym $mod+d exec rofi -show run -disable-history -sort
-bindsym $mod+Shift+d exec rofi -show drun -disable-history -sort
-bindsym $mod+p exec rofi -show ssh -disable-history -sort
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$terminus_xft"
+bindsym $mod+d exec dmenu_run -p run -i -fn "$terminus_xft"
+bindsym $mod+p exec dmenu_ssh "$i3_term -e tmux_ssh" -i -fn "$terminus_xft"
 
 # change focus
 bindsym $mod+h focus left
