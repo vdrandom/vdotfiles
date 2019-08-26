@@ -4,7 +4,7 @@ Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
-Xft.dpi:                100
+Xft.dpi:                96
 
 #define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
@@ -39,6 +39,8 @@ URxvt.font:             TERMINUS
 URxvt.boldFont:         TERMINUS
 URxvt.italicFont:       TERMINUS
 URxvt.boldItalicFont:   TERMINUS
+
+! misc
 URxvt.intensityStyles:  false
 URxvt.internalBorder:   1
 URxvt.iso14755:         false
@@ -51,8 +53,8 @@ URxvt.urgentOnBell:     true
 URxvt.visualBell:       false
 
 ! keymaps
-URxvt.keysym.M-v: eval:paste_clipboard
-URxvt.keysym.M-c: eval:selection_to_clipboard
+URxvt.keysym.C-V: eval:paste_clipboard
+URxvt.keysym.C-C: eval:selection_to_clipboard
 
 ! perl extensions
 URxvt.perl-ext-common:  default,matcher
