@@ -21,16 +21,15 @@ colorize() {
     printf "$escs" "$color_nr" "$*"
 }
 prompt_command() {
-    typeset cwd=$(colorize 1 8 "$(pwd)")
     case "$TERM" in
         (screen*) printf '\ek%s\e\'  "${HOSTNAME%%.*}";;
         (*)       printf '\e]0;%s\a' "${HOSTNAME%%.*}";;
     esac
-    PS1="[ bash-\\v | $ps_user $HOSTNAME:$cwd ]\\n$ps_bang "
+    PS1="[ bash-\\v | $ps_user $HOSTNAME:$(pwd) ]\\n$ps_bang "
 }
-((UID)) && ps_clr=8 || ps_clr=1
+((UID)) && ps_clr=4 || ps_clr=1
 ps_user=$(colorize 1 $ps_clr "$USER")
-ps_bang=$(colorize 1 $ps_clr \>)
+ps_bang=$(colorize 1 $ps_clr =\>)
 unset ps_clr
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -102,6 +101,6 @@ s() {
 }
 
 # we want to see exit code on error (it also has to be the last entry here)
-trap_msg="$(colorize 0 1 \>\>) $(colorize 0 8 exit) $(colorize 0 1 %s)\n"
+trap_msg="$(colorize 0 1 \>\>) exit $(colorize 0 1 %s)\n"
 trap 'printf "$trap_msg" "$?" >&2' ERR
 # }}}

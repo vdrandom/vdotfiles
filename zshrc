@@ -71,13 +71,14 @@ bindkey -s '^j'   '^atime ^m'          # ctrl + j
 bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
-prompt_ln1='[ %(!.%F{red}.%F{black})%n%f %m:%F{black}%d%f ]'
-prompt_ln2=$'\n%(!.%F{red}.%F{black})>%f '
+prompt_ln1='[ %(!.%F{red}.%F{blue})%n%f %m:%d ]'
+#prompt_ln2=$'\n%(!.%F{red}.%F{blue})=>%f '
+prompt_ln2=$'\n%(!.😈.😇) '
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_ln2"
-PROMPT2='%_%(!.%F{red}.%F{black})>%f '
-PROMPT3='?%(!.%F{red}.%F{black})#%f '
-PROMPT4='+%N:%i%(!.%F{red}.%F{black})>%f '
+PROMPT2='%_%(!.%F{red}.%F{blue})>%f '
+PROMPT3='?%(!.%F{red}.%F{blue})#%f '
+PROMPT4='+%N:%i%(!.%F{red}.%F{blue})>%f '
 precmd.title() {
     case $TERM in
         (screen*) printf '\033k%s\033\'  ${HOST%%.*};;

@@ -6,8 +6,9 @@ set $mod Mod4
 set $i3_term default-terminal-emulator
 set $terminus -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
 set $terminus_xft xos4 Terminus:Bold:pixelsize=14
+set $font Fira Sans Condensed:size=10
 
-font $terminus
+font pango:Fira Sans Condensed 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -22,9 +23,9 @@ bindsym $mod+Shift+c kill
 bindsym Control+q exec /bin/true
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$terminus_xft"
-bindsym $mod+d exec dmenu_run -p run -i -fn "$terminus_xft"
-bindsym $mod+p exec dmenu_ssh "$i3_term -e tmux_ssh" -i -fn "$terminus_xft"
+bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$font"
+bindsym $mod+d exec dmenu_run -p run -i -fn "$font"
+bindsym $mod+p exec dmenu_ssh "$i3_term -e tmux_ssh" -i -fn "$font"
 
 # change focus
 bindsym $mod+h focus left
@@ -77,7 +78,7 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
 # move to another screen
-bindsym $mod+Shift+o move workspace to output left
+bindsym $mod+Shift+o move workspace to output up
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -107,16 +108,26 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Control+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 # lock screen
 bindsym $mod+z exec "xscreensaver-command -lock"
+
 # toggle touchpad
 bindsym XF86TouchpadToggle exec "touchpad-toggle"
 bindsym XF86KbdBrightnessDown exec "keybrightness d"
 bindsym XF86KbdBrightnessUp exec "keybrightness u"
+
+# mpd keys
+bindsym XF86AudioPlay exec "mpc toggle"
+bindsym XF86AudioStop exec "mpc stop"
+bindsym XF86AudioNext exec "mpc next"
+bindsym XF86AudioPrev exec "mpc prev"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

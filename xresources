@@ -4,10 +4,11 @@ Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
-Xft.dpi:                96
+Xft.dpi:                192
 
 #define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
+#define FONT            xft:Fira Code Retina:size=10
 
 ! solarized light
 #define COLORFG #657b83
@@ -35,10 +36,8 @@ Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
 ! fonts
-URxvt.font:             TERMINUS
-URxvt.boldFont:         TERMINUS
-URxvt.italicFont:       TERMINUS
-URxvt.boldItalicFont:   TERMINUS
+URxvt.font:             FONT
+URxvt.italicFont:       FONT
 
 ! misc
 URxvt.intensityStyles:  false
@@ -49,22 +48,21 @@ URxvt.pointerBlank:     true
 URxvt.saveLines:        10000
 URxvt.scrollBar:        false
 URxvt.secondaryScroll:  false
-URxvt.urgentOnBell:     true
+URxvt.urgentOnBell:     false
 URxvt.visualBell:       false
-
-! keymaps
-URxvt.keysym.C-V: eval:paste_clipboard
-URxvt.keysym.C-C: eval:selection_to_clipboard
 
 ! perl extensions
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
 URxvt.matcher.button:   3
 
+! keymaps
+URxvt.keysym.C-V:     eval:paste_clipboard
+URxvt.keysym.C-C:     eval:selection_to_clipboard
+
 ! colors
 URxvt.foreground:   COLORFG
 URxvt.background:   COLORBG
-URxvt.colorBD:      COLORBD
 URxvt.cursorColor:  COLORCR
 
 URxvt.color0:       COLOR0
@@ -88,8 +86,8 @@ URxvt.color15:      COLOR15
 ! {{{ xterm
 xterm.termName:               xterm-direct
 xterm.borderWidth:            0
-xterm.vt100.font:             TERMINUS
-xterm.vt100.colorBDMode:      true
+xterm.vt100.font:             FONT
+xterm.vt100.colorBDMode:      false
 xterm.vt100.allowBoldFonts:   false
 xterm.vt100.boldColors:       false
 xterm.vt100.bellIsUrgent:     true
@@ -101,7 +99,6 @@ xterm.vt100.internalBorder:   1
 ! colors
 xterm.vt100.foreground:   COLORFG
 xterm.vt100.background:   COLORBG
-xterm.vt100.colorBD:      COLORBD
 xterm.vt100.cursorColor:  COLORCR
 
 xterm.vt100.color0:       COLOR0
@@ -121,15 +118,4 @@ xterm.vt100.color12:      COLOR12
 xterm.vt100.color13:      COLOR13
 xterm.vt100.color14:      COLOR14
 xterm.vt100.color15:      COLOR15
-! }}}
-! {{{ xscreensaver and rofi
-xscreensaver.font:         TERMINUS
-xscreensaver.Dialog.Font:  TERMINUS_SMALL
-
-rofi.font:            xos4 Terminus Bold 11
-rofi.location:        2
-rofi.modi:            window,run,drun,ssh,display:/home/von/git/mine/vscripts/rofi_multicmd /home/von/.displayrc.yaml
-rofi.ssh-command:     tmux_ssh {host}
-rofi.terminal:        default-terminal-emulator
-rofi.theme:           Arc-Dark
 ! }}}
