@@ -72,8 +72,7 @@ bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
 prompt_ln1='[ %(!.%F{red}.%F{blue})%n%f %m:%d ]'
-#prompt_ln2=$'\n%(!.%F{red}.%F{blue})=>%f '
-prompt_ln2=$'\n%(!.😈.😇) '
+prompt_ln2=$'\n%(!.%F{red}.%F{blue})=>>%f '
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
 PROMPT="$prompt_ln1$prompt_ln2"
 PROMPT2='%_%(!.%F{red}.%F{blue})>%f '
