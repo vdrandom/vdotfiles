@@ -9,9 +9,25 @@ set belloff=all colorcolumn=80 formatoptions+=j relativenumber breakindent
 set keymap=russian-jcukenwintype iminsert=0 imsearch=0
 set title titlestring=[%{hostname()}]\ %t\ -\ vim
 
+let g:netrw_liststyle = 1
 let g:sh_indent_case_labels = 1
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
+
+" mappings
+map <Space> <NOP>
+let mapleader="\<Space>"
+noremap <F1> <Esc>
+noremap! <F1> <Esc>
+nnoremap <Leader>l :setlocal list!<CR>
+nnoremap <Leader>c :setlocal cursorline!<CR>
+nnoremap <Leader>w :setlocal wrap!<CR>
+noremap <Leader>/ :noh<CR>
+noremap <Leader>y "+y
+noremap <Leader>d "+d
+noremap <Leader>p "+p
+noremap <Leader>P "+P
+noremap q <NOP>
+noremap! <C-@> <C-^>
+noremap! <C-Space> <C-^>
 
 " plugins
 let plugrc = expand('$HOME/.vimplugrc')
@@ -37,22 +53,3 @@ endif
 
 syntax on
 filetype plugin on
-
-map <Space> <NOP>
-let mapleader="\<Space>"
-noremap <F1> <Esc>
-noremap! <F1> <Esc>
-nnoremap <Leader>l :setlocal list!<CR>
-nnoremap <Leader>c :setlocal cursorline!<CR>
-nnoremap <Leader>w :setlocal wrap!<CR>
-noremap <Leader>/ :noh<CR>
-noremap <Leader>y "+y
-noremap <Leader>d "+d
-noremap <Leader>p "+p
-noremap <Leader>P "+P
-noremap q <NOP>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>s :w<CR>
-noremap <Leader>e :Explore<CR>
-noremap! <C-@> <C-^>
-noremap! <C-Space> <C-^>
