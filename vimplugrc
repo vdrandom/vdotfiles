@@ -1,0 +1,47 @@
+" support my own way of using plugins in vim / bash
+autocmd BufRead *vimplugrc set ft=vim
+
+" enable plugins
+execute 'source' fnameescape(plugdir) . '/vim-plug/plug.vim'
+silent!call plug#begin(plugdir)
+
+" plugin manager for self updates
+Plug 'junegunn/vim-plug'
+
+" general plugins
+Plug 'junegunn/vim-easy-align'
+Plug 'lifepillar/vim-solarized8'
+Plug 'mhinz/vim-signify'
+Plug 'neilhwatson/vim_cf3'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rsi'
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'w0rp/ale', {'for': ['python', 'sh']}
+Plug 'vimwiki/vimwiki', {'on': 'VimwikiIndex'}
+
+call plug#end()
+
+" ale
+let g:ale_python_flake8_executable = 'python2'
+
+" easy-align
+xmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
+
+" vimwiki
+let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" color theme
+if $TERM !~ '^linux'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    let &bg = "light"
+
+    let g:solarized_use16 = 1
+    let g:solarized_italics = 1
+    let g:solarized_extra_hi_groups = 1
+
+    colorscheme solarized8
+endif
