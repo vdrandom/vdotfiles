@@ -4,11 +4,11 @@ Xft.antialias:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
-!Xft.dpi:                192
+Xft.dpi:                192
 
 #define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
-#define FONT            xft:Fira Code Retina:size=10
+#define FONT            xft:Fantasque Sans Mono:size=11
 
 ! solarized light
 #define COLORFG #657b83
@@ -37,7 +37,6 @@ Xft.hintstyle:          hintslight
 ! {{{ urxvt
 ! fonts
 URxvt.font:             FONT
-URxvt.italicFont:       FONT
 
 ! misc
 URxvt.intensityStyles:  false

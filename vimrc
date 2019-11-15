@@ -9,7 +9,6 @@ set belloff=all colorcolumn=80 formatoptions+=j relativenumber breakindent
 set keymap=russian-jcukenwintype iminsert=0 imsearch=0
 set title titlestring=[%{hostname()}]\ %t\ -\ vim
 
-let g:netrw_liststyle = 1
 let g:sh_indent_case_labels = 1
 
 " mappings
@@ -32,7 +31,8 @@ noremap! <C-Space> <C-^>
 " plugins
 let plugrc = expand('$HOME/.vimplugrc')
 let plugdir = expand('$HOME/.vim/plugged')
-if filereadable(plugrc) && v:version >= 703
+let plug = plugdir . '/vim-plug/plug.vim'
+if filereadable(plugrc) && filereadable(plug) && v:version >= 703
     execute 'source' fnameescape(plugrc)
 endif
 

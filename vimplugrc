@@ -2,18 +2,18 @@
 autocmd BufRead *vimplugrc set ft=vim
 
 " enable plugins
-execute 'source' fnameescape(plugdir) . '/vim-plug/plug.vim'
+execute 'source' fnameescape(plug)
 silent!call plug#begin(plugdir)
 
 " plugin manager for self updates
 Plug 'junegunn/vim-plug'
 
 " general plugins
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'lifepillar/vim-solarized8'
 Plug 'mhinz/vim-signify'
-Plug 'neilhwatson/vim_cf3'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -39,18 +39,17 @@ nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fl :Lines<CR>
 nmap <Leader>ft :Filetypes<CR>
 
+" lightline
+set noshowmode
+let g:lightline = {}
+let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
+let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+
 " vimwiki
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " color theme
 if $TERM !~ '^linux'
-    let &bg = "light"
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-    let g:solarized_use16 = 1
-    let g:solarized_italics = 1
-    let g:solarized_extra_hi_groups = 1
-
-    colorscheme solarized8
+    set bg=light
+    colorscheme PaperColor
 endif
