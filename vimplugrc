@@ -12,8 +12,9 @@ Plug 'junegunn/vim-plug'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'mhinz/vim-signify'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -41,7 +42,17 @@ nmap <Leader>ft :Filetypes<CR>
 
 " lightline
 set noshowmode
-let g:lightline = {}
+let g:solarized_termcolors = 16
+let g:lightline = {
+            \ 'colorscheme': 'solarized',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'keymap' ],
+            \             [ 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component': {
+            \   'keymap': '%k'
+            \ }
+            \ }
 let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 
@@ -50,6 +61,10 @@ let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.
 
 " color theme
 if $TERM !~ '^linux'
+    let g:solarized_use16 = 1
+    let g:solarized_italics = 1
+    let g:solarized_extra_hi_groups = 1
+
     set bg=light
-    colorscheme PaperColor
+    colorscheme solarized8
 endif

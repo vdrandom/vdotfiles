@@ -71,13 +71,13 @@ bindkey -s '^j'   '^atime ^m'          # ctrl + j
 bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
-prompt_ln1='[ %(!.%F{red}.%F{blue})%n%f %m:%d ]'
-prompt_ln2=$'\n%(!.%F{red}.%F{blue})$>%f '
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
+prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black}@%m %F{green}%2~%F{black} '
+prompt_ln2=']%f%k '
 PROMPT="$prompt_ln1$prompt_ln2"
-PROMPT2='%_%(!.%F{red}.%F{blue})>%f '
-PROMPT3='?%(!.%F{red}.%F{blue})#%f '
-PROMPT4='+%N:%i%(!.%F{red}.%F{blue})>%f '
+PROMPT2='%K{white}%F{black}[ %_ ]%f%k '
+PROMPT3='%K{white}%F{black}[ ?# ]%f%k '
+PROMPT4='%K{white}%F{black}[ +%N:%i ]%f%k '
 precmd.title() {
     case $TERM in
         (screen*) printf '\033k%s\033\'  ${HOST%%.*};;
@@ -104,21 +104,21 @@ precmd.git() {
     typeset branch_info full_status git_status= IFS=
     typeset staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
+    branch_info=$(git rev-parse --abbrev-ref HEAD)
     while read line; do
-        [[ $line[1,2] == '##'     ]] && branch_info=$line[4,-1]
         [[ $line[1,2] == '??'     ]] && (( untracked_count++ ))
         [[ $line[1,2] =~ .[MD]    ]] && (( unstaged_count++  ))
         [[ $line[1,2] =~ [MDARC]. ]] && (( staged_count++    ))
         [[ $line[1,2] =~ [ADU]{2} ]] && (( unmerged_count++  ))
     done <<< $raw_status
 
-    (( unstaged_count  )) && git_status+="%F{yellow}~$unstaged_count"
-    (( staged_count    )) && git_status+="%F{blue}+$staged_count"
-    (( untracked_count )) && git_status+="%F{red}-$untracked_count"
-    (( unmerged_count  )) && git_status+="%F{magenta}*$unmerged_count"
-    [[ -z $git_status  ]] && git_status="%F{green}ok"
+    (( unstaged_count  )) && git_status+="%F{3}~$unstaged_count"
+    (( staged_count    )) && git_status+="%F{4}+$staged_count"
+    (( untracked_count )) && git_status+="%F{1}-$untracked_count"
+    (( unmerged_count  )) && git_status+="%F{5}*$unmerged_count"
+    [[ -z $git_status  ]] && git_status="%F{2}ok"
 
-    printf ' { %s \ue0a0 %s%%f }' $branch_info $git_status > $prompt_state_file
+    printf '\ue0a0 %s:%s%%F{black} ' $branch_info[1,16] $git_status > $prompt_state_file
 }
 precmd.prompt() {
     PROMPT="$prompt_ln1$1$prompt_ln2"
@@ -130,7 +130,7 @@ precmd.git_update() {
 precmd() {
     precmd.title
     if precmd.is_git_repo; then
-        precmd.prompt $' { \ue0a0 }'
+        precmd.prompt $'\ue0a0 '
         precmd.git_update &!
     else
         precmd.prompt
