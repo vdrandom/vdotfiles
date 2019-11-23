@@ -22,8 +22,8 @@ prompt_command() {
     esac
 }
 ((UID)) && ps_clr=4 || ps_clr=1
-# just a colored version of [ $USER@$HOSTNAME ~ ]$
-PS1='\[\e[47;30m\][ \[\e[3'"$ps_clr"'m\]\u\[\e[30m\]@\h \[\e[32m\W\[\e[30m\] ]\$\[\e[0m\] '
+# just a colored version of [ $USER@$HOSTNAME ~ ]
+PS1='\[\e[47;30m\][ \[\e[3'"$ps_clr"'m\]\u\[\e[30m\]@\h \[\e[32m\W\[\e[30m\] ]\[\e[0m\]\n\$ '
 unset ps_clr
 PROMPT_COMMAND=prompt_command
 # }}}

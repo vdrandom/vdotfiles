@@ -1,14 +1,14 @@
 ! {{{ xft and cursor configuration, aliases
 Xcursor.theme:          Vanilla-DMZ-AA
 Xft.antialias:          true
+Xft.lcdfilter:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
-Xft.hintstyle:          hintslight
+Xft.hintstyle:          hintfull
 Xft.dpi:                192
 
-#define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
+#define TERMINUS        -xos4-terminus-bold-*-*-*-18-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
-#define FONT            xft:Fantasque Sans Mono:size=11
 
 ! solarized light
 #define COLORFG #657b83
@@ -36,7 +36,10 @@ Xft.dpi:                192
 ! }}}
 ! {{{ urxvt
 ! fonts
-URxvt.font:             FONT
+URxvt.font:             TERMINUS
+URxvt.boldFont:         TERMINUS
+URxvt.italicFont:       TERMINUS
+URxvt.boldItalicFont:   TERMINUS
 
 ! misc
 URxvt.intensityStyles:  false
@@ -61,6 +64,7 @@ URxvt.keysym.C-C:     eval:selection_to_clipboard
 
 ! colors
 URxvt.foreground:   COLORFG
+URxvt.colorBD:      COLORBD
 URxvt.background:   COLORBG
 URxvt.cursorColor:  COLORCR
 
@@ -83,10 +87,9 @@ URxvt.color14:      COLOR14
 URxvt.color15:      COLOR15
 ! }}}
 ! {{{ xterm
-xterm.termName:               xterm-direct
 xterm.borderWidth:            0
-xterm.vt100.font:             FONT
-xterm.vt100.colorBDMode:      false
+xterm.vt100.font:             TERMINUS
+xterm.vt100.colorBDMode:      true
 xterm.vt100.allowBoldFonts:   false
 xterm.vt100.boldColors:       false
 xterm.vt100.bellIsUrgent:     true
@@ -97,6 +100,7 @@ xterm.vt100.internalBorder:   1
 
 ! colors
 xterm.vt100.foreground:   COLORFG
+xterm.vt100.colorBD:      COLORBD
 xterm.vt100.background:   COLORBG
 xterm.vt100.cursorColor:  COLORCR
 

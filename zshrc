@@ -72,8 +72,8 @@ bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
-prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black}@%m %F{green}%2~%F{black} '
-prompt_ln2=']%f%k '
+prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black}@%m:%F{green}%d%F{black} '
+prompt_ln2=$']%f%k\n> '
 PROMPT="$prompt_ln1$prompt_ln2"
 PROMPT2='%K{white}%F{black}[ %_ ]%f%k '
 PROMPT3='%K{white}%F{black}[ ?# ]%f%k '
@@ -130,7 +130,7 @@ precmd.git_update() {
 precmd() {
     precmd.title
     if precmd.is_git_repo; then
-        precmd.prompt $'\ue0a0 '
+        precmd.prompt $'\ue0a0 ... '
         precmd.git_update &!
     else
         precmd.prompt
