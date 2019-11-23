@@ -28,16 +28,10 @@ unset ps_clr
 PROMPT_COMMAND=prompt_command
 # }}}
 # {{{ aliases
-alias beep='printf "\007"'
-alias cower='command cower -c'
-alias fixterm='printf "c"'
 alias less='command less -R'
-alias mysql='command mysql --sigint-ignore'
-alias pacman='command pacman --color=auto'
 alias rgrep='command grep --exclude-dir=\.git -R'
-alias ggrep='command git grep'
 alias tailf='command less -R +F'
-alias diff='command diff --color'
+alias vi='command vim'
 alias whence='command -v'
 
 # ls
