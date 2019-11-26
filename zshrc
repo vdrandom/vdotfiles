@@ -72,7 +72,7 @@ bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
 prompt_state_file="/tmp/zsh_gitstatus_$$.tmp"
-prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black}@%m:%F{green}%d%F{black} '
+prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black} %m:%F{green}%d%F{black} '
 prompt_ln2=$']%f%k\n> '
 PROMPT="$prompt_ln1$prompt_ln2"
 PROMPT2='%K{white}%F{black}[ %_ ]%f%k '
