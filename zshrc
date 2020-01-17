@@ -101,24 +101,28 @@ precmd.git() {
     raw_status="$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)"
     (($?)) && return 0
 
-    typeset branch_info full_status git_status= IFS=
+    typeset branch_status git_status IFS=
     typeset staged_count=0 unstaged_count=0 untracked_count=0 unmerged_count=0
 
-    branch_info=$(git rev-parse --abbrev-ref HEAD)
     while read line; do
+        if [[ $line[1,2] == '##' ]]; then
+            branch_status=${line[4,-1]%%...*}
+            [[ $line =~ behind    ]] && branch_status+='?'
+            [[ $line =~ ahead     ]] && branch_status+='!'
+        fi
         [[ $line[1,2] == '??'     ]] && (( untracked_count++ ))
         [[ $line[1,2] =~ .[MD]    ]] && (( unstaged_count++  ))
         [[ $line[1,2] =~ [MDARC]. ]] && (( staged_count++    ))
         [[ $line[1,2] =~ [ADU]{2} ]] && (( unmerged_count++  ))
     done <<< $raw_status
 
-    (( unstaged_count  )) && git_status+="%F{3}~$unstaged_count"
-    (( staged_count    )) && git_status+="%F{4}+$staged_count"
-    (( untracked_count )) && git_status+="%F{1}-$untracked_count"
-    (( unmerged_count  )) && git_status+="%F{5}*$unmerged_count"
-    [[ -z $git_status  ]] && git_status="%F{2}ok"
+    (( unstaged_count  )) && git_status+="%F{yellow}~$unstaged_count"
+    (( staged_count    )) && git_status+="%F{blue}+$staged_count"
+    (( untracked_count )) && git_status+="%F{red}-$untracked_count"
+    (( unmerged_count  )) && git_status+="%F{cyan}*$unmerged_count"
+    [[ -z $git_status  ]] && git_status="%F{green}ok"
 
-    printf '\ue0a0 %s:%s%%F{black} ' $branch_info[1,16] $git_status > $prompt_state_file
+    printf '\ue0a0 %s %s%%F{black} ' $branch_status $git_status > $prompt_state_file
 }
 precmd.prompt() {
     PROMPT="$prompt_ln1$1$prompt_ln2"
