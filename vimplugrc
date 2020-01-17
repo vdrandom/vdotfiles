@@ -9,7 +9,6 @@ silent!call plug#begin(plugdir)
 Plug 'junegunn/vim-plug'
 
 " general plugins
-Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-solarized8'
@@ -40,31 +39,25 @@ nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fl :Lines<CR>
 nmap <Leader>ft :Filetypes<CR>
 
-" lightline
-set noshowmode
-let g:solarized_termcolors = 16
-let g:lightline = {
-            \ 'colorscheme': 'solarized',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'keymap' ],
-            \             [ 'readonly', 'filename', 'modified' ] ]
-            \ },
-            \ 'component': {
-            \   'keymap': '%k'
-            \ }
-            \ }
-let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
-
 " vimwiki
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" color theme
-if $TERM !~ '^linux'
+" colorscheme and gui
+if has('gui_running')
+    set bg=dark
+    set guifont=JetBrains\ Mono\ 10
+    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
+    set guiheadroom=0 guioptions=aei mouse=a
+
+    map <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
+
+    colorscheme gruvbox8
+elseif $TERM !~ '^linux'
+    set bg=light
     let g:solarized_use16 = 1
     let g:solarized_italics = 1
     let g:solarized_extra_hi_groups = 1
 
-    set bg=light
     colorscheme solarized8
 endif

@@ -4,11 +4,9 @@
 
 set $mod Mod4
 set $i3_term default-terminal-emulator
-set $terminus -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*
-set $terminus_xft xos4 Terminus:Bold:pixelsize=14
-set $font Fira Sans Condensed:size=10
+set $font JetBrains Mono:size=10
 
-font pango:Fira Sans Condensed 10
+font pango:JetBrains Mono 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -26,6 +24,7 @@ bindsym Control+q exec /bin/true
 bindsym $mod+s exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$font"
 bindsym $mod+p exec dmenu_ssh "$i3_term -e tmux_ssh" -i -fn "$font"
+bindsym $mod+u exec dmenu_pass -i -fn "$font"
 
 # change focus
 bindsym $mod+h focus left
@@ -78,7 +77,7 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
 # move to another screen
-bindsym $mod+Shift+o move workspace to output up
+bindsym $mod+Shift+o move workspace to output right
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -183,6 +182,7 @@ for_window [class="X64"] floating enable
 for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
 for_window [class="java-lang-Thread"] floating enable
+for_window [class="^sun-awt"] floating enable
 # scratchpad
 for_window [class="KeePassXC"] move scratchpad, scratchpad show
 for_window [title="^vimwiki$"] move scratchpad, scratchpad show
