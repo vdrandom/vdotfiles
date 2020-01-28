@@ -28,31 +28,40 @@ unset ps_clr
 PROMPT_COMMAND=prompt_command
 # }}}
 # {{{ aliases
-alias less='command less -R'
-alias rgrep='command grep --exclude-dir=\.git -R'
-alias tailf='command less -R +F'
-alias vi='command vim'
-alias whence='command -v'
+beep()    { printf "\007"; }
+fixterm() { printf "c"; }
+
+diff()   { command diff --color "$@"; }
+less()   { command less -R "$@"; }
+tailf()  { command less -R +F "$@"; }
+rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
+whence() { command -v "$@"; }
+vi()     { command vim "$@"; }
 
 # ls
-alias ls='command ls --color=auto --group-directories-first '
-alias ll='ls -lha'
+ls() { command ls --color=auto --group-directories-first "$@"; }
+ll() { command ls -lha --color=auto --group-directories-first "$@"; }
 
 # git
-alias gci='command git commit'
-alias gsl='command git stash list'
-alias gss='command git status -sbu'
-alias gup='command git pull'
-alias groot='cd $(command git rev-parse --show-cdup)'
-alias gsi='command tig status'
+gci()   { command git commit "$@"; }
+gsl()   { command git stash list "$@"; }
+gss()   { command git status -sbu "$@"; }
+gup()   { command git pull "$@"; }
+groot() { cd "$(command git rev-parse --show-cdup)" || return 1; }
+ggrep() { command git grep "$@"; }
+gsi()   { command tig status; }
 
 # tmux
-alias tmux='command tmux -2'
-alias atmux='command tmux -2 attach'
+tmux()  { command tmux -2 "$@"; }
+atmux() { tmux attach; }
 
 # screen
-alias rscreen='command screen -Dr'
-alias scr='command screen sudo -Es'
+rscreen() { command screen -Dr; }
+scr()     { command screen sudo -Es; }
+
+# termcompat
+s() { "$(command -v termcompat||return 0)" ssh "$@"; }
+
 # }}}
 # {{{ plugins and traps
 # bash-completion
