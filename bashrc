@@ -59,6 +59,10 @@ atmux() { tmux attach; }
 rscreen() { command screen -Dr; }
 scr()     { command screen sudo -Es; }
 
+# vim
+vi()  { $(whence nvim || whence vim || return 1) "$@"; }
+vim() { vi "$@"; }
+
 # termcompat
 s() { "$(command -v termcompat||return 0)" ssh "$@"; }
 
