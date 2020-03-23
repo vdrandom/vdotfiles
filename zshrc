@@ -172,7 +172,7 @@ gsi()   { command tig status }
 
 # tmux
 tmux()  { command tmux -2 $@ }
-atmux() { tmux attach }
+atmux() { tmux attach || tmux }
 
 # screen
 rscreen() { command screen -Dr }
