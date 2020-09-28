@@ -4,11 +4,12 @@ Xft.antialias:          true
 Xft.lcdfilter:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
-Xft.hintstyle:          hintfull
-Xft.dpi:                192
+Xft.hintstyle:          hintslight
+Xft.dpi:                96
 
-#define TERMINUS        -xos4-terminus-bold-*-*-*-18-*-*-*-*-*-iso10646-1
+#define TERMINUS        -xos4-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
+#define FONT            xft:Fantasque Sans Mono:12
 
 ! solarized light
 #define COLORFG #657b83
@@ -52,6 +53,7 @@ URxvt.scrollBar:        false
 URxvt.secondaryScroll:  false
 URxvt.urgentOnBell:     false
 URxvt.visualBell:       false
+URxvt.cutchars:         `'"'&()*,;<=>?@[]^{|}│
 
 ! perl extensions
 URxvt.perl-ext-common:  default,matcher

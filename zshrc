@@ -179,16 +179,20 @@ rscreen() { command screen -Dr }
 scr()     { command screen sudo -Es }
 
 # vim
-vi()  { $(whence nvim || whence vim || return 1) $@ }
+vi()  { $(whence -p nvim || whence -p vim || return 1) $@ }
 vim() { vi $@ }
 
 # termcompat
-s() { $(whence termcompat||return 0) ssh $@ }
+s() {
+    [[ -n $TMUX ]] && /usr/bin/tmux renamew $1
+    $(whence -p termcompat||return 0) ssh $@
+    [[ -n $TMUX ]] && /usr/bin/tmux renamew $HOST
+}
 
 # }}}
 # {{{ plugins
 # grc
-if [[ -x $(whence grc) ]]; then
+if [[ -x $(whence -p grc) ]]; then
     cmds=(\
         cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
@@ -202,7 +206,7 @@ fi
 gdiff() { /usr/bin/git diff --color $@; }
 gdf() {
     typeset difftool
-    if difftool=$(whence diff-so-fancy); then
+    if difftool=$(whence -p diff-so-fancy); then
         gdiff $@ | $difftool | less --tabs=4 -RSFX
     else
         gdiff $@

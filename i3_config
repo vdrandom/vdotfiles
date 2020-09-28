@@ -4,9 +4,9 @@
 
 set $mod Mod4
 set $i3_term default-terminal-emulator
-set $font JetBrains Mono:size=10
+set $font Fira Sans:size=12
 
-font pango:JetBrains Mono 10
+font pango:Fira Sans 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -128,6 +128,10 @@ bindsym XF86AudioStop exec "mpc stop"
 bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPrev exec "mpc prev"
 
+# volume keys
+#bindsym XF86AudioRaiseVolume exec "ponymix increase 2"
+#bindsym XF86AudioLowerVolume exec "ponymix decrease 2"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
     bindsym h resize shrink width 10 px or 10 ppt
@@ -161,35 +165,25 @@ hide_edge_borders both
 workspace_auto_back_and_forth yes
 force_focus_wrapping yes
 
-# rules
-# workspace 6 is for always floating
-for_window [workspace=6] floating enable
-assign [class="Firefox"] 1
-assign [class="Steam"] 6
 # software
 for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Vpnui"] floating enable
 for_window [class="Deadbeef"] floating enable
-for_window [class="Google-musicmanager"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="pinentry"] floating enable
-for_window [class="plugin-container"] floating enable
 for_window [class="Qmmp"] floating enable
 for_window [class="Vncviewer"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="X64"] floating enable
-for_window [class="(?i)firefox" instance="^(?!Navigator$)"] floating enable
 for_window [title="^Cacti - Realtime"] floating enable
 for_window [class="java-lang-Thread"] floating enable
 for_window [class="^sun-awt"] floating enable
 # scratchpad
 for_window [class="KeePassXC"] move scratchpad, scratchpad show
 for_window [title="^vimwiki$"] move scratchpad, scratchpad show
-for_window [class="Vpnui"] move scratchpad, scratchpad show
 bindsym $mod+i [class="KeePassXC"] scratchpad show
 bindsym $mod+n [title="^vimwiki$"] scratchpad show
-bindsym $mod+y [class="Vpnui"] scratchpad show
 
 # execs
 exec --no-startup-id "$HOME/.autostart"
