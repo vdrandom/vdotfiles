@@ -71,13 +71,16 @@ bindkey -s '^j'   '^atime ^m'          # ctrl + j
 bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
-prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
-prompt_ln1='%K{white}%F{black}[ %F{%(!.red.blue)}%n%F{black} %m:%F{green}%d%F{black} '
-prompt_ln2=$']%f%k\n> '
-PROMPT=$prompt_ln1$prompt_ln2
-PROMPT2='%K{white}%F{black}[ %_ ]%f%k '
-PROMPT3='%K{white}%F{black}[ ?# ]%f%k '
-PROMPT4='%K{white}%F{black}[ +%N:%i ]%f%k '
+prompt_fmt='%%k%%f[ %s %s:%s %s]\n> '
+prompt_user='%F{%(!.red.blue)}%n%f'
+prompt_host='%m'
+prompt_cwd='%F{green}%d%f'
+prompt_git_fmt='\ue0a0 %s %s%%f '
+prompt_state_file=/run/user/$UID/zsh_gitstatus_$$.tmp
+PROMPT=$'%k%f[ %n %m:%d ]\n> '
+PROMPT2='%k%f[ %_ ] '
+PROMPT3='%k%f[ ?# ] '
+PROMPT4='%k%f[ +%N:%i ] '
 precmd.title() {
     case $TERM in
         (screen*) printf '\033k%s\033\'  ${HOST%%.*};;
@@ -122,10 +125,10 @@ precmd.git() {
     (( unmerged_count  )) && git_status+=%F{cyan}*$unmerged_count
     [[ -z $git_status  ]] && git_status=%F{green}ok
 
-    printf '\ue0a0 %s %s%%F{black} ' $branch_status $git_status > $prompt_state_file
+    printf $prompt_git_fmt $branch_status $git_status > $prompt_state_file
 }
 precmd.prompt() {
-    PROMPT=$prompt_ln1$1$prompt_ln2
+    printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd $1
 }
 precmd.git_update() {
     precmd.git
@@ -137,7 +140,7 @@ precmd() {
         precmd.prompt $'\ue0a0 ... '
         precmd.git_update &!
     else
-        precmd.prompt
+        precmd.prompt ''
     fi
 }
 TRAPUSR1() {
@@ -181,14 +184,6 @@ scr()     { command screen sudo -Es }
 # vim
 vi()  { $(whence -p nvim || whence -p vim || return 1) $@ }
 vim() { vi $@ }
-
-# termcompat
-s() {
-    [[ -n $TMUX ]] && /usr/bin/tmux renamew $1
-    $(whence -p termcompat||return 0) ssh $@
-    [[ -n $TMUX ]] && /usr/bin/tmux renamew $HOST
-}
-
 # }}}
 # {{{ plugins
 # grc

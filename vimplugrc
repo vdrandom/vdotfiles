@@ -9,24 +9,20 @@ silent!call plug#begin(plugdir)
 Plug 'junegunn/vim-plug'
 
 " general plugins
+"Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-solarized8'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'mhinz/vim-signify'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-vinegar'
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
-Plug 'w0rp/ale', {'for': ['python', 'sh']}
+Plug 'w0rp/ale', {'for': ['sh']}
 Plug 'vimwiki/vimwiki', {'on': 'VimwikiIndex'}
 
 call plug#end()
-
-" ale
-let g:ale_python_flake8_executable = 'python2'
 
 " easy-align
 xmap <Leader>a <Plug>(EasyAlign)
@@ -39,11 +35,18 @@ nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fl :Lines<CR>
 nmap <Leader>ft :Filetypes<CR>
 
-" vimwiki
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" colorschemes
-if $TERM =~ '^tmux' || $TERM =~ '^xterm' || $TERM =~ '^st'
+if has('gui_running')
+    set guifont=Fantasque\ Sans\ Mono\ 14
+    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
+    set bg=dark guiheadroom=0 guioptions=aei mouse=a
+
+    map <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
+
+    colorscheme gruvbox8
+elseif $TERM =~ '^tmux' || $TERM =~ '^xterm' || $TERM =~ '^st'
     set bg=dark tgc
     let g:gruvbox_filetype_hi_groups = 1
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

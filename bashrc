@@ -22,8 +22,8 @@ prompt_command() {
     esac
 }
 ((UID)) && ps_clr=4 || ps_clr=1
-# just a colored version of [ $USER@$HOSTNAME:~ ]
-PS1='\[\e[47;30m\][ \[\e[3'"$ps_clr"'m\]\u\[\e[30m\] \h:\[\e[32m\w\[\e[30m\] ]\[\e[0m\]\n\$ '
+# just a colored version of [ $USER $HOSTNAME:$CWD ]
+printf -v PS1 '\\[\\e[0m\\][ \\[\\e[3%sm\\]\\u\\[\\e[0m\\] \\h:\\[\\e[32m\\w\\[\\e[0m\\] ]\n\\$ ' $ps_clr
 unset ps_clr
 PROMPT_COMMAND=prompt_command
 # }}}
@@ -90,14 +90,6 @@ gdf() {
         gdiff "$@" | "$difftool" | less --tabs=4 -RSFX
     else
         gdiff "$@"
-    fi
-}
-# more compatible TERM for ssh sessions
-s() {
-    if termcompat=$(command -v termcompat); then
-        "$termcompat" ssh "$@"
-    else
-        ssh "$@"
     fi
 }
 # we want to see exit code on error (it also has to be the last entry here)
