@@ -83,7 +83,7 @@ PROMPT3='%k%f[ ?# ] '
 PROMPT4='%k%f[ +%N:%i ] '
 precmd.title() {
     case $TERM in
-        (screen*) printf '\033k%s\033\'  ${HOST%%.*};;
+        (screen*) printf '\033k%s\033\\' ${HOST%%.*};;
         (*)       printf '\033]2;%s\007' ${HOST%%.*};;
     esac
 }
@@ -182,8 +182,18 @@ rscreen() { command screen -Dr }
 scr()     { command screen sudo -Es }
 
 # vim
-vi()  { $(whence -p nvim || whence -p vim || return 1) $@ }
-vim() { vi $@ }
+vi()  { command vim $@ }
+
+# package management
+if [[ -x $(whence -p paru) ]]; then
+    pacman() { command paru $@ }
+    yay()    { pacman $@ }
+fi
+
+# because old servers don't have new termcap dbs :<
+if [[ -x $(whence -p termcompat) ]]; then
+   ssh() { command termcompat ssh $@ }
+fi
 # }}}
 # {{{ plugins
 # grc
@@ -198,15 +208,12 @@ if [[ -x $(whence -p grc) ]]; then
     unset cmds cmd
 fi
 # some cool git stuff
-gdiff() { /usr/bin/git diff --color $@; }
-gdf() {
-    typeset difftool
-    if difftool=$(whence -p diff-so-fancy); then
-        gdiff $@ | $difftool | less --tabs=4 -RSFX
-    else
-        gdiff $@
-    fi
-}
+gdiff() { command git diff --color $@; }
+if [[ -x $(whence -p diff-so-fancy) ]]; then
+    gdf() { gdiff $@ | command diff-so-fancy | command less --tabs=4 -RSFX }
+else
+    gdf() { gdiff $@ }
+fi
 greset() {
     echo "OK to reset and clean teh repo?"
     read -sq _

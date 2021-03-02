@@ -17,7 +17,7 @@ export LS_COLORS='no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd
 # {{{ prompt
 prompt_command() {
     case "$TERM" in
-        (screen*) printf '\ek%s\e\'  "${HOSTNAME%%.*}";;
+        (screen*) printf '\ek%s\e\\' "${HOSTNAME%%.*}";;
         (*)       printf '\e]0;%s\a' "${HOSTNAME%%.*}";;
     esac
 }
