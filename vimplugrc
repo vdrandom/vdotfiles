@@ -46,7 +46,7 @@ if has('gui_running')
     map! <S-Insert> <MiddleMouse>
 
     colorscheme gruvbox8
-elseif $TERM =~ '^tmux' || $TERM =~ '^xterm' || $TERM =~ '^st'
+elseif $TERM =~ '^tmux' || $TERM =~ '^xterm' || $TERM =~ '^st' || $TERM =~ '^alacritty'
     set bg=dark tgc
     let g:gruvbox_filetype_hi_groups = 1
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

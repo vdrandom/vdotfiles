@@ -1,5 +1,5 @@
 ! {{{ xft and cursor configuration, aliases
-Xcursor.theme:          Vanilla-DMZ-AA
+Xcursor.theme:          Numix-Cursor
 Xft.antialias:          true
 Xft.lcdfilter:          true
 Xft.rgba:               rgb
