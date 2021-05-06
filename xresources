@@ -62,7 +62,9 @@ URxvt.matcher.button:   3
 
 ! keymaps
 URxvt.keysym.C-V:     eval:paste_clipboard
+URxvt.keysym.M-v:     eval:paste_clipboard
 URxvt.keysym.C-C:     eval:selection_to_clipboard
+URxvt.keysym.M-c:     eval:selection_to_clipboard
 
 ! colors
 URxvt.foreground:   COLORFG
