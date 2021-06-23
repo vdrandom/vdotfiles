@@ -10,6 +10,7 @@ Plug 'junegunn/vim-plug'
 
 " general plugins
 "Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-solarized8'
@@ -37,26 +38,26 @@ nmap <Leader>ft :Filetypes<CR>
 
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-if has('gui_running')
-    set guifont=Fantasque\ Sans\ Mono\ 14
-    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
-    set bg=dark guiheadroom=0 guioptions=aei mouse=a
+if $TERM !~ '^linux'
+    if has('gui_running')
+        set guifont=Cascadia\ Mono\ PL\ 13
+        set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
+        set bg=dark guiheadroom=0 guioptions=aei mouse=a
 
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
+        map <S-Insert> <MiddleMouse>
+        map! <S-Insert> <MiddleMouse>
+    else
+        set bg=dark tgc guicursor=
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        let &t_ut = ""
+    endif
 
-    colorscheme gruvbox8
-elseif $TERM =~ '^tmux' || $TERM =~ '^xterm' || $TERM =~ '^st' || $TERM =~ '^alacritty'
-    set bg=dark tgc
     let g:gruvbox_filetype_hi_groups = 1
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
+    let g:lightline = {
+       \ 'colorscheme':  'gruvbox8',
+       \ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
+       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+       \ }
     colorscheme gruvbox8
-elseif $TERM !~ '^linux'
-    set bg=light
-    let g:solarized_extra_hi_groups = 1
-    let g:solarized_use16 = 1
-
-    colorscheme solarized8
 endif
