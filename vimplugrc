@@ -56,8 +56,8 @@ if $TERM !~ '^linux'
     let g:gruvbox_filetype_hi_groups = 1
     let g:lightline = {
        \ 'colorscheme':  'gruvbox8',
-       \ 'separator':    { 'left': "\ue0b0", 'right': "\ue0b2" },
-       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+       \ 'separator':    { 'left': "\ue0b8", 'right': "\ue0ba" },
+       \ 'subseparator': { 'left': "\ue0b9", 'right': "\ue0bb" }
        \ }
     colorscheme gruvbox8
 endif
