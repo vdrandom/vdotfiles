@@ -190,11 +190,6 @@ if [[ -x $(whence -p paru) ]]; then
     pacman() { command paru $@ }
     yay()    { pacman $@ }
 fi
-
-# because old servers don't have new termcap dbs :<
-if [[ -x $(whence -p termcompat) ]]; then
-   ssh() { command termcompat ssh $@ }
-fi
 # }}}
 # {{{ plugins
 # grc
