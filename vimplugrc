@@ -44,18 +44,24 @@ if $TERM !~ '^linux'
     if has('gui_running')
         set guifont=Cascadia\ Mono\ PL\ 13
         set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
-        set bg=dark guiheadroom=0 guioptions=aei mouse=a
+        set guiheadroom=0 guioptions=aei mouse=a
 
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
+    else
+        set tgc t_ut= guicursor=
+        let &t_8f = "\u1b[38;2;%lu;%lu;%lum"
+        let &t_8b = "\u1b[48;2;%lu;%lu;%lum"
     endif
 
+    let g:gruvbox_plugin_hi_groups   = 1
+    let g:gruvbox_filetype_hi_groups = 1
     let g:lightline = {
-       \ 'colorscheme': 'PaperColor',
+       \ 'colorscheme': 'gruvbox8',
        \ 'separator':    {'left': "\ue0b8", 'right': "\ue0ba"},
        \ 'subseparator': {'left': "\ue0b9", 'right': "\ue0bb"}
        \ }
-    let g:PaperColor_Theme_Options = {'theme': {'default': {'allow_italic': 1}}}
-    set t_Co=256 bg=dark
-    colorscheme PaperColor
+
+    set bg=dark
+    colorscheme gruvbox8
 endif
