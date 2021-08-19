@@ -70,16 +70,18 @@ bindkey -s '^j'   '^atime ^m'          # ctrl + j
 bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
-prompt_fmt='%%k%%f[ %s %s:%s %s]\n> '
+prompt_fmt='%%k%%f[ %s %s:%s %s]\n\u276f '
+prompt_fmtn='%%k%%f[ %%{\e[2;3m%s\e[0m%%} ]\u276f '
 prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
 prompt_cwd='%F{green}%d%f'
 prompt_git_fmt='\ue0a0 %s %s%%f '
 prompt_state_file=${RUN_DIR:-/run/user/$UID}/zsh_gitstatus_$$.tmp
-PROMPT=$'%k%f[ %n %m:%d ]\n> '
-PROMPT2='%k%f[ %_ ] '
-PROMPT3='%k%f[ ?# ] '
-PROMPT4='%k%f[ +%N:%i ] '
+
+printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd ''
+printf -v PROMPT2 $prompt_fmtn '%_'
+printf -v PROMPT3 $prompt_fmtn '?#'
+printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 precmd.title() {
     case $TERM in
         (screen*) printf '\033k%s\033\\' ${HOST%%.*};;
@@ -87,15 +89,11 @@ precmd.title() {
     esac
 }
 precmd.is_git_repo() {
-    typeset curr_dir=$PWD
-    while [[ -n $curr_dir ]]; do
-        if [[ -r $curr_dir/.git/HEAD ]]; then
-            [[ -e $curr_dir/.git/nozsh ]] && return 1
-            return 0
-        else
-            curr_dir=${curr_dir%/*}
-        fi
-    done
+    read -r git_dir < <(git rev-parse --git-dir 2>/dev/null)
+    if ! ((?)); then
+        [[ -e $git_dir/nozsh ]] && return 1
+        return 0
+    fi
     return 1
 }
 precmd.git() {
