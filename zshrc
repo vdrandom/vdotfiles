@@ -169,7 +169,7 @@ gci()   { command git commit $@ }
 gsl()   { command git stash list $@ }
 gss()   { command git status -sbu $@ }
 gup()   { command git pull $@ }
-groot() { cd $(command git rev-parse --show-cdup) || return 1 }
+groot() { cd $(command git rev-parse --show-toplevel) || return 1 }
 ggrep() { command git grep $@ }
 gsi()   { command tig status }
 
