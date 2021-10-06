@@ -35,7 +35,6 @@ less()   { command less -R "$@"; }
 tailf()  { command less -R +F "$@"; }
 rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
 whence() { command -v "$@"; }
-vi()     { command vim "$@"; }
 
 # ls
 ls() { command ls --color=auto --group-directories-first "$@"; }
@@ -59,9 +58,6 @@ sush()  { command sudo -Es; }
 
 # vim
 vi()  { command vim "$@"; }
-
-# termcompat
-s() { "$(command -v termcompat||return 0)" ssh "$@"; }
 
 # }}}
 # {{{ plugins and traps

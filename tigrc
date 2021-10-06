@@ -1,0 +1,3 @@
+color cursor			default	green	bold
+color title-blur		default	blue
+color title-focus		default	blue	bold

@@ -1,5 +1,5 @@
 set nobackup nomodeline backspace=indent,eol,start foldmethod=marker cursorline
-set list listchars=tab:\|_,nbsp:x,trail:*
+set list listchars=tab:-->,nbsp:x,trail:*
 set hlsearch incsearch ignorecase smartcase
 set scrolloff=3 sidescrolloff=15 sidescroll=1
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab autoindent

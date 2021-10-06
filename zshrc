@@ -70,8 +70,8 @@ bindkey -s '^j'   '^atime ^m'          # ctrl + j
 bindkey '^x^e'    edit-command-line
 # }}}
 # {{{ prompt
-prompt_fmt='%%k%%f[ %s %s:%s %s]\n\u276f '
-prompt_fmtn='%%k%%f[ %%{\e[2;3m%s\e[0m%%} ]\u276f '
+prompt_fmt='%%k%%f[ %s %s:%s %s]\n> '
+prompt_fmtn='%%k%%f[ %%{\e[2;3m%s\e[0m%%} ]> '
 prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
 prompt_cwd='%F{green}%d%f'

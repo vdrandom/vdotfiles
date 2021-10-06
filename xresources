@@ -11,29 +11,53 @@ Xft.dpi:                96
 #define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
 #define FONT            xft:Fantasque Sans Mono:12
 
+! gruvbox
+#define COLORFG #ebdbb2
+#define COLORBG #282828
+#define COLORBD #ebdbb2
+#define COLORCR #fb4934
+
+#define COLOR0  #282828
+#define COLOR1  #cc241d
+#define COLOR2  #98971a
+#define COLOR3  #d79921
+#define COLOR4  #458588
+#define COLOR5  #b16286
+#define COLOR6  #689d6a
+#define COLOR7  #a89984
+
+#define COLOR8  #928374
+#define COLOR9  #fb4934
+#define COLOR10 #b8bb26
+#define COLOR11 #fabd2f
+#define COLOR12 #83a598
+#define COLOR13 #d3869b
+#define COLOR14 #8ec07c
+#define COLOR15 #ebdbb2
+
 ! solarized light
-#define COLORFG #657b83
-#define COLORBG #fdf6e3
-#define COLORBD #002b36
-#define COLORCR #cb4b16
-
-#define COLOR0  #073642
-#define COLOR1  #dc322f
-#define COLOR2  #859900
-#define COLOR3  #b58900
-#define COLOR4  #268bd2
-#define COLOR5  #d33682
-#define COLOR6  #2aa198
-#define COLOR7  #eee8d5
-
-#define COLOR8  #002b36
-#define COLOR9  #cb4b16
-#define COLOR10 #586e75
-#define COLOR11 #657b83
-#define COLOR12 #839496
-#define COLOR13 #6c71c4
-#define COLOR14 #93a1a1
-#define COLOR15 #fdf6e3
+!#define COLORFG #657b83
+!#define COLORBG #fdf6e3
+!#define COLORBD #002b36
+!#define COLORCR #cb4b16
+!
+!#define COLOR0  #073642
+!#define COLOR1  #dc322f
+!#define COLOR2  #859900
+!#define COLOR3  #b58900
+!#define COLOR4  #268bd2
+!#define COLOR5  #d33682
+!#define COLOR6  #2aa198
+!#define COLOR7  #eee8d5
+!
+!#define COLOR8  #002b36
+!#define COLOR9  #cb4b16
+!#define COLOR10 #586e75
+!#define COLOR11 #657b83
+!#define COLOR12 #839496
+!#define COLOR13 #6c71c4
+!#define COLOR14 #93a1a1
+!#define COLOR15 #fdf6e3
 ! }}}
 ! {{{ urxvt
 ! fonts

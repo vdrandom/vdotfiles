@@ -54,13 +54,20 @@ if $TERM !~ '^linux'
         let &t_8b = "\u1b[48;2;%lu;%lu;%lum"
     endif
 
-    let g:gruvbox_plugin_hi_groups   = 1
-    let g:gruvbox_filetype_hi_groups = 1
     let g:lightline = {
        \ 'colorscheme': 'gruvbox8',
-       \ 'separator':    {'left': "\ue0b8", 'right': "\ue0ba"},
-       \ 'subseparator': {'left': "\ue0b9", 'right': "\ue0bb"}
+       \ 'separator':    {'left': "\ue0b0", 'right': "\ue0b2"},
+       \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}
        \ }
+    let g:PaperColor_Theme_Options = {'theme': {
+       \ 'default.dark':  {'allow_bold': 1, 'allow_italic': 1},
+       \ 'default.light': {'allow_bold': 1, 'allow_italic': 1}
+       \ }}
+    let g:gruvbox_plugin_hi_groups   = 1
+    let g:gruvbox_filetype_hi_groups = 1
+    let g:solarized_use16            = 1
+    let g:solarized_extra_hi_groups  = 1
+    let g:solarized_termcolors       = 16
 
     set bg=dark
     colorscheme gruvbox8
