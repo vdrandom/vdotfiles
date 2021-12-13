@@ -182,12 +182,6 @@ sush()  { command sudo -Es }
 
 # vim
 vi()  { command vim $@ }
-
-# package management
-if [[ -x $(whence -p paru) ]]; then
-    pacman() { command paru $@ }
-    yay()    { pacman $@ }
-fi
 # }}}
 # {{{ plugins
 # grc
