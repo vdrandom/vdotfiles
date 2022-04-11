@@ -6,7 +6,8 @@ set $mod Mod4
 set $i3_term default-terminal-emulator
 set $font PT Sans Expert:size=11
 
-font pango:PT Sans Expert 11
+font pango:Fantasque Sans Mono 13
+#font pango:Cascadia Code PL 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -152,8 +153,11 @@ bindsym $mod+r mode "resize"
 
 bar {
     position top
-    status_command "$HOME/vdstatus/vdstatus"
+    status_command "i3status-rs"
     tray_output primary
+    colors {
+        background #2c2c2c
+    }
 }
 
 workspace_layout tabbed

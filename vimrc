@@ -3,7 +3,7 @@ set list listchars=tab:-->,nbsp:x,trail:*
 set hlsearch incsearch ignorecase smartcase
 set scrolloff=3 sidescrolloff=15 sidescroll=1
 set tabstop=3 softtabstop=4 shiftwidth=4 smarttab expandtab autoindent
-set wildmenu showcmd ruler laststatus=2 mouse=
+set wildmenu showcmd ruler laststatus=2 mouse= t_ut= guicursor=
 set belloff=all colorcolumn=80 formatoptions+=j relativenumber breakindent
 set keymap=russian-jcukenwintype iminsert=0 imsearch=0
 let &statusline="[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]"

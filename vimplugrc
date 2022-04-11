@@ -1,5 +1,38 @@
 " support my own way of using plugins in vim / bash
 autocmd BufRead *vimplugrc set ft=vim
+
+let theme = 'PaperColor'
+let themebg = 'light'
+let lightline_theme = printf(theme)
+
+function EnableTGC()
+    let &t_8f = "\u1b[38;2;%lu;%lu;%lum"
+    let &t_8b = "\u1b[48;2;%lu;%lu;%lum"
+    let &tgc = 1
+endfunction
+
+if theme == 'PaperColor'
+    let g:PaperColor_Theme_Options = {'theme': {
+       \ 'default.dark':  {'allow_bold': 1, 'allow_italic': 1},
+       \ 'default.light': {'allow_bold': 1, 'allow_italic': 1}
+       \ }}
+endif
+
+if theme == 'gruvbox8'
+    call EnableTGC()
+    let g:gruvbox_plugin_hi_groups   = 1
+    let g:gruvbox_filetype_hi_groups = 1
+    let themebg = 'dark'
+endif
+
+if theme == 'solarized8'
+    let lightline_theme = 'solarized'
+
+    let g:solarized_use16            = 1
+    let g:solarized_extra_hi_groups  = 1
+    let g:solarized_termcolors       = 16
+endif
+
 " enable plugins
 execute 'source' fnameescape(plug)
 silent!call plug#begin(plugdir)
@@ -38,7 +71,15 @@ nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fl :Lines<CR>
 nmap <Leader>ft :Filetypes<CR>
 
+" vimwiki
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" lightline
+let g:lightline = {
+   \ 'separator':    {'left': "\ue0b0", 'right': "\ue0b2"},
+   \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}
+   \ }
+let g:lightline['colorscheme'] = printf(lightline_theme)
 
 if $TERM !~ '^linux'
     if has('gui_running')
@@ -48,27 +89,8 @@ if $TERM !~ '^linux'
 
         map <S-Insert> <MiddleMouse>
         map! <S-Insert> <MiddleMouse>
-    else
-        set tgc t_ut= guicursor=
-        let &t_8f = "\u1b[38;2;%lu;%lu;%lum"
-        let &t_8b = "\u1b[48;2;%lu;%lu;%lum"
     endif
 
-    let g:lightline = {
-       \ 'colorscheme': 'gruvbox8',
-       \ 'separator':    {'left': "\ue0b0", 'right': "\ue0b2"},
-       \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}
-       \ }
-    let g:PaperColor_Theme_Options = {'theme': {
-       \ 'default.dark':  {'allow_bold': 1, 'allow_italic': 1},
-       \ 'default.light': {'allow_bold': 1, 'allow_italic': 1}
-       \ }}
-    let g:gruvbox_plugin_hi_groups   = 1
-    let g:gruvbox_filetype_hi_groups = 1
-    let g:solarized_use16            = 1
-    let g:solarized_extra_hi_groups  = 1
-    let g:solarized_termcolors       = 16
-
-    set bg=dark
-    colorscheme gruvbox8
+    let &bg = printf(themebg)
+    execute printf('colorscheme %s', theme)
 endif
