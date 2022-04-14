@@ -21,6 +21,9 @@ bindsym $mod+Shift+c kill
 # workaround for firefox
 bindsym Control+q exec /bin/true
 
+# screenshot
+bindsym $mod+Shift+s exec screenshot-tool
+
 # start dmenu (a program launcher)
 bindsym $mod+y exec dmenu_multicmd "$HOME/.displayrc.yaml" -i -fn "$font"
 bindsym $mod+d exec dmenu_run -p run -i -fn "$font"
