@@ -110,7 +110,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r restart
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Control+r restart
@@ -173,6 +173,7 @@ workspace_auto_back_and_forth yes
 force_focus_wrapping yes
 
 # software
+for_window [class="GalaxyBudsClient"] floating enable
 for_window [class="jetbrains-toolbox"] floating enable
 for_window [class="Vpnui"] floating enable
 for_window [class="Deadbeef"] floating enable

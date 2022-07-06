@@ -11,7 +11,7 @@ SAVEHIST=1000
 HISTSIZE=1000
 HISTFILE=$HOME/.histfile.$UID
 
-export LESS='-R'
+export LESS='i M R'
 export PAGER=less
 export EDITOR=vim
 export TIME_STYLE=long-iso
@@ -153,7 +153,7 @@ beep()    { printf $'\007' }
 fixterm() { printf $'c' }
 
 diff()  { command diff --color $@ }
-tailf() { command less -R +F $@ }
+tailf() { command less +F $@ }
 rgrep() { command grep --exclude-dir=\.git -R $@ }
 
 # ls

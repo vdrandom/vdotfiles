@@ -7,10 +7,10 @@ HISTFILE="$HOME/.bash_history.$UID"
 HISTCONTROL=ignoredups
 shopt -s histappend checkwinsize autocd
 
-export LESS='-R'
-export PAGER='less'
-export EDITOR='vim'
-export TIME_STYLE='long-iso'
+export LESS='i M R'
+export PAGER=less
+export EDITOR=vim
+export TIME_STYLE=long-iso
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 # }}}
 # {{{ prompt
@@ -31,8 +31,7 @@ beep()    { printf "\007"; }
 fixterm() { printf "c"; }
 
 diff()   { command diff --color "$@"; }
-less()   { command less -R "$@"; }
-tailf()  { command less -R +F "$@"; }
+tailf()  { command less +F "$@"; }
 rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
 whence() { command -v "$@"; }
 
