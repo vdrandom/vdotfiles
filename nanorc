@@ -1,0 +1,66 @@
+set autoindent
+set boldtext
+#set breaklonglines
+set constantshow
+set guidestripe 80
+set linenumbers
+set minibar
+#set mouse
+set noconvert
+#set nohelp
+set smarthome
+set softwrap
+set tabsize 3
+set whitespace "»·"
+
+## Paint the interface elements of nano.  These are examples; there are
+## no colors by default, except for errorcolor and spotlightcolor.
+set titlecolor bold,white,blue
+set promptcolor lightwhite,white
+set statuscolor bold,white,green
+set errorcolor bold,white,red
+set spotlightcolor black,lightyellow
+set selectedcolor lightwhite,magenta
+set stripecolor ,yellow
+set scrollercolor cyan
+set numbercolor cyan
+set keycolor cyan
+set functioncolor green
+
+## === Syntax coloring ===
+include "/usr/share/nano/*.nanorc"
+
+## === Key bindings ===
+## If you would like nano to have keybindings that are more "usual",
+## such as ^O for Open, ^F for Find, ^H for Help, and ^Q for Quit,
+## then uncomment these:
+#bind ^X cut main
+#bind ^C copy main
+#bind ^V paste all
+#bind ^Q exit all
+#bind ^S savefile main
+#bind ^W writeout main
+#bind ^O insert main
+#set multibuffer
+#bind ^H help all
+#bind ^H exit help
+#bind ^F whereis all
+#bind ^G findnext all
+#bind ^B wherewas all
+#bind ^D findprevious all
+#bind ^R replace main
+#bind ^Z undo main
+#bind ^Y redo main
+#unbind ^K main
+#unbind ^U all
+#unbind ^N main
+#unbind ^Y all
+#unbind M-J main
+#unbind M-T main
+#bind ^A mark main
+#bind ^P location main
+#bind ^T gotoline main
+#bind ^T gotodir browser
+#bind ^T cutrestoffile execute
+#bind ^L linter execute
+#bind ^E execute main
