@@ -1,8 +1,8 @@
 " support my own way of using plugins in vim / bash
 autocmd BufRead *vimplugrc set ft=vim
 
-let theme = 'PaperColor'
-let themebg = 'light'
+let theme = 'gruvbox8'
+let themebg = 'dark'
 let lightline_theme = printf(theme)
 
 function EnableTGC()
@@ -75,10 +75,7 @@ nmap <Leader>ft :Filetypes<CR>
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " lightline
-let g:lightline = {
-   \ 'separator':    {'left': "\ue0b0", 'right': "\ue0b2"},
-   \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}
-   \ }
+let g:lightline = {}
 let g:lightline['colorscheme'] = printf(lightline_theme)
 
 if $TERM !~ '^linux'
