@@ -1,0 +1,96 @@
+[theme]
+name = "gruvbox-dark"
+[theme.overrides]
+separator = '|'
+idle_bg = "#2c2c2c"
+idle_fg = "#ebdbb2"
+info_bg = "#2c2c2c"
+info_fg = "#458588"
+good_bg = "#2c2c2c"
+good_fg = "#98971a"
+warning_bg = "#2c2c2c"
+warning_fg = "#d79921"
+critical_bg = "#2c2c2c"
+critical_fg = "#cc241d"
+separator_bg = "#2c2c2c"
+separator_fg = "#3c3836"
+
+[icons]
+name = "awesome"
+[icons.overrides]
+music = ''
+
+[[block]]
+block = "music"
+player = "spotify"
+buttons = ["play", "next"]
+hide_when_empty = true
+dynamic_width = true
+max_width = 80
+
+[[block]]
+block = "disk_space"
+path = "/home/von"
+warning = 10.0
+alert = 5.0
+format = "~ {available}"
+
+[[block]]
+block = "disk_space"
+path = "/"
+warning = 10.0
+alert = 5.0
+format = "/ {available}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+clickable = false
+format_mem = "{mem_used_percents}"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+step_width = 2
+
+[[block]]
+block = "battery"
+driver = "sysfs"
+device = "/sys/class/power_supply/BAT0"
+format = "{percentage}"
+full_format = "{percentage}"
+
+[[block]]
+block = "networkmanager"
+on_click = "kitty --class nmtui -e nmtui-connect"
+device_format = "{icon} {ap}"
+
+#[[block]]
+#block = "keyboard_layout"
+#driver = "sway"
+
+[[block]]
+block = "custom"
+command = "printf '\uf019'"
+on_click = "screenshot-tool file"
+interval = 60
+
+[[block]]
+block = "custom"
+command = "printf '\uf0ea'"
+on_click = "screenshot-tool"
+interval = 60
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d %R"
