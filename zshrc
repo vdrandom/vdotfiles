@@ -76,7 +76,7 @@ prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
 prompt_cwd='%F{green}%d%f'
 prompt_git_fmt='\ue0a0 %s %s%%f '
-prompt_state_file=${RUN_DIR:-/run/user/$UID}/zsh_gitstatus_$$.tmp
+prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
 
 printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd ''
 printf -v PROMPT2 $prompt_fmtn '%_'
@@ -98,7 +98,7 @@ precmd.is_git_repo() {
 }
 precmd.git() {
     typeset raw_status
-    raw_status=$(flock -w 0 $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)
+    raw_status=$(flock -n $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null)
     (($?)) && return 0
 
     typeset branch_status git_status IFS=
@@ -157,11 +157,12 @@ tailf() { command less +F $@ }
 rgrep() { command grep --exclude-dir=\.git -R $@ }
 
 # ls
-ls() { command ls --color=auto --group-directories-first $@ }
 if [[ -x $(whence -p exa) ]]; then
-    ll() { command exa -lag --group-directories-first $@ }
+    ls() { command exa --group-directories-first $@ }
+    ll() { ls -lag $@ }
 else
-    ll() { command ls -lha --color=auto --group-directories-first $@ }
+    ls() { command ls --color=auto $@ }
+    ll() { ls -lha $@ }
 fi
 
 # git
