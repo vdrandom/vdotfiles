@@ -20,9 +20,11 @@ endif
 
 if theme == 'gruvbox8'
     call EnableTGC()
+    let themebg = 'dark'
+
+    let g:gruvbox_transp_bg          = 1
     let g:gruvbox_plugin_hi_groups   = 1
     let g:gruvbox_filetype_hi_groups = 1
-    let themebg = 'dark'
 endif
 
 if theme == 'solarized8'
@@ -75,12 +77,15 @@ nmap <Leader>ft :Filetypes<CR>
 let g:vimwiki_list = [{'path': '$HOME/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " lightline
-let g:lightline = {}
+let g:lightline = {
+   \ 'separator':    {'left': "\ue0b0", 'right': "\ue0b2"},
+   \ 'subseparator': {'left': "\ue0b1", 'right': "\ue0b3"}
+   \ }
 let g:lightline['colorscheme'] = printf(lightline_theme)
 
 if $TERM !~ '^linux'
     if has('gui_running')
-        set guifont=Cascadia\ Mono\ PL:h16
+        set guifont=Cascadia\ Code\ PL:h16
         set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
         set guiheadroom=0 guioptions=aei mouse=a
 
