@@ -155,6 +155,7 @@ fixterm() { printf $'c' }
 diff()  { command diff --color $@ }
 tailf() { command less +F $@ }
 rgrep() { command grep --exclude-dir=\.git -R $@ }
+fwcmd() { command firewall-cmd $@ }
 
 # ls
 if [[ -x $(whence -p exa) ]]; then
