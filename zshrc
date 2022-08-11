@@ -7,6 +7,10 @@ stty -ixon
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
 
+bindkey $terminfo[kdch1] delete-char
+bindkey $terminfo[khome] beginning-of-line
+bindkey $terminfo[kend]  end-of-line
+
 SAVEHIST=1000
 HISTSIZE=1000
 HISTFILE=$HOME/.histfile.$UID
@@ -17,8 +21,7 @@ export EDITOR=vim
 export TIME_STYLE=long-iso
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 
-autoload -Uz compinit edit-command-line
-zle -N edit-command-line
+autoload -Uz compinit
 
 # completion
 compinit
@@ -38,37 +41,6 @@ zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
-# {{{ key bindings
-bindkey -e
-# urxvt
-bindkey '^[[7~'   beginning-of-line    # home
-bindkey '^[[8~'   end-of-line          # end
-bindkey '^[Oc'    forward-word         # ctrl + right
-bindkey '^[Od'    backward-word        # ctrl + left
-bindkey '^[[3^'   delete-word          # ctrl + del
-# screen
-bindkey '^[[1~'   beginning-of-line    # home
-bindkey '^[[4~'   end-of-line          # end
-# xterm
-bindkey '^[[H'    beginning-of-line    # home
-bindkey '^[[F'    end-of-line          # end
-# st
-bindkey '^[[P'    delete-char          # del
-bindkey '^[[M'    delete-word          # ctrl + del
-# most of them (but not urxvt)
-bindkey '^[[1;5C' forward-word         # ctrl + right
-bindkey '^[[1;5D' backward-word        # ctrl + left
-bindkey '^[[3;5~' delete-word          # ctrl + del
-# all of them
-bindkey '^[[5~'   backward-word        # page up
-bindkey '^[[6~'   forward-word         # page down
-bindkey '^[[3~'   delete-char          # del
-bindkey '^[m'     copy-prev-shell-word # alt + m
-bindkey -s '^j'   '^atime ^m'          # ctrl + j
-
-# command line editing
-bindkey '^x^e'    edit-command-line
-# }}}
 # {{{ prompt
 prompt_fmt='%%k%%f[ %s %s:%s %s]\n> '
 prompt_fmtn='%%k%%f[ %%{\e[2;3m%s\e[0m%%} ]> '
@@ -82,19 +54,9 @@ printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd ''
 printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
-precmd.title() {
-    case $TERM in
-        (screen*) printf '\033k%s\033\\' ${HOST%%.*};;
-        (*)       printf '\033]2;%s\007' ${HOST%%.*};;
-    esac
-}
 precmd.is_git_repo() {
-    read -r git_dir < <(git rev-parse --git-dir 2>/dev/null)
-    if ! ((?)); then
-        [[ -e $git_dir/nozsh ]] && return 1
-        return 0
-    fi
-    return 1
+    read -r git_dir < <(git rev-parse --git-dir 2>/dev/null) || return 1
+    [[ ! -e $git_dir/nozsh ]]
 }
 precmd.git() {
     typeset raw_status
@@ -132,7 +94,6 @@ precmd.git_update() {
     kill -s USR1 $$
 }
 precmd() {
-    precmd.title
     if precmd.is_git_repo; then
         precmd.prompt $'\ue0a0 ... '
         precmd.git_update &!
