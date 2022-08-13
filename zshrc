@@ -11,6 +11,7 @@ bindkey -e
 bindkey $terminfo[kdch1] delete-char
 bindkey $terminfo[khome] beginning-of-line
 bindkey $terminfo[kend]  end-of-line
+bindkey '^[' vi-cmd-mode
 
 SAVEHIST=1000
 HISTSIZE=1000
@@ -44,15 +45,15 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
 # {{{ prompt
 reset='%%{\e[0m%%}'
-prompt_fmt="${reset}[ %s@%s:%s %s]\n%%# "
-prompt_fmtn="${reset}[ %%{\e[2;3m%%}%s${reset} ]%%# "
+prompt_fmt='[ %s@%s:%s %s]\n\U1f525 '
+prompt_fmtn='[ %%{\e[2;3m%%}%s%%{\e[0m%%} ] '
 prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
 prompt_cwd='%F{green}%d%f'
 prompt_git_fmt='\ue0a0 %s %s%%f '
 prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
 
-printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd ''
+printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd
 printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
@@ -103,7 +104,7 @@ precmd() {
         precmd.prompt $'\ue0a0 ... '
         precmd.git_update &!
     else
-        precmd.prompt ''
+        precmd.prompt
     fi
 }
 
@@ -115,6 +116,15 @@ TRAPUSR1() {
 TRAPEXIT() {
     [[ -f $prompt_state_file ]] && rm $prompt_state_file
 }
+
+function zle-line-init zle-keymap-select {
+    local seq=$'\e[2 q'
+    [[ $KEYMAP == vicmd ]] && seq=$'\e[4 q'
+    printf $seq
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 # }}}
 # {{{ aliases
 beep()    { printf $'\007' }
