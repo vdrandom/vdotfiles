@@ -7,10 +7,10 @@ stty -ixon
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
 
+bindkey -e
 bindkey $terminfo[kdch1] delete-char
 bindkey $terminfo[khome] beginning-of-line
 bindkey $terminfo[kend]  end-of-line
-bindkey '^[' vi-cmd-mode
 
 SAVEHIST=1000
 HISTSIZE=1000
@@ -43,17 +43,20 @@ zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
 # {{{ prompt
-prompt_fmt='%%k%%f[ %s %s:%s ]\n%s '
-prompt_fmtn='%%k%%f[ %%{\e[2;3m%s\e[0m%%} ]%s '
-prompt_user='%F{%(!.red.blue)}%n%f'
+prompt_user='%(!.%F{red}%n%f@.)'
+style_reset='%%{\e[0m%%}'
+style_gital='%%{\e[2;3m%%}'
+#prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
-prompt_cwd='%F{green}%d%f'
-prompt_bang='>'
+prompt_cwd='%F{blue}%2~%f'
+prompt_bang='%#'
+prompt_fmt="${style_reset}[ %s%s %s ]%s "
+prompt_fmtn="${style_reset}[ $style_gital%s$style_reset ]%s "
 
 function zle-line-init zle-keymap-select {
     case $KEYMAP in
-        (vicmd) prompt_bang='%F{blue}!%f';;
-        (main)  prompt_bang='>';;
+        (vicmd) prompt_bang='_';;
+        (main)  prompt_bang='#';;
     esac
     printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd $prompt_bang
     printf -v PROMPT2 $prompt_fmtn '%_' $prompt_bang
