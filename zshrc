@@ -45,7 +45,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # }}}
 # {{{ prompt
 reset='%%{\e[0m%%}'
-prompt_fmt='[ %s@%s:%s %s]\n\U01f4a2 '
+prompt_fmt='[ %s@%s:%s %s]\n\U01f525 '
 prompt_fmtn='[ %%{\e[2;3m%%}%s%%{\e[0m%%} ] '
 prompt_user='%F{%(!.red.blue)}%n%f'
 prompt_host='%m'
