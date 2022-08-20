@@ -8,9 +8,14 @@
 confdir=$(dirname $0)
 conflist=(
     settings.zsh
-    prompt.zsh
     functions.zsh
 )
+
+if [[ -x $(whence powerline-go) ]]; then
+    conflist+=(prompt-powerline-go.zsh)
+else
+    conflist+=(prompt-powerline-plain.zsh)
+fi
 
 for config in $conflist; do
     [[ -r $confdir/$config ]] && . $confdir/$config
