@@ -5,6 +5,7 @@ printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
 
 PROMPT=
+prev_color=
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
     sep_b         $'\ue0b1'
@@ -40,7 +41,7 @@ precmd.prompt.clear() {
 }
 
 precmd.prompt.add() {
-    typeset string
+    (($#<2)) && return 1
     typeset data=$1 color=$2
     if [[ $color == same ]]; then
         PROMPT+="$prompt_symbols[sep_b] $data "
