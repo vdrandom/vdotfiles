@@ -14,7 +14,7 @@ conflist=(
 if [[ -x $(whence powerline-go) ]]; then
     conflist+=(prompt-powerline-go.zsh)
 else
-    conflist+=(prompt-powerline-plain.zsh)
+    conflist+=(prompt-plain.zsh)
 fi
 
 for config in $conflist; do
