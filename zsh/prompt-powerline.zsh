@@ -109,7 +109,7 @@ precmd.prompt.ro() {
 }
 
 precmd.is_git_repo() {
-    typeset -g prompt_git_dir
+    typeset prompt_git_dir
     prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
     [[ ! -e $prompt_git_dir/nozsh ]]
 }
@@ -120,7 +120,7 @@ precmd.prompt.pre_git() {
 
 precmd.prompt.git() {
     typeset raw_status
-    raw_status=$(flock -n $prompt_git_dir git --no-optional-locks status --porcelain -bu 2>/dev/null) || return 0
+    raw_status=$(git status --porcelain -bu 2>/dev/null) || return 0
 
     typeset -A count
     typeset branch_status git_status_string IFS=
