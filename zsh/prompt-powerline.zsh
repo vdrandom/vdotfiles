@@ -22,10 +22,8 @@ typeset -A prompt_colors=(
     user           53
     ssh            90
     root           52
-    host           240
-    home           237
-    /              237
-    dirs           234
+    host           237
+    cwd            234
     ro             124
     git_branch     237
     git_unstaged   130
@@ -41,16 +39,16 @@ precmd.prompt.init() {
 precmd.prompt.add() {
     (( $# < 2 )) && return 1
     typeset data=$1 color=$2
-    if [[ $color == same ]]; then
-        prompt_string+="$prompt_symbols[sep_b] $data "
+    if [[ -z $prompt_string ]]; then
+        prompt_string+="%K{$color}%F{$prompt_colors[fg]} $data "
     else
-        if (( ${#prompt_string} )); then
-            prompt_string+="%F{$prev_color}%K{$color}$prompt_symbols[sep_a]%F{$prompt_colors[fg]} $data "
-        else
-            prompt_string="%K{$color}%F{$prompt_colors[fg]} $data "
-        fi
-        prev_color=$color
+        prompt_string+="%F{$prev_color}%K{$color}$prompt_symbols[sep_a]%F{$prompt_colors[fg]} $data "
     fi
+    prev_color=$color
+}
+
+precmd.prompt.add_same() {
+    prompt_string+="$prompt_symbols[sep_b] $* "
 }
 
 precmd.prompt.bang() {
@@ -78,30 +76,7 @@ precmd.prompt.host() {
 }
 
 precmd.prompt.cwd() {
-    typeset cwd limit=${1:-3}
-    if [[ $PWD =~ ^$HOME ]]; then
-        precmd.prompt.add \~ $prompt_colors[home]
-        cwd=${PWD#$HOME}
-    else
-        precmd.prompt.add / $prompt_colors[/]
-        cwd=${PWD:1}
-    fi
-    [[ -z $cwd ]] && return
-
-    typeset -a cwd_array=(${(ps:/:)cwd})
-    if (( ${#cwd_array} > limit )); then
-        precmd.prompt.add $prompt_symbols[ellipsis] $prompt_colors[dirs]
-        while (( ${#cwd_array} > limit )); do
-            shift cwd_array
-        done
-    else
-        precmd.prompt.add $cwd_array[1] $prompt_colors[dirs]
-        shift cwd_array
-    fi
-    while (( ${#cwd_array} )); do
-        precmd.prompt.add $cwd_array[1] same
-        shift cwd_array
-    done
+    precmd.prompt.add %~ $prompt_colors[cwd]
 }
 
 precmd.prompt.ro() {
@@ -149,7 +124,7 @@ precmd.prompt() {
     precmd.prompt.user
     precmd.prompt.ssh
     precmd.prompt.host
-    precmd.prompt.cwd 2
+    precmd.prompt.cwd
     precmd.prompt.ro
 }
 
