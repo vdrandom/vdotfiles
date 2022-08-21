@@ -18,7 +18,7 @@ typeset -A prompt_symbols=(
     bang          $'\n\U01f525'
 )
 typeset -A prompt_colors=(
-    fg             253
+    fg             15
     user           53
     ssh            90
     root           52
