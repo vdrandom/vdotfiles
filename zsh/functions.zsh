@@ -1,5 +1,5 @@
 # some distributions love to force some aliases upon user :<
-unalias ls ll ld 2>/dev/null
+unalias ls ld ll 2>/dev/null
 
 beep()    { printf $'\007' }
 fixterm() { printf $'c' }
@@ -15,7 +15,7 @@ if [[ -x $(whence -p exa) ]]; then
     ll() { ls -alg $@ }
     ld() { ls -dlg $@ }
 else
-    ls() { command ls --color=auto $@ }
+    ls() { command ls --color=auto --group-directories-first $@ }
     ll() { ls -alh $@ }
     ld() { ls -dlh $@ }
 fi
@@ -55,9 +55,6 @@ atmux() { tmux attach || tmux }
 
 # sudo
 sush()  { command sudo -Es }
-
-# vim
-vi()    { command vim $@ }
 
 # grc
 if [[ -x $(whence -p grc) ]]; then

@@ -20,8 +20,8 @@ typeset -A prompt_symbols=(
 typeset -A prompt_colors=(
     fg             15
     user           53
-    ssh            90
     root           52
+    ssh            90
     host           237
     cwd            234
     ro             124
