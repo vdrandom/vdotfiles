@@ -20,6 +20,12 @@ else
     ld() { ls -dlh $@ }
 fi
 
+# emacs
+em()  { command emacsclient -a '' "$@"}
+emg() { em -c "$@" }
+emt() { em -t "$@" }
+emd() { command emacs --daemon &>/dev/null &! }
+
 # git
 gci()    { command git commit $@ }
 gsl()    { command git stash list $@ }
