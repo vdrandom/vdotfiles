@@ -34,6 +34,10 @@ typeset -A prompt_colors=(
     git_unmerged   30
 )
 
+precmd.prompt.init() {
+    typeset -g prompt_string= prev_color=
+}
+
 precmd.prompt.add() {
     (( $# < 2 )) && return 1
     typeset data=$1 color=$2
@@ -51,6 +55,11 @@ precmd.prompt.add() {
 
 precmd.prompt.bang() {
     prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
+}
+
+precmd.prompt.apply() {
+    PROMPT=$prompt_string
+    unset prompt_string
 }
 
 precmd.prompt.user() {
@@ -136,7 +145,7 @@ precmd.prompt.git() {
 }
 
 precmd.prompt() {
-    typeset -g prompt_string= prev_color=
+    precmd.prompt.init
     precmd.prompt.user
     precmd.prompt.ssh
     precmd.prompt.host
@@ -154,7 +163,6 @@ precmd.git_update() {
 }
 
 precmd() {
-    PROMPT=
     if precmd.is_git_repo; then
         precmd.prompt
         precmd.prompt.pre_git
@@ -164,11 +172,12 @@ precmd() {
         precmd.prompt
         precmd.prompt.bang
     fi
-    PROMPT=$prompt_string
+    precmd.prompt.apply
 }
 
 TRAPUSR1() {
-    PROMPT=$(<$prompt_fifo)
+    typeset -g prompt_string=$(<$prompt_fifo)
+    precmd.prompt.apply
     zle && zle reset-prompt
 }
 
