@@ -162,23 +162,24 @@ precmd.git_update() {
     kill -s USR1 $$
 }
 
+precmd.prompt.update() {
+    typeset -g prompt_string=$(<$prompt_fifo)
+    precmd.prompt.apply
+    zle && zle reset-prompt
+}
+
 precmd() {
+    precmd.prompt
     if precmd.is_git_repo; then
-        precmd.prompt
         precmd.prompt.pre_git
-        precmd.prompt.bang
         precmd.git_update &!
-    else
-        precmd.prompt
-        precmd.prompt.bang
     fi
+    precmd.prompt.bang
     precmd.prompt.apply
 }
 
 TRAPUSR1() {
-    typeset -g prompt_string=$(<$prompt_fifo)
-    precmd.prompt.apply
-    zle && zle reset-prompt
+    precmd.prompt.update
 }
 
 TRAPEXIT() {
