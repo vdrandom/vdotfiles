@@ -9,7 +9,7 @@ confdir=$(dirname $0)
 conflist=(
     settings.zsh
     functions.zsh
-    prompt-powerline-native.zsh
+    prompt-powerline.zsh
 )
 
 for config in $conflist; do

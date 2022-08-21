@@ -2,10 +2,8 @@ prompt_fmtn='[ %%{\e[2;3m%%}%s%%{\e[0m%%} ] '
 printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
-prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
 
-PROMPT=
-prev_color=
+prompt_fifo=~/.zsh_gitstatus_$$
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
     sep_b         $'\ue0b1'
@@ -36,34 +34,30 @@ typeset -A prompt_colors=(
     git_unmerged   30
 )
 
-precmd.prompt.clear() {
-    PROMPT=
-}
-
 precmd.prompt.add() {
-    (($#<2)) && return 1
+    (( $# < 2 )) && return 1
     typeset data=$1 color=$2
     if [[ $color == same ]]; then
-        PROMPT+="$prompt_symbols[sep_b] $data "
+        prompt_string+="$prompt_symbols[sep_b] $data "
     else
-        if ((${#PROMPT})); then
-            PROMPT+="%F{$prev_color}%K{$color}$prompt_symbols[sep_a]%F{$prompt_colors[fg]} $data "
+        if (( ${#prompt_string} )); then
+            prompt_string+="%F{$prev_color}%K{$color}$prompt_symbols[sep_a]%F{$prompt_colors[fg]} $data "
         else
-            PROMPT="%K{$color}%F{$prompt_colors[fg]} $data "
+            prompt_string="%K{$color}%F{$prompt_colors[fg]} $data "
         fi
         prev_color=$color
     fi
 }
 
 precmd.prompt.bang() {
-    PROMPT+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
+    prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
 }
 
 precmd.prompt.user() {
-    typeset user_color
-    ((UID)) && user_color=$prompt_colors[user] || user_color=$prompt_colors[root]
+    typeset c=user
+    (( UID )) || c=root
 
-    precmd.prompt.add %n $user_color
+    precmd.prompt.add %n $prompt_colors[$c]
 }
 
 precmd.prompt.ssh() {
@@ -86,16 +80,16 @@ precmd.prompt.cwd() {
     [[ -z $cwd ]] && return
 
     typeset -a cwd_array=(${(ps:/:)cwd})
-    if ((${#cwd_array} > limit)); then
+    if (( ${#cwd_array} > limit )); then
         precmd.prompt.add $prompt_symbols[ellipsis] $prompt_colors[dirs]
-        while ((${#cwd_array} > limit)); do
+        while (( ${#cwd_array} > limit )); do
             shift cwd_array
         done
     else
         precmd.prompt.add $cwd_array[1] $prompt_colors[dirs]
         shift cwd_array
     fi
-    while ((${#cwd_array})); do
+    while (( ${#cwd_array} )); do
         precmd.prompt.add $cwd_array[1] same
         shift cwd_array
     done
@@ -105,27 +99,35 @@ precmd.prompt.ro() {
     [[ -w . ]] || precmd.prompt.add $prompt_symbols[ro] $prompt_colors[ro]
 }
 
+precmd.is_git_repo() {
+    typeset -g prompt_git_dir
+    prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
+    [[ ! -e $prompt_git_dir/nozsh ]]
+}
+
 precmd.prompt.pre_git() {
     precmd.prompt.add "$prompt_symbols[git] $prompt_symbols[ellipsis]" $prompt_colors[git_branch]
 }
 
 precmd.prompt.git() {
     typeset raw_status
-    raw_status=$(flock -n $prompt_state_file git --no-optional-locks status --porcelain -bu 2>/dev/null) || return 0
+    raw_status=$(flock -n $prompt_git_dir git --no-optional-locks status --porcelain -bu 2>/dev/null) || return 0
 
     typeset -A count
     typeset branch_status git_status_string IFS=
     while read line; do
-        if [[ $line[1,2] == '##' ]]; then
-            branch_status=${line[4,-1]%%...*}
-            [[ $line =~ behind ]] && branch_status+=?
-            [[ $line =~ ahead  ]] && branch_status+=!
-            precmd.prompt.add "$prompt_symbols[git] $branch_status" $prompt_colors[git_branch]
-        fi
-        [[ $line[1,2] == '??'     ]] && (( count[git_untracked]++ ))
-        [[ $line[1,2] =~ .[MD]    ]] && (( count[git_unstaged]++  ))
-        [[ $line[1,2] =~ [MDARC]. ]] && (( count[git_staged]++    ))
-        [[ $line[1,2] =~ [ADU]{2} ]] && (( count[git_unmerged]++  ))
+        case $line[1,2] in
+            ('##')
+                branch_status=${line[4,-1]%%...*}
+                [[ $line =~ behind ]] && branch_status+=?
+                [[ $line =~ ahead  ]] && branch_status+=!
+                precmd.prompt.add "$prompt_symbols[git] $branch_status" $prompt_colors[git_branch]
+                ;;
+            (?[MD])      (( count[git_unstaged]++ ))  ;|
+            ([MDARC]?)   (( count[git_staged]++ ))    ;|
+            ('??')       (( count[git_untracked]++ )) ;|
+            ([ADU][ADU]) (( count[git_unmerged]++ ))
+        esac
     done <<< $raw_status
 
     for i in git_unstaged git_staged git_untracked git_unmerged; do
@@ -133,13 +135,8 @@ precmd.prompt.git() {
     done
 }
 
-precmd.is_git_repo() {
-    read -r git_dir < <(git rev-parse --git-dir 2>/dev/null) || return 1
-    [[ ! -e $git_dir/nozsh ]]
-}
-
 precmd.prompt() {
-    precmd.prompt.clear
+    typeset -g prompt_string= prev_color=
     precmd.prompt.user
     precmd.prompt.ssh
     precmd.prompt.host
@@ -148,15 +145,16 @@ precmd.prompt() {
 }
 
 precmd.git_update() {
-    umask 077
     precmd.prompt
     precmd.prompt.git
     precmd.prompt.bang
-    > $prompt_state_file <<< $PROMPT
+    [[ ! -p $prompt_fifo ]] && mkfifo -m 0600 $prompt_fifo
+    echo -n $prompt_string > $prompt_fifo &!
     kill -s USR1 $$
 }
 
 precmd() {
+    PROMPT=
     if precmd.is_git_repo; then
         precmd.prompt
         precmd.prompt.pre_git
@@ -166,15 +164,16 @@ precmd() {
         precmd.prompt
         precmd.prompt.bang
     fi
+    PROMPT=$prompt_string
 }
 
 TRAPUSR1() {
-    PROMPT=$(<$prompt_state_file)
+    PROMPT=$(<$prompt_fifo)
     zle && zle reset-prompt
 }
 
 TRAPEXIT() {
-    [[ -f $prompt_state_file ]] && rm $prompt_state_file
+    [[ -p $prompt_fifo ]] && rm $prompt_fifo
 }
 
 function zle-line-init zle-keymap-select {
