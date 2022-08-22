@@ -56,6 +56,21 @@ atmux() { tmux attach || tmux }
 # sudo
 sush()  { command sudo -Es }
 
+# termcompat
+termcompat() {
+    typeset term
+    case $TERM in
+        (rxvt-unicode-*) term=rxvt-unicode;;
+        (tmux*)          term=screen.xterm-new;;
+        (*)              term=xterm;;
+    esac
+    TERM=$term command $@
+}
+cmds=(ssh tig)
+for cmd in $cmds; do
+    alias $cmd="termcompat $cmd"
+done
+
 # grc
 if [[ -x $(whence -p grc) ]]; then
     cmds=(\

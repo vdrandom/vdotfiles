@@ -18,18 +18,18 @@ typeset -A prompt_symbols=(
     bang          $'\n\U01f525'
 )
 typeset -A prompt_colors=(
-    fg             15
-    user           53
-    root           52
-    ssh            90
-    host           237
-    cwd            234
-    ro             124
-    git_branch     237
-    git_unstaged   130
-    git_staged     25
-    git_untracked  88
-    git_unmerged   30
+    fg             '#ebdbb2'
+    user           '#458588'
+    root           '#cc241d'
+    ssh            '#d65d0e'
+    host           '#504945'
+    cwd            '#3c3836'
+    ro             '#d65d0e'
+    git_branch     '#b16286'
+    git_unstaged   '#d65d0e'
+    git_staged     '#458588'
+    git_untracked  '#cc241d'
+    git_unmerged   '#689d6a'
 )
 
 precmd.prompt.init() {
