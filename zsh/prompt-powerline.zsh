@@ -114,7 +114,7 @@ precmd.prompt.git() {
         esac
     done <<< $raw_status
 
-    for i in git_unstaged git_staged git_untracked git_unmerged; do
+    for i in git_unstaged git_untracked git_unmerged git_staged; do
         (( count[$i] )) && precmd.prompt.add "$count[$i]$prompt_symbols[$i]" $prompt_colors[$i]
     done
 }

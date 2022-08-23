@@ -8,7 +8,7 @@
 confdir=$(dirname $0)
 conflist=(
     settings.zsh
-    functions.zsh
+    aliases.zsh
     prompt-powerline.zsh
 )
 

@@ -26,10 +26,8 @@ tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
 sush()    { command sudo -Es }
 
-emd()     { command emacs --daemon &>/dev/null &! }
-ema()     { command emacsclient -a '' "$@"}
-emg()     { ema -c $@ }
-em()      { ema -t $@ }
+ema()     { command emacsclient -c $@ }
+em()      { command emacsclient -t $@ }
 
 tig()     { termcompat tig $@ }
 gsi()     { tig status }
@@ -53,7 +51,6 @@ else
     gdf() { gdiff $@ }
 fi
 
-unalias ls ld ll 2>/dev/null
 if [[ -x $(whence -p exa) ]]; then
     ls()  { command exa --group-directories-first $@ }
     ll()  { ls -alg $@ }

@@ -12,6 +12,7 @@ export PAGER=less
 export EDITOR=vim
 export TIME_STYLE=long-iso
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+export ALTERNATE_EDITOR=
 
 bindkey -e
 bindkey $terminfo[kdch1] delete-char
@@ -38,3 +39,5 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+unalias ld ls ll &>/dev/null
