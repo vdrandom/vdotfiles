@@ -1,41 +1,46 @@
-# some distributions love to force some aliases upon user :<
-unalias ls ld ll 2>/dev/null
+termcompat() {
+    typeset term=$TERM
+    case $term in
+        (alacritty*) ;&
+        (kitty*) ;&
+        (xterm-*)
+            term=xterm;;
+        (rxvt-unicode*)
+            term=rxvt-unicode;;
+        (tmux*)
+            term=screen.xterm-new;;
+    esac
+    TERM=$term command $@
+}
 
 beep()    { printf $'\007' }
 fixterm() { printf $'c' }
 
-diff()   { command diff --color $@ }
-tailf()  { command less +F $@ }
-rgrep()  { command grep --exclude-dir=\.git -R $@ }
-fwcmd()  { command firewall-cmd $@ }
+diff()    { command diff --color $@ }
+tailf()   { command less +F $@ }
+rgrep()   { command grep --exclude-dir=\.git -R $@ }
+fwcmd()   { command firewall-cmd $@ }
+s()       { termcompat ssh $@ }
 
-# ls
-if [[ -x $(whence -p exa) ]]; then
-    ls() { command exa --group-directories-first $@ }
-    ll() { ls -alg $@ }
-    ld() { ls -dlg $@ }
-else
-    ls() { command ls --color=auto --group-directories-first $@ }
-    ll() { ls -alh $@ }
-    ld() { ls -dlh $@ }
-fi
+tmux()    { command tmux -2 $@ }
+atmux()   { tmux attach || tmux }
+sush()    { command sudo -Es }
 
-# emacs
-em()  { command emacsclient -a '' "$@"}
-emg() { em -c "$@" }
-emt() { em -t "$@" }
-emd() { command emacs --daemon &>/dev/null &! }
+em()      { command emacsclient -a '' "$@"}
+emg()     { em -c "$@" }
+emt()     { em -t "$@" }
+emd()     { command emacs --daemon &>/dev/null &! }
 
-# git
-gci()    { command git commit $@ }
-gsl()    { command git stash list $@ }
-gss()    { command git status -sbu $@ }
-gup()    { command git pull $@ }
-groot()  { cd $(command git rev-parse --show-toplevel) || return 1 }
-ggrep()  { command git grep $@ }
-gsi()    { command tig status }
-gdiff()  { command git diff --color $@; }
-greset() {
+tig()     { termcompat tig $@ }
+gsi()     { tig status }
+gci()     { command git commit $@ }
+gsl()     { command git stash list $@ }
+gss()     { command git status -sbu $@ }
+gup()     { command git pull $@ }
+groot()   { cd $(command git rev-parse --show-toplevel) || return 1 }
+ggrep()   { command git grep $@ }
+gdiff()   { command git diff --color $@; }
+greset()  {
     echo "OK to reset and clean teh repo?"
     read -sq _
     (( $? )) && return 1
@@ -48,28 +53,16 @@ else
     gdf() { gdiff $@ }
 fi
 
-
-# tmux
-tmux()  { command tmux -2 $@ }
-atmux() { tmux attach || tmux }
-
-# sudo
-sush()  { command sudo -Es }
-
-# termcompat
-termcompat() {
-    typeset term
-    case $TERM in
-        (rxvt-unicode-*) term=rxvt-unicode;;
-        (tmux*)          term=screen.xterm-new;;
-        (*)              term=xterm;;
-    esac
-    TERM=$term command $@
-}
-cmds=(ssh tig)
-for cmd in $cmds; do
-    alias $cmd="termcompat $cmd"
-done
+unalias ls ld ll 2>/dev/null
+if [[ -x $(whence -p exa) ]]; then
+    ls()  { command exa --group-directories-first $@ }
+    ll()  { ls -alg $@ }
+    ld()  { ls -dlg $@ }
+else
+    ls()  { command ls --color=auto --group-directories-first $@ }
+    ll()  { ls -alh $@ }
+    ld()  { ls -dlh $@ }
+fi
 
 # grc
 if [[ -x $(whence -p grc) ]]; then

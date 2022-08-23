@@ -25,7 +25,7 @@ typeset -A prompt_colors=(
     host           '#504945'
     cwd            '#3c3836'
     ro             '#d65d0e'
-    git_branch     '#b16286'
+    git_branch     '#504945'
     git_unstaged   '#d65d0e'
     git_staged     '#458588'
     git_untracked  '#cc241d'
