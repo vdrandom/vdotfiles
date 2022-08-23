@@ -26,10 +26,10 @@ tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
 sush()    { command sudo -Es }
 
-em()      { command emacsclient -a '' "$@"}
-emg()     { em -c "$@" }
-emt()     { em -t "$@" }
 emd()     { command emacs --daemon &>/dev/null &! }
+ema()     { command emacsclient -a '' "$@"}
+emg()     { ema -c $@ }
+em()      { ema -t $@ }
 
 tig()     { termcompat tig $@ }
 gsi()     { tig status }
