@@ -13,6 +13,13 @@ termcompat() {
     TERM=$term command $@
 }
 
+fsf() {
+    typeset host prompt="SSH Remote > "
+    host=$(cut -d\  -f1 $HOME/.ssh/known_hosts | sort -u | fzf --prompt=$prompt) || return 1
+
+    termcompat ssh $host $@
+}
+
 beep()    { printf $'\007' }
 fixterm() { printf $'c' }
 
@@ -25,9 +32,6 @@ s()       { termcompat ssh $@ }
 tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
 sush()    { command sudo -Es }
-
-ema()     { command emacsclient -c $@ }
-em()      { command emacsclient -t $@ }
 
 tig()     { termcompat tig $@ }
 gsi()     { tig status }
@@ -45,6 +49,7 @@ greset()  {
     /usr/bin/git clean -fd
     /usr/bin/git reset --hard
 }
+
 if [[ -x $(whence -p diff-so-fancy) ]]; then
     gdf() { gdiff $@ | command diff-so-fancy | command less --tabs=4 -RSFX }
 else

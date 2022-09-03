@@ -8,8 +8,8 @@
 confdir=$(dirname $0)
 conflist=(
     settings.zsh
-    aliases.zsh
     prompt-powerline.zsh
+    functions.zsh
 )
 
 for config in $conflist; do

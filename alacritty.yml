@@ -4,8 +4,8 @@ scrolling:
 font:
   builtin_box_drawing: true
   normal:
-    family: Cascadia Code PL
-  size: 14
+    family: Fantasque Sans Mono
+  size: 15
 
 colors:
   primary:

@@ -17,19 +17,35 @@ typeset -A prompt_symbols=(
     git_unmerged  '*'
     bang          $'\n\U01f525'
 )
+# gruvbox
+#typeset -A prompt_colors=(
+#    fg             '#ebdbb2'
+#    user           '#458588'
+#    root           '#cc241d'
+#    ssh            '#d65d0e'
+#    host           '#504945'
+#    cwd            '#3c3836'
+#    ro             '#d65d0e'
+#    git_branch     '#504945'
+#    git_unstaged   '#d65d0e'
+#    git_staged     '#458588'
+#    git_untracked  '#cc241d'
+#    git_unmerged   '#689d6a'
+#)
+# 256 color
 typeset -A prompt_colors=(
-    fg             '#ebdbb2'
-    user           '#458588'
-    root           '#cc241d'
-    ssh            '#d65d0e'
-    host           '#504945'
-    cwd            '#3c3836'
-    ro             '#d65d0e'
-    git_branch     '#504945'
-    git_unstaged   '#d65d0e'
-    git_staged     '#458588'
-    git_untracked  '#cc241d'
-    git_unmerged   '#689d6a'
+    fg             253
+    user           24
+    root           124
+    ssh            66
+    host           238
+    cwd            236
+    ro             88
+    git_branch     238
+    git_unstaged   166
+    git_untracked  124
+    git_unmerged   171
+    git_staged     54
 )
 
 precmd.prompt.init() {
