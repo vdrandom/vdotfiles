@@ -1,4 +1,7 @@
 local wt = require 'wezterm'
+local fontsize_darwin = 15
+local fontsize_others = 12
+local theme_n = 0
 local theme =
   'PencilDark'
 local themes = {
@@ -26,7 +29,6 @@ local themes = {
   'Material (terminal.sexy)', -- unusual combination, balanced
   'Medallion', -- quite fun reddish theme, dark
   'MonaLisa', -- impressively good, but very red and dark
-  'Neopolitan', -- lovely blue, shitty contrast
   'Parker Brothers (terminal.sexy)', -- unique but kinda dark
   'PaulMillr', -- bright and clear
   'PencilDark', -- very nice, matches PencilColors
@@ -36,12 +38,17 @@ local webinar_overrides = {
   color_scheme = 'PencilLight',
 }
 
-local theme_n = 0
 function switch_theme(number, window)
   theme_n = theme_n + number
   if theme_n < 1 then theme_n = #themes end
   if theme_n > #themes then theme_n = 1 end
   window:set_config_overrides { color_scheme = themes[theme_n] }
+end
+
+function set_fontsize()
+  local execfile = os.getenv('WEZTERM_EXECUTABLE')
+  if string.match(execfile, 'MacOS') then return fontsize_darwin end
+  return fontsize_others
 end
 
 wt.on('update-right-status', function(window, pane)
@@ -57,7 +64,7 @@ wt.on('reset-theme', function(window) window:set_config_overrides() end)
 wt.on('webinar', function(window) window:set_config_overrides(webinar_overrides) end)
 
 return {
-  font_size = 15,
+  font_size = set_fontsize(),
   color_scheme = theme,
   cursor_blink_rate = 0,
   check_for_updates = false,
