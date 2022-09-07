@@ -1,6 +1,6 @@
 local wt = require 'wezterm'
 local fontsize_darwin = 15
-local fontsize_others = 12
+local fontsize_others = 11
 local theme_n = 0
 local theme =
   'PencilDark'
