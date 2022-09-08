@@ -1,4 +1,5 @@
 local wt = require 'wezterm'
+local act = wt.action
 local fontsize_darwin = 15
 local fontsize_others = 11
 local theme_n = 0
@@ -60,7 +61,7 @@ wt.on('update-right-status', function(window, pane)
 end)
 wt.on('prev-theme', function(window) switch_theme(-1, window) end)
 wt.on('next-theme', function(window) switch_theme( 1, window) end)
-wt.on('reset-theme', function(window) window:set_config_overrides() end)
+wt.on('reset-overrides', function(window) window:set_config_overrides() end)
 wt.on('webinar', function(window) window:set_config_overrides(webinar_overrides) end)
 
 return {
@@ -73,12 +74,22 @@ return {
   window_padding = {
     left = 0, right = 0, top = 0, bottom = 0,
   },
+  leader = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
-    { key = 'c', mods = 'META', action = wt.action.Copy  },
-    { key = 'v', mods = 'META', action = wt.action.Paste },
-    { key = 'a', mods = 'META', action = wt.action.EmitEvent 'prev-theme'  },
-    { key = 's', mods = 'META', action = wt.action.EmitEvent 'next-theme'  },
-    { key = 'r', mods = 'META', action = wt.action.EmitEvent 'reset-theme' },
-    { key = 'd', mods = 'META', action = wt.action.EmitEvent 'webinar' },
+    { key = 'c', mods = 'META', action = act.Copy  },
+    { key = 'v', mods = 'META', action = act.Paste },
+    -- themes
+    { key = 'a', mods = 'META', action = act.EmitEvent 'prev-theme' },
+    { key = 's', mods = 'META', action = act.EmitEvent 'next-theme' },
+    { key = 'd', mods = 'META', action = act.EmitEvent 'reset-overrides' },
+    { key = 'w', mods = 'META', action = act.EmitEvent 'webinar' },
+    -- panes
+    { key = 's', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = 'v', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+    { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
+    { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
+    { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
+    { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
+    { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState }
   },
 }
