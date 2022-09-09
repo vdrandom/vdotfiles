@@ -4,7 +4,7 @@ local fontsize_darwin = 15
 local fontsize_others = 11
 local theme_n = 0
 local theme =
-  'PencilDark'
+  'Elio (Gogh)'
 local themes = {
   'BirdsOfParadise',
   'Blazer',
@@ -33,6 +33,12 @@ local themes = {
   'Parker Brothers (terminal.sexy)', -- unique but kinda dark
   'PaulMillr', -- bright and clear
   'PencilDark', -- very nice, matches PencilColors
+  'Rasi (terminal.sexy)', -- legitemately nice, yet dark
+  'Red Planet', -- dull, low contrast
+  'Rezza (terminal.sexy)', -- same
+  'SeaShells', -- wonderful colors, dark and vivid
+  'SleepyHollow', -- unusual colors
+  'Srcery (Gogh)', -- nice, but a bit too low on contrast
 }
 local webinar_overrides = {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
@@ -90,6 +96,9 @@ return {
     { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
-    { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState }
+    { key = 'u', mods = 'LEADER', action = act.RotatePanes 'Clockwise' },
+    { key = 'i', mods = 'LEADER', action = act.RotatePanes 'CounterClockwise' },
+    { key = 'Return', mods = 'LEADER', action = act.TogglePaneZoomState },
+    { key = 'Space', mods = 'LEADER', action = act.PaneSelect },
   },
 }
