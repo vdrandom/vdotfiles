@@ -3,8 +3,6 @@ local act = wt.action
 local fontsize_darwin = 15
 local fontsize_others = 11
 local theme_n = 0
-local theme =
-  'Elio (Gogh)'
 local themes = {
   'BirdsOfParadise',
   'Blazer',
@@ -40,6 +38,7 @@ local themes = {
   'SleepyHollow', -- unusual colors
   'Srcery (Gogh)', -- nice, but a bit too low on contrast
 }
+local default_theme = themes[27]
 local webinar_overrides = {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
   color_scheme = 'PencilLight',
@@ -71,8 +70,9 @@ wt.on('reset-overrides', function(window) window:set_config_overrides() end)
 wt.on('webinar', function(window) window:set_config_overrides(webinar_overrides) end)
 
 return {
+  audible_bell = "Disabled",
   font_size = set_fontsize(),
-  color_scheme = theme,
+  color_scheme = default_theme,
   cursor_blink_rate = 0,
   check_for_updates = false,
   use_resize_increments = true,

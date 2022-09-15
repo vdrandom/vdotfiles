@@ -9,7 +9,7 @@ typeset -A prompt_symbols=(
     sep_b         $'\ue0b1'
     ellipsis      $'\u2026'
     ro            $'\u2717'
-    ssh           $'\u2191'
+    ssh           $'\u23fb'
     git           $'\ue0a0'
     git_unstaged  '±'
     git_staged    $'\u2713'
@@ -123,10 +123,10 @@ precmd.prompt.git() {
                 [[ $line =~ ahead  ]] && branch_status+=!
                 precmd.prompt.add "$prompt_symbols[git] $branch_status" $prompt_colors[git_branch]
                 ;;
-            (?[MD])      (( count[git_unstaged]++ ))  ;|
-            ([MDARC]?)   (( count[git_staged]++ ))    ;|
-            ('??')       (( count[git_untracked]++ )) ;|
-            ([ADU][ADU]) (( count[git_unmerged]++ ))
+            (?[MD])      (( ++count[git_unstaged] ))  ;|
+            ([MDARC]?)   (( ++count[git_staged] ))    ;|
+            ('??')       (( ++count[git_untracked] )) ;|
+            ([ADU][ADU]) (( ++count[git_unmerged] ))
         esac
     done <<< $raw_status
 
