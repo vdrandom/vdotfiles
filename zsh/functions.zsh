@@ -13,6 +13,14 @@ termcompat() {
     TERM=$term command $@
 }
 
+addpath() {
+    typeset newpath=$1
+    if [[ ! $PATH =~ $newpath ]]; then
+        PATH+=:$newpath
+        export PATH
+    fi
+}
+
 fsf() {
     typeset host prompt="SSH Remote > "
     host=$(cut -d\  -f1 $HOME/.ssh/known_hosts | sort -u | fzf --prompt=$prompt) || return 1
