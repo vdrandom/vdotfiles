@@ -24,6 +24,10 @@ if theme == 'gruvbox8'
     let g:gruvbox_filetype_hi_groups = 1
 endif
 
+if theme == 'pencil'
+    call EnableTGC()
+endif
+
 if theme == 'solarized8'
     let lightline_theme = 'solarized'
 
@@ -60,6 +64,7 @@ Plug 'vimwiki/vimwiki', {'on': 'VimwikiIndex'}
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-solarized8'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'preservim/vim-colors-pencil'
 
 call plug#end()
 
@@ -86,7 +91,7 @@ let g:lightline['colorscheme'] = printf(lightline_theme)
 
 if $TERM !~ '^linux'
     if has('gui_running')
-        set guifont=Cascadia\ Code\ PL:h16
+        set guifont=JetBrains\ Mono:h14
         set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
         set guiheadroom=0 guioptions=aei mouse=a
 

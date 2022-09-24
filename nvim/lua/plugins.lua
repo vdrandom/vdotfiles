@@ -30,7 +30,7 @@ vim.g.PaperColor_Theme_Options = {
     }
 }
 
-vim.o.bg = 'dark'
-vim.o.termguicolors = true
+vim.o.bg = 'light'
+vim.o.termguicolors = false
 vim.g.gruvbox_filetype_hi_groups = 1
-vim.cmd('colorscheme gruvbox8')
+vim.cmd('colorscheme PaperColor')
