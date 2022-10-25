@@ -46,6 +46,7 @@ gsi()     { tig status }
 gci()     { command git commit $@ }
 gsl()     { command git stash list $@ }
 gss()     { command git status -sbu $@ }
+gsw()     { command git switch $@ }
 gup()     { command git pull $@ }
 groot()   { cd $(command git rev-parse --show-toplevel) || return 1 }
 ggrep()   { command git grep $@ }
