@@ -48,6 +48,7 @@ gsl()     { command git stash list $@ }
 gss()     { command git status -sbu $@ }
 gsw()     { command git switch $@ }
 gup()     { command git pull $@ }
+gwt()     { command git worktree $@ }
 groot()   { cd $(command git rev-parse --show-toplevel) || return 1 }
 ggrep()   { command git grep $@ }
 gdiff()   { command git diff --color $@; }

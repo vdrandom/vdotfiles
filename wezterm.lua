@@ -38,7 +38,7 @@ local themes = {
   'SleepyHollow', -- unusual colors
   'Srcery (Gogh)', -- nice, but a bit too low on contrast
 }
-local default_theme = themes[27]
+local default_theme = themes[18]
 local webinar_overrides = {
   harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
   color_scheme = 'PencilLight',

@@ -20,6 +20,7 @@ endif
 
 if theme == 'gruvbox8'
     call EnableTGC()
+    let g:gruvbox_transp_bg          = 1
     let g:gruvbox_plugin_hi_groups   = 1
     let g:gruvbox_filetype_hi_groups = 1
 endif
