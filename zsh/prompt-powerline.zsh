@@ -5,17 +5,17 @@ printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
 prompt_fifo=~/.zsh_gitstatus_$$
 typeset -A prompt_symbols=(
-    sep_a         $'\ue0b0'
-    sep_b         $'\ue0b1'
+    sep_a         '' #$'\ue0b0'
+    sep_b         '' #$'\ue0b1'
     ellipsis      $'\u2026'
     ro            $'\u2717'
     ssh           $'\u23fb'
     git           $'\ue0a0'
-    git_unstaged  '±'
+    git_unstaged  '~'
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    bang          $'\n\U01f525'
+    bang          $'\n\U1f525'
 )
 # gruvbox
 typeset -A prompt_colors=(
@@ -130,7 +130,7 @@ precmd.prompt.git() {
         esac
     done <<< $raw_status
 
-    for i in git_unstaged git_untracked git_unmerged git_staged; do
+    for i in git_untracked git_unmerged git_unstaged git_staged; do
         (( count[$i] )) && precmd.prompt.add "$count[$i]$prompt_symbols[$i]" $prompt_colors[$i]
     done
 }

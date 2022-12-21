@@ -1,6 +1,6 @@
 local wt = require 'wezterm'
 local act = wt.action
-local fontsize_darwin = 15
+local fontsize_darwin = 13
 local fontsize_others = 11
 local theme_n = 0
 local themes = {
@@ -70,13 +70,14 @@ wt.on('reset-overrides', function(window) window:set_config_overrides() end)
 wt.on('webinar', function(window) window:set_config_overrides(webinar_overrides) end)
 
 return {
-  audible_bell = "Disabled",
+  audible_bell = 'Disabled',
   font_size = set_fontsize(),
+  font = wt.font 'Cascadia Code PL',
   color_scheme = default_theme,
   cursor_blink_rate = 0,
   check_for_updates = false,
-  use_resize_increments = true,
   bold_brightens_ansi_colors = false,
+  term = 'wezterm',
   window_padding = {
     left = 0, right = 0, top = 0, bottom = 0,
   },
@@ -89,14 +90,18 @@ return {
     { key = 's', mods = 'META', action = act.EmitEvent 'next-theme' },
     { key = 'd', mods = 'META', action = act.EmitEvent 'reset-overrides' },
     { key = 'w', mods = 'META', action = act.EmitEvent 'webinar' },
+    -- tabs
+    { key = 'c', mods = 'LEADER', action = act.SpawnTab 'DefaultDomain' },
+    { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
+    { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
     -- panes
-    { key = 's', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = 's', mods = 'LEADER', action = act.SplitVertical   { domain = 'CurrentPaneDomain' } },
     { key = 'v', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-    { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left' },
-    { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down' },
-    { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up' },
+    { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection 'Left'  },
+    { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection 'Down'  },
+    { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection 'Up'    },
     { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection 'Right' },
-    { key = 'u', mods = 'LEADER', action = act.RotatePanes 'Clockwise' },
+    { key = 'u', mods = 'LEADER', action = act.RotatePanes 'Clockwise'        },
     { key = 'i', mods = 'LEADER', action = act.RotatePanes 'CounterClockwise' },
     { key = 'Return', mods = 'LEADER', action = act.TogglePaneZoomState },
     { key = 'Space', mods = 'LEADER', action = act.PaneSelect },

@@ -3,6 +3,7 @@ termcompat() {
     case $term in
         (alacritty*) ;&
         (kitty*) ;&
+        (wezterm) ;&
         (xterm-*)
             term=xterm;;
         (rxvt-unicode*)

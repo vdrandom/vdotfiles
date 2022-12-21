@@ -1,10 +1,10 @@
 reset='%%{\e[0m%%}'
-prompt_fmt='[ %s %s:%s %s]\n\U01f525 '
+prompt_fmt='[ %s@%s %s %s]\n\U1f525 '
 prompt_fmtn='[ %%{\e[2;3m%%}%s%%{\e[0m%%} ] '
-prompt_user='%F{%(!.red.blue)}%n%f'
+prompt_user='%F{%(!.9.12)}%n%f'
 prompt_host='%m'
-prompt_cwd='%F{green}%d%f'
-prompt_git_fmt='\ue0a0 %s %s%%f '
+prompt_cwd='%F{10}%d%f'
+prompt_git_fmt='\ue0a0 %s:%s%%f '
 prompt_state_file=/tmp/zsh_gitstatus_$$.tmp
 
 printf -v PROMPT $prompt_fmt $prompt_user $prompt_host $prompt_cwd
@@ -31,15 +31,15 @@ precmd.git() {
         fi
         [[ $line[1,2] == '??'     ]] && (( untracked_count++ ))
         [[ $line[1,2] =~ .[MD]    ]] && (( unstaged_count++  ))
-        [[ $line[1,2] =~ [MDARC]. ]] && (( staged_count++    ))
         [[ $line[1,2] =~ [ADU]{2} ]] && (( unmerged_count++  ))
+        [[ $line[1,2] =~ [MDARC]. ]] && (( staged_count++    ))
     done <<< $raw_status
 
-    (( unstaged_count  )) && git_status+=%F{yellow}~$unstaged_count
-    (( staged_count    )) && git_status+=%F{blue}+$staged_count
-    (( untracked_count )) && git_status+=%F{red}-$untracked_count
-    (( unmerged_count  )) && git_status+=%F{cyan}*$unmerged_count
-    [[ -z $git_status  ]] && git_status=%F{green}ok
+    (( untracked_count )) && git_status+=\ %F{9}-$untracked_count
+    (( unstaged_count  )) && git_status+=\ %F{11}~$unstaged_count
+    (( unmerged_count  )) && git_status+=\ %F{14}*$unmerged_count
+    (( staged_count    )) && git_status+=\ %F{12}+$staged_count
+    [[ -z $git_status  ]] && git_status=\ %F{10}ok
 
     printf $prompt_git_fmt $branch_status $git_status > $prompt_state_file
 }
