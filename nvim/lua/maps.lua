@@ -10,8 +10,7 @@ end
 -- some unmaps
 unmap(' ')
 unmap('q')
-map('',  '<F1>', '<Esc>')
-map('!', '<F1>', '<Esc>')
+unmap('<F1>')
 
 -- option control
 map('n', '<Leader>c', ':setlocal cursorline!<CR>')
