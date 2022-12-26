@@ -21,13 +21,7 @@ end
 if require('packer_init') then return end
 
 --[[ plugins config ]]
-require('lualine').setup {
-    options = {
-        icons_enabled = false,
-        section_separators   = { left = nil, right = nil },
-        component_separators = { left = '|', right = '|' }
-    }
-}
+require('lualine').setup()
 
 --[[ telescope maps ]]
 map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>')

@@ -5,8 +5,8 @@ printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
 prompt_fifo=~/.zsh_gitstatus_$$
 typeset -A prompt_symbols=(
-    sep_a         '' #$'\ue0b0'
-    sep_b         '' #$'\ue0b1'
+    sep_a         $'\ue0b0'
+    sep_b         $'\ue0b1'
     ellipsis      $'\u2026'
     ro            $'\u2717'
     ssh           $'\u23fb'
@@ -17,7 +17,7 @@ typeset -A prompt_symbols=(
     git_unmerged  '*'
     bang          $'\n\U1f525'
 )
-# gruvbox
+
 typeset -A prompt_colors=(
     fg             '#ebdbb2'
     user           '#458588'
@@ -32,21 +32,6 @@ typeset -A prompt_colors=(
     git_untracked  '#cc241d'
     git_unmerged   '#689d6a'
 )
-# 256 color
-#typeset -A prompt_colors=(
-#    fg             253
-#    user           24
-#    root           124
-#    ssh            66
-#    host           238
-#    cwd            236
-#    ro             88
-#    git_branch     238
-#    git_unstaged   166
-#    git_untracked  124
-#    git_unmerged   171
-#    git_staged     54
-#)
 
 precmd.prompt.init() {
     typeset -g prompt_string= prev_color=
