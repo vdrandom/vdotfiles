@@ -36,11 +36,12 @@ diff()    { command diff --color $@ }
 tailf()   { command less +F $@ }
 rgrep()   { command grep --exclude-dir=\.git -R $@ }
 fwcmd()   { command firewall-cmd $@ }
+sush()    { command sudo -Es }
 s()       { termcompat ssh $@ }
 
+nv()      { command nvim $@ }
 tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
-sush()    { command sudo -Es }
 
 tig()     { termcompat tig $@ }
 gsi()     { tig status }
