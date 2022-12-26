@@ -9,10 +9,10 @@ set belloff=all colorcolumn=80 formatoptions+=j relativenumber breakindent
 set keymap=russian-jcukenwintype iminsert=0 imsearch=0
 &statusline = "[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]"
 g:sh_indent_case_labels = 1
+g:mapleader = "\<Space>"
 
 # mappings
 map <Space> <NOP>
-var mapleader = '\<Space>'
 noremap  <F1> <Esc>
 noremap  <Leader>/ :noh<CR>
 noremap  <Leader>y "+y
