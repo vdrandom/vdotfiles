@@ -3,6 +3,7 @@ printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
+prompt_wt="$USERNAME@$HOST"
 prompt_fifo=~/.zsh_gitstatus_$$
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
@@ -144,7 +145,12 @@ precmd.prompt.update() {
     zle && zle reset-prompt
 }
 
+precmd.window_title() {
+    printf '\033]0;%s\007' $prompt_wt
+}
+
 precmd() {
+    precmd.window_title
     precmd.prompt
     if precmd.is_git_repo; then
         precmd.prompt.pre_git

@@ -5,9 +5,10 @@ vim.o.colorcolumn    = '80'
 vim.o.relativenumber = true
 vim.o.breakindent    = true
 vim.o.guicursor      = false
+vim.o.clipboard      = 'unnamedplus'
 
 vim.o.list       = true
-vim.o.listchars  = 'tab:|_,nbsp:x,trail:*'
+vim.o.listchars  = 'tab:==>,nbsp:x,trail:*'
 
 vim.o.ignorecase = true
 vim.o.smartcase  = true
