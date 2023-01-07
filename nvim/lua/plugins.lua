@@ -24,8 +24,8 @@ if require('packer_init') then return end
 require('lualine').setup()
 
 --[[ telescope maps ]]
-map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>')
-map('n', '<Leader>fb', '<cmd>Telescope buffers<CR>')
+map('n', '<Leader>.', '<cmd>Telescope find_files<CR>')
+map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
 vim.o.bg = 'dark'
