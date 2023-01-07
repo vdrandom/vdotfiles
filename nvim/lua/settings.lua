@@ -28,4 +28,4 @@ vim.o.title       = true
 vim.o.titlestring = '[%{hostname()}] %t - vim'
 vim.o.statusline  = '[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]'
 
-vim.o.guifont     = 'JetBrains Mono:h15'
+vim.o.guifont     = 'JetBrainsMono Nerd Font:h14'
