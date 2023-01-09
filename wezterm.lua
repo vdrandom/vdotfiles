@@ -1,6 +1,6 @@
 local wt = require 'wezterm'
 local act = wt.action
-local fontsize_darwin = 13
+local fontsize_darwin = 14
 local fontsize_others = 11
 local theme_n = 0
 local themes = {
@@ -77,7 +77,6 @@ return {
   cursor_blink_rate = 0,
   check_for_updates = false,
   bold_brightens_ansi_colors = false,
-  term = 'wezterm',
   window_padding = {
     left = 0, right = 0, top = 0, bottom = 0,
   },
