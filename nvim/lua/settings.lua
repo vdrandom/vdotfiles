@@ -25,7 +25,7 @@ vim.o.iminsert = 0
 vim.o.imsearch = 0
 
 vim.o.title       = true
-vim.o.titlestring = '[%{hostname()}] %t - vim'
+vim.o.titlestring = '[%{hostname()}] %t - neovim'
 vim.o.statusline  = '[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]'
 
 vim.o.guifont     = 'JetBrainsMono Nerd Font:h14'
