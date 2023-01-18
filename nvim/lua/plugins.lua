@@ -1,9 +1,10 @@
 -- [[ plugins list ]]
-plugins = function(use)
+local plugins = function(use)
     use 'wbthomason/packer.nvim'
 
     use 'lifepillar/vim-gruvbox8'
     use 'hoob3rt/lualine.nvim'
+    use 'hashivim/vim-terraform'
     use 'mhinz/vim-signify'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rsi'
@@ -18,7 +19,7 @@ plugins = function(use)
 end
 
 --[[ init packer if missing ]]
-if require('packer_init') then return end
+if require('packer_init').init(plugins) then return end
 
 --[[ plugins config ]]
 require('lualine').setup()
