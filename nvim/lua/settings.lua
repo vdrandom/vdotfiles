@@ -1,3 +1,6 @@
+local fsize = '11'
+if vim.loop.os_uname().sysname == 'Darwin' then fsize = '14' end
+
 vim.o.modeline       = false
 vim.o.foldmethod     = 'marker'
 vim.o.cursorline     = true
@@ -28,4 +31,4 @@ vim.o.title       = true
 vim.o.titlestring = '[%{hostname()}] %t - neovim'
 vim.o.statusline  = '[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]'
 
-vim.o.guifont     = 'JetBrains Mono:h12'
+vim.o.guifont     = 'JetBrains Mono:h' .. fsize
