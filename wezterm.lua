@@ -72,7 +72,8 @@ wt.on('webinar', function(window) window:set_config_overrides(webinar_overrides)
 return {
   audible_bell = 'Disabled',
   font_size = set_fontsize(),
-  font = wt.font 'JetBrainsMono Nerd Font',
+  font = wt.font 'Cascadia Code PL',
+  harfbuzz_features = { 'ss01=1', 'ss19=1' },
   color_scheme = default_theme,
   cursor_blink_rate = 0,
   check_for_updates = false,
