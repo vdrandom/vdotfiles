@@ -10,7 +10,7 @@ typeset -A prompt_symbols=(
     sep_b         $'\ue0b1'
     ellipsis      $'\u2026'
     ro            $'\u2717'
-    ssh           $'\u23fb'
+    ssh           $'\u266a'
     git           $'\ue0a0'
     git_unstaged  '~'
     git_staged    $'\u2713'
