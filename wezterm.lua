@@ -11,7 +11,7 @@ local overrides = {
     },
     theme = { color_scheme = 'PencilLight' }
 }
-local tab_bar_bg = '#97876f'
+local tab_bar_bg = '#ebdbae'
 local tab_bar_fg = '#1e1e1e'
 local tab_bar_defaults = {
     bg_color = tab_bar_bg,
@@ -113,5 +113,6 @@ return {
     colors = custom_colors,
     use_fancy_tab_bar = false,
     hide_tab_bar_if_only_one_tab = true,
-    tab_max_width = 128
+    tab_max_width = 128,
+    tab_bar_at_bottom = true
 }

@@ -5,6 +5,7 @@ printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
 prompt_wt="$USERNAME@$HOST"
 prompt_fifo=~/.zsh_gitstatus_$$
+prompt_blimit=12
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
     sep_b         $'\ue0b1'
@@ -33,6 +34,12 @@ typeset -A prompt_colors=(
     git_untracked  '#cc241d'
     git_unmerged   '#689d6a'
 )
+
+precmd.is_git_repo() {
+    typeset prompt_git_dir
+    prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
+    [[ ! -e $prompt_git_dir/nozsh ]]
+}
 
 precmd.prompt.init() {
     typeset -g prompt_string= prev_color=
@@ -85,26 +92,21 @@ precmd.prompt.ro() {
     [[ -w . ]] || precmd.prompt.add $prompt_symbols[ro] $prompt_colors[ro]
 }
 
-precmd.is_git_repo() {
-    typeset prompt_git_dir
-    prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
-    [[ ! -e $prompt_git_dir/nozsh ]]
-}
-
 precmd.prompt.pre_git() {
     precmd.prompt.add "$prompt_symbols[git] $prompt_symbols[ellipsis]" $prompt_colors[git_branch]
 }
 
 precmd.prompt.git() {
-    typeset raw_status
+    typeset raw_status IFS=
     raw_status=$(git status --porcelain -bu 2>/dev/null) || return 0
 
     typeset -A count
-    typeset branch_status git_status_string IFS=
     while read line; do
         case $line[1,2] in
             ('##')
-                branch_status=${line[4,-1]%%...*}
+                typeset branch_status=${line[4,-1]%%...*}
+                ((${#branch_status}>prompt_blimit)) && \
+                    branch_status=$branch_status[1,$prompt_blimit]$prompt_symbols[ellipsis]
                 [[ $line =~ behind ]] && branch_status+=?
                 [[ $line =~ ahead  ]] && branch_status+=!
                 precmd.prompt.add "$prompt_symbols[git] $branch_status" $prompt_colors[git_branch]
