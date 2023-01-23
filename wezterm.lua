@@ -3,15 +3,35 @@ local act = wt.action
 local font = 'Cascadia Code PL'
 local font_features = { 'ss01=1', 'ss02=1', 'ss19=1' }
 local fontsizes = { Darwin = 14, others = 11 }
-local themes = { dark = 'Gruvbox Dark', light = 'PencilLight' }
-local theme = themes.dark
-local current_overrides = {}
+local theme = 'Gruvbox Dark'
 local overrides = {
     fonts = {
         font = wt.font('JetBrains Mono'),
         harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
     },
-    theme = { color_scheme = themes.light }
+    theme = { color_scheme = 'PencilLight' }
+}
+local tab_bar_bg = '#97876f'
+local tab_bar_fg = '#1e1e1e'
+local tab_bar_defaults = {
+    bg_color = tab_bar_bg,
+    fg_color = tab_bar_fg,
+    italic = true
+}
+local tab_bar_active = {
+    bg_color = tab_bar_fg,
+    fg_color = tab_bar_bg,
+    italic = true
+}
+local custom_colors = {
+    tab_bar = {
+        background = tab_bar_bg,
+        active_tab = tab_bar_active,
+        inactive_tab = tab_bar_defaults,
+        inactive_tab_hover = tab_bar_defaults,
+        new_tab = tab_bar_defaults,
+        new_tab_hover = tab_bar_defaults,
+    }
 }
 local leader_key = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
 local keybinds = {
@@ -57,6 +77,7 @@ local function set_fontsize(sizes)
     return sizes.others
 end
 
+local current_overrides = {}
 local function toggle_overrides(window, overrides)
     for k, v in pairs(overrides) do
         if current_overrides[k] == v then
@@ -86,9 +107,11 @@ return {
     cursor_blink_rate = 0,
     check_for_updates = false,
     bold_brightens_ansi_colors = false,
-    window_padding = {
-        left = 0, right = 0, top = 0, bottom = 0,
-    },
+    window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
     leader = leader_key,
-    keys = keybinds
+    keys = keybinds,
+    colors = custom_colors,
+    use_fancy_tab_bar = false,
+    hide_tab_bar_if_only_one_tab = true,
+    tab_max_width = 128
 }
