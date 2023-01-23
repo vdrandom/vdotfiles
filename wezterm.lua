@@ -5,11 +5,45 @@ local font_features = { 'ss01=1', 'ss02=1', 'ss19=1' }
 local fontsizes = { Darwin = 14, others = 11 }
 local themes = { dark = 'Gruvbox Dark', light = 'PencilLight' }
 local theme = themes.dark
+local current_overrides = {}
 local overrides = {
-    fonts = { harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } },
+    fonts = {
+        font = wt.font('JetBrains Mono'),
+        harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+    },
     theme = { color_scheme = themes.light }
 }
-local current_overrides = {}
+local leader_key = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
+local keybinds = {
+    { key = 'c', mods = 'META', action = act.Copy  },
+    { key = 'v', mods = 'META', action = act.Paste },
+    -- themes
+    { key = 'f', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
+    { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
+    { key = 'r', mods = 'LEADER', action = act.EmitEvent('reset-overrides') },
+    -- tabs
+    { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
+    { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
+    { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+    -- panes
+    { key = 's', mods = 'LEADER', action = act.SplitVertical  { domain = 'CurrentPaneDomain' } },
+    { key = 'v', mods = 'LEADER', action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' } },
+    { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection('Left')   },
+    { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection('Down')   },
+    { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection('Up')     },
+    { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection('Right')  },
+    { key = 'u', mods = 'LEADER', action = act.RotatePanes('Clockwise')        },
+    { key = 'i', mods = 'LEADER', action = act.RotatePanes('CounterClockwise') },
+    { key = 'Return', mods = 'LEADER', action = act.TogglePaneZoomState },
+    { key = 'Space', mods = 'LEADER', action = act.PaneSelect },
+}
+
+for i = 1, 9 do
+    table.insert(
+        keybinds,
+        { key = tostring(i), mods = 'LEADER', action = act.ActivateTab(i - 1) }
+    )
+end
 
 local function get_os()
     local current_os = os.getenv('OS')
@@ -41,12 +75,12 @@ end
 
 wt.on('override-theme', function(window) toggle_overrides(window, overrides.theme) end)
 wt.on('override-fonts', function(window) toggle_overrides(window, overrides.fonts) end)
-wt.on('reset-overrides', function(window) reset_overrides(window) end)
+wt.on('reset-overrides', reset_overrides)
 
 return {
     audible_bell = 'Disabled',
-    font_size = set_fontsize(fontsizes),
     font = wt.font(font),
+    font_size = set_fontsize(fontsizes),
     harfbuzz_features = font_features,
     color_scheme = theme,
     cursor_blink_rate = 0,
@@ -55,28 +89,6 @@ return {
     window_padding = {
         left = 0, right = 0, top = 0, bottom = 0,
     },
-    leader = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 },
-    keys = {
-        { key = 'c', mods = 'META', action = act.Copy  },
-        { key = 'v', mods = 'META', action = act.Paste },
-        -- themes
-        { key = 'f', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
-        { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
-        { key = 'r', mods = 'LEADER', action = act.EmitEvent('reset-overrides') },
-        -- tabs
-        { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
-        { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
-        { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
-        -- panes
-        { key = 's', mods = 'LEADER', action = act.SplitVertical  { domain = 'CurrentPaneDomain' } },
-        { key = 'v', mods = 'LEADER', action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' } },
-        { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection('Left')   },
-        { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection('Down')   },
-        { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection('Up')     },
-        { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection('Right')  },
-        { key = 'u', mods = 'LEADER', action = act.RotatePanes('Clockwise')        },
-        { key = 'i', mods = 'LEADER', action = act.RotatePanes('CounterClockwise') },
-        { key = 'Return', mods = 'LEADER', action = act.TogglePaneZoomState },
-        { key = 'Space', mods = 'LEADER', action = act.PaneSelect },
-    },
+    leader = leader_key,
+    keys = keybinds
 }

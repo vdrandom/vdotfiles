@@ -1,5 +1,5 @@
 -- [[ plugins list ]]
-local plugins = function(use)
+local function plugins(use)
     use 'wbthomason/packer.nvim'
 
     use 'lifepillar/vim-gruvbox8'
@@ -18,7 +18,7 @@ local plugins = function(use)
     }
 end
 
---[[ init packer if missing ]]
+--[[ init plugins and install packer if missing ]]
 if require('packer_init').init(plugins) then return end
 
 --[[ plugins config ]]
