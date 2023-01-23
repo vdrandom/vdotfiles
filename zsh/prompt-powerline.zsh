@@ -22,10 +22,9 @@ typeset -A prompt_symbols=(
 
 typeset -A prompt_colors=(
     fg             '#ebdbb2'
-    user           '#458588'
     root           '#cc241d'
     ssh            '#d65d0e'
-    host           '#504945'
+    host           '#458588'
     cwd            '#3c3836'
     ro             '#d65d0e'
     git_branch     '#504945'
@@ -70,10 +69,7 @@ precmd.prompt.apply() {
 }
 
 precmd.prompt.user() {
-    typeset c=user
-    (( UID )) || c=root
-
-    precmd.prompt.add %n $prompt_colors[$c]
+    (( UID )) || precmd.prompt.add '#' $prompt_colors[root]
 }
 
 precmd.prompt.ssh() {
@@ -125,9 +121,9 @@ precmd.prompt.git() {
 
 precmd.prompt() {
     precmd.prompt.init
+    precmd.prompt.host
     precmd.prompt.user
     precmd.prompt.ssh
-    precmd.prompt.host
     precmd.prompt.cwd
     precmd.prompt.ro
 }
