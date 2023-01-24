@@ -78,8 +78,8 @@ precmd.prompt.cwd() {
 
 precmd.prompt.host() {
     [[ -n $SSH_CONNECTION ]] || return 0
-    precmd.prompt.add %m $prompt_colors[host]
     precmd.prompt.add $prompt_symbols[ssh] $prompt_colors[ssh]
+    precmd.prompt.add %m $prompt_colors[host]
 }
 
 precmd.prompt.ro() {
