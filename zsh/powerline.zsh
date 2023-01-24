@@ -21,17 +21,17 @@ typeset -A prompt_symbols=(
 )
 
 typeset -A prompt_colors=(
-    fg             '#ebdbb2'
-    root           '#cc241d'
-    ssh            '#d65d0e'
-    cwd            '#458588'
-    host           '#3c3836'
-    ro             '#d65d0e'
-    git_branch     '#504945'
-    git_unstaged   '#d65d0e'
-    git_staged     '#458588'
-    git_untracked  '#cc241d'
-    git_unmerged   '#689d6a'
+    fg             '15'
+    root           '9'
+    ssh            '3'
+    cwd            '4'
+    host           '234'
+    ro             '6'
+    git_branch     '237'
+    git_unstaged   '3'
+    git_staged     '6'
+    git_untracked  '1'
+    git_unmerged   '5'
 )
 
 precmd.is_git_repo() {
