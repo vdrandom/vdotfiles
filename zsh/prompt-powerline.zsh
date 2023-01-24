@@ -72,12 +72,10 @@ precmd.prompt.user() {
     (( UID )) || precmd.prompt.add '#' $prompt_colors[root]
 }
 
-precmd.prompt.ssh() {
-    [[ -n $SSH_CONNECTION ]] && precmd.prompt.add $prompt_symbols[ssh] $prompt_colors[ssh]
-}
-
 precmd.prompt.host() {
+    [[ -n $SSH_CONNECTION ]] || return 0
     precmd.prompt.add %m $prompt_colors[host]
+    precmd.prompt.add $prompt_symbols[ssh] $prompt_colors[ssh]
 }
 
 precmd.prompt.cwd() {
@@ -123,7 +121,6 @@ precmd.prompt() {
     precmd.prompt.init
     precmd.prompt.host
     precmd.prompt.user
-    precmd.prompt.ssh
     precmd.prompt.cwd
     precmd.prompt.ro
 }
