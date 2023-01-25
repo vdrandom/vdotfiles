@@ -25,7 +25,7 @@ if require('packer_init').init(plugins) then return end
 require('lualine').setup{
     options = {
         icons_enabled = false,
-        component_separators = { left = '•', right = '•' }
+        component_separators = { left = '\u{2022}', right = '\u{2022}' }
     }
 }
 
