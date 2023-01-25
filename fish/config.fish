@@ -1,6 +1,7 @@
 if status is-interactive
     set prompt_sep_a \ue0b0
     set prompt_bang \n\U1f41f\ 
+    set git_sign \ue0a0
     set color_fg brwhite
     set color_git_branch 3c3c3c
     set color_git yellow blue red purple
@@ -21,7 +22,7 @@ if status is-interactive
                 set git_branch (string match -r "\ (.+)\.\.\." "$line")[2]
                 string match -qr "\[behind" $line && set git_branch "$git_branch?"
                 string match -qr "\[ahead"  $line && set git_branch "$git_branch!"
-                prompt.add "$color_git_branch" "$git_branch"
+                prompt.add "$color_git_branch" "$git_sign $git_branch"
             else
                 string match -qr "^.[MD]"    "$line" && set git_count[1] (math $git_count[1] + 1)
                 string match -qr "^[MDARC]." "$line" && set git_count[2] (math $git_count[2] + 1)
