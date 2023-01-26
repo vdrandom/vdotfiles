@@ -8,25 +8,20 @@ prompt_fifo=~/.zsh_gitstatus_$$
 prompt_blimit=12
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
-    sep_b         $'\ue0b1'
     ellipsis      $'\u2026'
-    ro            $'\u2717'
-    ssh           $'\u266a'
     git           $'\ue0a0'
     git_unstaged  '~'
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    bang          $'\n\U1f525'
+    bang          $'\n %F{202}\u266a%f'
 )
 
 typeset -A prompt_colors=(
     fg             '15'
-    root           '9'
-    ssh            '3'
+    root           '1'
+    ssh            '0'
     cwd            '4'
-    host           '234'
-    ro             '6'
     git_branch     '237'
     git_unstaged   '3'
     git_staged     '6'
@@ -55,10 +50,6 @@ precmd.prompt.add() {
     prev_color=$color
 }
 
-precmd.prompt.add_same() {
-    prompt_string+="$prompt_symbols[sep_b] $* "
-}
-
 precmd.prompt.bang() {
     prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
 }
@@ -76,14 +67,9 @@ precmd.prompt.cwd() {
     precmd.prompt.add %~ $prompt_colors[cwd]
 }
 
-precmd.prompt.host() {
+precmd.prompt.ssh() {
     [[ -n $SSH_CONNECTION ]] || return 0
-    precmd.prompt.add $prompt_symbols[ssh] $prompt_colors[ssh]
-    precmd.prompt.add %m $prompt_colors[host]
-}
-
-precmd.prompt.ro() {
-    [[ -w . ]] || precmd.prompt.add $prompt_symbols[ro] $prompt_colors[ro]
+    precmd.prompt.add %n@%m $prompt_colors[ssh]
 }
 
 precmd.prompt.pre_git() {
@@ -120,9 +106,8 @@ precmd.prompt.git() {
 precmd.prompt() {
     precmd.prompt.init
     precmd.prompt.user
+    precmd.prompt.ssh
     precmd.prompt.cwd
-    precmd.prompt.host
-    precmd.prompt.ro
 }
 
 precmd.git_update() {
