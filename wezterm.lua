@@ -71,10 +71,10 @@ local function get_os()
     return io.popen('uname -s', 'r'):read()
 end
 
-local function set_fontsize(sizes)
+local function set_by_os(values)
     local my_os = get_os()
-    if sizes[my_os] then return sizes[my_os] end
-    return sizes.others
+    if values[my_os] then return values[my_os] end
+    return values.others
 end
 
 local current_overrides = {}
@@ -101,7 +101,7 @@ wt.on('reset-overrides', reset_overrides)
 return {
     audible_bell = 'Disabled',
     font = wt.font(font),
-    font_size = set_fontsize(fontsizes),
+    font_size = set_by_os(fontsizes),
     harfbuzz_features = font_features,
     color_scheme = theme,
     cursor_blink_rate = 0,
