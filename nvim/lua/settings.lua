@@ -31,4 +31,4 @@ vim.o.title       = true
 vim.o.titlestring = '[%{hostname()}] %t - neovim'
 vim.o.statusline  = '[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]'
 
-vim.o.guifont     = 'JetBrains Mono:h' .. fsize
+vim.o.guifont     = 'vcascadia:h' .. fsize
