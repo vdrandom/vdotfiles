@@ -99,6 +99,7 @@ wt.on('override-fonts', function(window) toggle_overrides(window, overrides.font
 wt.on('reset-overrides', reset_overrides)
 
 return {
+    xcursor_theme = 'Adwaita',
     audible_bell = 'Disabled',
     font = wt.font(font),
     font_size = set_by_os(fontsizes),
