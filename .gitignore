@@ -1,2 +1,3 @@
-fish/fish_variables
-nvim/plugin/packer_compiled.lua
+cli/.config/zsh/local.zsh
+cli/.config/fish/fish_variables
+cli/.config/nvim/plugin/packer_compiled.lua

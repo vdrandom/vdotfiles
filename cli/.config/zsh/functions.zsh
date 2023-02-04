@@ -1,3 +1,8 @@
+# Fuck default aliases
+unalias -a
+
+testbin() { whence $@ > /dev/null }
+
 termcompat() {
     typeset term=$TERM
     case $term in
@@ -34,15 +39,21 @@ fixterm() { printf $'c' }
 
 diff()    { command diff --color $@ }
 tailf()   { command less +F $@ }
-rgrep()   { command grep --exclude-dir=\.git -R $@ }
+grep()    { command grep --color=auto }
+rgrep()   { grep --color=auto --exclude-dir=\.git -R $@ }
 fwcmd()   { command firewall-cmd $@ }
 sush()    { command sudo -Es }
 s()       { termcompat ssh $@ }
 
-nv()      { command nvim $@ }
+if testbin nvim; then
+    vi()      { command nvim $@ }
+    vim()     { command nvim $@ }
+fi
+
 tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
 
+g()       { command lazygit $@ }
 tig()     { termcompat tig $@ }
 gsi()     { tig status }
 gci()     { command git commit $@ }
@@ -62,13 +73,13 @@ greset()  {
     /usr/bin/git reset --hard
 }
 
-if [[ -x $(whence -p diff-so-fancy) ]]; then
+if testbin diff-so-fancy; then
     gdf() { gdiff $@ | command diff-so-fancy | command less --tabs=4 -RSFX }
 else
     gdf() { gdiff $@ }
 fi
 
-if [[ -x $(whence -p exa) ]]; then
+if testbin exa; then
     ls()  { command exa --group-directories-first $@ }
     ll()  { ls -alg $@ }
     ld()  { ls -dlg $@ }
@@ -79,7 +90,7 @@ else
 fi
 
 # grc
-if [[ -x $(whence -p grc) ]]; then
+if testbin grc; then
     cmds=(\
         cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
