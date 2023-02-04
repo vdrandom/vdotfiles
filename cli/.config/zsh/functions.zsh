@@ -69,8 +69,8 @@ greset()  {
     echo "OK to reset and clean teh repo?"
     read -sq _
     (( $? )) && return 1
-    /usr/bin/git clean -fd
-    /usr/bin/git reset --hard
+    command git clean -fd
+    command git reset --hard
 }
 
 if testbin diff-so-fancy; then

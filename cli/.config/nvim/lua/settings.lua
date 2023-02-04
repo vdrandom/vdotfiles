@@ -1,6 +1,3 @@
-local fsize = '11'
-if vim.loop.os_uname().sysname == 'Darwin' then fsize = '14' end
-
 vim.o.modeline       = false
 vim.o.foldmethod     = 'marker'
 vim.o.cursorline     = true
@@ -27,8 +24,6 @@ vim.o.keymap   = 'russian-jcukenwintype'
 vim.o.iminsert = 0
 vim.o.imsearch = 0
 
-vim.o.title       = true
-vim.o.titlestring = '[%{hostname()}] %t - neovim'
-vim.o.statusline  = '[%F] %R%H%W%M %=[%{&fenc}/%{&ff}] %y [%4l/%L:%3v]'
-
+local fsize = '11'
+if vim.loop.os_uname().sysname == 'Darwin' then fsize = '14' end
 vim.o.guifont     = 'vcascadia:h' .. fsize
