@@ -40,9 +40,7 @@ fixterm() { printf $'c' }
 diff()    { command diff --color $@ }
 tailf()   { command less +F $@ }
 grep()    { command grep --color=auto }
-rgrep()   { grep --color=auto --exclude-dir=\.git -R $@ }
-fwcmd()   { command firewall-cmd $@ }
-sush()    { command sudo -Es }
+rgrep()   { grep --exclude-dir=.git -R $@ }
 s()       { termcompat ssh $@ }
 
 if testbin nvim; then
@@ -55,15 +53,15 @@ atmux()   { tmux attach || tmux }
 
 g()       { command lazygit $@ }
 tig()     { termcompat tig $@ }
-gsi()     { tig status }
+gsi()     { termcompat tig status }
 gci()     { command git commit $@ }
 gsl()     { command git stash list $@ }
 gss()     { command git status -sbu $@ }
 gsw()     { command git switch $@ }
 gup()     { command git pull $@ }
-gwt()     { command git worktree $@ }
-groot()   { cd $(command git rev-parse --show-toplevel) || return 1 }
-ggrep()   { command git grep $@ }
+gwta()    { command git worktree add $@ }
+gwtp()    { command git worktree prune $@ }
+groot()   { cd $(command git rev-parse --show-toplevel) || return 0 }
 gdiff()   { command git diff --color $@; }
 greset()  {
     echo "OK to reset and clean teh repo?"
