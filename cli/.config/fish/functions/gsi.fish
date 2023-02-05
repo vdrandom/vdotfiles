@@ -1,3 +1,3 @@
 function gsi
-    tig status
+    termcompat tig status
 end
