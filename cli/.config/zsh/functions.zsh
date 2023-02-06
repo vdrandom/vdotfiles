@@ -39,7 +39,7 @@ fixterm() { printf $'c' }
 
 diff()    { command diff --color $@ }
 tailf()   { command less +F $@ }
-grep()    { command grep --color=auto }
+grep()    { command grep --color=auto $@ }
 rgrep()   { grep --exclude-dir=.git -R $@ }
 s()       { termcompat ssh $@ }
 
