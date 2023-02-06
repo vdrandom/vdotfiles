@@ -1,3 +1,3 @@
 function gwtp
-    command git worktree prune $argv
+    command git worktree prune --verbose
 end

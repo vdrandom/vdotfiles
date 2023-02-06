@@ -1,8 +1,8 @@
 function prompt.git
-    git rev-parse 2>/dev/null || return
+    git rev-parse 2> /dev/null || return
     git status --porcelain -bu | while read line
         if string match -qr "^##" "$line"
-            set git_branch (string match -r "\ (.+)\.\.\." "$line")[2]
+            set git_branch (string match -r '[^# .]+' "$line")
             string match -qr '\[behind' $line && set git_branch "$git_branch?"
             string match -qr '\[ahead'  $line && set git_branch "$git_branch!"
             prompt.add "$color_git_branch" "$git_sign $git_branch"
