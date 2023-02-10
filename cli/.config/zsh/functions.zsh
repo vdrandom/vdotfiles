@@ -60,7 +60,7 @@ gss()     { command git status -sbu $@ }
 gsw()     { command git switch $@ }
 gup()     { command git pull $@ }
 gwta()    { command git worktree add $@ }
-gwtp()    { command git worktree prune $@ }
+gwtp()    { command git worktree prune -v }
 groot()   { cd $(command git rev-parse --show-toplevel) || return 0 }
 gdiff()   { command git diff --color $@; }
 greset()  {

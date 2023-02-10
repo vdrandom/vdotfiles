@@ -1,3 +1,4 @@
+cli/.config/zsh/env.zsh
 cli/.config/zsh/local.zsh
 cli/.config/fish/fish_variables
 cli/.config/nvim/plugin/packer_compiled.lua
