@@ -4,7 +4,7 @@ scrolling:
 font:
   builtin_box_drawing: true
   normal:
-    family: Fantasque Sans Mono
+    family: JetBrains Mono
   size: 15
 
 colors:

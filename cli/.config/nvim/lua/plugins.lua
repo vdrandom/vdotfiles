@@ -47,6 +47,7 @@ map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 vim.o.bg = 'dark'
 vim.o.termguicolors = true
 
+vim.g.gruvbox_transp_bg          = 1
 vim.g.gruvbox_plugin_hi_groups   = 1
 vim.g.gruvbox_filetype_hi_groups = 1
 
