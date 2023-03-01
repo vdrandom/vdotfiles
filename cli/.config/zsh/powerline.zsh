@@ -14,7 +14,7 @@ typeset -A prompt_symbols=(
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    bang          $'\n %F{202}\u266a%f'
+    bang          $'\n %F{10}\u266a%f'
 )
 
 typeset -A prompt_colors=(
