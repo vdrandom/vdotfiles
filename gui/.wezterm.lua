@@ -33,6 +33,7 @@ local custom_colors = {
         new_tab_hover = tab_bar_defaults,
     }
 }
+
 local leader_key = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
 local keybinds = {
     { key = 'c', mods = 'META', action = act.Copy  },
@@ -40,7 +41,7 @@ local keybinds = {
     -- themes
     { key = 'f', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
     { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
-    { key = 'r', mods = 'LEADER', action = act.EmitEvent('reset-overrides') },
+    { key = 'r', mods = 'LEADER', action = act.EmitEvent('override-reset') },
     -- tabs
     { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
     { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
@@ -57,7 +58,6 @@ local keybinds = {
     { key = 'Return', mods = 'LEADER', action = act.TogglePaneZoomState },
     { key = 'Space', mods = 'LEADER', action = act.PaneSelect },
 }
-
 for i = 1, 9 do
     table.insert(
         keybinds,
@@ -96,7 +96,7 @@ end
 
 wt.on('override-theme', function(window) toggle_overrides(window, overrides.theme) end)
 wt.on('override-fonts', function(window) toggle_overrides(window, overrides.fonts) end)
-wt.on('reset-overrides', reset_overrides)
+wt.on('override-reset', reset_overrides)
 
 return {
     xcursor_theme = 'Adwaita',
