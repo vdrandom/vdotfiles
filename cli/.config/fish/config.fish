@@ -1,4 +1,11 @@
 if status is-interactive
+    function postexec --on-event fish_postexec
+        set -l ret $status
+        if test $ret -ne 0
+            printf '\e[31m>>\e[39m exit \e[31m%s\e[39m\n' $ret
+        end
+    end
+
     set -l grc_cmds \
         iptables ipneighbor ipaddr iproute ip nmap netstat \
         traceroute tcpdump ss ping \
