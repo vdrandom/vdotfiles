@@ -40,7 +40,7 @@ require('lualine').setup{
 map('n', '<Leader>g', '<cmd>Neogit<CR>')
 
 --[[ telescope maps ]]
-map('n', '<Leader>.', '<cmd>Telescope find_files<CR>')
+map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
