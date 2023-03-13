@@ -14,10 +14,6 @@ local function plugins(use)
         requires = 'nvim-lua/plenary.nvim'
     }
     use {
-        'TimUntersberger/neogit',
-        requires = 'nvim-lua/plenary.nvim'
-    }
-    use {
         'w0rp/ale',
         ft = { 'sh', 'zsh', 'lua', 'python' },
         cmd = 'ALEEnable'
@@ -28,16 +24,12 @@ end
 if require('packer_init').init(plugins) then return end
 
 --[[ plugins config ]]
-require('neogit').setup{}
 require('lualine').setup{
     options = {
         icons_enabled = false,
         component_separators = { left = '\u{2022}', right = '\u{2022}' }
     }
 }
-
---[[ neogit maps ]]
-map('n', '<Leader>g', '<cmd>Neogit<CR>')
 
 --[[ telescope maps ]]
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
