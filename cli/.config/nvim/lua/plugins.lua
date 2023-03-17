@@ -6,6 +6,7 @@ local function plugins(use)
     use 'hoob3rt/lualine.nvim'
     use 'hashivim/vim-terraform'
     use 'khaveesh/vim-fish-syntax'
+    use 'lukas-reineke/indent-blankline.nvim'
     use 'mhinz/vim-signify'
     use 'tpope/vim-rsi'
     use 'tpope/vim-vinegar'

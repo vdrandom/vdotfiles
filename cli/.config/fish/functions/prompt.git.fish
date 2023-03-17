@@ -1,7 +1,8 @@
 function prompt.git
-    git rev-parse 2> /dev/null || return
+    set -l is_git_tree (git rev-parse --is-inside-work-tree 2>/dev/null)
+    string match -qe 'true' "$is_git_tree" || return
     git status --porcelain -bu | while read line
-        if string match -qr "^##" "$line"
+        if string match -qr '^##' "$line"
             set git_branch (string match -r '[^# .]+' "$line")
             string match -qr '\[behind' $line && set git_branch "$git_branch?"
             string match -qr '\[ahead'  $line && set git_branch "$git_branch!"
