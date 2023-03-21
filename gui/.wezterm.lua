@@ -3,7 +3,7 @@ local act = wt.action
 local font = 'Cascadia Mono PL'
 local font_features = { 'ss01=1', 'ss02=1', 'ss19=1' }
 local fontsizes = { Darwin = 14, others = 11 }
-local theme = 'Gruvbox Dark'
+local theme = 'GruvboxDark'
 local overrides = {
     fonts = {
         font = wt.font('JetBrains Mono'),
@@ -36,8 +36,8 @@ local custom_colors = {
 
 local leader_key = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
 local keybinds = {
-    { key = 'c', mods = 'META', action = act.Copy  },
-    { key = 'v', mods = 'META', action = act.Paste },
+    { key = 'c', mods = 'META', action = act.CopyTo('Clipboard')    },
+    { key = 'v', mods = 'META', action = act.PasteFrom('Clipboard') },
     -- themes
     { key = 'f', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
     { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
@@ -47,8 +47,8 @@ local keybinds = {
     { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
     { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
     -- panes
-    { key = 's', mods = 'LEADER', action = act.SplitVertical  { domain = 'CurrentPaneDomain' } },
-    { key = 'v', mods = 'LEADER', action = act.SplitHorizontal{ domain = 'CurrentPaneDomain' } },
+    { key = 's', mods = 'LEADER', action = act.SplitVertical   { domain = 'CurrentPaneDomain' } },
+    { key = 'v', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
     { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection('Left')   },
     { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection('Down')   },
     { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection('Up')     },
