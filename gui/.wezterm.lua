@@ -12,7 +12,7 @@ local overrides = {
     theme = { color_scheme = 'PencilLight' }
 }
 local tab_bar_bg = '#ebdbae'
-local tab_bar_fg = '#1e1e1e'
+local tab_bar_fg = '#282828'
 local tab_bar_defaults = {
     bg_color = tab_bar_bg,
     fg_color = tab_bar_fg,

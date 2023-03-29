@@ -16,7 +16,7 @@ local function plugins(use)
     }
     use {
         'w0rp/ale',
-        ft = { 'sh', 'zsh', 'lua', 'python' },
+        ft = { 'bash', 'sh', 'zsh', 'lua', 'python' },
         cmd = 'ALEEnable'
     }
 end
