@@ -14,8 +14,8 @@ set $down j
 set $up k
 set $right l
 
-set $font Cascadia Code PL 13
-font pango:Cascadia Code PL 11
+set $font vcascadia 13
+font pango:vcascadia 11
 
 #set $font Fantasque Sans Mono 15
 #font pango:Fantasque Sans Mono 13
@@ -33,10 +33,7 @@ seat seat0 xcursor_theme Vanilla-DMZ
 output * bg $wallpaper fill
 
 ### Dynamic display configuration
-exec kanshi
-exec_always pkill kanshi; exec kanshi
-#output eDP-1 position 0,0 scale 1
-#output DP-1 scale 1.5
+output Virtual-1 scale 2
 #
 # Example configuration:
 #

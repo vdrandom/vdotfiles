@@ -5,11 +5,9 @@ Xft.lcdfilter:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
-Xft.dpi:                96
+Xft.dpi:                192
 
-#define TERMINUS        -xos4-terminus-bold-*-*-*-18-*-*-*-*-*-iso10646-1
-#define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
-#define FONT            xft:Fantasque Sans Mono:12
+#define FONT            xft:vcascadia:size=13
 
 ! gruvbox
 #define COLORFG #ebdbb2
@@ -61,10 +59,8 @@ Xft.dpi:                96
 ! }}}
 ! {{{ urxvt
 ! fonts
-URxvt.font:             TERMINUS
-URxvt.boldFont:         TERMINUS
-URxvt.italicFont:       TERMINUS
-URxvt.boldItalicFont:   TERMINUS
+URxvt.font:             FONT
+URxvt.letterSpace:      -1
 
 ! misc
 URxvt.intensityStyles:  false
