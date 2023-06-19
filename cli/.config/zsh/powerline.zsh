@@ -7,7 +7,7 @@ prompt_wt="$USERNAME@$HOST"
 prompt_fifo=~/.zsh_gitstatus_$$
 prompt_blimit=12
 typeset -A prompt_symbols=(
-    sep_a         $'\ue0bc'
+    sep_a         $'\ue0b0'
     ellipsis      $'\u2026'
     git           $'\ue0a0'
     git_unstaged  '~'

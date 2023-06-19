@@ -1,7 +1,7 @@
 local wt = require('wezterm')
 local act = wt.action
-local font = 'Cascadia Mono PL'
-local font_features = { 'ss01=1', 'ss02=1', 'ss19=1' }
+local font = 'vcascadia'
+local harfbuzz_features = null
 local fontsizes = { Darwin = 14, others = 11 }
 local theme = 'GruvboxDark'
 local overrides = {
@@ -103,7 +103,7 @@ return {
     audible_bell = 'Disabled',
     font = wt.font(font),
     font_size = set_by_os(fontsizes),
-    harfbuzz_features = font_features,
+    harfbuzz_features = harfbuzz_features,
     color_scheme = theme,
     cursor_blink_rate = 0,
     check_for_updates = false,

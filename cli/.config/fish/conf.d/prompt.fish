@@ -1,4 +1,4 @@
-set prompt_sep \ue0bc
+set prompt_sep \ue0b0
 set prompt_bang \n\ (set_color brred)\u266a\ 
 set git_sign \ue0a0
 set color_fg brwhite
