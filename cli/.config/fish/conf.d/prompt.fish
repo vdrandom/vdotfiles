@@ -3,7 +3,7 @@ if ! string match -eq linux $TERM
     set prompt_bang \n\ (set_color brred)\u266a\ 
     set git_sign \ue0a0
 else
-    set prompt_bang \n(set_color brred) \#\ 
+    set prompt_bang \n\ (set_color brred)\#\ 
     set git_sign g
 end
 
