@@ -25,10 +25,18 @@ end
 if require('packer_init').init(plugins) then return end
 
 --[[ plugins config ]]
+if os.getenv('TERM'):match('linux') then
+    lualine_section_separators = { left = nil, right = nil }
+    lualine_component_separators = { left = '|', right = '|' }
+else
+    lualine_section_separators = nil
+    lualine_component_separators = { left = '\u{2022}', right = '\u{2022}' }
+end
 require('lualine').setup{
     options = {
         icons_enabled = false,
-        component_separators = { left = '\u{2022}', right = '\u{2022}' }
+        section_separators = lualine_section_separators,
+        component_separators = lualine_component_separators
     }
 }
 
