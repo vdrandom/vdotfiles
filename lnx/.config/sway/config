@@ -14,8 +14,8 @@ set $down j
 set $up k
 set $right l
 
-set $font vcascadia 13
-font pango:vcascadia 11
+set $font VascadiaMod 13
+font pango:VascadiaMod 11
 
 #set $font Fantasque Sans Mono 15
 #font pango:Fantasque Sans Mono 13

@@ -1,7 +1,7 @@
 (setq user-full-name "Von Random"
       user-mail-address "von@mechanus.net")
 
-(setq doom-font (font-spec :family "vcascadia" :size 14)
+(setq doom-font (font-spec :family "VascadiaMod" :size 14)
       doom-variable-pitch-font (font-spec :family "PT Sans"))
 (setq doom-theme 'doom-gruvbox)
 

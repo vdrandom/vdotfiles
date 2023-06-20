@@ -7,7 +7,7 @@ Xft.hinting:            true
 Xft.hintstyle:          hintslight
 Xft.dpi:                192
 
-#define FONT            xft:vcascadia:size=12
+#define FONT            xft:VascadiaMod:size=12
 
 ! gruvbox
 #define COLORFG #ebdbb2

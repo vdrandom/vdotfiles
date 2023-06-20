@@ -1,6 +1,6 @@
 local wt = require('wezterm')
 local act = wt.action
-local font = 'vcascadia'
+local font = 'VascadiaMod'
 local harfbuzz_features = null
 local fontsizes = { Darwin = 14, others = 11 }
 local theme = 'GruvboxDark'
