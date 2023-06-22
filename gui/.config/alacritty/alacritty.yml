@@ -2,10 +2,12 @@ scrolling:
   history: 15000
 
 font:
+  offset:
+    y: 5
   builtin_box_drawing: true
   normal:
-    family: JetBrains Mono
-  size: 15
+    family: VascadiaMod
+  size: 13
 
 colors:
   primary:
@@ -36,9 +38,8 @@ colors:
     white:   '0xebdbb2'
 
 cursor:
-  thickness: 0.3
   style:
-    shape: Underline
+    shape: Block
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
