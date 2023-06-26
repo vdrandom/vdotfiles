@@ -2,8 +2,6 @@ scrolling:
   history: 15000
 
 font:
-  offset:
-    y: 5
   builtin_box_drawing: true
   normal:
     family: VascadiaMod
