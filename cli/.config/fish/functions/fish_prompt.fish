@@ -1,9 +1,11 @@
 function fish_prompt
     set -g prompt_string
     set -g prev_color
+    prompt.add white \[
     prompt.user
     prompt.add blue (prompt_pwd)
     prompt.git
+    prompt.add white \]
     prompt.add normal $prompt_bang
 
     echo $prompt_string
