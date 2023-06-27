@@ -6,8 +6,9 @@ else
     set git_sep \|
 end
 
-set color_user green
-set color_git_branch brwhite
+set color_sep         grey
+set color_user        green
+set color_git_branch  normal
 
 # git file status: unstaged  staged  untracked  conflicts
 set color_git      yellow    green   red        purple
