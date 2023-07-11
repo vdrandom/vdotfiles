@@ -8,5 +8,6 @@ else
 end
 
 set color_fg brwhite
+set color_user 222222
 set color_git_branch 3c3c3c
 set color_git yellow blue red purple
