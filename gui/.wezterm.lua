@@ -1,6 +1,6 @@
 local wt = require('wezterm')
 local act = wt.action
-local font = 'VascadiaMod'
+local font = 'VascadiaModL'
 local harfbuzz_features = nil
 local fontsizes = { Darwin = 14, others = 11 }
 local theme = 'GruvboxDark'
@@ -105,13 +105,10 @@ return {
     font_size = set_by_os(fontsizes),
     harfbuzz_features = harfbuzz_features,
     color_scheme = theme,
-    window_background_opacity = 0.95,
-    macos_window_background_blur = 20,
-    win32_system_backdrop = 'Acrylic',
     cursor_blink_rate = 0,
     check_for_updates = false,
     bold_brightens_ansi_colors = false,
-    window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+    window_padding = { left = '5pt', right = 0, top = '2pt', bottom = 0 },
     leader = leader_key,
     keys = keybinds,
     colors = custom_colors,
