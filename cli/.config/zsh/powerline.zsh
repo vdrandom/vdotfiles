@@ -35,8 +35,15 @@ precmd.is_git_repo() {
     [[ ! -e $prompt_git_dir/nozsh ]]
 }
 
-precmd.prompt.init() {
-    typeset -g prompt_string= prev_color=
+precmd.prompt.add_plain() {
+    (( $# < 1 )) && return 1
+    typeset data=$1 color=$2
+    [[ -n $prompt_string ]] && prompt_string+=" "
+    if [[ -n $color ]]; then
+        prompt_string+="%F{$color}$data%f"
+    else
+        prompt_string+="$data"
+    fi
 }
 
 precmd.prompt.add() {
@@ -50,26 +57,9 @@ precmd.prompt.add() {
     prev_color=$color
 }
 
-precmd.prompt.bang() {
-    prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
-}
-
 precmd.prompt.apply() {
     PROMPT=$prompt_string
     unset prompt_string
-}
-
-precmd.prompt.user() {
-    (( UID )) || precmd.prompt.add '#' $prompt_colors[root]
-}
-
-precmd.prompt.cwd() {
-    precmd.prompt.add %~ $prompt_colors[cwd]
-}
-
-precmd.prompt.ssh() {
-    [[ -n $SSH_CONNECTION ]] || return 0
-    precmd.prompt.add %n@%m $prompt_colors[ssh]
 }
 
 precmd.prompt.pre_git() {
@@ -104,16 +94,27 @@ precmd.prompt.git() {
 }
 
 precmd.prompt() {
-    precmd.prompt.init
-    precmd.prompt.user
-    precmd.prompt.ssh
-    precmd.prompt.cwd
+    typeset -g prompt_string= prev_color=
+
+    precmd.prompt.add \[ 7
+    (( UID )) \
+        || precmd.prompt.add '#' $prompt_colors[root]
+    [[ -n $SSH_CONNECTION ]]\
+        && precmd.prompt.add %n@%m $prompt_colors[ssh]
+
+    precmd.prompt.add %~ $prompt_colors[cwd]
+
+    [[ $1 == pre_git ]]\
+        && precmd.prompt.pre_git
+    [[ $1 == git ]]\
+        && precmd.prompt.git
+
+    precmd.prompt.add \] 7
+    prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
 }
 
 precmd.git_update() {
-    precmd.prompt
-    precmd.prompt.git
-    precmd.prompt.bang
+    precmd.prompt git
     [[ ! -p $prompt_fifo ]] && mkfifo -m 0600 $prompt_fifo
     echo -n $prompt_string > $prompt_fifo &!
     kill -s USR1 $$
@@ -131,12 +132,12 @@ precmd.window_title() {
 
 precmd() {
     precmd.window_title
-    precmd.prompt
     if precmd.is_git_repo; then
-        precmd.prompt.pre_git
+        precmd.prompt pre_git
         precmd.git_update &!
+    else
+        precmd.prompt
     fi
-    precmd.prompt.bang
     precmd.prompt.apply
 }
 
