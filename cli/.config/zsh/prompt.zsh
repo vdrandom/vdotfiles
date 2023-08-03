@@ -27,7 +27,7 @@ typeset -A prompt_colors=(
     git_staged     '6'
     git_untracked  '1'
     git_unmerged   '5'
-#   bang           '10'
+    bang           '10'
 )
 
 precmd.is_git_repo() {
