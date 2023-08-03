@@ -5,7 +5,7 @@ confdir=$HOME/.config/zsh
 conflist=(
     env.zsh
     settings.zsh
-    powerline.zsh
+    prompt.zsh
     functions.zsh
     local.zsh
 )

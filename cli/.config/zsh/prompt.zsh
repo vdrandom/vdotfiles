@@ -14,19 +14,20 @@ typeset -A prompt_symbols=(
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    bang          $'\n %F{10}\u266a%f'
+    bang          $'\u266a'
 )
 
 typeset -A prompt_colors=(
-    fg             '15'
+#   fg             '15'
     root           '1'
-    ssh            '0'
+    ssh            '15'
     cwd            '4'
-    git_branch     '237'
+    git_branch     '241'
     git_unstaged   '3'
     git_staged     '6'
     git_untracked  '1'
     git_unmerged   '5'
+#   bang           '10'
 )
 
 precmd.is_git_repo() {
@@ -35,7 +36,7 @@ precmd.is_git_repo() {
     [[ ! -e $prompt_git_dir/nozsh ]]
 }
 
-precmd.prompt.add_plain() {
+precmd.prompt.add() {
     (( $# < 1 )) && return 1
     typeset data=$1 color=$2
     [[ -n $prompt_string ]] && prompt_string+=" "
@@ -46,7 +47,7 @@ precmd.prompt.add_plain() {
     fi
 }
 
-precmd.prompt.add() {
+precmd.prompt.add_pl() {
     (( $# < 2 )) && return 1
     typeset data=$1 color=$2
     if [[ -z $prompt_string ]]; then
@@ -96,7 +97,7 @@ precmd.prompt.git() {
 precmd.prompt() {
     typeset -g prompt_string= prev_color=
 
-    precmd.prompt.add \[ 7
+    precmd.prompt.add '['
     (( UID )) \
         || precmd.prompt.add '#' $prompt_colors[root]
     [[ -n $SSH_CONNECTION ]]\
@@ -109,8 +110,8 @@ precmd.prompt() {
     [[ $1 == git ]]\
         && precmd.prompt.git
 
-    precmd.prompt.add \] 7
-    prompt_string+="%F{$prev_color}%k$prompt_symbols[sep_a]%f$prompt_symbols[bang] "
+    precmd.prompt.add $']\n'
+    prompt_string+="%F{$prompt_colors[bang]}$prompt_symbols[bang]%f "
 }
 
 precmd.git_update() {
