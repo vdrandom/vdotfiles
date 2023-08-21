@@ -1,13 +1,13 @@
 if ! string match -eq linux $TERM
-    set prompt_sep \ue0b0
-    set prompt_bang \n\ (set_color brred)\u266a\ 
+    set prompt_bang \n\u266a\ 
     set git_sign \ue0a0
 else
-    set prompt_bang \n\ (set_color brred)\#\ 
+    set prompt_bang \n\#\ 
     set git_sign g
 end
 
-set color_fg brwhite
-set color_user 222222
-set color_git_branch 3c3c3c
+# git symbols and colors
+# [1] unstaged, [2] staged, [3] untracked, [4] conflicts
+set symbol_git \~ + ! \*
 set color_git yellow blue red purple
+set color_git_branch brblack

@@ -33,11 +33,18 @@ nmap <Leader>ft :Filetypes<CR>
 # lightline
 g:lightline = {
     colorscheme:  'gruvbox8',
-    separator:    { left: "\ue0b0", right: "\ue0b2"},
-    subseparator: { left: "\u2022", right: "\u2022"}
+    separator:    { left: "", right: ""},
+    subseparator: { left: "|", right: "|"}
 }
 
-g:gruvbox_transp_bg          = 1
+if has('gui_running')
+    set guifont=VascadiaMod:h14
+    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
+    set guiheadroom=0 guioptions=aei mouse=a
+    map  <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
+endif
+
 g:gruvbox_plugin_hi_groups   = 1
 g:gruvbox_filetype_hi_groups = 1
 &t_8f = "\u1b[38;2;%lu;%lu;%lum"
@@ -45,11 +52,3 @@ g:gruvbox_filetype_hi_groups = 1
 &tgc  = 1
 &bg   = 'dark'
 colorscheme gruvbox8
-
-if has('gui_running')
-    set guifont=JetBrains\ Mono:h14
-    set guicursor=a:blinkon0,a:block,i:ver1-Cursor/lCursor,r:hor1-Cursor/lCursor
-    set guiheadroom=0 guioptions=aei mouse=a
-    map  <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
-endif

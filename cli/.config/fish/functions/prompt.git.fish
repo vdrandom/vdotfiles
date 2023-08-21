@@ -6,7 +6,7 @@ function prompt.git
             set git_branch (string match -r '[^# .]+' "$line")
             string match -qr '\[behind' $line && set git_branch "$git_branch?"
             string match -qr '\[ahead'  $line && set git_branch "$git_branch!"
-            prompt.add "$color_git_branch" "$git_sign $git_branch"
+            prompt.add "$git_sign $git_branch" "$color_git_branch"
         else
             string match -qr "^.[MD]"    "$line" && set git_count[1] (math $git_count[1] + 1)
             string match -qr "^[MDARC]." "$line" && set git_count[2] (math $git_count[2] + 1)
@@ -14,8 +14,8 @@ function prompt.git
             string match -qr "^[ADU]{2}" "$line" && set git_count[4] (math $git_count[4] + 1)
         end
     end
-    test -n "$git_count[1]" && prompt.add "$color_git[1]" "~$git_count[1]"
-    test -n "$git_count[2]" && prompt.add "$color_git[2]" "+$git_count[2]"
-    test -n "$git_count[3]" && prompt.add "$color_git[3]" "!$git_count[3]"
-    test -n "$git_count[4]" && prompt.add "$color_git[4]" "*$git_count[4]"
+    test -n "$git_count[1]" && prompt.add "$git_count[1]$symbol_git[1]" "$color_git[1]"
+    test -n "$git_count[2]" && prompt.add "$git_count[2]$symbol_git[2]" "$color_git[2]"
+    test -n "$git_count[3]" && prompt.add "$git_count[3]$symbol_git[3]" "$color_git[3]"
+    test -n "$git_count[4]" && prompt.add "$git_count[4]$symbol_git[4]" "$color_git[4]"
 end

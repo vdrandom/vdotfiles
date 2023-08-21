@@ -25,18 +25,11 @@ end
 if require('packer_init').init(plugins) then return end
 
 --[[ plugins config ]]
-if os.getenv('TERM'):match('linux') then
-    lualine_section_separators = { left = nil, right = nil }
-    lualine_component_separators = { left = '|', right = '|' }
-else
-    lualine_section_separators = nil
-    lualine_component_separators = { left = '\u{2022}', right = '\u{2022}' }
-end
 require('lualine').setup{
     options = {
         icons_enabled = false,
-        section_separators = lualine_section_separators,
-        component_separators = lualine_component_separators
+        section_separators = { left = nil, right = nil },
+        component_separators = { left = '|', right = '|' }
     }
 }
 
@@ -48,7 +41,6 @@ map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 vim.o.bg = 'dark'
 vim.o.termguicolors = true
 
-vim.g.gruvbox_transp_bg          = 1
 vim.g.gruvbox_plugin_hi_groups   = 1
 vim.g.gruvbox_filetype_hi_groups = 1
 

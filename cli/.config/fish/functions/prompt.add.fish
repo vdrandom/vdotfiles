@@ -1,14 +1,14 @@
 function prompt.add
-    set -l color $argv[1]
-    set -l text $argv[2]
-    set -l sep ''
-    if test -n "$prompt_sep"
-        set sep (set_color $prev_color)$prompt_sep(set_color $color_fg)
-        set prev_color $color
+    set -l text $argv[1]
+    set -l color $argv[2]
+    if test -n "$color"
+        set value (set_color $color)$text(set_color normal)
+    else
+        set value $text
     end
     if test -z "$prompt_string"
-        set prompt_string (set_color -b $color)(set_color $color_fg) $text
+        set prompt_string $value
     else
-        set -a prompt_string (set_color -b $color)$sep $text
+        set -a prompt_string $value
     end
 end
