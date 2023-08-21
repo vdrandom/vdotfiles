@@ -15,7 +15,7 @@ export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 
 ((UID)) && ps_clr=53 || ps_clr=52
 # just a colored version of [ $USER $HOSTNAME:$CWD ]
-printf -v PS1 '\\[\\e[0m\\]\\[\\e[48;5;%sm\\] \\u \\[\\e[48;5;237m\\] \\h \\[\\e[48;5;234m \\w \\[\\e[0m\\]\n\\$ ' $ps_clr
+printf -v PS1 '\\[\\e[0m\\]\\[\\e[48;5;%sm\\] \\u \\[\\e[48;5;237m\\] \\h \\[\\e[48;5;234m\\] \\w \\[\\e[0m\\]\n\\$ ' $ps_clr
 unset ps_clr
 
 unalias ls ld ll 2>/dev/null

@@ -29,7 +29,7 @@ require('lualine').setup{
     options = {
         icons_enabled = false,
         section_separators = { left = nil, right = nil },
-        component_separators = { left = '|', right = '|' }
+        component_separators = { left = '\u{2022}', right = '\u{2022}' }
     }
 }
 

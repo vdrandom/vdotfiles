@@ -33,8 +33,8 @@ nmap <Leader>ft :Filetypes<CR>
 # lightline
 g:lightline = {
     colorscheme:  'gruvbox8',
-    separator:    { left: "", right: ""},
-    subseparator: { left: "|", right: "|"}
+    separator:    { left: '', right: ''},
+    subseparator: { left: '\u2022', right: '\u2022'}
 }
 
 if has('gui_running')
