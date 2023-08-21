@@ -6,7 +6,7 @@ function prompt.git
             set git_branch (string match -r '[^# .]+' "$line")
             string match -qr '\[behind' $line && set git_branch "$git_branch?"
             string match -qr '\[ahead'  $line && set git_branch "$git_branch!"
-            prompt.add "$git_sign $git_branch" "$color_git_branch"
+            prompt.add "$git_sign $git_branch"
         else
             string match -qr "^.[MD]"    "$line" && set git_count[1] (math $git_count[1] + 1)
             string match -qr "^[MDARC]." "$line" && set git_count[2] (math $git_count[2] + 1)
