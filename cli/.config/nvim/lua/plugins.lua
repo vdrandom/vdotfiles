@@ -6,6 +6,7 @@ local function plugins(use)
         'lifepillar/vim-gruvbox8',
         branch = 'neovim'
     }
+    use 'lifepillar/vim-cheat40'
     use 'hoob3rt/lualine.nvim'
     use 'hashivim/vim-terraform'
     use 'khaveesh/vim-fish-syntax'
@@ -27,7 +28,7 @@ end
 --[[ init plugins and install packer if missing ]]
 if require('packer_init').init(plugins) then return end
 
---[[ plugins config ]]
+--[[ plugin configs ]]
 require('lualine').setup{
     options = {
         icons_enabled = false,
@@ -36,7 +37,8 @@ require('lualine').setup{
     }
 }
 
---[[ telescope maps ]]
+--[[ plugin maps ]]
+map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
