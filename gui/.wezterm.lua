@@ -24,6 +24,8 @@ local tab_bar_active = {
     italic = true
 }
 local custom_colors = {
+    cursor_bg = '#cc241d',
+    cursor_fg = '#ebdbb2',
     tab_bar = {
         background = tab_bar_bg,
         active_tab = tab_bar_active,

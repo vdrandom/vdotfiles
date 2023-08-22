@@ -2,7 +2,10 @@
 local function plugins(use)
     use 'wbthomason/packer.nvim'
 
-    use 'lifepillar/vim-gruvbox8'
+    use {
+        'lifepillar/vim-gruvbox8',
+        branch = 'neovim'
+    }
     use 'hoob3rt/lualine.nvim'
     use 'hashivim/vim-terraform'
     use 'khaveesh/vim-fish-syntax'
