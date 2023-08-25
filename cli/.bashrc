@@ -29,9 +29,9 @@ rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
 whence() { command -v "$@"; }
 
 # ls
-ls() { command ls --color=auto --group-directories-first "$@"; }
+ls() { command ls --color=auto "$@"; }
 ll() { ls -alh "$@"; }
-ll() { ls -dlh "$@"; }
+ld() { ls -dlh "$@"; }
 
 # git
 gci()   { command git commit "$@"; }

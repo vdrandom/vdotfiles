@@ -3,7 +3,7 @@ local function plugins(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'lifepillar/vim-gruvbox8',
+        'lifepillar/vim-solarized8',
         branch = 'neovim'
     }
     use 'lifepillar/vim-cheat40'
@@ -43,10 +43,8 @@ map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
-vim.o.bg = 'dark'
+vim.g.solarized_extra_hi_groups = 1
 vim.o.termguicolors = true
+vim.o.bg = 'light'
 
-vim.g.gruvbox_plugin_hi_groups   = 1
-vim.g.gruvbox_filetype_hi_groups = 1
-
-vim.cmd [[colorscheme gruvbox8]]
+vim.cmd [[colorscheme solarized8]]

@@ -3,16 +3,16 @@ local act = wt.action
 local font = 'VascadiaMod'
 local harfbuzz_features = nil
 local fontsizes = { Darwin = 14, others = 11 }
-local theme = 'GruvboxDark'
+local theme = 'Solarized Light (Gogh)'
 local overrides = {
     fonts = {
         font = wt.font('JetBrains Mono'),
         harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
     },
-    theme = { color_scheme = 'PencilLight' }
+    theme = { color_scheme = 'GruvboxDark' }
 }
-local tab_bar_bg = '#ebdbae'
-local tab_bar_fg = '#282828'
+local tab_bar_bg = '#eee8d5'
+local tab_bar_fg = '#657b83'
 local tab_bar_defaults = {
     bg_color = tab_bar_bg,
     fg_color = tab_bar_fg,
@@ -24,8 +24,8 @@ local tab_bar_active = {
     italic = true
 }
 local custom_colors = {
-    cursor_bg = '#d65d0e',
-    cursor_fg = '#ebdbb2',
+    cursor_bg = '#cb4b16',
+    cursor_fg = '#fdf6e3',
     tab_bar = {
         background = tab_bar_bg,
         active_tab = tab_bar_active,
