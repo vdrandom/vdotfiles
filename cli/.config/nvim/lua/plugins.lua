@@ -7,10 +7,8 @@ local function plugins(use)
         branch = 'neovim'
     }
     use 'lifepillar/vim-cheat40'
-    use 'hoob3rt/lualine.nvim'
     use 'hashivim/vim-terraform'
     use 'khaveesh/vim-fish-syntax'
-    use 'lukas-reineke/indent-blankline.nvim'
     use 'mhinz/vim-signify'
     use 'tpope/vim-rsi'
     use 'tpope/vim-vinegar'
@@ -24,20 +22,9 @@ local function plugins(use)
         cmd = 'ALEEnable'
     }
 end
-
---[[ init plugins and install packer if missing ]]
 if require('packer_init').init(plugins) then return end
 
---[[ plugin configs ]]
-require('lualine').setup{
-    options = {
-        icons_enabled = false,
-        section_separators = { left = nil, right = nil },
-        component_separators = { left = '\u{2022}', right = '\u{2022}' }
-    }
-}
-
---[[ plugin maps ]]
+--[[ plugin configs and maps ]]
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
