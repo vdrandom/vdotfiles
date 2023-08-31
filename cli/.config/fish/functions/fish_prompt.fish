@@ -6,7 +6,7 @@ function fish_prompt
     prompt.add (prompt_pwd) blue
     prompt.git
     prompt.add \] brblack
-    prompt.add $prompt_bang brred
+    prompt.bang
 
     echo $prompt_string
     set -e prompt_string
