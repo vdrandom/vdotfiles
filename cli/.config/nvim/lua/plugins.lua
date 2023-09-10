@@ -9,7 +9,7 @@ local function plugins(use)
     use 'lifepillar/vim-cheat40'
     use 'hashivim/vim-terraform'
     use 'khaveesh/vim-fish-syntax'
-    use 'mhinz/vim-signify'
+    use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-rsi'
     use 'tpope/vim-vinegar'
     use {
@@ -25,6 +25,7 @@ end
 if require('packer_init').init(plugins) then return end
 
 --[[ plugin configs and maps ]]
+require('gitsigns').setup()
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
