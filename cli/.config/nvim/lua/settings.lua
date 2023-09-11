@@ -1,6 +1,6 @@
 vim.o.modeline       = false
 vim.o.foldmethod     = 'marker'
-vim.o.cursorline     = true
+vim.o.cursorline     = false
 vim.o.colorcolumn    = '80'
 vim.o.relativenumber = true
 vim.o.breakindent    = true

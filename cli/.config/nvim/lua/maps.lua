@@ -1,10 +1,10 @@
 vim.g.mapleader = ' '
 
-function unmap(key)
-    vim.api.nvim_set_keymap('', key, '', {})
-end
 function map(mode, key, action)
     vim.api.nvim_set_keymap(mode, key, action, {noremap = true})
+end
+function unmap(key)
+    map('', key, '')
 end
 
 -- some unmaps
