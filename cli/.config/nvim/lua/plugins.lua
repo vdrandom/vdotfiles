@@ -1,28 +1,34 @@
--- [[ plugins list ]]
-local function plugins(use)
-    use 'wbthomason/packer.nvim'
-
-    use {
-        'lifepillar/vim-solarized8',
-        branch = 'neovim'
-    }
-    use 'lifepillar/vim-cheat40'
-    use 'hashivim/vim-terraform'
-    use 'khaveesh/vim-fish-syntax'
-    use 'lewis6991/gitsigns.nvim'
-    use 'tpope/vim-rsi'
-    use 'tpope/vim-vinegar'
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = 'nvim-lua/plenary.nvim'
-    }
-    use {
-        'w0rp/ale',
-        ft = { 'bash', 'sh', 'zsh', 'lua', 'python' },
-        cmd = 'ALEEnable'
+-- [[ plugins bootstrap ]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system {
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", lazypath
     }
 end
-if require('packer_init').init(plugins) then return end
+vim.opt.rtp:prepend(lazypath)
+
+--[[ plugins list ]]
+require('lazy').setup {
+    {'lifepillar/vim-solarized8', branch = 'neovim'},
+    'lewis6991/gitsigns.nvim',
+    'lifepillar/vim-cheat40',
+    'hashivim/vim-terraform',
+    'khaveesh/vim-fish-syntax',
+    'lewis6991/gitsigns.nvim',
+    'tpope/vim-rsi',
+    'tpope/vim-vinegar',
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = {'nvim-lua/plenary.nvim'}
+    },
+    {
+        'w0rp/ale',
+        cmd = 'ALEEnable',
+        ft = {'bash', 'sh', 'zsh', 'lua', 'python'}
+    }
+}
 
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
