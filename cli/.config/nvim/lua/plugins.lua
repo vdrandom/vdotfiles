@@ -37,6 +37,7 @@ map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
+vim.g.solarized_termtrans = 1
 vim.g.solarized_extra_hi_groups = 1
 vim.o.termguicolors = true
 vim.o.bg = 'light'
