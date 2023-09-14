@@ -77,8 +77,8 @@ else
     gdf() { gdiff $@ }
 fi
 
-if testbin exa; then
-    ls()  { command exa --group-directories-first $@ }
+if testbin eza; then
+    ls()  { command eza --icons --group-directories-first $@ }
     ll()  { ls -alg $@ }
     ld()  { ls -dlg $@ }
 else
