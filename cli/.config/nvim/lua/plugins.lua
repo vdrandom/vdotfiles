@@ -32,6 +32,7 @@ require('lazy').setup {
 
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
+map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
