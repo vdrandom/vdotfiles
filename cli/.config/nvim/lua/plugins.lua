@@ -19,6 +19,7 @@ require('lazy').setup {
     'lewis6991/gitsigns.nvim',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
+    'nvim-lualine/lualine.nvim',
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {'nvim-lua/plenary.nvim'}
@@ -32,13 +33,13 @@ require('lazy').setup {
 
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
+require('lualine').setup {options = {theme = 'solarized'}}
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
-vim.g.solarized_termtrans = 1
 vim.g.solarized_extra_hi_groups = 1
 vim.o.termguicolors = true
 vim.o.bg = 'light'
