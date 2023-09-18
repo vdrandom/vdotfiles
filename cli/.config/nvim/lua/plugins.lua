@@ -12,28 +12,24 @@ vim.opt.rtp:prepend(lazypath)
 --[[ plugins list ]]
 require('lazy').setup {
     {'lifepillar/vim-solarized8', branch = 'neovim'},
-    'lewis6991/gitsigns.nvim',
-    'lifepillar/vim-cheat40',
+    {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
+    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
+    {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'sh', 'zsh', 'lua', 'python'}},
     'hashivim/vim-terraform',
     'khaveesh/vim-fish-syntax',
     'lewis6991/gitsigns.nvim',
+    'lifepillar/vim-cheat40',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
-    'nvim-lualine/lualine.nvim',
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-lua/plenary.nvim'}
-    },
-    {
-        'w0rp/ale',
-        cmd = 'ALEEnable',
-        ft = {'bash', 'sh', 'zsh', 'lua', 'python'}
-    }
 }
 
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
-require('lualine').setup {options = {theme = 'solarized'}}
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true
+    }
+}
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
