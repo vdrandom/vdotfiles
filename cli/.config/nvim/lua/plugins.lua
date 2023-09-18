@@ -15,8 +15,6 @@ require('lazy').setup {
     {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'sh', 'zsh', 'lua', 'python'}},
-    'hashivim/vim-terraform',
-    'khaveesh/vim-fish-syntax',
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
     'tpope/vim-rsi',
