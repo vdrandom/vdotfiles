@@ -1,8 +1,8 @@
 local wt = require('wezterm')
 local act = wt.action
-local font = 'VascadiaMod'
+local font = 'FantasqueSansM Nerd Font'
 local harfbuzz_features = nil
-local fontsizes = { Darwin = 14, others = 11 }
+local fontsizes = { Darwin = 15, others = 12 }
 local theme = 'Solarized Light (Gogh)'
 local overrides = {
     fonts = {

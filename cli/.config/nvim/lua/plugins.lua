@@ -19,8 +19,8 @@ require('lazy').setup {
 }
 
 --[[ plugin configs and maps ]]
-local ll_sep = "\u{2022}"
-require('lualine').setup {
+local conf_ll_sep = "\u{2022}"
+local conf_lualine = {
     options = {
         icons_enabled = false,
         theme = 'solarized_light',
@@ -28,12 +28,18 @@ require('lualine').setup {
         section_separators = { left = null, right = null}
     }
 }
-require('gitsigns').setup()
-require('nvim-treesitter.configs').setup {
-    highlight = {
-        enable = true
-    }
+local conf_nvim_treesitter = {
+        highlight = {
+            enable = true
+        }
 }
+
+require('lualine').setup(conf_lualine)
+require('gitsigns').setup()
+if not vim.fn.has('Windows') then
+    require('nvim-treesitter.configs').setup(conf_nvim_treesitter)
+end
+
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
