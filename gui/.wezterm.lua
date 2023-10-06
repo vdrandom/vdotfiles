@@ -7,6 +7,7 @@ local theme = 'Solarized Light (Gogh)'
 local overrides = {
     fonts = {
         font = wt.font('JetBrains Mono'),
+        font_size = 11,
         harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
     },
     theme = { color_scheme = 'GruvboxDark' }
