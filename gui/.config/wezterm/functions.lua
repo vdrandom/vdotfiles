@@ -12,5 +12,4 @@ end
 
 return {
     set_by_os = set_by_os
---    toggle_overrides = toggle_overrides
 }
