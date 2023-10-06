@@ -12,16 +12,17 @@ local overrides = {
     },
     theme = { color_scheme = 'GruvboxDark' }
 }
-local tab_bar_bg = '#eee8d5'
 local tab_bar_fg = '#657b83'
+local tab_bar_bg = '#eee8d5'
+local tab_bar_bg_active = '#fdf6e3'
 local tab_bar_defaults = {
     bg_color = tab_bar_bg,
     fg_color = tab_bar_fg,
     italic = true
 }
 local tab_bar_active = {
-    bg_color = tab_bar_fg,
-    fg_color = tab_bar_bg,
+    bg_color = tab_bar_bg_active,
+    fg_color = tab_bar_fg,
     italic = true
 }
 local custom_colors = {
@@ -32,8 +33,6 @@ local custom_colors = {
         active_tab = tab_bar_active,
         inactive_tab = tab_bar_defaults,
         inactive_tab_hover = tab_bar_defaults,
-        new_tab = tab_bar_defaults,
-        new_tab_hover = tab_bar_defaults,
     }
 }
 
@@ -115,7 +114,10 @@ return {
     leader = leader_key,
     keys = keybinds,
     colors = custom_colors,
-    use_fancy_tab_bar = false,
-    hide_tab_bar_if_only_one_tab = true,
-    tab_max_width = 128
+    use_fancy_tab_bar = true,
+    hide_tab_bar_if_only_one_tab = false,
+    show_new_tab_button_in_tab_bar = false,
+    tab_max_width = 128,
+    window_decorations = 'INTEGRATED_BUTTONS | RESIZE | MACOS_FORCE_ENABLE_SHADOW',
+    window_frame = { active_titlebar_bg = tab_bar_bg }
 }
