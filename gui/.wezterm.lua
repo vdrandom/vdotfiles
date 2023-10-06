@@ -1,9 +1,18 @@
 local wt = require('wezterm')
+local cfg = wt.config_builder()
 local act = wt.action
-local font = 'Fantasque Sans Mono'
-local harfbuzz_features = nil
+local current_overrides = {}
+
+cfg.xcursor_theme = 'Adwaita'
+cfg.audible_bell = 'Disabled'
+cfg.font = wt.font('Fantasque Sans Mono')
+cfg.harfbuzz_features = nil
+cfg.color_scheme = 'Solarized Light (Gogh)'
+cfg.cursor_blink_rate = 0
+cfg.check_for_updates = false
+cfg.bold_brightens_ansi_colors = false
+
 local fontsizes = { Darwin = 15, others = 12 }
-local theme = 'Solarized Light (Gogh)'
 local overrides = {
     fonts = {
         font = wt.font('JetBrains Mono'),
@@ -25,7 +34,17 @@ local tab_bar_active = {
     fg_color = tab_bar_fg,
     italic = true
 }
-local custom_colors = {
+cfg.use_fancy_tab_bar = true
+cfg.hide_tab_bar_if_only_one_tab = false
+cfg.show_new_tab_button_in_tab_bar = false
+cfg.tab_max_width = 128
+cfg.window_padding = { left = '5pt', right = 0, top = '2pt', bottom = 0 }
+cfg.window_decorations = 'INTEGRATED_BUTTONS | RESIZE | MACOS_FORCE_ENABLE_SHADOW'
+cfg.window_frame = {
+    active_titlebar_bg = tab_bar_bg,
+    inactive_titlebar_bg = tab_bar_bg
+}
+cfg.colors = {
     cursor_bg = '#cb4b16',
     cursor_fg = '#fdf6e3',
     tab_bar = {
@@ -67,6 +86,9 @@ for i = 1, 9 do
     )
 end
 
+cfg.leader = leader_key
+cfg.keys = keybinds
+
 local function get_os()
     local current_os = os.getenv('OS')
     if current_os then return current_os end
@@ -79,7 +101,6 @@ local function set_by_os(values)
     return values.others
 end
 
-local current_overrides = {}
 local function toggle_overrides(window, overrides)
     for k, v in pairs(overrides) do
         if current_overrides[k] == v then
@@ -100,24 +121,6 @@ wt.on('override-theme', function(window) toggle_overrides(window, overrides.them
 wt.on('override-fonts', function(window) toggle_overrides(window, overrides.fonts) end)
 wt.on('override-reset', reset_overrides)
 
-return {
-    xcursor_theme = 'Adwaita',
-    audible_bell = 'Disabled',
-    font = wt.font(font),
-    font_size = set_by_os(fontsizes),
-    harfbuzz_features = harfbuzz_features,
-    color_scheme = theme,
-    cursor_blink_rate = 0,
-    check_for_updates = false,
-    bold_brightens_ansi_colors = false,
-    window_padding = { left = '5pt', right = 0, top = '2pt', bottom = 0 },
-    leader = leader_key,
-    keys = keybinds,
-    colors = custom_colors,
-    use_fancy_tab_bar = true,
-    hide_tab_bar_if_only_one_tab = false,
-    show_new_tab_button_in_tab_bar = false,
-    tab_max_width = 128,
-    window_decorations = 'INTEGRATED_BUTTONS | RESIZE | MACOS_FORCE_ENABLE_SHADOW',
-    window_frame = { active_titlebar_bg = tab_bar_bg }
-}
+cfg.font_size = set_by_os(fontsizes)
+
+return cfg
