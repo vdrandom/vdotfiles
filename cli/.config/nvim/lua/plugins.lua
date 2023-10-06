@@ -13,28 +13,18 @@ require('lazy').setup {
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'sh', 'zsh', 'lua', 'python'}},
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
-    'nvim-lualine/lualine.nvim',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
 }
 
 --[[ plugin configs and maps ]]
 local conf_ll_sep = "\u{2022}"
-local conf_lualine = {
-    options = {
-        icons_enabled = false,
-        theme = 'solarized_light',
-        component_separators = { left = ll_sep, right = ll_sep},
-        section_separators = { left = null, right = null}
-    }
-}
 local conf_nvim_treesitter = {
         highlight = {
             enable = true
         }
 }
 
-require('lualine').setup(conf_lualine)
 require('gitsigns').setup()
 if not vim.fn.has('Windows') then
     require('nvim-treesitter.configs').setup(conf_nvim_treesitter)
@@ -47,7 +37,8 @@ map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
 vim.g.solarized_extra_hi_groups = 1
-vim.o.termguicolors = true
+vim.g.solarized_t_Co = 16
+vim.o.termguicolors = false
 vim.o.bg = 'light'
 
 vim.cmd [[colorscheme solarized8]]
