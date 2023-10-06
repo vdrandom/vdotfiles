@@ -1,6 +1,6 @@
 local wt = require('wezterm')
 local act = wt.action
-local font = 'FantasqueSansM Nerd Font'
+local font = 'Fantasque Sans Mono'
 local harfbuzz_features = nil
 local fontsizes = { Darwin = 15, others = 12 }
 local theme = 'Solarized Light (Gogh)'

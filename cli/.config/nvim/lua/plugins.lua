@@ -10,7 +10,7 @@ require('lazy').setup {
     {'lifepillar/vim-solarized8', branch = 'neovim'},
     {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
-    {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'sh', 'zsh', 'lua', 'python'}},
+    {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
     'tpope/vim-rsi',
