@@ -18,17 +18,12 @@ require('lazy').setup {
 }
 
 --[[ plugin configs and maps ]]
-local conf_ll_sep = "\u{2022}"
-local conf_nvim_treesitter = {
-        highlight = {
-            enable = true
-        }
-}
-
 require('gitsigns').setup()
-if not vim.fn.has('Windows') then
-    require('nvim-treesitter.configs').setup(conf_nvim_treesitter)
-end
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true
+    }
+}
 
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
