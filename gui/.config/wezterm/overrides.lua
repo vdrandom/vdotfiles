@@ -1,13 +1,45 @@
 local wt = require('wezterm')
 
 local current = {}
+
+-- fonts
+local fonts = wt.config_builder()
+fonts.font = wt.font('JetBrains Mono')
+fonts.font_size = 11
+fonts.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
+
+-- theme
+local tab_fg = '#ebdbb2'
+local tab_bg = '#504945'
+local tab_bg_active = '#282828'
+
+local theme = wt.config_builder()
+theme.color_scheme = 'GruvboxDark'
+theme.colors = {
+    cursor_bg = '#d65d0e',
+    cursor_fg = '#ebdbb2',
+    tab_bar = {
+        background = tab_bg,
+        active_tab = {
+            fg_color = tab_fg,
+            bg_color = tab_bg_active
+        },
+        inactive_tab = {
+            fg_color = tab_fg,
+            bg_color = tab_bg
+        }
+    }
+}
+theme.colors.tab_bar.active_tab_hover = theme.colors.tab_bar.active_tab
+theme.colors.tab_bar.inactive_tab_hover = theme.colors.tab_bar.inactive_tab
+theme.window_frame = {
+    active_titlebar_bg = tab_bg,
+    inactive_titlebar_bg = tab_bg
+}
+
 local overrides = {
-    fonts = {
-        font = wt.font('JetBrains Mono'),
-        font_size = 11,
-        harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
-    },
-    theme = {color_scheme = 'GruvboxDark'}
+    fonts = fonts,
+    theme = theme
 }
 
 local function toggle_overrides(window, overrides)

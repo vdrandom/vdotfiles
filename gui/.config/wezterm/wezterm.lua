@@ -2,18 +2,6 @@ local wt = require('wezterm')
 local kb = require('keybinds')
 local fn = require('functions')
 
-local tab_bar_fg = '#657b83'
-local tab_bar_bg = '#eee8d5'
-local tab_bar_bg_active = '#fdf6e3'
-local tab_bar_defaults = {
-    bg_color = tab_bar_bg,
-    fg_color = tab_bar_fg
-}
-local tab_bar_active = {
-    bg_color = tab_bar_bg_active,
-    fg_color = tab_bar_fg
-}
-
 local cfg = wt.config_builder()
 -- misc
 cfg.leader = kb.leader
@@ -32,6 +20,10 @@ cfg.font_size = fn.set_by_os{
 }
 
 -- visuals
+local tab_fg = '#657b83'
+local tab_bg = '#eee8d5'
+local tab_bg_active = '#fdf6e3'
+
 cfg.window_decorations = 'INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW'
 cfg.xcursor_theme = 'Adwaita'
 cfg.use_fancy_tab_bar = true
@@ -43,21 +35,28 @@ cfg.colors = {
     cursor_bg = '#cb4b16',
     cursor_fg = '#fdf6e3',
     tab_bar = {
-        background = tab_bar_bg,
-        active_tab = tab_bar_active,
-        inactive_tab = tab_bar_defaults,
-        inactive_tab_hover = tab_bar_defaults
+        background = tab_bg,
+        active_tab = {
+            fg_color = tab_fg,
+            bg_color = tab_bg_active
+        },
+        inactive_tab = {
+            fg_color = tab_fg,
+            bg_color = tab_bg
+        }
     }
+}
+cfg.colors.tab_bar.active_tab_hover = cfg.colors.tab_bar.active_tab
+cfg.colors.tab_bar.inactive_tab_hover = cfg.colors.tab_bar.inactive_tab
+cfg.window_frame = {
+    active_titlebar_bg = tab_bg,
+    inactive_titlebar_bg = tab_bg
 }
 cfg.window_padding = {
     left = '5pt',
     right = 0,
     top = '2pt',
     bottom = 0
-}
-cfg.window_frame = {
-    active_titlebar_bg = tab_bar_bg,
-    inactive_titlebar_bg = tab_bar_bg
 }
 
 -- callbacks
