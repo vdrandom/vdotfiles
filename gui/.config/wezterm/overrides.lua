@@ -1,11 +1,15 @@
 local wt = require('wezterm')
+local fn = require('functions')
 
 local current = {}
 
 -- fonts
 local fonts = wt.config_builder()
 fonts.font = wt.font('JetBrains Mono')
-fonts.font_size = 11
+fonts.font_size = fn.set_by_os{
+    Darwin = 14,
+    others = 11
+}
 fonts.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
 
 -- theme
