@@ -46,7 +46,6 @@ cfg.colors = {
         }
     }
 }
-cfg.colors.tab_bar.active_tab_hover = cfg.colors.tab_bar.active_tab
 cfg.colors.tab_bar.inactive_tab_hover = cfg.colors.tab_bar.inactive_tab
 cfg.window_frame = {
     active_titlebar_bg = tab_bg,
