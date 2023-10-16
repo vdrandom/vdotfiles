@@ -34,7 +34,6 @@ theme.colors = {
         }
     }
 }
-theme.colors.tab_bar.active_tab_hover = theme.colors.tab_bar.active_tab
 theme.colors.tab_bar.inactive_tab_hover = theme.colors.tab_bar.inactive_tab
 theme.window_frame = {
     active_titlebar_bg = tab_bg,
