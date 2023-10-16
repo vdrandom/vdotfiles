@@ -3,6 +3,14 @@ local fn = require('functions')
 
 local current = {}
 
+-- colors
+local color_scheme = 'GruvboxDark'
+local tab_fg = '#ebdbb2'
+local tab_bg = '#504945'
+local tab_bg_active = '#282828'
+local cursor_fg = '#ebdbb2'
+local cursor_bg = '#d65d0e'
+
 -- fonts
 local fonts = wt.config_builder()
 fonts.font = wt.font('JetBrains Mono')
@@ -13,15 +21,11 @@ fonts.font_size = fn.set_by_os{
 fonts.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
 
 -- theme
-local tab_fg = '#ebdbb2'
-local tab_bg = '#504945'
-local tab_bg_active = '#282828'
-
 local theme = wt.config_builder()
-theme.color_scheme = 'GruvboxDark'
+theme.color_scheme = color_scheme
 theme.colors = {
-    cursor_bg = '#d65d0e',
-    cursor_fg = '#ebdbb2',
+    cursor_fg = cursor_fg,
+    cursor_bg = cursor_bg,
     tab_bar = {
         background = tab_bg,
         active_tab = {

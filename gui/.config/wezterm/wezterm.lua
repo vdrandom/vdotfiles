@@ -2,8 +2,16 @@ local wt = require('wezterm')
 local kb = require('keybinds')
 local fn = require('functions')
 
-local cfg = wt.config_builder()
+-- colors
+local color_scheme = 'Solarized Light (Gogh)'
+local tab_fg = '#657b83'
+local tab_bg = '#eee8d5'
+local tab_bg_active = '#fdf6e3'
+local cursor_fg = '#fdf6e3'
+local cursor_bg = '#cb4b16'
+
 -- misc
+local cfg = wt.config_builder()
 cfg.leader = kb.leader
 cfg.keys = kb.keybinds
 cfg.audible_bell = 'Disabled'
@@ -33,15 +41,11 @@ cfg.window_padding = {
     bottom = 0
 }
 
--- colors
-local tab_fg = '#657b83'
-local tab_bg = '#eee8d5'
-local tab_bg_active = '#fdf6e3'
-
-cfg.color_scheme = 'Solarized Light (Gogh)'
+-- theming
+cfg.color_scheme = color_scheme
 cfg.colors = {
-    cursor_bg = '#cb4b16',
-    cursor_fg = '#fdf6e3',
+    cursor_fg = cursor_fg,
+    cursor_bg = cursor_bg,
     tab_bar = {
         background = tab_bg,
         active_tab = {
