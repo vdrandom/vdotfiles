@@ -15,7 +15,7 @@ cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
 cfg.font = wt.font('Fantasque Sans Mono')
 cfg.font_size = fn.set_by_os{
-    Darwin = 15,
+    Darwin = 16,
     others = 12
 }
 
