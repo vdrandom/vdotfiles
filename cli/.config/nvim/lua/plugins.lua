@@ -15,20 +15,11 @@ require('lazy').setup {
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
-    'nvim-lualine/lualine.nvim',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
 }
 
 --[[ plugin configs and maps ]]
-local ll_sep = "\u{2022}"
-require('lualine').setup {
-    options = {
-        icons_enabled = false,
-        component_separators = { left = ll_sep, right = ll_sep},
-        section_separators = { left = null, right = null}
-    }
-}
 require('gitsigns').setup()
 require('nvim-treesitter.configs').setup {
     highlight = {
