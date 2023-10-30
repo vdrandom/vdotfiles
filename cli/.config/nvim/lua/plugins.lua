@@ -39,6 +39,6 @@ vim.g.solarized_extra_hi_groups  = 1
 vim.g.gruvbox_plugin_hi_groups   = 1
 vim.g.gruvbox_filetype_hi_groups = 1
 vim.o.termguicolors = true
-vim.o.bg = 'dark'
+vim.o.bg = 'light'
 
-vim.cmd [[colorscheme gruvbox8]]
+vim.cmd [[colorscheme solarized8]]
