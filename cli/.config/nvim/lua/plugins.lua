@@ -8,6 +8,7 @@ vim.opt.rtp:prepend(lazypath)
 
 --[[ plugins list ]]
 require('lazy').setup {
+    {'kdheepak/lazygit.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'lifepillar/vim-gruvbox8', branch = 'neovim'},
     {'lifepillar/vim-solarized8', branch = 'neovim'},
     {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
@@ -27,6 +28,7 @@ require('nvim-treesitter.configs').setup {
     }
 }
 
+map('n', '<Leader>g', '<cmd>LazyGit<CR>')
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
