@@ -1,8 +1,7 @@
 -- [[ plugins bootstrap ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyurl = "https://github.com/folke/lazy.nvim.git"
-local lazycmd = {"git", "clone", "--filter=blob:none", "--branch=stable",
-                 lazyurl, lazypath}
+local lazycmd = {"git", "clone", "--filter=blob:none", "--branch=stable", lazyurl, lazypath}
 if not vim.loop.fs_stat(lazypath) then vim.fn.system(lazycmd) end
 vim.opt.rtp:prepend(lazypath)
 
@@ -16,6 +15,7 @@ require('lazy').setup {
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
+    'nvim-lualine/lualine.nvim',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
 }
@@ -26,6 +26,14 @@ require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
     }
+}
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'gruvbox',
+    component_separators = { left = "\u{2022}", right = "\u{2022}"},
+    section_separators = { left = nil, right = nil},
+  }
 }
 
 map('n', '<Leader>g', '<cmd>LazyGit<CR>')
