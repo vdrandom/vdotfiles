@@ -28,12 +28,12 @@ cfg.font_size = fn.set_by_os{
 }
 
 -- visuals
-cfg.window_decorations = 'RESIZE'
+cfg.window_decorations = 'INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW'
 cfg.xcursor_theme = 'Adwaita'
-cfg.use_fancy_tab_bar = false
+cfg.use_fancy_tab_bar = true
 cfg.hide_tab_bar_if_only_one_tab = false
 cfg.show_new_tab_button_in_tab_bar = false
-cfg.tab_max_width = 24
+cfg.tab_max_width = 128
 cfg.window_padding = {
     left = '5pt',
     right = 0,
