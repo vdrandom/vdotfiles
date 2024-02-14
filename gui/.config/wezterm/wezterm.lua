@@ -65,6 +65,7 @@ cfg.window_frame = {
 }
 
 -- callbacks
+wt.on('format-window-title', function() return 'WezTerm' end)
 require('overrides')
 
 return cfg
