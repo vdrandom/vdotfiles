@@ -3,12 +3,12 @@ local kb = require('keybinds')
 local fn = require('functions')
 
 -- colors
-local color_scheme = 'GruvboxDark'
-local tab_fg = '#ebdbb2'
-local tab_bg = '#504945'
-local tab_bg_active = '#282828'
-local cursor_fg = '#ebdbb2'
-local cursor_bg = '#d65d0e'
+local color_scheme = 'Solarized Light (Gogh)'
+local tab_fg = '#657b83'
+local tab_bg = '#eee8d5'
+local tab_bg_active = '#fdf6e3'
+local cursor_fg = '#fdf6e3'
+local cursor_bg = '#cb4b16'
 
 -- misc
 local cfg = wt.config_builder()

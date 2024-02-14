@@ -30,7 +30,7 @@ require('nvim-treesitter.configs').setup {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'gruvbox',
+    theme = 'solarized',
     component_separators = { left = "\u{2022}", right = "\u{2022}"},
     section_separators = { left = nil, right = nil},
   }
@@ -49,6 +49,6 @@ vim.g.solarized_extra_hi_groups  = 1
 vim.g.gruvbox_plugin_hi_groups   = 1
 vim.g.gruvbox_filetype_hi_groups = 1
 vim.o.termguicolors = true
-vim.o.bg = 'dark'
+vim.o.bg = 'light'
 
-vim.cmd [[colorscheme gruvbox8]]
+vim.cmd [[colorscheme solarized8]]
