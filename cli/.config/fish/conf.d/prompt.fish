@@ -1,6 +1,4 @@
-# some flair with randomized fish emoji: fish, tropical fish and blowfish
-set fishes \U1f41f \U1f420 \U1f421
-
+set bang_symbol \u276f
 set git_sign \ue0a0
 set color_git_branch brblack
 

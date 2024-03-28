@@ -1,6 +1,6 @@
 function prompt.bang
     if ! string match -eq linux $TERM
-        prompt.add \n$fishes[(random 1 (count $fishes))]\ 
+        prompt.add \n$bang_symbol\  black
     else
         prompt.add \n\#\  brred
     end
