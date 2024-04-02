@@ -21,14 +21,14 @@ cfg.check_for_updates = false
 cfg.harfbuzz_features = nil
 cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
-cfg.font = wt.font('Fantasque Sans Mono')
+cfg.font = wt.font('VascadiaMod')
 cfg.font_size = fn.set_by_os{
-    Darwin = 16,
-    others = 12
+    Darwin = 14,
+    others = 11
 }
 
 -- visuals
-cfg.window_decorations = 'INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW'
+cfg.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 cfg.xcursor_theme = 'Adwaita'
 cfg.use_fancy_tab_bar = true
 cfg.hide_tab_bar_if_only_one_tab = false
