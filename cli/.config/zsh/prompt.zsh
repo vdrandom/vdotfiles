@@ -14,7 +14,7 @@ typeset -A prompt_symbols=(
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    bang          $'\u266a'
+    bang          $'\u276f'
 )
 
 typeset -A prompt_colors=(
@@ -22,12 +22,13 @@ typeset -A prompt_colors=(
     root           '1'
     ssh            '15'
     cwd            '4'
-    git_branch     '241'
+    git_branch     ''
     git_unstaged   '3'
     git_staged     '6'
     git_untracked  '1'
     git_unmerged   '5'
-    bang           '10'
+    brackets       '8'
+    bang           '8'
 )
 
 precmd.is_git_repo() {
@@ -97,7 +98,7 @@ precmd.prompt.git() {
 precmd.prompt() {
     typeset -g prompt_string= prev_color=
 
-    precmd.prompt.add '['
+    precmd.prompt.add '[' $prompt_colors[brackets]
     (( UID )) \
         || precmd.prompt.add '#' $prompt_colors[root]
     [[ -n $SSH_CONNECTION ]]\
@@ -110,7 +111,7 @@ precmd.prompt() {
     [[ $1 == git ]]\
         && precmd.prompt.git
 
-    precmd.prompt.add $']\n'
+    precmd.prompt.add $']\n' $prompt_colors[brackets]
     prompt_string+="%F{$prompt_colors[bang]}$prompt_symbols[bang]%f "
 }
 

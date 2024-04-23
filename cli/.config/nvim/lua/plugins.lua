@@ -8,8 +8,8 @@ vim.opt.rtp:prepend(lazypath)
 --[[ plugins list ]]
 require('lazy').setup {
     {'kdheepak/lazygit.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
-    {'lifepillar/vim-gruvbox8', branch = 'neovim'},
-    {'lifepillar/vim-solarized8', branch = 'neovim'},
+    {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
+    {'nvim-orgmode/orgmode', event = 'VeryLazy', ft = {'org'}},
     {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
@@ -22,6 +22,13 @@ require('lazy').setup {
 
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
+require('gruvbox').setup {
+    terminal_colors = false
+}
+require('orgmode').setup {
+    org_agenda_files = '~/orgfiles/**/*',
+    org_default_notes_file = '~/orgfiles/refile.org'
+}
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
@@ -30,7 +37,6 @@ require('nvim-treesitter.configs').setup {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'gruvbox',
     component_separators = { left = "\u{2022}", right = "\u{2022}"},
     section_separators = { left = nil, right = nil},
   }
@@ -45,10 +51,7 @@ map('n', '<Leader>T', '<cmd>colorscheme solarized8|set bg=light<CR>')
 map('n', '<Leader>t', '<cmd>colorscheme gruvbox8|set bg=dark<CR>')
 
 --[[ theme ]]
-vim.g.solarized_extra_hi_groups  = 1
-vim.g.gruvbox_plugin_hi_groups   = 1
-vim.g.gruvbox_filetype_hi_groups = 1
 vim.o.termguicolors = true
 vim.o.bg = 'dark'
 
-vim.cmd [[colorscheme gruvbox8]]
+vim.cmd [[colorscheme gruvbox]]
