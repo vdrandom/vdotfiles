@@ -13,12 +13,7 @@ local cursor_bg = '#cb4b16'
 
 -- fonts
 local fonts = wt.config_builder()
-fonts.font = wt.font('JetBrains Mono')
-fonts.font_size = fn.set_by_os{
-    Darwin = 14,
-    others = 10
-}
-fonts.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0'}
+fonts.harfbuzz_features = {'calt=0', 'clig=0', 'liga=0', 'ss19'}
 
 -- theme
 local theme = wt.config_builder()
