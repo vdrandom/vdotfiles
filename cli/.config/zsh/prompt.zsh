@@ -31,6 +31,11 @@ typeset -A prompt_colors=(
     bang           '8'
 )
 
+prompt.set_bang() {
+    (( $# )) || return 1
+    prompt_symbols[bang]=$1
+}
+
 precmd.is_git_repo() {
     typeset prompt_git_dir
     prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
