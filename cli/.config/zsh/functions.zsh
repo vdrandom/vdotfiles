@@ -52,8 +52,6 @@ tmux()    { command tmux -2 $@ }
 atmux()   { tmux attach || tmux }
 
 g()       { command lazygit $@ }
-tig()     { termcompat tig $@ }
-gsi()     { termcompat tig status }
 gci()     { command git commit $@ }
 gsl()     { command git stash list $@ }
 gss()     { command git status -sbu $@ }
