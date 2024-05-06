@@ -23,7 +23,7 @@ require('lazy').setup {
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
 require('gruvbox').setup {
-    terminal_colors = false
+    terminal_colors = true
 }
 require('orgmode').setup {
     org_agenda_files = '~/orgfiles/**/*',
