@@ -43,7 +43,7 @@ precmd.is_git_repo() {
 }
 
 precmd.prompt.add() {
-    (( $# < 1 )) && return 1
+    (( $# )) || return 1
     typeset data=$1 color=$2
     [[ -n $prompt_string ]] && prompt_string+=" "
     if [[ -n $color ]]; then
