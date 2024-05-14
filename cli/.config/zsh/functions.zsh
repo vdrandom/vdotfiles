@@ -60,7 +60,7 @@ gup()     { command git pull $@ }
 gwta()    { command git worktree add $@ }
 gwtp()    { command git worktree prune -v }
 groot()   { cd $(command git rev-parse --show-toplevel) || return 0 }
-gdiff()   { command git diff --color $@; }
+gdiff()   { command git diff --color $@ }
 greset()  {
     echo "OK to reset and clean teh repo?"
     read -sq _
@@ -91,8 +91,8 @@ if testbin grc; then
         cc configure cvs df dig gcc gmake id ip last lsof make mount \
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
     )
-    for cmd in $cmds[@]; do
-        alias $cmd="command grc -es --colour=auto $cmd"
+    for cmd in $cmds; do
+        eval "$cmd() { command grc -es --colour=auto $cmd \$@ }"
     done
     unset cmds cmd
 fi
