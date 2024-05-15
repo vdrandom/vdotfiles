@@ -18,10 +18,10 @@ cfg.audible_bell = 'Disabled'
 cfg.check_for_updates = false
 
 -- fonts & text
-cfg.harfbuzz_features = nil
 cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
 cfg.font = wt.font('Fantasque Sans Mono')
+cfg.harfbuzz_features = {'calt=0'}
 cfg.font_size = fn.set_by_os{
     Darwin = 15,
     others = 12
