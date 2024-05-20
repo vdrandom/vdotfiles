@@ -5,7 +5,7 @@ printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
 prompt_wt="$USERNAME@$HOST"
 prompt_fifo=~/.zsh_gitstatus_$$
-prompt_blimit=12
+prompt_blimit=50
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
     ellipsis      $'\u2026'
