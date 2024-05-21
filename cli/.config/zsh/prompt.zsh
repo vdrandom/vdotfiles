@@ -3,7 +3,6 @@ printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
-prompt_wt="${HOST%%.*}: $(pwd)"
 prompt_fifo=~/.zsh_gitstatus_$$
 prompt_blimit=50
 typeset -A prompt_symbols=(
@@ -134,7 +133,7 @@ precmd.prompt.update() {
 }
 
 precmd.window_title() {
-    printf '\033]0;%s\007' $prompt_wt
+    printf '\033]0;%s %s\007' ${HOST%%.*} $(pwd)
 }
 
 precmd() {
