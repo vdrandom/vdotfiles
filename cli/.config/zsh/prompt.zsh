@@ -3,7 +3,7 @@ printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
-prompt_wt="$USERNAME@$HOST"
+prompt_wt="${HOST%%.*}: $PWD"
 prompt_fifo=~/.zsh_gitstatus_$$
 prompt_blimit=50
 typeset -A prompt_symbols=(
