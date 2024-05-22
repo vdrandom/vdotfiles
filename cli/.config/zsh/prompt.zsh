@@ -35,6 +35,11 @@ prompt.set_bang() {
     prompt_symbols[bang]=$1
 }
 
+precmd.window_title() {
+    typeset dir=$(pwd)
+    printf '\033]0;%s:%s\007' ${HOST%%.*} ${dir##*/}
+}
+
 precmd.is_git_repo() {
     typeset prompt_git_dir
     prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
@@ -130,10 +135,6 @@ precmd.prompt.update() {
     typeset -g prompt_string=$(<$prompt_fifo)
     precmd.prompt.apply
     zle && zle reset-prompt
-}
-
-precmd.window_title() {
-    printf '\033]0;%s %s\007' ${HOST%%.*} $(pwd)
 }
 
 precmd() {
