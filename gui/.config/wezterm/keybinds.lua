@@ -9,7 +9,6 @@ local keybinds = {
     { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
     { key = 'r', mods = 'LEADER', action = act.EmitEvent('override-reset') },
     -- tabs
-    { key = 'w', mods = 'LEADER', action = act.ShowTabNavigator },
     { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
     { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
     { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
