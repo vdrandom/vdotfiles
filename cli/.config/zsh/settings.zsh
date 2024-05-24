@@ -11,7 +11,6 @@ export LESS='i M R'
 export PAGER=less
 export EDITOR=nvim
 export TIME_STYLE=long-iso
-export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
 export ALTERNATE_EDITOR=
 
 bindkey -e
