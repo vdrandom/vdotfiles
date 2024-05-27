@@ -5,7 +5,7 @@ Xft.lcdfilter:          true
 Xft.rgba:               rgb
 Xft.hinting:            true
 Xft.hintstyle:          hintslight
-Xft.dpi:                192
+Xft.dpi:                96
 
 #define FONT            xft:VascadiaMod:size=12
 
