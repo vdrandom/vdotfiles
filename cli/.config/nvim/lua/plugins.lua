@@ -47,8 +47,6 @@ map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
 map('n', '<Leader>.', '<cmd>Telescope git_files<CR>')
 map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
-map('n', '<Leader>T', '<cmd>colorscheme solarized8|set bg=light<CR>')
-map('n', '<Leader>t', '<cmd>colorscheme gruvbox8|set bg=dark<CR>')
 
 --[[ theme ]]
 vim.o.termguicolors = true
