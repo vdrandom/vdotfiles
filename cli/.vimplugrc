@@ -4,7 +4,7 @@ autocmd BufRead *vimplugrc set ft=vim
 execute 'source' fnameescape(g:plug)
 plug#begin(g:plugdir)
 Plug 'junegunn/vim-plug'
-Plug 'lifepillar/vim-solarized8'
+Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'
@@ -32,7 +32,7 @@ nmap <Leader>ft :Filetypes<CR>
 
 # lightline
 g:lightline = {
-    colorscheme:  'solarized',
+    colorscheme:  'gruvbox8',
     separator:    { left: '', right: ''},
     subseparator: { left: '\u2022', right: '\u2022'}
 }
@@ -45,9 +45,9 @@ if has('gui_running')
     map! <S-Insert> <MiddleMouse>
 endif
 
-g:solarized_extra_hi_groups = 1
+g:gruvbox_plugin_hi_groups = 1
 &t_8f = "\u1b[38;2;%lu;%lu;%lum"
 &t_8b = "\u1b[48;2;%lu;%lu;%lum"
+&bg   = 'dark'
 &tgc  = 1
-&bg   = 'light'
-colorscheme solarized8
+colorscheme gruvbox8
