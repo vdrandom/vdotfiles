@@ -13,11 +13,11 @@ local cursor_bg = '#cb4b16'
 
 -- fonts
 local fonts = wt.config_builder()
-fonts.font = wt.font('Fantasque Sans Mono')
-fonts.harfbuzz_features = {'calt=0'}
+fonts.font = wt.font('Cascadia Mono PL')
+fonts.harfbuzz_features = {'ss01', 'ss19', 'ss20'}
 fonts.font_size = fn.set_by_os{
-    Darwin = 15,
-    others = 12
+    Darwin = 14,
+    others = 11
 }
 
 -- theme
