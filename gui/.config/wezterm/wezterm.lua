@@ -21,6 +21,7 @@ cfg.check_for_updates = false
 cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
 cfg.font = wt.font('IBM Plex Mono')
+cfg.harfbuzz_features = {'ss03'}
 cfg.font_size = fn.set_by_os{
     Darwin = 14,
     others = 11
