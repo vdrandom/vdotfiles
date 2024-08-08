@@ -7,17 +7,18 @@ vim.opt.rtp:prepend(lazypath)
 
 --[[ plugins list ]]
 require('lazy').setup {
-    {'kdheepak/lazygit.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
     {'nvim-orgmode/orgmode', event = 'VeryLazy', ft = {'org'}},
-    {'nvim-telescope/telescope.nvim', dependencies = {'nvim-lua/plenary.nvim'}},
     {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
+    'kdheepak/lazygit.nvim',
+    'nvim-telescope/telescope.nvim',
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
     'nvim-lualine/lualine.nvim',
     'tpope/vim-rsi',
     'tpope/vim-vinegar',
+    {'nvim-lua/plenary.nvim', lazy = true},
 }
 
 --[[ plugin configs and maps ]]
