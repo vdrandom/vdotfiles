@@ -9,10 +9,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
     {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
     {'nvim-orgmode/orgmode', event = 'VeryLazy', ft = {'org'}},
-    {'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate'},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'kdheepak/lazygit.nvim',
     'nvim-telescope/telescope.nvim',
+    'nvim-treesitter/nvim-treesitter',
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
     'nvim-lualine/lualine.nvim',
