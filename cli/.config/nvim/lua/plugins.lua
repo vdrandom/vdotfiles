@@ -8,7 +8,6 @@ vim.opt.rtp:prepend(lazypath)
 --[[ plugins list ]]
 require('lazy').setup {
     {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
-    {'nvim-orgmode/orgmode', event = 'VeryLazy', ft = {'org'}},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'kdheepak/lazygit.nvim',
     'nvim-telescope/telescope.nvim',
@@ -25,10 +24,6 @@ require('lazy').setup {
 require('gitsigns').setup()
 require('gruvbox').setup {
     terminal_colors = true
-}
-require('orgmode').setup {
-    org_agenda_files = '~/orgfiles/**/*',
-    org_default_notes_file = '~/orgfiles/refile.org'
 }
 require('nvim-treesitter.configs').setup {
     highlight = {
