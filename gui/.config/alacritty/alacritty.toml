@@ -34,10 +34,10 @@ shape = "Block"
 
 [font]
 builtin_box_drawing = true
-size = 16
+size = 13
 
 [font.normal]
-family = "FantasqueSansM Nerd Font"
+family = "IBM Plex Mono"
 
 [[keyboard.bindings]]
 action = "Paste"
