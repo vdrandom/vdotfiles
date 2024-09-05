@@ -13,12 +13,8 @@ local cursor_bg = '#cb4b16'
 
 -- fonts
 local fonts = wt.config_builder()
-fonts.font = wt.font('Cascadia Mono PL')
-fonts.harfbuzz_features = {'ss01', 'ss19', 'ss20'}
-fonts.font_size = fn.set_by_os{
-    Darwin = 14,
-    others = 11
-}
+fonts.font = wt.font('IBM Plex Mono')
+fonts.harfbuzz_features = {'ss03'}
 
 -- theme
 local theme = wt.config_builder()
