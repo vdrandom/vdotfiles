@@ -24,7 +24,7 @@ cfg.font = wt.font('Cascadia Mono PL')
 cfg.harfbuzz_features = {'ss01', 'ss19', 'ss20'}
 cfg.font_size = fn.set_by_os{
     Darwin = 14,
-    others = 11
+    others = 10
 }
 
 -- visuals
