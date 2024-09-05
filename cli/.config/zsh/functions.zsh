@@ -35,7 +35,7 @@ fsf() {
 }
 
 beep()    { printf $'\007' }
-fixterm() { printf $'c' }
+fixterm() { printf $'\u001bc' }
 
 diff()    { command diff --color $@ }
 tailf()   { command less +F $@ }
