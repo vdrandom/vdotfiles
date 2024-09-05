@@ -76,7 +76,7 @@ else
 fi
 
 if testbin eza; then
-    ls()  { command eza --icons --group-directories-first $@ }
+    ls()  { command eza --group-directories-first $@ }
     ll()  { ls -alg $@ }
     ld()  { ls -dlg $@ }
 else
