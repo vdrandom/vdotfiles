@@ -1,4 +1,4 @@
-function prompt.add
+function fish_prompt.add
     set -l text $argv[1]
     set -l color $argv[2]
     if test -n "$color"

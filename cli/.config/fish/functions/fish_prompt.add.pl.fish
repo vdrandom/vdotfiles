@@ -1,4 +1,4 @@
-function prompt.add.pl
+function fish_prompt.add.pl
     set -l color $argv[1]
     set -l text $argv[2]
     set -l sep ''
