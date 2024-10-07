@@ -3,8 +3,9 @@ printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
-prompt_fifo=~/.zsh_gitstatus_$$
+prompt_fifo=$HOME/.zsh_gitstatus_$$
 prompt_blimit=50
+kube_config=$HOME/.kube/config
 typeset -A prompt_symbols=(
     sep_a         $'\ue0b0'
     ellipsis      $'\u2026'
@@ -13,6 +14,7 @@ typeset -A prompt_symbols=(
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
+    helm          $'\u2388'
     bang          $'\u276f'
 )
 
@@ -26,6 +28,7 @@ typeset -A prompt_colors=(
     git_staged     '6'
     git_untracked  '1'
     git_unmerged   '5'
+    kube_context   '2'
     brackets       '8'
     bang           '8'
 )
@@ -38,6 +41,16 @@ prompt.set_bang() {
 precmd.window_title() {
     typeset dir=$(pwd)
     printf '\033]0;%s:%s\007' ${HOST%%.*} ${dir##*/}
+}
+
+precmd.has_kube() {
+    [[ -r $kube_config ]]
+}
+
+precmd.kube_context() {
+    typeset kube_context=$(awk '($1 ~ "^current") {print $2}' $kube_config)
+    precmd.prompt.add $prompt_symbols[helm]
+    precmd.prompt.add $kube_context $prompt_colors[kube_context]
 }
 
 precmd.is_git_repo() {
@@ -114,6 +127,10 @@ precmd.prompt() {
         && precmd.prompt.add %n@%m $prompt_colors[ssh]
 
     precmd.prompt.add %~ $prompt_colors[cwd]
+
+    if precmd.has_kube; then
+        precmd.kube_context
+    fi
 
     [[ $1 == pre_git ]]\
         && precmd.prompt.pre_git
