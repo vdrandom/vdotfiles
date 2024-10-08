@@ -33,7 +33,7 @@ require('nvim-treesitter.configs').setup {
 require('lualine').setup {
   options = {
     icons_enabled = false,
---  section_separators = { left = nil, right = nil},
+    section_separators = { left = nil, right = nil},
     component_separators = { left = "\u{2022}", right = "\u{2022}"}
   }
 }
