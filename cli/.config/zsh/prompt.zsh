@@ -48,7 +48,7 @@ precmd.has_kube() {
 }
 
 precmd.kube_context() {
-    typeset kube_context=$(awk '($1 ~ "^current") {print $2}' $kube_config)
+    typeset kube_context=$(awk -F- '($1 == "current") {print $3}' $kube_config)
     precmd.prompt.add $prompt_symbols[helm]
     precmd.prompt.add $kube_context $prompt_colors[kube_context]
 }
