@@ -23,6 +23,7 @@ require('lazy').setup {
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
 require('gruvbox').setup {
+    italic = { strings = false },
     terminal_colors = true
 }
 require('nvim-treesitter.configs').setup {
