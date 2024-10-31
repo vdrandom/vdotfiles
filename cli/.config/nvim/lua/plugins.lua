@@ -23,7 +23,7 @@ require('lazy').setup {
 --[[ plugin configs and maps ]]
 require('gitsigns').setup()
 require('gruvbox').setup {
-    italic = { strings = false },
+    italic = {strings = false},
     terminal_colors = true
 }
 require('nvim-treesitter.configs').setup {
@@ -34,8 +34,8 @@ require('nvim-treesitter.configs').setup {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    section_separators = { left = nil, right = nil},
-    component_separators = { left = "\u{2022}", right = "\u{2022}"}
+    section_separators = {left = nil, right = nil},
+    component_separators = {left = "\u{2022}", right = "\u{2022}"}
   }
 }
 
