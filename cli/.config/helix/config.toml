@@ -2,3 +2,10 @@ theme = "gruvbox"
 
 [editor]
 true-color = true
+line-number = "relative"
+cursorline = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
