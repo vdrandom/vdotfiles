@@ -3,9 +3,18 @@ theme = "gruvbox"
 [editor]
 true-color = true
 line-number = "relative"
-cursorline = true
 
 [editor.cursor-shape]
 normal = "block"
 insert = "bar"
 select = "underline"
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal.space]
+z = ":toggle-option whitespace.render all none"
+x = ":toggle-option cursorline"
