@@ -1,9 +1,9 @@
 # Fuck default aliases
 unalias -a
 
-testbin() { whence $@ > /dev/null }
+function testbin { whence $@ > /dev/null }
 
-termcompat() {
+function termcompat {
     typeset term=$TERM
     case $term in
         (alacritty*) ;&
@@ -19,7 +19,7 @@ termcompat() {
     TERM=$term command $@
 }
 
-addpath() {
+function addpath {
     typeset newpath=$1
     if [[ ! $PATH =~ $newpath ]]; then
         PATH+=:$newpath
@@ -27,41 +27,42 @@ addpath() {
     fi
 }
 
-fsf() {
+function fsf {
     typeset host prompt="SSH Remote > "
     host=$(cut -d\  -f1 $HOME/.ssh/known_hosts | sort -u | fzf --prompt=$prompt) || return 1
 
     termcompat ssh $host $@
 }
 
-beep()    { printf $'\007' }
-fixterm() { printf $'\u001bc' }
+function beep    { printf $'\007' }
+function fixterm { printf $'\u001bc' }
 
-diff()    { command diff --color $@ }
-tailf()   { command less +F $@ }
-grep()    { command grep --color=auto $@ }
-rgrep()   { grep --exclude-dir=.git -R $@ }
-s()       { termcompat ssh $@ }
+function diff    { command diff --color $@ }
+function tailf   { command less +F $@ }
+function grep    { command grep --color=auto $@ }
+function rgrep   { grep --exclude-dir=.git -R $@ }
+function s       { termcompat ssh $@ }
 
-if testbin nvim; then
-    vi()      { command nvim $@ }
-    vim()     { command nvim $@ }
-fi
+function tmux    { command tmux -2 $@ }
+function atmux   { tmux attach || tmux }
 
-tmux()    { command tmux -2 $@ }
-atmux()   { tmux attach || tmux }
+function ksw     { command kubecm switch $@ }
+function k       { command kubectl $@ }
+function kg      { command kubectl get $@ }
+function kc      { command kubectl config $@ }
+function kshell  { command kubectl exec -n $1 --stdin --tty $2 -- /bin/sh }
 
-g()       { command lazygit $@ }
-gci()     { command git commit $@ }
-gsl()     { command git stash list $@ }
-gss()     { command git status -sbu $@ }
-gsw()     { command git switch $@ }
-gup()     { command git pull $@ }
-gwta()    { command git worktree add $@ }
-gwtp()    { command git worktree prune -v }
-groot()   { cd $(command git rev-parse --show-toplevel) || return 0 }
-gdiff()   { command git diff --color $@ }
-greset()  {
+function g       { command lazygit $@ }
+function gci     { command git commit $@ }
+function gsl     { command git stash list $@ }
+function gss     { command git status -sbu $@ }
+function gsw     { command git switch $@ }
+function gup     { command git pull $@ }
+function gwta    { command git worktree add $@ }
+function gwtp    { command git worktree prune -v }
+function groot   { cd $(command git rev-parse --show-toplevel) || return 0 }
+function gdiff   { command git diff --color $@ }
+function greset  {
     echo "OK to reset and clean teh repo?"
     read -sq _
     (( $? )) && return 1
@@ -70,19 +71,19 @@ greset()  {
 }
 
 if testbin diff-so-fancy; then
-    gdf() { gdiff $@ | command diff-so-fancy | command less --tabs=4 -RSFX }
+    function gdf { gdiff $@ | command diff-so-fancy | command less --tabs=4 -RSFX }
 else
-    gdf() { gdiff $@ }
+    function gdf { gdiff $@ }
 fi
 
 if testbin eza; then
-    ls()  { command eza --group-directories-first $@ }
-    ll()  { ls -alg $@ }
-    ld()  { ls -dlg $@ }
+    function ls  { command eza --group-directories-first $@ }
+    function ll  { ls -alg $@ }
+    function ld  { ls -dlg $@ }
 else
-    ls()  { command ls --color=auto --group-directories-first $@ }
-    ll()  { ls -alh $@ }
-    ld()  { ls -dlh $@ }
+    function ls  { command ls --color=auto --group-directories-first $@ }
+    function ll  { ls -alh $@ }
+    function ld  { ls -dlh $@ }
 fi
 
 # grc
@@ -92,7 +93,7 @@ if testbin grc; then
         mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
     )
     for cmd in $cmds; do
-        eval "$cmd() { command grc -es --colour=auto $cmd \$@ }"
+        eval "function $cmd { command grc -es --colour=auto $cmd \$@ }"
     done
     unset cmds cmd
 fi
