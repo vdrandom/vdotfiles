@@ -1,5 +1,7 @@
 set bang_symbol \u276f
-set git_sign \ue0a0
+set kube_symbol \u2388
+set kube_config "$HOME/.kube/config"
+set git_symbol  \ue0a0
 set color_git_branch brblack
 
 # git symbols and colors

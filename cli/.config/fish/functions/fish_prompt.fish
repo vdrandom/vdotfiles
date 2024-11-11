@@ -4,6 +4,7 @@ function fish_prompt
     fish_prompt.add \[ brblack
     fish_prompt.user
     fish_prompt.add (prompt_pwd) blue
+    fish_prompt.kube
     fish_prompt.git
     fish_prompt.add \] brblack
     fish_prompt.bang
