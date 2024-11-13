@@ -9,6 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
     {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
+    'smoka7/hop.nvim',
     'kdheepak/lazygit.nvim',
     'nvim-telescope/telescope.nvim',
     'nvim-treesitter/nvim-treesitter',
@@ -21,6 +22,7 @@ require('lazy').setup {
 }
 
 --[[ plugin configs and maps ]]
+require('hop').setup()
 require('gitsigns').setup()
 require('gruvbox').setup {
     italic = {strings = false},
@@ -39,6 +41,7 @@ require('lualine').setup {
   }
 }
 
+map('n', '<Leader>f', '<cmd>HopWord<CR>')
 map('n', '<Leader>g', '<cmd>LazyGit<CR>')
 map('n', '<Leader>L', '<cmd>Lazy<CR>')
 map('n', '<Leader>?', '<cmd>Cheat40<CR>')
