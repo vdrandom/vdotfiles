@@ -1,5 +1,4 @@
 local wt = require('wezterm')
-local fn = require('functions')
 
 local current = {}
 
@@ -45,8 +44,8 @@ local overrides = {
     theme = theme
 }
 
-local function toggle_overrides(window, overrides)
-    for k, v in pairs(overrides) do
+local function toggle_overrides(window, conf)
+    for k, v in pairs(conf) do
         if current[k] == v then
             current[k] = nil
         else
