@@ -1,4 +1,4 @@
-# disable the bloody ^S / ^Q, I use tmux all the time anyway
+# disable the bloody ^S / ^Q
 stty -ixon
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_DUPS EXTENDED_GLOB AUTO_CD AUTO_PUSHD PRINT_EXIT_VALUE
 unsetopt BEEP NO_MATCH NOTIFY MENU_COMPLETE AUTO_MENU
@@ -7,9 +7,12 @@ SAVEHIST=1000
 HISTSIZE=1000
 HISTFILE=$HOME/.histfile.$UID
 
+EDITOR=vim
+whence hx >/dev/null && EDITOR=hx
+
+export EDITOR
 export LESS='i M R'
 export PAGER=less
-export EDITOR=nvim
 export TIME_STYLE=long-iso
 export ALTERNATE_EDITOR=
 
