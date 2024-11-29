@@ -19,5 +19,6 @@ render = true
 enable = true
 
 [keys.normal.space]
-z = ":toggle-option whitespace.render all none"
+l = ":toggle-option whitespace.render all none"
+m = ":toggle-option mouse"
 x = ":toggle-option cursorline"
