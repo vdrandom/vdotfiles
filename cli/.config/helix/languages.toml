@@ -1,0 +1,4 @@
+[[language]]
+name = "common-lisp"
+scope = "source.lisp"
+file-types = ["kbd", "lisp", "asd", "cl", "l", "lsp", "ny", "podsl", "sexp"]
