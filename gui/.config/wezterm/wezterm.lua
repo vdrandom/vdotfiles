@@ -20,8 +20,7 @@ cfg.check_for_updates = false
 -- fonts & text
 cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
-cfg.font = wt.font('Cascadia Mono PL')
-cfg.harfbuzz_features = {'ss01', 'ss19', 'ss20'}
+cfg.font = wt.font('Vascadia Mono PL')
 cfg.font_size = fn.set_by_os{
     Darwin = 14,
     others = 10
