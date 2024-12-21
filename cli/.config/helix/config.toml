@@ -2,7 +2,6 @@ theme = "gruvbox"
 
 [editor]
 true-color = true
-line-number = "relative"
 
 [editor.cursor-shape]
 normal = "block"
@@ -22,3 +21,4 @@ enable = true
 l = ":toggle-option whitespace.render all none"
 m = ":toggle-option mouse"
 x = ":toggle-option cursorline"
+z = ":toggle-option line-number relative absolute"
