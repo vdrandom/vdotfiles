@@ -1,5 +1,4 @@
 # shellcheck shell=bash
-# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
 HISTSIZE=1000
@@ -11,11 +10,9 @@ export LESS='i M R'
 export PAGER=less
 export EDITOR=vim
 export TIME_STYLE=long-iso
-export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 PS1='\[\e[0m\][ \u@\h \[\e[34m\]\w\[\e[0m\] ]\n\$ '
-
-unalias ls ld ll 2>/dev/null
 
 beep()    { printf "\007"; }
 fixterm() { printf "\u001bc"; }
@@ -26,6 +23,8 @@ rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
 whence() { command -v "$@"; }
 
 # ls
+unalias ls ld ll 2>/dev/null
+
 ls() { command ls --color=auto "$@"; }
 ll() { ls -alh "$@"; }
 ld() { ls -dlh "$@"; }

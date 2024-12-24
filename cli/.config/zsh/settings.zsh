@@ -14,7 +14,7 @@ export EDITOR
 export LESS='i M R'
 export PAGER=less
 export TIME_STYLE=long-iso
-export ALTERNATE_EDITOR=
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 bindkey -e
 bindkey $terminfo[kdch1] delete-char
