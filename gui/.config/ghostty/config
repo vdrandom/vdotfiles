@@ -1,0 +1,18 @@
+font-family = Vascadia Code NF
+font-size = 14
+
+cursor-style = block
+cursor-style-blink = false
+cursor-color = #d65d0e
+shell-integration-features = no-cursor
+
+theme = GruvboxDark
+
+keybind = ctrl+g>c=new_tab
+keybind = ctrl+g>v=new_split:right
+keybind = ctrl+g>s=new_split:down
+keybind = ctrl+g>h=goto_split:left
+keybind = ctrl+g>j=goto_split:bottom
+keybind = ctrl+g>k=goto_split:top
+keybind = ctrl+g>l=goto_split:right
+keybind = ctrl+g>r=reload_config
