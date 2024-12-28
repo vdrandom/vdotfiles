@@ -27,6 +27,7 @@ cfg.font_size = fn.set_by_os{
 }
 
 -- visuals
+cfg.native_macos_fullscreen_mode = false
 cfg.window_decorations = 'RESIZE'
 cfg.xcursor_theme = 'Adwaita'
 cfg.use_fancy_tab_bar = false
