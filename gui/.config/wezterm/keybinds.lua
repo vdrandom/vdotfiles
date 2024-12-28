@@ -4,10 +4,12 @@ local leader_key = { key = 'g', mods = 'CTRL', timeout_milliseconds = 1000 }
 local keybinds = {
     { key = 'c', mods = 'META', action = act.CopyTo('Clipboard')    },
     { key = 'v', mods = 'META', action = act.PasteFrom('Clipboard') },
-    -- themes
-    { key = 'f', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
+    -- overrides
+    { key = 'y', mods = 'LEADER', action = act.EmitEvent('override-fonts') },
     { key = 't', mods = 'LEADER', action = act.EmitEvent('override-theme') },
     { key = 'r', mods = 'LEADER', action = act.EmitEvent('override-reset') },
+    -- misc
+    { key = 'f', mods = 'LEADER', action = act.ToggleFullScreen },
     -- tabs
     { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
     { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
