@@ -2,7 +2,6 @@ font-family = Cascadia Mono PL
 font-feature = ss01
 font-feature = ss19
 font-feature = ss20
-font-size = 14
 
 cursor-style = block
 cursor-style-blink = false
@@ -11,6 +10,7 @@ shell-integration-features = no-cursor
 
 theme = GruvboxDark
 
+keybind = alt+t=new_tab
 keybind = ctrl+g>c=new_tab
 keybind = ctrl+g>v=new_split:right
 keybind = ctrl+g>s=new_split:down
