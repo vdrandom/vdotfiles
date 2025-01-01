@@ -28,6 +28,10 @@ alert = 5.0
 block = "cpu"
 interval = 1
 
+[[block]]
+block = "memory"
+format = "$icon $mem_used.eng(prefix:Mi) ($mem_used_percents)"
+
 #[[block]]
 #block = "sound"
 #on_click = "pavucontrol"
@@ -36,19 +40,13 @@ interval = 1
 [[block]]
 block = "keyboard_layout"
 driver = "sway"
-
-#[[block]]
-#block = "custom"
-#command = "printf \uf019"
-#on_click = "screenshot-tool file"
-#interval = 60
-
-#[[block]]
-#block = "custom"
-#command = "printf \uf0ea"
-#on_click = "screenshot-tool"
-#interval = 60
+[block.mappings]
+"English (US)" = "EN"
+"Russian (typewriter)" = "RU"
 
 [[block]]
 block = "time"
-interval = 5
+interval = 1
+[block.format]
+full = "$icon $timestamp.datetime(f:'%a %R')"
+short = "$icon $timestamp.datetime(f:'%R')"
