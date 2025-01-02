@@ -1,4 +1,4 @@
 vdotfiles
 =========
 
-stow is cool
+chezmoi is cooler

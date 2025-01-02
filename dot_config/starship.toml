@@ -1,0 +1,22 @@
+format = '[\[](bright-black) $all[\]](bright-black)$character'
+add_newline = false
+
+[git_status]
+conflicted = '*'
+ahead = '↑'
+behind = '↓'
+diverged = '?'
+up_to_date = ''
+untracked = '!'
+stashed = '$'
+modified = '~'
+staged = '+'
+renamed = '→'
+deleted = '×'
+typechanged = ''
+
+[character]
+format = "\n[❯](bright-black) "
+
+[line_break]
+disabled = true
