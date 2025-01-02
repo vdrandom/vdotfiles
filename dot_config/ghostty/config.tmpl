@@ -5,6 +5,9 @@ font-feature = {{ . }}
 {{- end }}
 font-size = {{ $font.size }}
 
+{{ if eq .chezmoi.os "linux" -}}
+window-decoration = false
+{{- end }}
 cursor-style = block
 cursor-style-blink = false
 cursor-color = #d65d0e
