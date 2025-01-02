@@ -7,8 +7,10 @@ set $up k
 set $right l
 
 set $term ghostty
-set $font Cascadia Mono 11
-font pango:Cascadia Mono, Font Awesome 6 Free 11
+set $font_symb Font Awesome 6 Free
+set $font_face IBM Plex Mono
+set $font_size 10
+font pango:$font_face, $font_symb $font_size
 
 #set $wallpaper /home/von/.wallpaper
 
@@ -39,8 +41,8 @@ output Virtual-1 resolution 1920x1080 scale 2
     bindsym --to-code $mod+Shift+c kill
 
     # Start your launcher
-    bindsym --to-code $mod+d exec bemenu-run -i --fn "$font" --no-exec | xargs swaymsg exec --
-    bindsym --to-code $mod+u exec bemenu-pass -i --fn "$font"
+    bindsym --to-code $mod+d exec bemenu-run -i --fn "$font_face $font_size" --no-exec | xargs swaymsg exec --
+    bindsym --to-code $mod+u exec bemenu-pass -i --fn "$font_face $font_size"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
