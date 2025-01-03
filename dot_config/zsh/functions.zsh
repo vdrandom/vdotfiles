@@ -37,6 +37,7 @@ function fsf {
 function beep    { printf $'\007' }
 function fixterm { printf $'\u001bc' }
 
+function cm      { command chezmoi $@ }
 function diff    { command diff --color $@ }
 function tailf   { command less +F $@ }
 function grep    { command grep --color=auto $@ }
