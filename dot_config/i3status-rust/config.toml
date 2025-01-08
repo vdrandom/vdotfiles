@@ -51,6 +51,6 @@ driver = "sway"
 [[block]]
 block = "time"
 interval = 1
+timezone = "Europe/Moscow"
 [block.format]
-full = "$icon $timestamp.datetime(f:'%a %R')"
-short = "$icon $timestamp.datetime(f:'%R')"
+full = " $timestamp.datetime(f:'%R') "
