@@ -79,7 +79,7 @@ else
 fi
 
 if testbin eza; then
-    function ls  { command eza --group-directories-first $@ }
+    function ls  { command eza --icons --group-directories-first $@ }
     function ll  { ls -alg $@ }
     function ld  { ls -dlg $@ }
 else
