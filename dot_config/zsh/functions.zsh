@@ -43,6 +43,7 @@ function tailf   { command less +F $@ }
 function grep    { command grep --color=auto $@ }
 function rgrep   { grep --exclude-dir=.git -R $@ }
 function s       { termcompat ssh $@ }
+function zj      { command zellij $@ }
 
 function tmux    { command tmux -2 $@ }
 function atmux   { tmux attach || tmux }
