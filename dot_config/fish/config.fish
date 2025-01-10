@@ -19,6 +19,4 @@ if status is-interactive
             printf '\e[31m>>\e[39m exit \e[31m%s\e[39m\n' $ret
         end
     end
-
-    starship init fish | source
 end
