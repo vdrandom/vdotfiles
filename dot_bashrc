@@ -1,4 +1,4 @@
-# shellcheck shell=bash
+# shellcheck shell=bash disable=SC1090
 [[ $- != *i* ]] && return
 
 HISTSIZE=1000
