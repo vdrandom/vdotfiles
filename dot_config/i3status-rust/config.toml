@@ -23,23 +23,12 @@ block = "net"
 format = " $icon "
 
 [[block]]
-block = "disk_space"
-path = "/"
-warning = 10.0
-alert = 5.0
-
-[[block]]
 block = "cpu"
-interval = 1
+format = " $icon "
 
 [[block]]
 block = "memory"
-format = "$icon $mem_used.eng(prefix:Mi) ($mem_used_percents)"
-
-#[[block]]
-#block = "sound"
-#on_click = "pavucontrol"
-#step_width = 2
+format = " $icon "
 
 [[block]]
 block = "keyboard_layout"
