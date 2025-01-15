@@ -1,5 +1,0 @@
-inherits = "gruvbox"
-
-# transparent background, if ever needed
-#"ui.background" = {}
-"ui.cursor.primary.normal" = { fg = "bg1", bg = "orange1" }

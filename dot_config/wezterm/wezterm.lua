@@ -7,8 +7,6 @@ local color_scheme = 'GruvboxDark'
 local tab_fg = '#ebdbb2'
 local tab_bg = '#504945'
 local tab_bg_active = '#282828'
-local cursor_fg = '#ebdbb2'
-local cursor_bg = '#d65d0e'
 
 -- misc
 local cfg = wt.config_builder()
@@ -45,8 +43,6 @@ cfg.window_padding = {
 -- theming
 cfg.color_scheme = color_scheme
 cfg.colors = {
-    cursor_fg = cursor_fg,
-    cursor_bg = cursor_bg,
     tab_bar = {
         background = tab_bg,
         active_tab = {

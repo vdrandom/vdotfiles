@@ -1,4 +1,4 @@
-theme = "gruvbox_custom"
+theme = "gruvbox"
 
 [editor]
 true-color = true

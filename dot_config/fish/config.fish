@@ -19,4 +19,8 @@ if status is-interactive
             printf '\e[31m>>\e[39m exit \e[31m%s\e[39m\n' $ret
         end
     end
+
+    if command -q direnv
+        direnv hook fish | source
+    end
 end

@@ -7,8 +7,6 @@ local color_scheme = 'Solarized Light (Gogh)'
 local tab_fg = '#657b83'
 local tab_bg = '#eee8d5'
 local tab_bg_active = '#fdf6e3'
-local cursor_fg = '#fdf6e3'
-local cursor_bg = '#cb4b16'
 
 -- fonts
 local fonts = wt.config_builder()
@@ -19,8 +17,6 @@ fonts.harfbuzz_features = {'ss03'}
 local theme = wt.config_builder()
 theme.color_scheme = color_scheme
 theme.colors = {
-    cursor_fg = cursor_fg,
-    cursor_bg = cursor_bg,
     tab_bar = {
         background = tab_bg,
         active_tab = {

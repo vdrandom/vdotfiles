@@ -99,3 +99,7 @@ if testbin grc; then
     done
     unset cmds cmd
 fi
+
+if testbin direnv; then
+    eval "$(direnv hook zsh)"
+fi
