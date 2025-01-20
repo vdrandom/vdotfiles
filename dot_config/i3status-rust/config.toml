@@ -36,10 +36,3 @@ driver = "sway"
 [block.mappings]
 "English (US)" = "EN"
 "Russian (typewriter)" = "RU"
-
-[[block]]
-block = "time"
-interval = 1
-timezone = "Europe/Moscow"
-[block.format]
-full = " $timestamp.datetime(f:'%R') "

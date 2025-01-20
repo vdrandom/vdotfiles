@@ -41,8 +41,7 @@ output Virtual-1 resolution 1920x1080 scale 2
     bindsym --to-code $mod+Shift+c kill
 
     # Start your launcher
-    bindsym --to-code $mod+d exec bemenu-run -i --fn "$font_face $font_size" --no-exec | xargs swaymsg exec --
-    bindsym --to-code $mod+u exec bemenu-pass -i --fn "$font_face $font_size"
+    bindsym --to-code Mod1+Space exec bemenu-run -i --fn "$font_face $font_size" --no-exec | xargs swaymsg exec --
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
