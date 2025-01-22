@@ -1,25 +1,25 @@
 # Logo key. Use Mod1 for Alt.
-set $mod Mod4
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 
-set $term ghostty
+set $term foot
 set $font_symb Font Awesome 6 Free
-set $font_face IBM Plex Mono
+set $font_face Vascadia Mono
 set $font_size 10
 font pango:$font_face, $font_symb $font_size
 
-#set $wallpaper /home/von/.wallpaper
+set $wallpaper /home/von/.wallpaper
 
 default_border pixel
 default_floating_border pixel
 
 seat seat0 xcursor_theme Vanilla-DMZ-AA
 
-#output * bg $wallpaper fill
+output * bg $wallpaper fill
 
 output Virtual-1 resolution 1920x1080 scale 2
 
@@ -187,6 +187,7 @@ bar {
     position top
 
     status_command "i3status-rs"
+    # status_command "/home/von/git/vdstatus/vdstatus"
 
     colors {
         separator #6d0080
