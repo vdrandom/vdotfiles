@@ -16,6 +16,8 @@ set $wallpaper /home/von/.wallpaper
 
 default_border pixel
 default_floating_border pixel
+hide_edge_borders --i3 smart
+workspace_layout tabbed
 
 seat seat0 xcursor_theme Vanilla-DMZ-AA
 
@@ -35,7 +37,7 @@ output Virtual-1 resolution 1920x1080 scale 2
 
 # keys:
     # Start a terminal
-    bindsym --to-code $mod+x exec $term
+    bindsym --to-code $mod+t exec $term
 
     # Kill focused window
     bindsym --to-code $mod+Shift+c kill
@@ -187,7 +189,6 @@ bar {
     position top
 
     status_command "i3status-rs"
-    # status_command "/home/von/git/vdstatus/vdstatus"
 
     colors {
         separator #6d0080
