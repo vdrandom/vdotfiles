@@ -181,6 +181,19 @@ bindsym --to-code XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%"
 bindsym --to-code XF86AudioLowerVolume exec "pactl set-sink-volume 0 -5%"
 bindsym --to-code XF86AudioMute exec "pactl set-sink-volume 0 0%"
 
+# theming, gruvbox
+set $light #ebdbb2
+set $dark #3c3836
+set $focused #3c3836
+set $inactive #282828
+set $unfocused #282828
+set $urgent #b8bb26
+
+client.focused          $focused    $focused    $light  $focused    $focused
+client.focused_inactive $inactive   $inactive   $light  $inactive   $inactive
+client.unfocused        $unfocused  $unfocused  $light  $unfocused  $unfocused
+client.urgent           $urgent     $urgent     $light  $urgent     $urgent
+
 #
 # Status Bar:
 #
@@ -191,9 +204,14 @@ bar {
     status_command "i3status-rs"
 
     colors {
-        separator #6d0080
-        background #2c2c2c
-        statusline #ffffff
+        separator  $focused
+        background $inactive
+        statusline $light
+
+        focused_workspace  $focused   $focused   $light
+        active_workspace   $focused   $focused   $light
+        inactive_workspace $inactive  $inactive  $light
+        urgent_workspace   $urgent    $urgent    $light
     }
 }
 
