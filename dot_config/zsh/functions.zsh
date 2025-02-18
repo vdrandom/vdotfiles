@@ -100,6 +100,6 @@ if testbin grc; then
     unset cmds cmd
 fi
 
-if testbin direnv; then
-    eval "$(direnv hook zsh)"
+if testbin mise; then
+    eval "$(mise activate zsh)"
 fi

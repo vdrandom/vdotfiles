@@ -1,0 +1,4 @@
+[settings]
+
+[settings.status]
+show_env = true
