@@ -1,8 +1,6 @@
 # Fuck default aliases
 unalias -a
 
-function testbin { whence $@ > /dev/null }
-
 function termcompat {
     typeset term=$TERM
     case $term in
@@ -98,8 +96,4 @@ if testbin grc; then
         eval "function $cmd { command grc -es --colour=auto $cmd \$@ }"
     done
     unset cmds cmd
-fi
-
-if testbin mise; then
-    eval "$(mise activate zsh)"
 fi
