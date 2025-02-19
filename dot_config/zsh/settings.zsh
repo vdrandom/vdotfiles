@@ -44,10 +44,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 unalias ld ls ll &>/dev/null
 
-if testbin direnv; then
-    eval "$(direnv hook zsh)"
-fi
-
 if testbin mise; then
     eval "$(mise activate zsh)"
 fi
