@@ -5,10 +5,11 @@ local function get_os()
 end
 
 local function set_by_os(values)
-    local my_os = get_os()
-    if values[my_os] then return values[my_os] end
+    if values[MY_OS] then return values[MY_OS] end
     return values.others
 end
+
+MY_OS = get_os()
 
 return {
     set_by_os = set_by_os
