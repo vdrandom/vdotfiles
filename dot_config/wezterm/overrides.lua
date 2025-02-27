@@ -10,8 +10,8 @@ local tab_bg_active = '#fdf6e3'
 
 -- fonts
 local fonts = wt.config_builder()
-fonts.font = wt.font('IBM Plex Mono')
-fonts.harfbuzz_features = {'ss03'}
+fonts.font = wt.font('JetBrains Mono')
+fonts.harfbuzz_features = {'zero'}
 
 -- theme
 local theme = wt.config_builder()

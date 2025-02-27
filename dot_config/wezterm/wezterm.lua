@@ -52,7 +52,7 @@ cfg.colors = {
         },
         inactive_tab = {
             fg_color = tab_fg,
-            bg_color = tab_bg
+            bg_color = tab_bg,
         }
     }
 }
