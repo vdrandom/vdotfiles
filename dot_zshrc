@@ -1,13 +1,10 @@
 [[ $- != *i* ]] && return
 
-function testbin { whence $@ > /dev/null }
-
 confdir=$HOME/.config/zsh
 conflist=(
-    env.zsh
+    functions.zsh
     settings.zsh
     prompt.zsh
-    functions.zsh
     local.zsh
 )
 

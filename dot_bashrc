@@ -1,4 +1,4 @@
-# shellcheck shell=bash disable=SC1090
+# shellcheck shell=bash disable=SC1090,SC2164
 [[ $- != *i* ]] && return
 
 HISTSIZE=1000
@@ -13,9 +13,6 @@ export TIME_STYLE=long-iso
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 PS1='\[\e[0m\][ \u@\h \[\e[34m\]\w\[\e[0m\] ]\n\$ '
-
-beep()    { printf "\007"; }
-fixterm() { printf "\u001bc"; }
 
 diff()   { command diff --color "$@"; }
 tailf()  { command less +F "$@"; }
@@ -34,16 +31,13 @@ gci()   { command git commit "$@"; }
 gsl()   { command git stash list "$@"; }
 gss()   { command git status -sbu "$@"; }
 gup()   { command git pull "$@"; }
-groot() { cd "$(command git rev-parse --show-cdup)" || return 1; }
+groot() { cd "$(command git rev-parse --show-cdup)"; }
 ggrep() { command git grep "$@"; }
 gsi()   { command tig status; }
 
 # tmux
 tmux()  { command tmux -2 "$@"; }
 atmux() { tmux attach; }
-
-# sudo
-sush()  { command sudo -Es; }
 
 # bash-completion
 completion_path='/usr/share/bash-completion/bash_completion'

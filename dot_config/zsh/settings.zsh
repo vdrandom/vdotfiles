@@ -7,10 +7,11 @@ SAVEHIST=10000
 HISTSIZE=10000
 HISTFILE=$HOME/.histfile.$UID
 
-EDITOR=vim
-whence hx >/dev/null && EDITOR=hx
+for editor in hx nvim vim vi; do
+    testbin $editor && break
+done
 
-export EDITOR
+export EDITOR=$editor
 export LESS='i M R'
 export PAGER=less
 export TIME_STYLE=long-iso
@@ -41,8 +42,6 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-unalias ld ls ll &>/dev/null
 
 if testbin mise; then
     eval "$(mise activate zsh)"

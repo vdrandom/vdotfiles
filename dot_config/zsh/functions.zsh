@@ -1,22 +1,6 @@
 # Fuck default aliases
 unalias -a
 
-function termcompat {
-    typeset term=$TERM
-    case $term in
-        (alacritty*) ;&
-        (kitty*) ;&
-        (wezterm) ;&
-        (xterm-*)
-            term=xterm;;
-        (rxvt-unicode*)
-            term=rxvt-unicode;;
-        (tmux*)
-            term=screen.xterm-new;;
-    esac
-    TERM=$term command $@
-}
-
 function addpath {
     typeset newpath=$1
     if [[ ! $PATH =~ $newpath ]]; then
@@ -25,22 +9,13 @@ function addpath {
     fi
 }
 
-function fsf {
-    typeset host prompt="SSH Remote > "
-    host=$(cut -d\  -f1 $HOME/.ssh/known_hosts | sort -u | fzf --prompt=$prompt) || return 1
-
-    termcompat ssh $host $@
-}
-
-function beep    { printf $'\007' }
-function fixterm { printf $'\u001bc' }
+function testbin { whence $@ > /dev/null }
 
 function cm      { command chezmoi $@ }
 function diff    { command diff --color $@ }
 function tailf   { command less +F $@ }
 function grep    { command grep --color=auto $@ }
 function rgrep   { grep --exclude-dir=.git -R $@ }
-function s       { termcompat ssh $@ }
 function zj      { command zellij $@ }
 
 function tmux    { command tmux -2 $@ }
