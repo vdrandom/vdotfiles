@@ -14,13 +14,12 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 PS1='\[\e[0m\][ \u@\h \[\e[34m\]\w\[\e[0m\] ]\n\$ '
 
+unalias -a
+
 diff()   { command diff --color "$@"; }
 tailf()  { command less +F "$@"; }
 rgrep()  { command grep --exclude-dir=\.git -R "$@"; }
 whence() { command -v "$@"; }
-
-# ls
-unalias ls ld ll 2>/dev/null
 
 ls() { command ls --color=auto "$@"; }
 ll() { ls -alh "$@"; }
