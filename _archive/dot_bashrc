@@ -10,7 +10,6 @@ export LESS='i M R'
 export PAGER=less
 export EDITOR=vim
 export TIME_STYLE=long-iso
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 PS1='\[\e[0m\][ \u@\h \[\e[34m\]\w\[\e[0m\] ]\n\$ '
 
@@ -37,10 +36,6 @@ gsi()   { command tig status; }
 # tmux
 tmux()  { command tmux -2 "$@"; }
 atmux() { tmux attach; }
-
-# bash-completion
-completion_path='/usr/share/bash-completion/bash_completion'
-[[ -r "$completion_path" ]] && source "$completion_path"
 
 # we want to see exit code on error (it also has to be the last entry here)
 trap_msg='\e[31m>>\e[0m exit \e[31m%s\e[0m\n'
