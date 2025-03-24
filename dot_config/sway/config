@@ -8,7 +8,7 @@ set $right l
 
 set $term foot
 set $font_symb Font Awesome 6 Free
-set $font_face Vascadia Mono
+set $font_face Cascadia Mono
 set $font_size 10
 font pango:$font_face, $font_symb $font_size
 
