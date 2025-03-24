@@ -12,7 +12,7 @@ set $font_face Cascadia Mono
 set $font_size 10
 font pango:$font_face, $font_symb $font_size
 
-set $wallpaper /home/von/.wallpaper
+set $wallpaper $HOME/.wallpaper
 
 default_border pixel
 default_floating_border pixel
