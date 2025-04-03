@@ -64,8 +64,13 @@ fi
 # grc
 if testbin grc; then
     cmds=(\
-        cc configure cvs df dig gcc gmake id ip last lsof make mount \
-        mtr netstat ping ping6 ps tcpdump traceroute traceroute6 \
+        iptables ipneighbor ipaddr iproute ip nmap netstat \
+        traceroute tcpdump ss ping ping6 \
+        dockerversion dockersearch dockerpull dockerps dockernetwork \
+        docker-machinels dockerinfo dockerimages \
+        lspci lsof lsmod lsblk lsattr getfacl id whois vmstat ulimit \
+        systemctl sysctl stat pv ps ping last gcc free findmnt fdisk env du \
+        dig diff df blkid
     )
     for cmd in $cmds; do
         eval "function $cmd { command grc -es --colour=auto $cmd \$@ }"

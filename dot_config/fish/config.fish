@@ -2,7 +2,7 @@ if status is-interactive
     if command -q grc
         set -l grc_cmds \
             iptables ipneighbor ipaddr iproute ip nmap netstat \
-            traceroute tcpdump ss ping \
+            traceroute tcpdump ss ping ping6 \
             dockerversion dockersearch dockerpull dockerps dockernetwork \
             docker-machinels dockerinfo dockerimages \
             lspci lsof lsmod lsblk lsattr getfacl id whois vmstat ulimit \
