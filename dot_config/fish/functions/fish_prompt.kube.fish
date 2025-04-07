@@ -3,6 +3,6 @@ function fish_prompt.kube
         return
     end
     fish_prompt.add "$kube_symbol"
-    set -l kube_context (awk -F- '($1 == "current") {print $3}' "$kube_config")
+    set -l kube_context (awk '($1 == "current-context:") {print $2}' "$kube_config")
     fish_prompt.add "$kube_context" green
 end
