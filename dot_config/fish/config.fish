@@ -20,7 +20,7 @@ if status is-interactive
         end
     end
 
-    if command -q mise
-        mise activate fish | source
+    if command -q direnv
+        direnv hook fish | source
     end
 end

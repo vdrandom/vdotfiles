@@ -43,6 +43,6 @@ zstyle ':completion:*:kill:*:processes' command 'ps --forest -A -o pid,user,cmd'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-if testbin mise; then
-    eval "$(mise activate zsh)"
+if testbin direnv; then
+    eval "$(direnv hook zsh)"
 fi
