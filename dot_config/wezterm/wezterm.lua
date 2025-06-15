@@ -18,9 +18,9 @@ cfg.check_for_updates = false
 -- fonts & text
 cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
-cfg.font = wt.font('Vascadia Mono PL')
+cfg.font = wt.font('Maple Mono NF')
 cfg.font_size = fn.set_by_os{
-    Darwin = 15,
+    Darwin = 14,
     others = 11
 }
 

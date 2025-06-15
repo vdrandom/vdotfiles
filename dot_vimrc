@@ -26,7 +26,7 @@ nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>w :setlocal wrap!<CR>
 
-set guicursor=a:blinkon0 guifont=Cascadia\ Mono\ PL:h14
+set guicursor=a:blinkon0 guifont=Maple\ Mono\ NF:h15
 set guiheadroom=0 guioptions=aei mouse=a
 
 colorscheme PaperColor
