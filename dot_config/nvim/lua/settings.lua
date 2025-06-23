@@ -27,4 +27,4 @@ vim.o.imsearch = 0
 
 local fsize = '11'
 if vim.loop.os_uname().sysname == 'Darwin' then fsize = '14' end
-vim.o.guifont = 'Vascadia Mono PL:h' .. fsize
+vim.o.guifont = 'Maple Mono NF:h' .. fsize
