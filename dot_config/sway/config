@@ -24,6 +24,7 @@ seat seat0 xcursor_theme Vanilla-DMZ-AA
 output * bg $wallpaper fill
 
 output Virtual-1 resolution 1920x1080 scale 2
+output HEADLESS-1 resolution 1920x1080 scale 2
 
 #exec swayidle -w \
 #         timeout 300 'swaylock -f -i '$wallpaper \
