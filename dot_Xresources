@@ -1,0 +1,148 @@
+! {{{ xft and cursor configuration, aliases
+Xcursor.theme:          Vanilla-DMZ-AA
+Xft.antialias:          true
+Xft.lcdfilter:          true
+Xft.rgba:               rgb
+Xft.hinting:            true
+Xft.hintstyle:          hintslight
+Xft.dpi:                192
+
+#define FONT            xft:Maple Mono NL NF:size=11
+
+! gruvbox
+#define COLORFG #ebdbb2
+#define COLORBG #282828
+#define COLORBD #ebdbb2
+#define COLORCR #fb4934
+
+#define COLOR0  #282828
+#define COLOR1  #cc241d
+#define COLOR2  #98971a
+#define COLOR3  #d79921
+#define COLOR4  #458588
+#define COLOR5  #b16286
+#define COLOR6  #689d6a
+#define COLOR7  #a89984
+
+#define COLOR8  #928374
+#define COLOR9  #fb4934
+#define COLOR10 #b8bb26
+#define COLOR11 #fabd2f
+#define COLOR12 #83a598
+#define COLOR13 #d3869b
+#define COLOR14 #8ec07c
+#define COLOR15 #ebdbb2
+
+! solarized light
+!#define COLORFG #657b83
+!#define COLORBG #fdf6e3
+!#define COLORBD #002b36
+!#define COLORCR #cb4b16
+!
+!#define COLOR0  #073642
+!#define COLOR1  #dc322f
+!#define COLOR2  #859900
+!#define COLOR3  #b58900
+!#define COLOR4  #268bd2
+!#define COLOR5  #d33682
+!#define COLOR6  #2aa198
+!#define COLOR7  #eee8d5
+!
+!#define COLOR8  #002b36
+!#define COLOR9  #cb4b16
+!#define COLOR10 #586e75
+!#define COLOR11 #657b83
+!#define COLOR12 #839496
+!#define COLOR13 #6c71c4
+!#define COLOR14 #93a1a1
+!#define COLOR15 #fdf6e3
+! }}}
+! {{{ urxvt
+! fonts
+URxvt.font:             FONT
+!URxvt.letterSpace:      -1
+
+! misc
+URxvt.intensityStyles:  false
+URxvt.internalBorder:   1
+URxvt.iso14755:         false
+URxvt.pastableTabs:     true
+URxvt.pointerBlank:     true
+URxvt.saveLines:        10000
+URxvt.scrollBar:        false
+URxvt.secondaryScroll:  false
+URxvt.urgentOnBell:     false
+URxvt.visualBell:       false
+URxvt.cutchars:         `'"'&()*,;<=>?@[]^{|}│
+
+! perl extensions
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:     /home/von/.local/bin/default-web-browser
+URxvt.matcher.button:   3
+
+! keymaps
+URxvt.keysym.C-V:     eval:paste_clipboard
+URxvt.keysym.M-v:     eval:paste_clipboard
+URxvt.keysym.C-C:     eval:selection_to_clipboard
+URxvt.keysym.M-c:     eval:selection_to_clipboard
+
+! colors
+URxvt.foreground:   COLORFG
+URxvt.colorBD:      COLORBD
+URxvt.background:   COLORBG
+URxvt.cursorColor:  COLORCR
+
+URxvt.color0:       COLOR0
+URxvt.color1:       COLOR1
+URxvt.color2:       COLOR2
+URxvt.color3:       COLOR3
+URxvt.color4:       COLOR4
+URxvt.color5:       COLOR5
+URxvt.color6:       COLOR6
+URxvt.color7:       COLOR7
+
+URxvt.color8:       COLOR8
+URxvt.color9:       COLOR9
+URxvt.color10:      COLOR10
+URxvt.color11:      COLOR11
+URxvt.color12:      COLOR12
+URxvt.color13:      COLOR13
+URxvt.color14:      COLOR14
+URxvt.color15:      COLOR15
+! }}}
+! {{{ xterm
+xterm.borderWidth:            0
+xterm.vt100.font:             TERMINUS
+xterm.vt100.colorBDMode:      true
+xterm.vt100.allowBoldFonts:   false
+xterm.vt100.boldColors:       false
+xterm.vt100.bellIsUrgent:     true
+xterm.vt100.visualBell:       false
+xterm.vt100.metaSendsEscape:  true
+xterm.vt100.fastScroll:       true
+xterm.vt100.internalBorder:   1
+
+! colors
+xterm.vt100.foreground:   COLORFG
+xterm.vt100.colorBD:      COLORBD
+xterm.vt100.background:   COLORBG
+xterm.vt100.cursorColor:  COLORCR
+
+xterm.vt100.color0:       COLOR0
+xterm.vt100.color1:       COLOR1
+xterm.vt100.color2:       COLOR2
+xterm.vt100.color3:       COLOR3
+xterm.vt100.color4:       COLOR4
+xterm.vt100.color5:       COLOR5
+xterm.vt100.color6:       COLOR6
+xterm.vt100.color7:       COLOR7
+
+xterm.vt100.color8:       COLOR8
+xterm.vt100.color9:       COLOR9
+xterm.vt100.color10:      COLOR10
+xterm.vt100.color11:      COLOR11
+xterm.vt100.color12:      COLOR12
+xterm.vt100.color13:      COLOR13
+xterm.vt100.color14:      COLOR14
+xterm.vt100.color15:      COLOR15
+! }}}
