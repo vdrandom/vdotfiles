@@ -25,12 +25,12 @@ cfg.font_size = fn.set_by_os{
 }
 
 -- visuals
--- maybe enable these back one day
--- cfg.window_decorations = 'RESIZE'
--- cfg.hide_tab_bar_if_only_one_tab = false
+cfg.window_decorations = fn.set_by_os{
+    Darwin = 'INTEGRATED_BUTTONS|RESIZE',
+    others = 'TITLE|RESIZE'
+}
 cfg.native_macos_fullscreen_mode = false
 cfg.xcursor_theme = 'Adwaita'
-cfg.use_fancy_tab_bar = false
 cfg.show_new_tab_button_in_tab_bar = false
 cfg.tab_max_width = 24
 cfg.window_padding = {
