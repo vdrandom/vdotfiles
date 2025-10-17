@@ -1,7 +1,7 @@
 [theme]
 theme = "gruvbox-dark"
 [theme.overrides]
-separator = '|'
+separator = ''
 idle_bg = "#2c2c2c"
 idle_fg = "#ebdbb2"
 info_bg = "#2c2c2c"
@@ -30,9 +30,9 @@ format = " $icon "
 block = "memory"
 format = " $icon "
 
-[[block]]
-block = "keyboard_layout"
-driver = "sway"
-[block.mappings]
-"English (US)" = "EN"
-"Russian (typewriter)" = "RU"
+# [[block]]
+# block = "keyboard_layout"
+# driver = "sway"
+# [block.mappings]
+# "English (US)" = "EN"
+# "Russian (typewriter)" = "RU"

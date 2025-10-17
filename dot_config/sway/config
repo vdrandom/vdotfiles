@@ -6,11 +6,10 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
-set $font_symb Font Awesome 6 Free
-set $font_face Cascadia Mono
+set $term wezterm
+set $font_face Maple Mono NL NF
 set $font_size 10
-font pango:$font_face, $font_symb $font_size
+font pango:$font_face $font_size
 
 set $wallpaper $HOME/.wallpaper
 
