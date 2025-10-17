@@ -29,6 +29,10 @@ cfg.window_decorations = fn.set_by_os{
     Darwin = 'INTEGRATED_BUTTONS|RESIZE',
     others = 'TITLE|RESIZE'
 }
+cfg.use_fancy_tab_bar = fn.set_by_os{
+    Darwin = true,
+    others = false
+}
 cfg.native_macos_fullscreen_mode = false
 cfg.xcursor_theme = 'Adwaita'
 cfg.show_new_tab_button_in_tab_bar = false
