@@ -5,9 +5,6 @@ font-feature = {{ . }}
 {{- end }}
 font-size = {{ $font.size }}
 
-{{ if eq .chezmoi.os "linux" -}}
-window-decoration = false
-{{- end }}
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
