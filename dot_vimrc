@@ -26,7 +26,12 @@ nnoremap <Leader>l :setlocal list!<CR>
 nnoremap <Leader>c :setlocal cursorline!<CR>
 nnoremap <Leader>w :setlocal wrap!<CR>
 
-set guicursor=a:blinkon0 guifont=Maple\ Mono\ NF:h15
+set guicursor=a:blinkon0
+if has("gui_macvim")
+    set guifont=Maple\ Mono\ NL\ NF:h16
+else
+    set guifont=Maple\ Mono\ NL\ NF\ 12
+endif
 set guiheadroom=0 guioptions=aei mouse=a
 
 colorscheme PaperColor
