@@ -12,6 +12,7 @@ local tab_bg_active = '#282828'
 local cfg = wt.config_builder()
 cfg.leader = kb.leader
 cfg.keys = kb.keybinds
+cfg.mouse_bindings = kb.mousebinds
 cfg.audible_bell = 'Disabled'
 cfg.check_for_updates = false
 
@@ -20,14 +21,13 @@ cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
 cfg.font = wt.font('Maple Mono NL NF')
 cfg.font_size = fn.set_by_os{
-    Darwin = 15,
-    others = 12
+    Darwin = 14,
+    others = 11
 }
 
 -- visuals
 cfg.window_decorations = fn.set_by_os{
     Darwin = 'INTEGRATED_BUTTONS|RESIZE',
-    Linux  = 'RESIZE',
     others = 'TITLE|RESIZE'
 }
 cfg.use_fancy_tab_bar = fn.set_by_os{

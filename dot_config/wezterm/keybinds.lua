@@ -12,8 +12,8 @@ local keybinds = {
     { key = 'f', mods = 'LEADER', action = act.ToggleFullScreen },
     -- tabs
     { key = 'c', mods = 'LEADER', action = act.SpawnTab('DefaultDomain') },
-    { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative( 1) },
-    { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+    { key = 't', mods = 'META', action = act.SpawnTab('DefaultDomain') },
+    { key = 'w', mods = 'META', action = act.CloseCurrentTab { confirm = true } },
     -- panes
     { key = 's', mods = 'LEADER', action = act.SplitVertical   { domain = 'CurrentPaneDomain' } },
     { key = 'v', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
@@ -31,9 +31,28 @@ for i = 1, 9 do
         keybinds,
         { key = tostring(i), mods = 'LEADER', action = act.ActivateTab(i - 1) }
     )
+    table.insert(
+        keybinds,
+        { key = tostring(i), mods = 'META', action = act.ActivateTab(i - 1) }
+    )
 end
+local mousebinds = {
+    {
+        event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+        mods = 'NONE',
+        action = act.ScrollByLine(-3),
+        alt_screen = false,
+    },
+    {
+        event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+        mods = 'NONE',
+        action = act.ScrollByLine(3),
+        alt_screen = false,
+    },
+}
 
 return {
     leader = leader_key,
-    keybinds = keybinds
+    keybinds = keybinds,
+    mousebinds = mousebinds
 }
