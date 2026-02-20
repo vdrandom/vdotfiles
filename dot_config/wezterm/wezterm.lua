@@ -21,19 +21,12 @@ cfg.cursor_blink_rate = 0
 cfg.bold_brightens_ansi_colors = false
 cfg.font = wt.font('Maple Mono NL NF')
 cfg.font_size = fn.set_by_os{
-    Darwin = 14,
+    Darwin = 15,
     others = 11
 }
 
 -- visuals
-cfg.window_decorations = fn.set_by_os{
-    Darwin = 'INTEGRATED_BUTTONS|RESIZE',
-    others = 'TITLE|RESIZE'
-}
-cfg.use_fancy_tab_bar = fn.set_by_os{
-    Darwin = true,
-    others = false
-}
+cfg.use_fancy_tab_bar = false
 cfg.native_macos_fullscreen_mode = false
 cfg.xcursor_theme = 'Adwaita'
 cfg.show_new_tab_button_in_tab_bar = false
