@@ -1,15 +1,14 @@
-{{- $font := index .ghostty_font .chezmoi.os -}}
-font-family = {{ $font.face }}
-{{- range $font.feats }}
-font-feature = {{ . }}
+font-family = Maple Mono NL NF
+{{- if eq .chezmoi.os "darwin" }}
+font-size = 14
+{{- else }}
+font-size = 11
 {{- end }}
-font-size = {{ $font.size }}
 
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 window-padding-color = extend
-macos-titlebar-style = tabs
 
 theme = Gruvbox Dark
 
