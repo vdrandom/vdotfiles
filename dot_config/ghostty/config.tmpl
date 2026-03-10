@@ -1,20 +1,22 @@
+theme = Gruvbox Dark
 font-family = Maple Mono NL NF
 {{- if eq .chezmoi.os "darwin" }}
 font-size = 14
+quit-after-last-window-closed = true
 {{- else }}
 font-size = 11
 {{- end }}
-
-cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
 window-padding-color = extend
 
-theme = Gruvbox Dark
-
+{{- if eq .chezmoi.os "linux" }}
 keybind = alt+t=new_tab
 keybind = alt+c=copy_to_clipboard
 keybind = alt+v=paste_from_clipboard
+keybind = alt+f=start_search
+keybind = alt+e=search_selection
+{{- end }}
 keybind = ctrl+g>c=new_tab
 keybind = ctrl+g>v=new_split:right
 keybind = ctrl+g>s=new_split:down
@@ -25,5 +27,3 @@ keybind = ctrl+g>l=goto_split:right
 keybind = ctrl+g>r=reload_config
 keybind = ctrl+g>f=toggle_fullscreen
 keybind = ctrl+g>d=toggle_window_decorations
-keybind = ctrl+m=text:\n
-keybind = ctrl+i=text:\t
