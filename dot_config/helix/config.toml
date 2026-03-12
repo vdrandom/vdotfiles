@@ -1,7 +1,6 @@
-theme = "gruvbox"
-
-[editor]
-true-color = true
+# remember this for later, cool theme
+# theme = "spacebones_light"
+theme = "everforest_dark"
 
 [editor.cursor-shape]
 normal = "block"
