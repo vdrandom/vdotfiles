@@ -1,6 +1,4 @@
-# remember this for later, cool theme
-# theme = "spacebones_light"
-theme = "everforest_dark"
+theme = "spacebones_light"
 
 [editor.cursor-shape]
 normal = "block"
