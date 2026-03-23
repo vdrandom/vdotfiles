@@ -7,9 +7,8 @@ vim.opt.rtp:prepend(lazypath)
 
 --[[ plugins list ]]
 require('lazy').setup {
-    -- {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
+    {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
-    'EdenEast/nightfox.nvim',
     'smoka7/hop.nvim',
     'kdheepak/lazygit.nvim',
     'nvim-telescope/telescope.nvim',
@@ -25,10 +24,10 @@ require('lazy').setup {
 --[[ plugin configs and maps ]]
 require('hop').setup()
 require('gitsigns').setup()
--- require('gruvbox').setup {
---     italic = {strings = false},
---     terminal_colors = true
--- }
+require('gruvbox').setup {
+    italic = {strings = false},
+    terminal_colors = true
+}
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
@@ -51,6 +50,6 @@ map('n', '<Leader>,', '<cmd>Telescope buffers<CR>')
 
 --[[ theme ]]
 vim.o.termguicolors = true
-vim.o.bg = 'light'
+vim.o.bg = 'dark'
 
-vim.cmd [[colorscheme dawnfox]]
+vim.cmd [[colorscheme gruvbox]]

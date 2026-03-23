@@ -1,4 +1,4 @@
-theme = "rose_pine_dawn"
+theme = "gruvbox"
 
 [editor.cursor-shape]
 normal = "block"
