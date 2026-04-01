@@ -5,11 +5,11 @@ set prompt_git_symbol \ue0a0
 set prompt_git_markers \~ + ! \*
 set prompt_git_colors yellow blue red purple
 
-switch (uname)
+switch "$(uname)"
     case Darwin
         set prompt_git_status_file "/private/tmp/fish_git_$fish_pid"
     case \*
-        set prompt_git_status_file "/var/run/$UID/fish_git_$fish_pid"
+        set prompt_git_status_file "$XDG_RUNTIME_DIR/fish_git_$fish_pid"
 end
 
 function fish_prompt.git
