@@ -3,7 +3,9 @@ printf -v PROMPT2 $prompt_fmtn '%_'
 printf -v PROMPT3 $prompt_fmtn '?#'
 printf -v PROMPT4 $prompt_fmtn '+%N:%i'
 
-prompt_fifo=$HOME/.zsh_gitstatus_$$
+prompt_git_file=$XDG_RUNTIME_DIR/zsh_git_$$
+[[ $(uname) == Darwin ]] && prompt_git_file=/private/tmp/zsh_git_$$
+
 prompt_blimit=50
 kube_config=$HOME/.kube/config
 typeset -A prompt_symbols=(
@@ -54,9 +56,7 @@ function precmd.kube_context {
 }
 
 function precmd.is_git_repo {
-    typeset prompt_git_dir
-    prompt_git_dir=$(git rev-parse --git-dir 2>/dev/null) || return 1
-    [[ ! -e $prompt_git_dir/nozsh ]]
+    git rev-parse --is-inside-work-tree &>/dev/null
 }
 
 function precmd.prompt.add {
@@ -126,13 +126,13 @@ function precmd.prompt {
 
 function precmd.git_update {
     precmd.prompt git
-    [[ ! -p $prompt_fifo ]] && mkfifo -m 0600 $prompt_fifo
-    echo -n $prompt_string > $prompt_fifo &!
+    echo -n $prompt_string > $prompt_git_file &!
     kill -s USR1 $$
 }
 
 function precmd.prompt.update {
-    typeset -g prompt_string=$(<$prompt_fifo)
+    typeset -g prompt_string=$(<$prompt_git_file)
+    rm -f $prompt_git_file
     precmd.prompt.apply
     zle && zle reset-prompt
 }
@@ -150,10 +150,6 @@ function precmd {
 
 function TRAPUSR1 {
     precmd.prompt.update
-}
-
-function TRAPEXIT {
-    [[ -p $prompt_fifo ]] && rm $prompt_fifo
 }
 
 function zle-line-init zle-keymap-select {
