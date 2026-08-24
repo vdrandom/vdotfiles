@@ -1,6 +1,6 @@
 if status is-interactive
     set prompt_bang_symbol \u276f
-    set prompt_kube_symbol \u2388
+    set prompt_kube_symbol \ue81d
     set prompt_kube_config "$HOME/.kube/config"
     set prompt_color_reset "$(set_color normal)"
 

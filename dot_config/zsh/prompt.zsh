@@ -15,7 +15,7 @@ typeset -A prompt_symbols=(
     git_staged    $'\u2713'
     git_untracked '!'
     git_unmerged  '*'
-    helm          $'\u2388'
+    helm          $'\ue81d'
     bang          $'\u276f'
 )
 
