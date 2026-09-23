@@ -8,11 +8,11 @@ vim.opt.rtp:prepend(lazypath)
 --[[ plugins list ]]
 require('lazy').setup {
     {'ellisonleao/gruvbox.nvim', priority = 1000, config = true},
+    {'nvim-treesitter/nvim-treesitter', branch = 'main', lazy = false, build = ':TSUpdate'},
     {'w0rp/ale', cmd = 'ALEEnable', ft = {'bash', 'go', 'lua', 'python', 'sh', 'zsh'}},
     'smoka7/hop.nvim',
     'kdheepak/lazygit.nvim',
     'nvim-telescope/telescope.nvim',
-    'nvim-treesitter/nvim-treesitter',
     'lewis6991/gitsigns.nvim',
     'lifepillar/vim-cheat40',
     'nvim-lualine/lualine.nvim',
@@ -27,11 +27,6 @@ require('gitsigns').setup()
 require('gruvbox').setup {
     italic = {strings = false},
     terminal_colors = true
-}
-require('nvim-treesitter.configs').setup {
-    highlight = {
-        enable = true
-    }
 }
 require('lualine').setup {
   options = {
