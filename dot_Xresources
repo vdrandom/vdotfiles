@@ -7,6 +7,8 @@ Xft.hinting:            true
 Xft.hintstyle:          hintslight
 Xft.dpi:                192
 
+#define TERMINUS        -xos4-terminus-bold-*-*-*-18-*-*-*-*-*-iso10646-1
+#define TERMINUS_SMALL  -xos4-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-1
 #define FONT            xft:Maple Mono NL NF:size=11
 
 ! gruvbox
@@ -59,7 +61,7 @@ Xft.dpi:                192
 ! }}}
 ! {{{ urxvt
 ! fonts
-URxvt.font:             FONT
+URxvt.font:             TERMINUS
 !URxvt.letterSpace:      -1
 
 ! misc
