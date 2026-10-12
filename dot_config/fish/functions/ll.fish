@@ -1,3 +1,3 @@
 function ll
-    command eza --group-directories-first --icons auto -alg $argv
+    command eza --group-directories-first --git --icons auto -alg $argv
 end
